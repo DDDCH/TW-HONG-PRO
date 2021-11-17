@@ -1,0 +1,1605 @@
+﻿;-------------------------------------------------
+; eraTheWorld 4.575용 사쿠야 대사 (캐릭터 이름을 넣는다, 아래에 콘셉트 등 한마디 있으면 넣는다)
+;-------------------------------------------------
+;다른 사람의 수정, 가필, 개변에 관해서는 동봉한 라이센스 조항에 따라주세요.
+
+
+;메이링 대사를 참고로 했습니다.
+;일단 어느 정도 만들어졌기에 해넘이에 맞춰서.
+
+;******************************************************************************
+
+;### 대사 존재 판정 ###################################
+@M_KOJO_K15(ARG)
+;여기서 RESULTS를 설정하면 다른 동일 캐릭터 대사를 쑤셔넣어도 정상 동작함.
+
+;RESULTS = _TEST_
+
+;라고 설정하면 "EVENT" 계열 이벤트라면
+;M_KOJO_TEST_EVENT_KX_1() 같은 걸로 부를 수 있을… 터. (미테스트 기능)
+
+;여기서 CFLAG 등의 캐릭터 변수를 쓸 경우, 캐릭터 번호의 지정이 필요합니다
+
+;코멘트아웃을 끄고 면간대사있음, 시간정지대사있음에 1을 넣으면 각각 시간정지시, 면간시에 커맨드 대사 읽어들이게 됩니다
+;안 넣으면 시간정지시, 면간시에는 일절 말 안 합니다
+;X에는 캐릭터 번호를 넣어주세요
+
+;CFLAG:15:면간대사있음 = 0
+CFLAG:15:시간정지대사있음 = 0
+
+;대사 존재 판정입니다. 절대 코멘트아웃하지 마세요
+RETURN 1
+;### 대사색깔판정 ###################################
+@M_KOJO_COLOR_K15
+
+SETCOLOR 0x9BAAF7
+
+;여기서 SETCOLOR 하는 것으로 말에 첨가할 수 있습니다
+;예：SETCOLOR 0xC07070
+
+;※※※※※※※※※※※※※※※※※※※※※※※※※※
+;"ENCOUNTER"계 이벤트 (엑스트라 구문)
+;※※※※※※※※※※※※※※※※※※※※※※※※※※
+@M_KOJO_ENCOUNTER_K15
+;첫 대면, 인사의 타이밍
+;TALENT의 변경은 여기서 하시길.
+;경험의 변경에 오류가 나올 경우가 있으니 CSV를 수정해 동봉하기를 추천합니다
+IF MAIN_MAP != 3
+	PRINTFORML
+	PRINTFORMW 「처음 보는 얼굴이네. 바깥 세계에서 온 인간이니?」
+	PRINTFORML 
+	PRINTFORMDW 정신을 차려보니 당신의 배후에 은발의 여성이 서 있었다.
+	PRINTFORML
+	PRINTFORMW 「하쿠레이 신사의 무녀한테는 가봤니? 혹시라도 실수로 환상들이 한 거라면 아마 도와줄텐데.」
+	PRINTFORMW 「밖으로 나가지 않을 거라고? 특이한 사람이구나.」
+	PRINTFORMW 「레이무가 알아서 잘 할거라고 생각하지만, 그래도 조심하렴. 이곳의 존재들은 종잡을 수 없으니까.」
+	PRINTFORML
+	PRINTFORMW 「어머, 그러고 보니 내 소개가 늦었구나. 내 이름은 이자요이 사쿠야. 홍마관의 메이드장이란다.」
+	PRINTFORML
+	PRINTFORMDW 그녀는 기품있는 몸짓으로 인사했다.
+	PRINTFORML
+	PRINTFORMW 「물론 너와 같은 '인간'이야. 홍마관에서 레밀리아 아가씨를 모시고 있지.」
+	PRINTFORMW 「홍마관에서는 항상 몸가짐을 바르게 하고 행동거지를 조심히 해주길 바래. 레밀리아 아가씨나 파츄리님이 계신것도 있지만―」
+	PRINTFORML
+	PRINTFORMDW 그녀는 잠깐 말을 끊더니, 쓴 웃음을 지으며 이내 다시 입을 열었다.
+	PRINTFORML
+	PRINTFORMW 「혹시라도 일이 잘못되면, 네 피로 케이크 반죽을 만들어야 할지도 모르거든.」
+	PRINTFORMW 「물론 그 숲의 마법사 덕분에, 그럴 위험은 많이 줄었지만.」
+	PRINTFORMW 「그럼, 다음에 또 봐.」
+	PRINTFORML
+	PRINTFORMDW 의미심장한 말과 함께, 사쿠야는 말을 맺었다.
+;거점이 홍마관인가 아닌가
+ELSEIF MAIN_MAP == 3
+	PRINTFORMW 하얀색과 남색이 적절히 섞인 메이드복,
+	PRINTFORMW 그리고 빛나듯 찰랑거리는 은발과 양 옆으로 땋아내린 머리에 달린 초록색 리본.
+	PRINTFORMW 10대 후반 정도로 보이는 단정한 소녀가 당신을 보더니 이내 뭔가를 떠올린 듯한 표정을 짓는다.
+	PRINTFORMW 그 단정한 소녀는 당신을 향해 다가와 입을 열었다.
+	PRINTFORML
+	PRINTFORMW 「아, 당신이 아가씨께서 말씀하신 그 인간이구나.」
+	PRINTFORMW 「이름이… %CALLNAME:MASTER%, 맞지? 나는 이자요이 사쿠야. 홍마관의 메이드장을 맡고 있단다.」
+	PRINTFORMW 「아가씨께 들었는지는 모르겠지만, 이 홍마관에서 지내는 대신 이곳의 집사로서 일해줘야 한단다. 물론, 무급으로.」
+	PRINTFORMW 「나를 포함해서 이곳의 모든 메이드 요정들이 동일한 조건으로 일하고 있으니 불만은 가지지 마렴.」
+	PRINTFORMW 「집사로서 네가 해줘야 할 일은 주로 아가씨나 대도서관의 파츄리님께 차를 내려드리거나, 청소를 하면 될거야.」
+	PRINTFORMW 「물론 내 심부름도 종종 해주고. 무급이라고 농땡이 피우면, 그냥은 안 넘어갈테니 조심하도록.」
+	PRINTFORML 
+	PRINTFORMDW 그 순간 저 멀리서 낑낑거리며 찻 주전자를 들고 날아가던 메이드 요정이, 실수로 주전자를 떨어트렸다.
+	PRINTFORMDW 히야앗, 하는 비명 소리와 함께, 주전자가 바닥에 떨어지려던 그때, 사쿠야의 손에서 무언가 번쩍였다.
+	PRINTFORML
+	PRINTFORMDW 쐐액! 하는 소리와 함께, 눈 깜짝할 새에 찻 주전자 손잡이 사이로 나이프가 날아가 그대로 벽에 꽂혔다.
+	PRINTFORML
+	PRINTFORMW 「딱 좋은 타이밍에 실수를 해주는구나. 굳이 농땡이 피우면 어떻게 될지 설명은 안해도 되겠지?」
+	PRINTFORML
+	PRINTFORMDW 약간 어깨가 으쓱해진 듯한 사쿠야에게, 당신은 벽에 꽂힌 나이프 자국은 어떻게 하냐고 물었다.
+	PRINTFORML 
+	PRINTFORMW 「…그건 내가 알아서 할테니 트집 잡지 마.」
+	PRINTFORML
+	PRINTFORMDW 나이프가 박힌 벽 앞에서 어쩔 줄 몰라하는 메이드 요정을 바라보며, 뭔가 부끄러운 듯한 표정을 짓는 사쿠야.
+	PRINTFORML
+	PRINTFORMW 「크흠… 아무튼! 결론은 농땡이 피우지 말라는 말이야. 청소는 항상 깔끔히 하고, 레밀리아 아가씨께 차도 자주 내려드리고.」
+	PRINTFORMW 「아, 그리고 하나 주의할 점이 있는데, 지하는 청소하지 않아도 되니 다가가지 마렴.」
+	PRINTFORMW 「이런 이야기한다고 굳이 궁금해하지 말고. 물론 간다고 큰 일이 생기지야 않겠다만, 만약을 기해서 하는 말이니까.」
+	PRINTFORML
+	PRINTFORMW 「저택에는 너 말고도 많은 사람들이 함께 일하고 있으니, 항상 조심하도록 해.」
+	PRINTFORMW 「그리고 너에 대해서는 내가 미리 언질 해뒀으니까, 마주치면 누구든 인사 잘하고.」
+	PRINTFORML
+	PRINTFORMDW 이야기를 마친 사쿠야는, 이내 발걸음을 돌려 급히 벽에 꽂힌 나이프를 뽑아 벽을 쳐다보며 메이드 요정에게 훈계를 하고 있다.
+	PRINTFORMDW 당신은 먼 발치에서 그 모습을 보고, 작게 한숨을 내쉬었다.
+ENDIF
+
+
+RETURN 1
+
+;※※※※※※※※※※※※※※※※※※※※※※※※※※
+;"SP_EVENT"계 이벤트
+;※※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;데이트하고 돌아오는 길에 첫 KISS (합의도 붙음)
+;==================================================
+@M_KOJO_SPEVENT_K15_1(ARG,ARG:1)
+;대사 주체는 TARGET
+;지문 표시
+;CALL SPEVENT_MESSAGE_1(ARG,ARG:1)
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+IF LOCAL
+	PRINTFORML  
+	PRINTFORMDW 어느 쪽이 먼저랄 것 없이 보조를 맞추면서 나란히 귀로를 걷는 두 사람.
+	PRINTFORMDW 문득 옆을 보니 사쿠야는 손에 회중시계를 쥐고 뭔가 골똘히 생각하고 있다.
+	PRINTFORMDW 옆에서 말을 걸어도 대답도 하지 않고 대뜸 멈춰서는 사쿠야.
+	PRINTFORMDW 그런 사쿠야와 눈이 마주친 그 순간――
+	PRINTFORML 
+	PRINTFORMW 살포시 그녀의 향기가 났다.
+	PRINTFORMDW 눈을 한 번 깜빡이자 그녀는 이미 몇 걸음 앞에 서 있었다.
+	PRINTFORML 
+	PRINTFORMW 「……그렇게 멀뚱멀뚱 서서 뭐하고 있니?
+	PRINTFORMW 빨리 돌아가자. 가서 청소도 하고 할 일이 산더미야.」
+	PRINTFORML 
+	PRINTFORMDW 그렇게 말하며 빠른 걸음으로 걸어가는 그녀였지만, 남아있는 입술의 감촉에 자연스레 핥아본 혀끝에는 은은하게 달콤한 맛이 느껴졌다.
+	;키스를 캔슬하고 싶을 때는 이하를 개방
+	;TCVAR:키스캔슬 = 1
+ENDIF
+RETURN 1
+
+;==================================================
+;데이트하고 돌아오는 길에 고백 (연인이 붙음)
+;==================================================
+@M_KOJO_SPEVENT_K15_2(ARG,ARG:1)
+;대사 주체는 TARGET
+;지문 표시
+;CALL SPEVENT_MESSAGE_2(ARG,ARG:1)
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;고백 내용
+	;이 고백 내용 표시 뒤에 받을지 말지 선택분이 표시됩니다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 0
+		IF FIRSTTIME("데이트 고백 이벤트")
+			PRINTFORML
+			PRINTFORMDW 사쿠야는 뒷짐을 쥔 채 %마스터와% 나란히 걷고 있다.
+			PRINTFORMDW 잠시만 더 가면 저택에 도착할 즈음에서 불현듯 사쿠야와 눈이 마주쳤다.
+			PRINTFORMDW 당신의 눈을 지그시 바라보던 사쿠야는, 결심한 듯 등 뒤의 손에 쥐고있던 회중시계를 도로 집어 넣는다.
+			PRINTFORMDW 이내 사쿠야는 헛기침을 하며 목을 가다듬고, %마스터를% 똑바로 쳐다보고 입을 열었다.
+			PRINTFORML 
+			PRINTFORMW 「저기…… 너… 아니, %CALLNAME:MASTER%한테 하고 싶은 말이… 있어.」
+			PRINTFORML
+			PRINTFORMDW 여느 때와 다른 진지한 목소리로, %CALLNAME:MASTER%의 눈을 응시하며.
+			PRINTFORML 
+			PRINTFORMW 「솔직히 이런 이야기하는게 널 불편하게 할까봐 고민 많이 했어.」
+			PRINTFORMW 「나는 인간이긴 하지만, 예전부터 일반적인 인간과는 거리가 멀었고, 자연스럽게 인간과의 관계는 포기한지 오래였어.」
+			PRINTFORMW 「아가씨를 만난 이후로는 인간으로서의 삶보다는 그저 아가씨의 메이드로서만 적지 않은 세월을 보내왔었지.」
+			PRINTFORMW 「……뭐, 장수는 물론이고 영원을 살아가는 이상한 녀석들이 판치는 이곳에서 적지 않은 세월이라고 하는 것도 결국 우리같은 인간 한정이지만.」
+			PRINTFORML
+			PRINTFORMW 「나는……」
+			PRINTFORMW 「너와 함께 있는 게 즐거워. 조금씩 아가씨의 메이드로서의 삶 뿐만이 아닌, 더 많은 걸 원하게 되어버려.」
+			PRINTFORMW 「우리가 능력이 있다고 한들 시간을 멈춘 채 영원히 함께 할 수는 없지만…」
+			PRINTFORML
+			PRINTFORMDW 살며시 붉은색과 긴장에 물든 얼굴로 그 말을 꺼낸다―
+			PRINTFORML
+			PRINTFORMW 「……그럼에도 요즘 너랑 같이 있으면, 함께 멈춰진 시간 속에서 영원히 같이 있고 싶다는 생각이 들어.」
+			PRINTFORMW 「물론 이런 건 무리겠지만… 거의 무한한 시간을 살아가는 이 환상향의 존재들 속에서,」
+			PRINTFORMW 「우리의 시간은 유한하고 찰나에 불과하겠지만, 그 찰나를 나와 함께 해주지… 않을래?」
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;고백 오케 (연인이 붙음)
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 1
+		PRINTFORML
+		PRINTFORMW 이쪽도 같은 마음임을 고하자, 사쿠야는 눈에 아련히 눈물을 머금었다.
+		PRINTFORML 
+		PRINTFORMW 「정말……?」
+		PRINTFORMW 「정말로, 나로 괜찮아?」
+		PRINTFORML 
+		PRINTFORMW 아직 믿을 수 없다는 표정으로 사쿠야가 되묻자 %마스터는% 분명하게 끄덕인다
+		PRINTFORMW 감정이 복받친 사쿠야는 무심코 %CALLNAME:MASTER%에게 안겨들었다
+		PRINTFORML 
+		PRINTFORMW 「……흑」
+		PRINTFORMW 사쿠야는 당신 가슴에 얼굴을 파묻었다
+		PRINTFORMW 당신은 말로 표현 안 해도 행동으로 최대한 마음을 전해오는 사쿠야를 굳세게 껴안았다
+		PRINTFORMW 「……후훗. %CALLNAME:MASTER%, 좋아해」
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;고백 실패
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 2
+		PRINTFORML
+		PRINTFORMW 「……」
+		PRINTFORMW 「……응, 괜찮아」
+		PRINTFORMW 「나, 좀 들떴었나 봐」
+		PRINTFORML
+		PRINTFORMW 가까스로 평정을 가장한 사쿠야지만 명백하게 낙담한 기색이 엿보인다.
+		PRINTFORML
+		PRINTFORMW 「오늘은 즐거웠어, 정말로」
+		PRINTFORMW 「다음에 또 데려가주면 기쁠 거야」
+		PRINTFORML
+		PRINTFORMW 「그리고, ……저기」
+		PRINTFORMW 「언젠가 꼭 다시 돌아보게 해줄 거야.」
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;데이트하고 돌아옴
+;==================================================
+@M_KOJO_SPEVENT_K15_3(ARG,ARG:1)
+;대사 주체는 TARGET
+;지문 표시
+CALL SPEVENT_MESSAGE_3(ARG,ARG:1)
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;통상 귀가
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 0
+		PRINTFORML
+		;거점이 홍마관일때
+		IF TALENT:연인 && MAIN_MAP == 3
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORMW 「……헤에, 메이링이 그런 말을…… 돌아가면 벌을 줘야겠어. 설마 지금도 졸고 있는 건 아니겠지?」
+				PRINTFORML
+				PRINTFORMW 별것 아닌 대화를 나눈다.
+				PRINTFORML
+				PRINTFORMW 「응? 손을 잡고 싶어? 좋아!」
+				PRINTFORML
+				PRINTFORMW 손을 잡고 함께 걷는다. 그것만으로도 행복한 기분이 솟는다
+				PRINTFORML
+				PRINTFORMW 「그럼…… 자, ……어때?」
+				PRINTFORMW 「……난 지금, %마스터와% 있어서 행복해.」
+				PRINTFORMW 「%마스터는% 어때? 나랑 있어서 정말로 행복해?」
+				PRINTFORML
+				PRINTFORMW 물론. 그리 대답하면서 둘이서 어깨를 맞대며 천천히 귀로에 접어들었다.
+			CASE 1
+				PRINTFORMW 「으―음, 다음 데이트는 어디로 할래?」
+				PRINTFORMW 「나 그게 먹고 싶더라. 붕붕마루 신문에 실린 그거……」
+				PRINTFORMW 귀로에 접어드는 두 사람은 벌써 다음 데이트 상담 중이다
+				PRINTFORMW 「아아 근데, 그 경치도 역시 %CALLNAME:MASTER%랑 같이 보고 싶더라…… 응」
+				PRINTFORMW 둘이 돌아가는 길에 화제와 감정은 바닥나지 않고 이어졌다……
+			CASEELSE
+				PRINTFORMW 「후훗, 역시 %마스터와% 함께 있으면 순식간이야」
+				PRINTFORMW 「다만 즐거운 시간은 한순간에 지나가버리기 마련이지만」
+				PRINTFORMW 「이 「나」라면 아무런 문제없지, %CALLNAME:MASTER%♪」
+				PRINTFORML
+				PRINTFORMDW 그렇게 말한 사쿠야는 꼬옥 %CALLNAME:MASTER%에게 안겨들어 그 손에 든 회중시계를 보여주었다
+				PRINTFORMDW 걷기 힘들다고 항의해봤자 소용없다고 깨달은 %마스터는%
+				PRINTFORMDW 사쿠야의 온기를 느끼면서 느긋하게 귀로에 접어들었다……
+			ENDSELECT
+		ELSEIF TALENT:연모 && MAIN_MAP == 3
+			SELECTCASE RAND:4
+			CASE 0
+				PRINTFORMDW 돌아가는 길을 걷는 당신과 사쿠야는 오늘 데이트를 돌아보았다
+				PRINTFORML
+				PRINTFORMW 「오늘은 즐거웠어♪」
+				PRINTFORMW 「맞다. 다음에 거기 가자, 거기!」
+				PRINTFORMW 「내가 미는 곳을 소개해줄게. 후후훗」
+				PRINTFORML
+				PRINTFORMDW 껴안긴 팔에 닿는 가슴 감촉을 즐기면서
+				PRINTFORMDW 담소를 나누며 귀로에 접어들었다――
+			CASE 1
+				PRINTFORMW 「즐거운 시간은 순식간에 지나네」
+				PRINTFORMW 「무심코 그만 시간을 멈출 것만 같아.」
+				PRINTFORMW 「……후훗, 농담이야. 오늘은 고마웠어」
+				PRINTFORML
+				PRINTFORMDW 살짝 아쉬운 티를 내면서도 사쿠야는 웃으며 감사를 전했다.
+			CASE 2
+				PRINTFORMW 「……그래. 벌써 시간이 그렇게 됐구나」
+				PRINTFORMW 「……%마스터는% 즐거웠어?」
+				PRINTFORML
+				PRINTFORMDW %마스터가% 끄덕이자 사쿠야는 기쁘게 미소 지었다
+				PRINTFORML
+				PRINTFORMW 「다행이다. 그럼, 다음에 마저 하자…… 응♪」
+				PRINTFORML
+				PRINTFORMDW 다음 데이트 생각을 하면서 두 사람은 돌아가는 길을 걸었다……
+			CASEELSE
+				PRINTFORMW 「나, 이 돌아가는 시간이란 것도 꽤 좋더라」
+				PRINTFORMW 「뭐라고나 할까, 거기까지 포함해서 데이트랄까……」
+				PRINTFORMW 「”아아, 데이트했구나”라는 느낌이 들거든」
+				PRINTFORML
+				PRINTFORMDW 그렇게 말하는 사쿠야의 옆얼굴에는 부드러운 충족감이 서려있었다.
+				PRINTFORML
+				PRINTFORMW (%CALLNAME:MASTER%도 비슷하게 느껴준다면 좋겠다……)
+			ENDSELECT
+		ELSEIF TALENT:사모 && MAIN_MAP == 3
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORMW 「어머, 벌써 돌아갈 시간이구나……」
+				PRINTFORMW 「제법 좋았어♪ 다음에도 잘 부탁할게♪」
+				PRINTFORML
+				PRINTFORMDW 사쿠야는 그렇게 말하고 손을 흔들면서 밝은 모습으로 돌아갔다……
+			CASE 1
+				PRINTFORMW 「오늘은 불러줘서 고마워.」
+				PRINTFORMW 「그나저나 오늘 청소는 확실히 하고 나오자고 한거야?」
+				PRINTFORML
+				PRINTFORMDW 당신은 아무 말 없이 눈을 피했다…
+			CASEELSE
+				PRINTFORMW 「역시 누군가랑 둘이서 거니는 것도 좋은걸,」
+				PRINTFORMW 「%CALLNAME:MASTER%, 오늘은 정말 고마워.」
+				PRINTFORMW 「그럼, 잘 가.」
+			ENDSELECT
+		ELSEIF MAIN_MAP == 3
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORMW 「슬슬 다시 돌아가자.」
+				PRINTFORMW 「괜찮은 기분전환이 됐네. 쉰 만큼 일도 열심히 해주렴?」
+				PRINTFORML
+				PRINTFORMDW 사쿠야는 묵례하고는 살며시 손을 흔들면서 돌아갔다
+			CASEELSE
+				PRINTFORMW 「오늘은 여기까지?」
+				PRINTFORMW 「다음 주말엔 요괴의 산으로 등산!... 이라고 하기엔 너무 꼰대 상사같나? 얼른 쉬어.」
+			ENDSELECT
+		;홍마관이 거점이 아닐 때
+		ELSEIF TALENT:연인 && MAIN_MAP != 3
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORMW 「……헤에, 메이링이 그런 말을…… 돌아가면 벌을 줘야겠어. 설마 지금도 졸고 있는 건 아니겠지?」
+				PRINTFORML
+				PRINTFORMDW 별것 아닌 대화를 나눈다.
+				PRINTFORML
+				PRINTFORMW 「응? 손 잡고 싶어? 좋아!」
+				PRINTFORML
+				PRINTFORMDW 손을 잡고 함께 걷는다. 그것만으로도 행복한 기분이 솟는다
+				PRINTFORML
+				PRINTFORMW 「그럼…… 자, ……어때?」
+				PRINTFORMW 「……난 지금, %마스터와% 있어서 행복해.」
+				PRINTFORMW 「%마스터는% 어때? 나랑 있어서 정말로 행복해?」
+				PRINTFORML
+				PRINTFORMDW 물론. 그리 대답하면서 둘이서 어깨를 맞대며 천천히 귀로에 접어들었다.
+			CASE 1
+				PRINTFORMW 「으―음, 다음 데이트는 어디로 할래?」
+				PRINTFORMW 「나 그게 먹고 싶더라. 붕붕마루 신문에 실린 그거……」
+				PRINTFORML
+				PRINTFORMDW 귀로에 접어드는 두 사람은 벌써 다음 데이트 계획 중이다.
+				PRINTFORML
+				PRINTFORMW 「아아 근데, 그 경치도 역시 %CALLNAME:MASTER%랑 같이 보고 싶더라…… 응」
+				PRINTFORML
+				PRINTFORMDW 둘이 돌아가는 길에 화제와 감정은 바닥나지 않고 이어졌다……
+			CASEELSE
+				PRINTFORMW 「후훗, 역시 %마스터와% 함께 있으면 순식간이야」
+				PRINTFORMW 「다만 즐거운 시간은 한순간에 지나가버리기 마련이지만」
+				PRINTFORMW 「이 「나」라면 아무런 문제없지, %CALLNAME:MASTER%♪」
+				PRINTFORML
+				PRINTFORMDW 그렇게 말한 사쿠야는 꼬옥 %CALLNAME:MASTER%에게 안겨들어 그 손에 든 회중시계를 보여주었다
+				PRINTFORMDW 걷기 힘들다고 항의해봤자 소용없다고 깨달은 %마스터는%
+				PRINTFORMDW 사쿠야의 온기를 느끼면서 느긋하게 귀로에 접어들었다……
+			ENDSELECT
+		ELSEIF TALENT:연모 && MAIN_MAP != 3
+			SELECTCASE RAND:4
+			CASE 0
+				PRINTFORMDW 돌아가는 길을 걷는 당신과 사쿠야는 오늘 데이트를 돌아보았다
+				PRINTFORML
+				PRINTFORMW 「오늘은 즐거웠어♪」
+				PRINTFORMW 「맞다. 다음에 거기 가자, 거기!」
+				PRINTFORMW 「내가 미는 곳을 소개해줄게. 후후훗」
+				PRINTFORML
+				PRINTFORMDW 껴안긴 팔에 닿는 가슴 감촉을 즐기면서
+				PRINTFORMDW 담소를 나누며 귀로에 접어들었다――
+			CASE 1
+				PRINTFORMW 「즐거운 시간은 순식간에 지나네」
+				PRINTFORMW 「무심코 그만 시간을 멈출 것만 같아.」
+				PRINTFORMW 「……후훗, 농담이야. 오늘은 고마웠어」
+				PRINTFORML
+				PRINTFORMDW 살짝 아쉬운 티를 내면서도 사쿠야는 웃으며 감사를 전했다.
+			CASE 2
+				PRINTFORMW 「……그래. 벌써 시간이 그렇게 됐구나」
+				PRINTFORMW 「……%마스터는% 즐거웠어?」
+				PRINTFORML
+				PRINTFORMDW %마스터가% 끄덕이자 사쿠야는 기쁘게 미소 지었다
+				PRINTFORML
+				PRINTFORMW 「다행이다. 그럼, 다음에 마저 하자…… 응♪」
+				PRINTFORML
+				PRINTFORMDW 다음 데이트 생각을 하면서 두 사람은 돌아가는 길을 걸었다……
+			CASEELSE
+				PRINTFORMW 「나, 이 돌아가는 시간이란 것도 꽤 좋더라」
+				PRINTFORMW 「뭐라고나 할까, 거기까지 포함해서 데이트랄까……」
+				PRINTFORMW 「”아아, 데이트했구나”라는 느낌이 들거든」
+				PRINTFORML
+				PRINTFORMDW 그렇게 말하는 사쿠야의 옆얼굴에는 부드러운 충족감이 서려있었다.
+				PRINTFORML
+				PRINTFORMW (%CALLNAME:MASTER%도 비슷하게 느껴준다면 좋겠다……)
+			ENDSELECT
+		ELSEIF TALENT:사모 && MAIN_MAP != 3
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORMW 「어머, 벌써 돌아갈 시간이구나……」
+				PRINTFORMW 「제법 좋았어♪ 다음에도 잘 부탁할게♪」
+				PRINTFORML
+				PRINTFORMDW 사쿠야는 그렇게 말하고 손을 흔들면서 밝은 모습으로 돌아갔다……
+			CASE 1
+				PRINTFORMW 「오늘은 불러줘서 고마워.」
+				PRINTFORMW 「그나저나 오늘 청소는 확실히 하고 나오자고 한거야?」
+				PRINTFORML
+				PRINTFORMDW 당신은 아무 말 없이 눈을 피했다…
+			CASEELSE
+				PRINTFORMW 「역시 누군가랑 둘이서 거니는 것도 좋은걸,」
+				PRINTFORMW 「%CALLNAME:MASTER%, 오늘은 정말 고마워.」
+				PRINTFORMW 「그럼, 잘 가.」
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORMW 「슬슬 다시 돌아가자.」
+				PRINTFORMW 「괜찮은 기분전환이 됐네. 쉰 만큼 일도 열심히 해주렴?」
+				PRINTFORML
+				PRINTFORMDW 사쿠야는 묵례하고는 살며시 손을 흔들면서 돌아갔다
+			CASEELSE
+				PRINTFORMW 「오늘은 여기까지?」
+				PRINTFORMW 「다음 주말엔 요괴의 산으로 등산!... 이라고 하기엔 너무 꼰대 상사같나? 얼른 쉬어.」
+			ENDSELECT
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;반발각인 소거 이벤트
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 1
+		PRINTFORML
+		PRINTFORMW 「……후우」
+		PRINTFORMW 「알겠어. 요전 일은 넘어가줄게.」
+		PRINTFORML
+		PRINTFORMDW 사쿠야가 정말, 하고 어깨를 축 늘어뜨린 모습을 보고 그제야 %마스터는% 안도의 숨을 내쉬었다.
+		PRINTFORMW 「앞으로 하지 마?」
+		PRINTFORML
+		PRINTFORMDW 경고의 말을 하기는 해도 거기에서 이미 날카로운 태도는 찾아볼 수 없다.
+		
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;반발각인2>1레벨 다운 이벤트
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 2
+		PRINTFORML
+		PRINTFORMW 「……하아. 어쩔 수 없지. 조금은 반성한 모양이고.」
+		PRINTFORMW 「조금만 용서해줄게.」
+		PRINTFORML
+		PRINTFORMDW 조금, 사쿠야의 심기가 풀린 모양이다
+		PRINTFORML
+		PRINTFORMW 「하지만. 또 무슨 짓 했다간 그때는…… 말할 필요도 없겠지」
+		PRINTFORMW 「내 능력에서는 도망칠 수 없는 건 알잖아?」
+		PRINTFORML
+		PRINTFORMDW 완전히 심기가 풀릴 때가진 아직 시간이 필요할 성싶다……
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;반발각인3>2레벨 다운 이벤트
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 3
+		PRINTFORML
+		PRINTFORMW 「……」
+		PRINTFORMW 「일단, 사과하고 싶다는 의지는 있는 것 같으니,」
+		PRINTFORMW 「기회는 줄게.」
+		PRINTFORML 
+		PRINTFORMW 「……굳이 네 피로 홍차를 끓이고 싶지는 않거든.」
+		PRINTFORML
+		PRINTFORMDW 그 한순간, %마스터는% 사쿠야에게서 무시무시한 기척을 느꼈다……
+		RETURN 1
+	ENDIF
+	PRINTFORML
+ENDIF
+RETURN 1
+
+;※※※※※※※※※※※※※※※※※※※※※※※※※※
+;"EVENT"계 이벤트
+;※※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;방에서 조우
+;==================================================
+@M_KOJO_EVENT_K15_1(ARG,ARG:1)
+;대사 주체는 TARGET
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;MASTER가 들어왔다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 1
+		;◆분노
+		IF CFLAG:LOCAL:빡침
+			PRINTFORMW 「……뭐하러 왔어?」
+		;사쿠야 이외의 여자애와 연인이 되어 첫대면 이야기, 1회만.
+		ELSEIF CFLAG:1331 == 0 && (TALENT:(NO:16):연인 || TALENT:(NO:58):연인 || TALENT:(NO:59):연인 || TALENT:(NO:54):연인 || TALENT:(NO:50):연인 || TALENT:(NO:1):연인 || TALENT:(NO:11):연인)
+			PRINTFORM 「들었어.
+			;연인의 상대에 의해 대사가 바뀐다.
+			IF TALENT:(NO:16):연인
+				PRINTFORMW 아가씨랑 연인이 됐다면서? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「아가씨를 잘 부탁해. 물론 누구보다 강한 분이시긴 하지만, 한편으론 외로움도 많이 타시고 챙겨드릴 부분이 많은 분이니까.」
+				PRINTFORMW 「아가씨의 연인이라고 해서 바깥주인님 대접해줄 생각은 없으니 기대하지마렴.」
+			ELSEIF TALENT:(NO:58):연인
+				PRINTFORMW 메이링이랑 연인 사이가 됐다면서? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「물론 못 미덥고, 바보같고, 업무시간에 졸기만 하고, 쓸데없이 큰… 아니, 아무튼, 그 메이링을 잘 부탁해.」
+				IF MAIN_MAP == 3
+					PRINTFORMW 「사내연애한다고 둘다 더 업무에 소홀해지면, 가만히 안 둘테니 꾸준히 성실히 일해주렴. 메이링한테도 전해주고.」
+					PRINTFORML
+					PRINTFORMDW 사쿠야는 나이프를 들고 싱긋 웃으며 말을 맺었다.
+				ENDIF
+			ELSEIF TALENT:(NO:59):연인
+				PRINTFORMW 소악마와 연인이 됐다면서? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「파츄리님이 어떻게 반응하실지 궁금하네. 그나저나 악마와 연인이라니, 너도 취향 참 특이하구나. 
+				PRINTFORMW 악마치고 좀 지나치게 약한 면이 없잖아 있긴하지만.」
+			ELSEIF TALENT:(NO:54):연인
+				PRINTFORMW 파츄리님이랑 연인이 됐다면서? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「파츄리님은 아무래도 몸이 별로 안좋으시니까 옆에서 잘 챙겨드려.
+				PRINTFORMW 　매일 대도서관에만 계시니까 바깥 공기 좀 자주 쏘이게 해드리고, 커피를 좋아하시지만 빈혈에 안 좋으니 조금 줄이라고도…」
+				PRINTFORMW 「너무 잔소리해서 미안. 여튼 아가씨께 소중한 분이니 부디 잘 부탁할게.」
+			ELSEIF TALENT:(NO:50):연인
+				PRINTFORMW 작은 아가씨랑 좋은 사이가 됐다며? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「너 생각보다 간이 크구나. 그래도 마리사가 작은 아가씨께 좋은 영향을 줬던걸까? 부디 너도 그랬으면 좋겠네.」
+				IF MAIN_MAP == 3
+					PRINTFORMW 「그럼 지하실 청소는 너에게 맡길게♪」
+				ENDIF
+			ELSEIF TALENT:(NO:1):연인
+				PRINTFORMW 레이무랑 좋은 사이가 됐다며? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「용케 그 무녀와 친해졌네. 그 아이는 자신의 책무 이외에는 거의 무관심한 편인데. 조금은 그 아이도 부드러워졌으려나.」
+			ELSEIF TALENT:(NO:11):연인
+				PRINTFORMW 마리사랑 좋은 사이가 됐다며? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「마리사는 우리 홍마관에서는 도둑으로 악명이 높거든. 특히 파츄리님이 싫어하시니까, 대도서관에 갈때 조심해.」
+			ENDIF
+			CFLAG:1331 = 1
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;TARGET이 들어왔다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 2
+		SELECTCASE RAND:3
+		CASE 0
+			IF CFLAG:MASTER:현재위치 == 309 && RAND:3 == 0
+				PRINTFORML 천천히 은빛 광채를 반짝이면서 사쿠야가 다가온다
+			ELSEIF TALENT:연모
+				PRINTFORML 「아, %CALLNAME:MASTER%」
+				PRINTFORML %마스터를% 발견하자 사쿠야의 얼굴이 밝아졌다
+				PRINTFORMW 업무와는 전혀 어울리지 않는 모습으로 미소짓고 있다
+			ELSE
+				PRINTFORML 「아아, 안녕하세요」
+				PRINTFORMW 사쿠야는 이쪽을 보고 인사했다
+			ENDIF
+		CASE 1
+			PRINTFORML 「어머, %CALLNAME:MASTER%」
+			IF CFLAG:MASTER:현재위치 == 309 && RAND:3 == 0
+				PRINTFORML 「홍마관에 무슨 용무로?」
+				PRINTFORMW 사쿠야는 이쪽에 천천히 가까워져 왔다
+			ELSEIF TALENT:연모
+				PRINTFORMW %마스터를% 알아차린 사쿠야는, 기쁜듯이 이쪽으로 다가왔다
+			ELSEIF TALENT:사모
+				PRINTFORMW %마스터를% 알아차린 사쿠야는, 밝은 표정으로 이쪽으로 다가왔다
+			ELSE
+				PRINTFORMW 그렇게 말하곤 사쿠야가 이쪽으로 왔다
+			ENDIF
+		CASEELSE
+			PRINTFORML 「어머, %CALLNAME:MASTER%. 무슨 일이야?」
+			IF TALENT:연모
+				PRINTFORML 살짝 뺨을 붉게 물들이면서 이쪽으로 가까워져 왔다
+			ELSEIF TALENT:사모
+				PRINTFORMW 살짝 부끄러워하면서 사쿠야는 이쪽으로 가까워져 왔다
+			ELSE
+				PRINTFORMW 그렇게 말하곤 사쿠야가 이쪽으로 왔다
+			ENDIF
+		ENDSELECT
+
+		;시간각인이 있을 때 시간각인/7로
+		IF MARK:시간각인 > 0 && RAND:7 < MARK:시간각인
+			IF MARK:쾌락각인 > 0
+				PRINTFORML %CALLNAME:MASTER%의 곁에 온 것으로, 겉보기엔 평범해 보이는 사쿠야의 옷 아래에서는
+				PRINTFORMW 자연스레 발정해 민감하게 되어 있는 성감대가 %CALLNAME:MASTER%에게 받을 수 있는 열락을 애타게 기다리고 있다……
+			ELSE
+				PRINTFORML 아무래도 시간(시간)에 의해 저항할 방법도 없이 개화된 암컷의 본능이, 
+				PRINTFORMW 무의식적으로 %마스터를% 요구해, 주변에 암컷의 향기를 흩뿌리면서 그 거리를 점점 줄이고 있는 것 같다……
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;TARGET이 들어와서 함께 들어간다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 3
+		IF TALENT:연인
+			IF MARK:쾌락각인 > 0 && RAND:7 < MARK:쾌락각인
+				PRINTFORML 「실례할게」
+				PRINTFORML 사쿠야는 %마스터를% 발견하고, 스르륵 근처에 몸을 기대 왔다
+				PRINTFORML 「후아~, 기분 좋네~……」
+				PRINTFORML 느긋한 목소리와 함께, 목욕탕 안에서 사쿠야의 손이 %CALLNAME:MASTER%의 허벅지 위에 놓여졌다
+				PRINTFORML 「응? 무슨 문제 있어, %CALLNAME:MASTER%?」
+				PRINTFORML 히쭉 웃으면서, 사쿠야는 점점 그 손을 %CALLNAME:MASTER%의 고간으로 접근해 간다
+				CALL HPH_PRINT("「―――좀 더 기분 좋은 일, 해 보지 않을래요HPH」", "L")
+				PRINTFORML 장난스럽게 웃는 사쿠야는, 눈을 황홀하게 하면서 %CALLNAME:MASTER%에게 몸을 바치고 있다……
+			ELSEIF MARK:시간각인 > 0 && RAND:7 < MARK:시간각인
+				PRINTFORML 「어머, 먼저 들어와있었구나」
+				CALL HPH_PRINT("「조금만 기다리고 있어, 나도 곧바로……읏……HPH」", "L")
+				PRINTFORML 그렇게 말한 사쿠야는 샤워기가 있는 곳으로 향해, 몸을 씻기 시작했다
+				PRINTFORML 다만 그 시선은 %CALLNAME:MASTER%의 신체로 향하고 있어, 상태가 이상하다
+				PRINTFORML 시간(시간)의 기억에 이끌려 발정한 것인지, 
+				PRINTFORML 전신을 씻는 손은 매우 요염하게 피부위를 기어다녀, 특히 국부를 씻는 손가락 끝이 매우 추잡한 움직임을 하고 있다
+				PRINTFORML 뜨거운 물을 뿌려 대충 신체를 씻고 나면, 뜨거운 한숨을 내쉬면서 목욕탕으로 들어왔다
+				CALL HPH_PRINT("「응앗……준비 다 끝났어……후으읏HPH」", "L")
+			ELSE
+				PRINTFORML 「저기 %CALLNAME:MASTER%. 근처, 비워 주지 않을래?」
+				PRINTFORML %마스터가% 잠기고 있는 근처에 사쿠야가 들어왔다
+				PRINTFORML 「아~. 기분 좋네요」
+				PRINTFORML 한동안 잠긴 후, 개인 시간, 이라고 사쿠야가 머리를 %CALLNAME:MASTER%에게 기대온다
+				PRINTFORML 「이것도 %마스터와% 함께 들어가 있기 때문인걸까♪」
+				PRINTFORMW 서로 통하는 마음을 느끼면서, 눈을 올려다보며 말하는 사쿠야의 말에 수긍했다
+			ENDIF
+		ELSEIF TALENT:연모
+			PRINTFORML 「――어머, 선객이 있었네요」
+			PRINTFORML 사쿠야는 살짝 얼굴을 붉히고, %CALLNAME:MASTER%에게 가까워지면서 뜨거운 물에 잠겨 왔다
+			PRINTFORML 
+			PRINTFORML 「어때? 목욕물의 온도는」
+			
+			IF MARK:쾌락각인 > 0 && RAND:7 < MARK:쾌락각인
+				PRINTFORML 사쿠야가 도발적으로 미소지으며 %CALLNAME:MASTER%에게 기대왔다
+				CALL HPH_PRINT("「그렇지만……욕실보다 더『기분 좋은 일』을 하지 않을래?HPH」", "L")
+				PRINTFORML 사쿠야가 과시하고 있는 쌍구는 입욕한지 얼마 되지도 않았는데 벌써 연분홍색으로 물들어,
+				PRINTFORMW 끝의 돌기는 아직 만지지도 않았는데 격렬하게 자기주장을 하고 있다……
+			ELSEIF MARK:시간각인 > 0 && RAND:7 < MARK:시간각인
+				PRINTFORML 「……그러고보면 어째서인지 %마스터를% 보면……」
+				PRINTFORML 중얼중얼거리는 사쿠야의 시선은 %CALLNAME:MASTER%의 나체, 특히 고간으로 향하고 있었다
+				CALL HPH_PRINT("「아무것도 아니야……흐읏……HPH」", "L")
+				PRINTFORML 눈치채지 못하게 순간적으로 눈을 피했지만, 시간이 멈춘 동안에 개발된 사쿠야는 
+				PRINTFORMW 무의식적으로 손을 가랑이 사이에 가져 가 버리고 있다
+			ELSE
+				PRINTFORML 눈 앞에서 발돋움을 하는 사쿠야.
+				PRINTFORMW 그 흔들리는 가슴과 깨끗한 겨드랑이의 라인을 %마스터는% 넋을 잃고 보았다
+			ENDIF
+			
+		ELSE
+			PRINTFORML 「――읍, %CALLNAME:MASTER%!?」
+			PRINTFORML 욕탕의 김 안에서 나타난 사쿠야는, 당황하며 그 잡티 하나 없는 예쁜 신체를 양팔로 껴안아 숨겼다
+			PRINTFORML 
+			PRINTFORML 「들어가 있었던 거네……」
+			PRINTFORML 「그……실례합니다」
+			
+			IF MARK:쾌락각인 > 0 && RAND:7 < MARK:쾌락각인
+				PRINTFORML 얼굴을 붉히면서도 목욕탕에 잠기는 사쿠야는, 
+				PRINTFORML 아무래도 서로 알몸으로 가까워지는 것으로 신체가 성교의 기억을 생각해 낸 것 같다
+				PRINTFORMW 흥분한 것처럼 때때로 슬쩍 %CALLNAME:MASTER%의 고간에 뜨거운 시선을 보내고 있다……
+			ELSEIF MARK:시간각인 > 0 && RAND:7 < MARK:시간각인
+				PRINTFORML %CALLNAME:MASTER%의 알몸을 인식하는 것으로, 사쿠야의 육체가 멋대로 시간(시간)의 열락을 생각해 내 버렸다
+				PRINTFORMW 숨겨진 비밀스러운 장소에서는, 목욕탕에 들어가기 전인데도 불구하고 이미 투명한 액체가 방울져 떨어지고 있다……
+			ELSE
+				PRINTFORML %CALLNAME:MASTER%로부터 조금 떨어진 곳에서, 사쿠야는 뜨거운 물에 잠겼다
+				PRINTFORMW 슬쩍 보이는 목덜미를 따라, 물방울이 흘러내리는 것이 요염하다……
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;TARGET이 욕실에 들어왔다가 나갔다
+	;관계가 진전되지 않았으며, 기정사실이 1 미만이거나, 연모가 달려 있지 않은 이성일 경우에 나간다 (그 밖에도 공통 목욕 조건)
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 4
+		IF MARK:쾌락각인 > 0 && RAND:7 < MARK:쾌락각인
+			PRINTFORML 「――아, ……음― ……, 아앗」
+			PRINTFORML 「시, 실례했습니다……」
+			PRINTFORML 몇 초 %CALLNAME:MASTER%의 신체를 갖고 싶어하는 것 처럼 바라보고 있던 사쿠야는 제정신을 차려,
+			PRINTFORMW 황급히 뻔히 보이고 있던 비부를 숨기며 도망쳤다
+		ELSEIF MARK:시간각인 > 0 && RAND:7 < MARK:시간각인
+			PRINTFORML 「……어머, 안에 계셨군요」
+			PRINTFORML 「……응쿳, 실례했습니다……」
+			PRINTFORML 일순간 정체불명의 쾌감이 찌릿하고 올라온 것 같은 착각을 느끼고 경직된 사쿠야는, 군침을 삼키면서 발길을 돌렸다
+			PRINTFORML 떠나는 뻔히 보이는 엉덩이 아래에 눈을 돌리면,
+			PRINTFORMW 목욕탕에 들어가지도 않았는데 투명한 액체가 흐르고 있었다……
+		ELSE
+			PRINTFORML 「시, 실례했습니다」
+			PRINTFORMW 사쿠야는 부끄러운 듯이 나가 버렸다……
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;TARGET가 목욕탕에 들어 와 내쫓아졌다
+	;이성으로 약점을 잡히고 있다（팬티 발견 or정사를 볼 수 있었다）경우에 발생
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 5
+		PRINTFORMW 「――어머」
+		PRINTFORML 「욕실은 나의 얼마 안되는 휴식의 시간이야」
+		PRINTFORML 「%마스터와% 함께면 느긋하게 있을 수 없을 것 같기 때문에 나가 주지 않을래?」
+		PRINTFORML 사쿠야가 그렇게 말하자, 당신은 이미 탈의실에 있었다
+		PRINTFORMW 아무래도 능력을 사용해서 내쫓긴 것 같다……
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;외출처에서 조우했다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 6
+		PRINTFORML 
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;외 캐릭터와 데이트중에 조우했다
+	;ARG:1에 데이트 상대
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 7
+		PRINTFORML 
+		RETURN 1
+	ENDIF
+	;그 외
+	PRINTFORML 
+ENDIF
+RETURN 1
+
+;==================================================
+;아침에 일어 났을 때（안녕 구상）
+;==================================================
+@M_KOJO_EVENT_K15_2(ARG,ARG:1)
+;대사 주체는 TARGET
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;ARG == 1 비동거 또한 상대가 먼저 일어나고 있다
+	;ARG == 2 동거 또한 상대가 일어나고 있다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 1 || LOCAL:1 && ARG == 2
+		;-------------------------------------------------
+		;TARGET 사실에 MASTER가 들어가 있다（연모시 곁잠중 취침시만?
+		;기입 체크（=0, 비표시, 1, 표시）
+		;LOCAL:1 = 0
+		;-------------------------------------------------
+		;IF LOCAL:1 && !ARG:1
+		;	RETURN 1
+		;ENDIF
+		;-------------------------------------------------
+		;MASTER 사실에 TARGET가 들어 오고 있다(연모 없음에서도 들어 올 가능성 있어
+		;기입 체크（=0, 비표시, 1, 표시）
+		;LOCAL:1 = 0
+		;-------------------------------------------------
+		;IF LOCAL:1 && ARG:1 == 1
+		;	RETURN 1
+		;ENDIF
+		
+		;공통. 당신이 남자나 후타나리시, 합의로 봉사·펠라티오경험 일정 이상
+		IF GETBIT(TALENT:MASTER:성별,1) && CFLAG:기정사실 & 합의_우후후 && EXP:봉사쾌락경험 >= 10 && EXP:펠라티오경험 >= 10
+			SELECTCASE RAND:4
+			CASE 0
+				PRINTFORMW 잠에서부터 깨어나던 %마스터는% 하반신으로부터 뭔가 기분 좋은 위화감을 느꼈다
+				PRINTFORML 
+				PRINTFORML 「츄붓, 응붓, 응풋, 쥬릅……어머, 이제 일어났어?」
+				PRINTFORML 아래를 보면, 사쿠야가 %CALLNAME:MASTER%의 고간에 얼굴을 묻고 페니스에 뜨거운 입맞춤을 하고 있다
+				PRINTFORML 「방을 정리하다 보니, 어쩐지 발기하고 있는 것이 눈에 들어와서……너무 괴로운 것 같아서 말이야」
+				PRINTFORML 「그건 그렇고, 굉장히 진한 맛이네. 제대로, 응츗, 씻지 않으면……응풋, 안돼?」
+				PRINTFORML 말하는 동안에도 사쿠야의 입술과 혀가 휘감겨, 번들번들 빛나는 페니스와 입술이 연주하는 물소리가 점점 더 격렬해 진다
+				PRINTFORML 「응후――읏, 하아, 딱딱해……!하믓, 므쥬룻, 츄읍츄읍, 응″, 무″우읏!」
+				PRINTFORML 이윽고 한계가 온 %마스터는%, 황홀하게 달라붙는 사쿠야의 입안에 정액을 쏟아부었다……
+				CALL HPH_PRINT("「응……HPH　츄릇, 쥬릅쥬릅～HPH츄풋……응하앗……HPH」", "L")
+				PRINTFORML 사쿠야는 자신이 짜낸 정액을 입에 모아 그것을 이쪽에 과시하고는, 
+				PRINTFORML 그대로 큰 소리로 꿀꺽거리며 삼켰다……
+				CALL HPH_PRINT("「콜록, 굉장히 진한 정액이었어……HPH잘 먹었습니다HPH」", "L")
+			CASE 1
+				PRINTFORMW 괴로운 감각에 %마스터가% 눈을 뜨면, 고간에서부터 츄릅츄릅 소리가 들리고 있다
+				PRINTFORML 
+				PRINTFORML 「조흐아힘……하앗, 응츄웃, 날름날름……」
+				CALL HPH_PRINT("「? 뭐, 기는 아침의 성욕 처리야? 메이드의 교양이랍니다 HPH」", "L")
+				PRINTFORML %CALLNAME:MASTER%의 페니스는 그 전부가 사쿠야의 타액으로 코팅 되고 있어서,
+				PRINTFORML 그 펠라의 길이와 추잡함을 말해주고 있다
+				PRINTFORML 「제대로 씻었어? 굉장한 냄새였어요……응츗」
+				CALL HPH_PRINT("（라고 해도……형태로 말하든, 냄새로 말하든, 크기로 말하든……백점만점이네HPH）", "L")
+				CALL HPH_PRINT("「츄풋……자, 아침의 특종정액, 토해내세요HPH」", "L")
+				PRINTFORML 그 말이 계기가 되었는지, %마스터는% 터질듯이 부풀어 오른 귀두에 달라붙은
+				PRINTFORMW 사쿠야의 입안에, 뜨거운 물보라를 내뿜었다……
+			CASE 2
+				PRINTFORML 「%CALLNAME:MASTER%, 일어나세요」
+				PRINTFORML 「메이링처럼 벌받고 싶은 걸까?」
+				PRINTFORMW %마스터는% 무심코 벌떡 일어났다
+			CASEELSE
+				PRINTFORML 「……읏, 의외로 부드러운……엣!?」
+				PRINTFORML %마스터가% 눈을 뜨면, 말랑말랑 뺨을 찔러오는 사쿠야가 있었다
+				PRINTFORMW 「이, 잊으세요!! 당장 잊어버려!!///」
+			ENDSELECT
+		ELSEIF CFLAG:호감도 >= 1500 && CFLAG:신뢰도 >= 300
+			SELECTCASE RAND:4
+			CASE 0
+				PRINTFORML 「%CALLNAME:MASTER%, 아침이야」
+				PRINTFORML 「일어나지 않으면, 메이링처럼 될거야?」
+				PRINTFORMW %마스터는% 사쿠야에게 상냥하게 일으켜져 눈을 떴다
+			CASE 1
+				PRINTFORML 「기상시간이야, %CALLNAME:MASTER%」
+				PRINTFORML 「%CALLNAME:MASTER%?」
+				PRINTFORML 그렇게 말한 사쿠야가 천천히 얼굴을 가까이 해 온다
+				PRINTFORML 살짝 감도는 부드러운 향기를 즐기며 %마스터는%, 눈을 떠 인사했다
+				PRINTFORML 「……일어나고 있었으면 빨리 눈을 뜨세요」
+				PRINTFORMW 살짝 얼굴을 붉게 한 반쯤 뜬 눈의 사쿠야에게 일으켜져 버렸다……
+			CASE 2
+				PRINTFORML 「%CALLNAME:MASTER%, 일어나세요」
+				PRINTFORML 「메이링처럼 벌받고 싶은 걸까?」
+				PRINTFORMW %마스터는% 무심코 벌떡 일어났다
+			CASEELSE
+				PRINTFORML 「……읏, 의외로 부드러운……엣!?」
+				PRINTFORML %마스터가% 눈을 뜨면, 말랑말랑 뺨을 찔러오는 사쿠야가 있었다
+				PRINTFORMW 「이, 잊으세요!! 당장 잊어버려!!///」
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:2
+			CASE 0
+				PRINTFORML 「아침이에요 %CALLNAME:MASTER%」
+				PRINTFORMW %마스터는% 사쿠야의 목소리를 들으며 눈을 떴다
+			CASEELSE
+				PRINTFORML 「%CALLNAME:MASTER%, 일어나세요」
+				PRINTFORML 「일에 지각할거야」
+				PRINTFORMW %마스터는% 사쿠야의 목소리를 들으며 눈을 떴다
+			ENDSELECT
+		ENDIF
+		RETURN 1
+	ENDIF
+
+	;-------------------------------------------------
+	;동거 또한 상대가 자고 있다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 3
+		;내용의 문장은 메이링용 함수 두는 곳에. 공통된 것은 아침에 일어 났을 때, 밤에 잘 때（수면중）, 업무중 깜빡 졸음
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;MASTER가 일어나고 있어, 상대가 일어났다
+	;곁잠시 TARGET 기상은 이쪽（TARGET 쇠약 or곁잠중 TARGET 수마 패배 후 그대로 MASTER가 계속 일어난 다음 상대가 기상했을 경우 한정
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 4
+		;-------------------------------------------------
+		;비동거
+		;기입 체크（=0, 비표시, 1, 표시）
+		LOCAL:1 = 0
+		;-------------------------------------------------
+		IF LOCAL:1 && !ARG:1
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+		;-------------------------------------------------
+		;동거중
+		;기입 체크（=0, 비표시, 1, 표시）
+		LOCAL:1 = 0
+		;-------------------------------------------------
+		IF LOCAL:1 && ARG:1 == 1
+			PRINTFORMW 
+			RETURN 1
+		ENDIF
+		;공통
+		IF TALENT:연인
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「응……, 좋은 아침이예요, %CALLNAME:MASTER%」
+				PRINTFORML 사쿠야는 눈을 비비면서 이불로부터 일어났다
+			CASEELSE
+				PRINTFORML 「후냐……좋은 아침이후암……」
+				PRINTFORML 일단 일어난 것 같지만, 사쿠야는 아직 반 정도는 꿈의 세계에 있는 것 같다
+				PRINTFORML 「%CALLNAME:MASTER%, 좋아, 너무 좋아……읏」
+				PRINTFORML 입술을 내밀며 입맞춤을 요구해 오지만, %마스터는% 그 전에 얼굴을 씻고 오도록 말하고, 
+				PRINTFORML 잠깐 자리를 비웠다
+				PRINTFORMW 잠시후에, 방 안에서부터 부끄러움의 절규가 들려 왔다……
+			ENDSELECT
+		ELSEIF TALENT:연모 || TALENT:사모
+			SELECTCASE RAND:3
+			CASE 0
+				PRINTFORML 「응우…좋은아침이예요, %CALLNAME:MASTER%」
+				PRINTFORML 「……오늘은 좋은 날이라면 좋겠네요, 후훗」
+				PRINTFORMW 사쿠야는 왠지 모르게 기쁜 것 같다
+			CASEELSE
+				PRINTFORML 「읏……아우……」
+				PRINTFORML 사쿠야는 잠자리가 좋지 않았는지, 이불을 걷어차 버리고 옷도 꽤 풀어해쳐진 모습을 하고 있다
+				PRINTFORML %마스터가% 그 투명한 것 같은 피부와 적당한 크기의 쌍구를 눈으로 만끽하고 있으면
+				PRINTFORML 사쿠야가 눈을 떴다
+				PRINTFORMW 「읏……아아, 좋은 아침이예요……」
+			ENDSELECT
+		ELSE
+			PRINTFORMW 「……좋은 아침입니다」
+		ENDIF
+		RETURN 1
+	ENDIF
+	;그 외
+	PRINTFORML  
+ENDIF
+RETURN 1
+
+;==================================================
+;밤에 잘 때（휴가 구상）
+;==================================================
+@M_KOJO_EVENT_K15_3(ARG,ARG:1)
+;대사 주체는 TARGET
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;자기 방에 돌아간다（정시가 되어 잔다）
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 1
+		IF TALENT:연인
+			PRINTFORML 「읏, 벌써 이런 시간이네……」
+			PRINTFORMW 「평생 이대로 시간을 멈춰 버릴까」
+			PRINTFORML 「%마스터와% 함께 있는 시간이 제일로 행복하니까♪」
+			PRINTFORML 당신을 보는 사쿠야의 시선은 매우 온화하다
+			PRINTFORMW 「그럼, 잘 자요, %CALLNAME:MASTER%」
+		ELSEIF TALENT:연모 || TALENT:사모
+			PRINTFORML 「어머, 벌써 이런 시간」
+			PRINTFORML 「오늘은 그만 실례할게」
+			PRINTFORML 사쿠야는 아쉬운 듯이, 졸린 것 같은 얼굴로 중얼거린다
+			PRINTFORMW 「그러면, 내일 봐」
+		ELSE
+			PRINTFORML 「그럼, 슬슬 자는 시간이니, 나는 가볼게」
+			PRINTFORML 「그러면, 잘 자요 %CALLNAME:MASTER%」
+			PRINTFORMW 사쿠야는 돌아갔다……
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;졸린 듯이 하고 있다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 2
+		SELECTCASE RAND:4
+		CASE 0
+			PRINTFORML 「응……조금 졸려졌네요」
+			PRINTFORMW 확실히 자세히 보면 살짝 휘청휘청거리고 있다……
+		CASEELSE
+			PRINTFORML 「후아……아음……」
+			PRINTFORMW 사쿠야는 입을 손으로 가리고 살짝 기지개를 켰다
+		ENDSELECT
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;수면중（일어나지 않기 때문에 회화라는 것보다는 잠꼬대? ）
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 3
+	;내용의 문장은 메이링용 함수 두는 곳에. 공통된 것은 아침에 일어 났을 때, 밤에 잘 때（수면중）, 업무중 깜빡 졸음
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;장난중
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 4
+		IF TALENT:연인 || TALENT:연모
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「흐앗…… 하으응……」
+				CASE 1
+					PRINTFORMW 「앗…… 히악……」
+				CASEELSE
+					PRINTFORMW 「응…… 좋아…… 흐앙……」
+				ENDSELECT
+		ELSEIF TALENT:사모
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「……크흑……, 힝……」
+				CASE 1
+					PRINTFORMW 「음냐… 앗…… 흐응」
+				CASEELSE
+					PRINTFORMW 「응, 아…… 거긴……」
+				ENDSELECT
+		ELSE
+			SELECTCASE RAND:3
+				CASE 0
+					PRINTFORMW 「음냐…… 응……」
+				CASE 1
+					PRINTFORMW 「……하악… 응……」
+				CASEELSE
+					PRINTFORMW 「……흐아? ……앗……?」
+				ENDSELECT
+		RETURN 1
+		ENDIF
+	ENDIF
+	;-------------------------------------------------
+	;쇠약중（연모 첨부 거점내 캐릭터가 MAIN_MAP로 쇠약 상태가 되었을 경우인가, 초대 방에서 상대가 쇠약했을 경우에 발생
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 5
+		IF TALENT:연인
+			PRINTFORMW 「……응아″앗, 아″읏, 이″잇……」
+			PRINTFORMW 「우……아″……아히이″……에″엣……」
+			PRINTFORMW 이미 사람의 언어를 말하지 않고 있는 사쿠야를 %마스터는% 침대로 보내 주었다
+		ELSEIF TALENT:연모
+			PRINTFORMW 「……응앗……굉장햇……아히……이히잇……」
+			PRINTFORMW 「……읏핫, 하앗……응앗」
+			PRINTFORMW 전신이 연분홍색으로 물든 사쿠야에게, %마스터는% 어깨를 빌려 주었다
+		ELSE
+			PRINTFORMW 「……하앗, 핫, 이제, 무리……하읏, 하흣」
+			PRINTFORMW 어깨를 들썩이는 사쿠야를 한동안 간호한 후,  %마스터는% 그녀를 전송했다
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;MASTER가 다운（방까지 옮겨진다）
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 6
+		IF TALENT:연인
+			PRINTFORML 「%CALLNAME:MASTER%? ……%CALLNAME:MASTER%!?」
+			PRINTFORML 「괜찮아 %CALLNAME:MASTER%!? ……에? 지친 것 뿐, 이라고?」
+			PRINTFORML 침착하게 %CALLNAME:MASTER%의 모습을 확인한 사쿠야는, 안도의 한숨을 내쉬었다
+			PRINTFORML 「정말……어쩔 수 없는 사람이네」
+			PRINTFORML 「너무 걱정 시키지 마, 이제……」
+			PRINTFORMW 그렇게 말하고 사쿠야는 %마스터를% 상냥하게 안아, 방으로 옮겨 갔다……
+		ELSEIF TALENT:연모
+			PRINTFORML 「괘, 괜찮아!?」
+			PRINTFORML 「과로인거네……정말」
+			PRINTFORML 「어쩔 수 없네. 방으로 옮겨 줄 테니까, 길을 가르쳐 줘」
+			PRINTFORMW 그렇게 말하고 사쿠야는 %마스터를% 안아, 방으로 옮겨 갔다……
+		ELSE
+			PRINTFORML 「……괜찮아?」
+			PRINTFORML 「이건……단순한 피로 같네」
+			PRINTFORML 사쿠야는 마지못해 %마스터를% 둘러메었다
+			PRINTFORMW 「어쨌든 버려둘 수는 없으니까……」
+		ENDIF
+		RETURN 1
+	ENDIF
+	;그 외
+	PRINTFORML  
+ENDIF
+RETURN 1
+
+;==================================================
+;이동시 엇갈림
+;==================================================
+@M_KOJO_EVENT_K15_4(ARG,ARG:1)
+;대사 주체는 TARGET
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;멈춰 섰다
+	;이 후 만남 구상에 접속
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 1
+		PRINTFORML
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;가볍게 인사 해 통과했다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 2
+		IF TALENT:연인
+			PRINTFORML 「%CALLNAME:MASTER%, 어디에 가는 거야?」
+			PRINTFORML 「용무가 끝나면 조금 시간을 내 주지 않을래?」
+			PRINTFORML 미소지어 오는 사쿠에게, %CALLNAME:MASTER%도 마찬가지로 미소를 돌려주었다
+		ELSEIF TALENT:연모
+			PRINTFORML 「어머, %CALLNAME:MASTER%잖니」
+			PRINTFORML 「……일인 것 같네. 잘 다녀와」
+			PRINTFORML 그렇게 말하고, 사쿠야는 웃는 얼굴로 살짝 손을 흔들었다
+		ELSEIF TALENT:사모
+			PRINTFORML 「……」
+			PRINTFORML 사쿠야는 이쪽을 찾아내고, 손을 흔들어 전송해 왔다
+		ELSE
+			PRINTFORML 「안녕하세요」
+			PRINTFORML 사쿠야는 예의바르게 인사했다
+		ENDIF
+		;쾌락 or 시간각인이 있을 때
+		IF MARK:쾌락각인 > 0 && RAND:7 < MARK:쾌락각인
+			PRINTFORML 멀어져 가는 사쿠야는 겉보기엔 평범해 보이지만, %마스터와% 엇갈릴 때에
+			PRINTFORML 뇌리에 새겨진 쾌락의 기억이 자연스레 사쿠야의 꿀단지를 질퍽질퍽한 진창으로 바꾸어 버리고 있었다……
+		ELSEIF MARK:시간각인 > 0 && RAND:7 < MARK:시간각인
+			PRINTFORML 하지만 의복 아래에는, 갑작스러운 쾌감에 대비해 성감대가 멋대로 서서히 욱신거림을 발해
+			PRINTFORML 사쿠야 본인도 깨닫지 못하는 사이에 %마스터를% 눈으로 쫒아 버리고 있다……
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;무시해 통과했다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 3
+		PRINTFORML 
+		RETURN 1
+	ENDIF
+	;그 외
+	PRINTFORML  
+ENDIF
+RETURN 1
+
+;==================================================
+;약점을 잡았다
+;==================================================
+@M_KOJO_EVENT_K15_9(ARG,ARG:1)
+;대사 주체는 TARGET
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;같은 장소에 있어 팬티를 회수되었다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG:1 == 1
+		PRINTFORML 「……잠깐 실례」
+		PRINTFORML 사쿠야가 그렇게 말하자, 품속에 있어야 할 속옷이 그녀의 손 안에 출현했다
+		PRINTFORMW 「……왜 당신이 이걸?」
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;원거리 이동중에 팬티를 회수되었다
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG:1 == 2
+		PRINTFORML 「……응? 가만있어봐」
+		PRINTFORML 사쿠야는 %CALLNAME:MASTER% 앞을 막아서고는 신체검사를 시작했다
+		PRINTFORML 「어멋, 이, 건――……」
+		PRINTFORML 「……」
+		PRINTFORML 「잠깐 「이야기」할까」
+		PRINTFORMW 품속에서 나온 속옷을 보고 사쿠야는 무척 「멋진」 웃음을 지었다
+		RETURN 1
+	ENDIF
+	PRINTFORML  
+ENDIF
+RETURN 1
+
+;==================================================
+;쓰러트리기
+;==================================================
+@M_KOJO_EVENT_K15_10(ARG,ARG:1)
+;대사 주체는 TARGET
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;우후후==2（개시시）
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 1
+		;-------------------------------------------------
+		;MASTER를 쓰러트리기（개시시）
+		;기입 체크（=0, 비표시, 1, 표시）
+		LOCAL:1 = 1
+		;-------------------------------------------------
+		IF LOCAL:1 && !ARG:1
+			IF TALENT:연인
+				PRINTFORML 「……이제 참을 수 없어」
+				PRINTFORML 「나를 이렇게 만든건 %CALLNAME:MASTER%니까……?」
+				PRINTFORML 상냥하게, 그리고 순간적으로 밀려 쓰러트려진 %마스터는%, 사쿠야를 달래려고 머리카락을 쓰다듬어 주었다
+				PRINTFORML 「정말, 그렇게 말하는 건 치사해……알고 있어?」
+				PRINTFORML 사쿠야의 눈은 완전히 황홀하게 되어서, 즉시 %CALLNAME:MASTER%의 하의를 벗기려고 해 온다
+				PRINTFORML 「%CALLNAME:MASTER%에는 미안하지만, 내가 만족할 때까지 놓아주지 않을 테니까」
+				CALL HPH_PRINT("「허리를 못 가눌 때까지, 해드릴 테니까……요HPH」", "L")
+			ELSEIF TALENT:연모 || TALENT:사모
+				PRINTFORML 「……훅, 큭…」
+				PRINTFORML 「미안해……요, 이제 무리」
+				PRINTFORML 순간적으로 밀려 쓰러트려진 %마스터를%, 사쿠야가 탐닉해 왔다
+				PRINTFORML 뜨거운 숨결이 목덜미를 타고 흐르고, 허벅지에는 비밀스러운 장소가 비벼지고 있다
+				PRINTFORMW 「%CALLNAME:MASTER% 때문이니……까」
+			ELSE
+				PRINTFORML 「……참을 수 없어」
+				PRINTFORML 사쿠야의 목소리가 들린 것과 동시에, %마스터는% 아래에 깔려 있었다
+				PRINTFORML 「후후훗, 유혹해온 %마스터가% 나쁜거니까……?」
+				PRINTFORML 살짝 열린 입술 사이로 요염하게 움직이는 혀가 보이고, 빛나는 은발이 투명할 정도로 흰 피부 위로 달라붙고 있다
+				PRINTFORMW 그 말과 표정을 보고, 지금부터 무슨 일이 일어날 것인지를 파악했다
+			ENDIF
+			RETURN 1
+		ENDIF
+		PRINTFORML
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;달랠 수 있었다（종료시）
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 2
+		SELECTCASE ARG:1
+			CASE 0
+			;빠져 나갔다
+				IF TALENT:연인
+					PRINTFORML 「응핫, 하앗, 핫……벌써 끝?」
+					PRINTFORML 「좀 더 %마스터를% 느끼고 싶은데……」
+					PRINTFORML 연분홍빛을 띈 가슴을 밀어붙여오지만, 애써 참고 설득을 계속했다
+					PRINTFORML 「……알았어.」
+					PRINTFORMW 「다음은, 의식이 날아갈 정도로 사랑해 줘?」
+				ELSEIF TALENT:연모 || TALENT:사모
+					PRINTFORML 「핫, 하앗, 끝이야?」
+					PRINTFORML 「조금만 더는……안 돼?」
+					PRINTFORML 사쿠야는 %CALLNAME:MASTER%의 고간을 손가락으로 상하로 훑고 있다
+					PRINTFORML 그 손을 잡으면, 겨우 단념해 준 것 같다
+					PRINTFORMW 「……다음엔 끝까지 해줘?」
+				ELSE
+					PRINTFORML 「어머, 끝내는 거네」
+					PRINTFORMW 「나는 아직 할 수 있지만……어쩔 수 없네요」
+				ENDIF
+				RETURN 1
+			CASE 1
+			;껴안아 모드 만족 종료
+				IF TALENT:연모
+					PRINTFORML 「……고마워, %CALLNAME:MASTER%」
+					PRINTFORMW 당신의 가슴에 머리를 비비며, 폐 가득히 %CALLNAME:MASTER%의 냄새를 맡고 나서 신체를 떼어 놓았다
+				ELSE
+					PRINTFORML 「……후우. 상당히 진정되었어요, 감사합니다」
+					PRINTFORMW 「다음에도 잘 부탁해, %CALLNAME:MASTER%♪」
+				ENDIF
+				RETURN 1
+			CASE 2
+			;껴안아 모드 강제 종료.
+			;누군가가 들어 온 중단시? 같지만 떨쳐졌을 때로 쓰고 있는 느낌의 구상도 있고 잘 모른다
+				IF TALENT:연모
+					PRINTFORML 「……방해가 들어왔군요」
+					PRINTFORML 「다음은 좀 더 제대로……. %CALLNAME:MASTER%, 약속이야?」
+					PRINTFORMW 사쿠야는 %CALLNAME:MASTER%에게 보여주듯이 입술을 핥고 있다……
+				ELSE
+					PRINTFORML 「방해가 들어왔군요」
+					PRINTFORMW 사쿠야는 아무 일도 없었다는 것처럼 떨어져 갔다
+				ENDIF
+				RETURN 1
+		ENDSELECT
+	ENDIF
+	;-------------------------------------------------
+	;빠져 나가는 실패
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 3
+		SELECTCASE ARG:1
+			CASE 1
+			;마음대로 해 상태로부터 빠져 나갈 수 없었다
+				IF TALENT:연모
+					CALL HPH_PRINT("「어머, 도망칠 수 없어요HPH」", "L")
+					CALL HPH_PRINT("「나의 능력을 잊어버린거야? 응HPH」", "L")
+					PRINTFORML 사쿠야로부터 멀어졌다고 생각한 그 순간, %마스터는% 사쿠야의 아래에 깔려 있었다
+					CALL HPH_PRINT("「자아, 할 수 있으면 해 보도록 해HPH」", "L")
+					PRINTFORMW 요염하게 미소짓는 사쿠야. 아무래도 도망치는 것 힘들 것 같다
+				ELSE
+					PRINTFORML 「어머, 놓치지 않아요?」
+					PRINTFORML 「내가 이렇게 흐트러진 건 %CALLNAME:MASTER% 때문이니까?」
+					PRINTFORML 「책임져 줘……?」
+					PRINTFORMW 당돌하게 웃는 사쿠야에게 단단히 잡혀 있어서, 도저히 도망칠 수 없을 것 같다
+				ENDIF
+				RETURN 1
+			CASE 2
+			;욕구 불만이 높아서 빠져 나갈 수 없었다
+				IF TALENT:연모
+					CALL HPH_PRINT("「하읏HPH, 하앗HPH, 하앗HPH……」", "L") 
+					PRINTFORML 사쿠야는 능력을 사용해서 %마스터를% 억지로 덮쳐왔다. 완전히 제정신을 잃고 있다
+					PRINTFORML 입가로부터는 군침이 늘어지고, 그 가랑이 사이로부터는 끊임없이 애액이 방울져 뚝뚝 떨어지고 있다
+					PRINTFORMW 평상시의 모습을 생각해 보면 도저히 있을 수 없는 추태에, 당신은 도망칠 수 없었다
+				ELSE
+					CALL HPH_PRINT("「아직이야HPH, 아직 충분하지 않아요HPH」", "L") 
+					CALL HPH_PRINT("「자아, 마음대로『사용』해도 좋으니까, 좀 더 나를 채워줘……HPH」", "L") 
+				ENDIF
+				RETURN 1
+		ENDSELECT
+	ENDIF
+	;그 외
+	PRINTFORML  
+ENDIF
+RETURN 1
+
+;==================================================
+;목욕탕에서 만남
+;==================================================
+@M_KOJO_EVENT_15_11(ARG,ARG:1)
+;대사 주체는 TARGET
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+
+
+;==================================================
+;업무 중
+;==================================================
+@M_KOJO_EVENT_K15_13(ARG,ARG:1)
+#DIM 깜빡졸음비율
+;대사 주체는 TARGET
+;ARG:1에 남아 있는 일량
+;--------------------------------------------------
+;기입 체크（=0, 비표시, 1, 표시）
+LOCAL = 1
+;-------------
+
+IF LOCAL
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;일개시（직장에 이동한다）
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 1
+		IF ABL:욕망 >= 5 && PALAM:욕정 >= PALAMLV:7
+			PRINTFORML 「……업무 시간이 된 것 같네」
+			PRINTFORML 「자, 그럼 나는 이쯤에서……」
+			PRINTFORML （……안돼요. 적어도, 적어도 일이 끝날 때까지는……읏）
+			PRINTFORMW 아무렇지도 않음을 가장하고 있지만, 분명하게 얼굴이 붉고 호흡도 난폭해진 사쿠야는 일터로 향했다……
+		ELSE
+			IF TALENT:연인
+				PRINTFORML 「어머, 벌써 이런 시간」
+				PRINTFORML 「%CALLNAME:MASTER%, 조금 일하러 갔다올게」
+				PRINTFORML 「또 다음에, 네♪　%CALLNAME:MASTER%♪」
+				PRINTFORMW 만족스럽게 고개를 끄덕이자, 눈부시게 웃는 얼굴로 사쿠야는 일터로 향하고 있었다
+			ELSEIF TALENT:연모
+				PRINTFORML 「――아, 업무 시간이예요」
+				PRINTFORML 「그렇게 됐으니까, 나는 이쯤에서……
+				PRINTFORMW 그렇게 말하고, 사쿠야는 가볍게 스킨쉽을 하면서 일터로 향했다
+			ELSE
+				PRINTFORML 「자, 업무 시간이니까 이만」
+				PRINTFORMW 사쿠야가 꾸벅 고개를 숙인 그 다음 순간 그 자리에 사쿠야의 모습은 없었다……
+			ENDIF
+		ENDIF
+		RETURN 1
+	ENDIF
+	;-------------------------------------------------
+	;업무중
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 2
+		;절찬 발정중. 일전에 즈코바코 하거나 업무중에 때 범하거나 해서는 안 된다! 문지기와의 약속이다!
+		IF ABL:욕망 >= 6 && PALAM:욕정 >= PALAMLV:10
+			SELECTCASE RAND:3
+				CASE 0
+					CALL HPH_PRINT("「하악HPH, 하악HPH……」", "L")
+					PRINTFORML 업무중임에도 불구하고, 발정해 버린 사쿠야의 육체는
+					IF EXP:V절정경험 >= 300 || FLAG:이상기상 == 1
+						PRINTFORML 꿀단지가 질척절척 휘저어지는 감각을 생각해 내 꿈틀거리며, 
+					ELSEIF EXP:A절정경험 >= 300 || FLAG:이상기상 == 2
+						PRINTFORML 애널의 안쪽의 안쪽까지 몇 번이나 관통되는 욕망에 사로잡혀, 
+					ELSEIF EXP:B절정경험 >= 300 || FLAG:이상기상 == 3
+						PRINTFORML 살짝 옷이 스친 것 뿐인데도 딱딱하게 발기한 유두를 흔들며, 
+					ELSEIF EXP:C절정경험 >= 300 || FLAG:이상기상 == 0
+						PRINTFORML 음핵을 마구잡이로 희롱되는 상상만으로 발기시켜, 
+					ELSEIF EXP:M절정경험 >= 300 || FLAG:이상기상 == 4
+						PRINTFORML 성기나 다름없게 변한 입술부터 목에 이르기까지 격렬하게 범해지는 것을 원해 욱신거리며, 
+					ENDIF
+					PRINTFORML 도저히 집중할 수 있는 상태가 아니게 되어 있었다
+					PRINTFORML 그럼에도 열심히 마루를 청소하고 있지만, 그 성기로부터 흘러넘친 애액이 마루를 더럽혀 버리고 있어서
+					PRINTFORMW 오히려 일은 더 증가해 버리고 있다……
+				CASE 1
+					CALL HPH_PRINT("「……응흣, 후읏―HPH 흐―읏HPH」", "L") 
+					PRINTFORML 사쿠야가 기둥의 그림자 뒤에서 뭔가를 하고 있다……
+					PRINTFORML 아무래도 사타구니에 빗자루를 대고 자위를 하고 있는 것 같다
+					CALL HPH_PRINT("（이런 일 하고 있으면 안되는데……HPH 참을 수가 없어 HPH）", "L")
+					PRINTFORML %마스터가% 보고 있는 것도 눈치채지 못할 정도로 몰두하고 있는 것 같다……
+					PRINTFORMW %마스터는% 잠시 자리를 비켜 주기로 했다……
+				CASEELSE
+					PRINTFORML 「어머, 이런 곳에 얼룩이……」
+					PRINTFORML 「……어라? 여기는 아까 청소했을 텐데……」
+					PRINTFORML 「응, 으응? 여기도, 아까……?」
+					PRINTFORML 
+					PRINTFORML 「…………!?!?」
+					PRINTFORMW 아무래도 사쿠야의 애액이 방울져 떨어지고 있던 것 같다
+			ENDSELECT
+		ELSEIF ABL:욕망 >= 5 && PALAM:욕정 >= PALAMLV:7
+			SELECTCASE RAND:4
+				CASE 0
+					PRINTFORML 「……읏, 흐읏……」
+					PRINTFORML 업무중임에도 불구하고, 발정해 버린 사쿠야의 육체는
+					IF EXP:V절정경험 >= 200 || FLAG:이상기상 == 1
+						PRINTFORML 질내가 육봉의 격렬한 출입을 생각해 내 버려 욱신거리며, 
+					ELSEIF EXP:A절정경험 >= 200 || FLAG:이상기상 == 2
+						PRINTFORML 엉덩이구멍이 마구 쑤셔지는 것을 원해 실룩거리며, 
+					ELSEIF EXP:B절정경험 >= 200 || FLAG:이상기상 == 3
+						PRINTFORML 유방이 주물러지는 것을 기대해 그 끝을 날카롭게 하며, 
+					ELSEIF EXP:C절정경험 >= 200 || FLAG:이상기상 == 0
+						PRINTFORML 사소한 옷자락의 스침이 음핵을 우뚝 솟게 해, 
+					ELSEIF EXP:M절정경험 >= 200 || FLAG:이상기상 == 4
+						PRINTFORML 입술과 혀가 점막간의 농후한 교제를 원해 욱신거리며, 
+					ENDIF
+					PRINTFORML 청소 업무에 지장을 초래하고 있었다
+					PRINTFORMW 「읏, 히읏……참을 수 있어, 참을 수……」
+				CASE 1
+					CALL HPH_PRINT("「……응흣, 흐읏―HPH 후―읏HPH」", "L") 
+					PRINTFORML 사쿠야가 기둥의 그림자 뒤에서 뭔가를 하고 있다……
+					PRINTFORML 아무래도 사타구니에 빗자루를 대고 자위를 하고 있는 것 같다
+					CALL HPH_PRINT("（이런 일 하고 있으면 안되는데……HPH 참을 수가 없어 HPH）", "L")
+					PRINTFORML %마스터가% 보고 있는 것도 눈치채지 못할 정도로 몰두하고 있는 것 같다……
+					CALL HPH_PRINT("「―――윽HPHHPH　……하아HPH, 하아HPH…… 앗」", "L")
+					PRINTFORML 아무래도 엿보고 있던 것이 발각된 것 같다. 사쿠야가 얼굴을 붉히며 이쪽을 바라보고 있다
+				CASEELSE
+					PRINTFORML 「어머, 이런 곳에 얼룩이……」
+					PRINTFORML 「……어라? 여기는 아까 청소했을 텐데……」
+					PRINTFORML 「응, 으응? 여기도, 아까……?」
+					PRINTFORML 
+					PRINTFORML 「…………!?!?」
+					PRINTFORMW 아무래도 사쿠야의 애액이 방울져 떨어지고 있던 것 같다
+			ENDSELECT
+		;여기로부터 통상 업무. IF가 쓸데없게 커지기 십상……
+		ELSE
+			IF TALENT:연모 || TALENT:연인
+				SELECTCASE RAND:10
+				CASE 0 to 1
+					PRINTFORML 「어머, %CALLNAME:MASTER%.무슨 일이야?」
+					PRINTFORML 업무 중에 방문한 %CALLNAME:MASTER%에게 웃는 얼굴을 향하는 사쿠야
+					PRINTFORMW 「보고 있는건 상관없지만, 방해하면 안되니까?」
+				CASE 2 to 3
+					PRINTFORML 「……」
+					PRINTFORMW 사쿠야는 묵묵히 일을 하고 있다……
+				CASE 4 to 5
+					PRINTFORML 「어머, %CALLNAME:MASTER%잖아.」
+					PRINTFORML 「일이 끝날 때까지 조금만 기다려 줘……」
+					PRINTFORML 조금 서두르면서 일을 하기 시작한 것 같다
+				CASE 6
+					PRINTFORML 「아, %CALLNAME:MASTER%. 미안하지만, 잠깐 메이링이 뭐하고 있는지 보고 와 주지 않을래?」
+					PRINTFORML 「그 녀석은 잠깐 한 눈을 팔면 금방 졸아버리기 때문에……곤란해」
+					PRINTFORMW 사실 아까 이미 자고 있는 것을 보았습니다, 라고 말할 수는 없는 분위기다……
+				CASE 7
+					PRINTFORMW 사쿠야는 오로지 묵묵히 일만 하고 있다……
+				CASEELSE
+					PRINTFORML 「～～～♪」
+					PRINTFORML 사쿠야가 콧노래를 부르며 청소하고 있다……
+					PRINTFORML 「～～……」
+					PRINTFORMW 아무래도 이쪽을 눈치챈 것 같다. 얼굴을 붉게 물들이면서 당황하며 청소하러 돌아갔다……
+			ENDSELECT
+		ELSEIF TALENT:사모
+			SELECTCASE RAND:10
+				CASE 0 to 1
+					PRINTFORML 「어머, %CALLNAME:MASTER%님. 무슨 일인가요?」
+					PRINTFORML 업무 중에 방문한 %CALLNAME:MASTER%에게 웃는 얼굴을 향하는 사쿠야
+					PRINTFORMW 「보고 있을 뿐? 그런가요……」
+				CASE 2 to 3
+					PRINTFORML 「……」
+					PRINTFORMW 사쿠야는 묵묵히 일을 하고 있다……
+				CASE 4 to 5
+					PRINTFORML 「어머, %CALLNAME:MASTER%님」
+					PRINTFORML 「일이 끝날 때까지 조금만 기다려 주세요……」
+					PRINTFORML 조금 서두르면서 일을 하기 시작한 것 같다
+				CASE 6
+					PRINTFORML 「%CALLNAME:MASTER%님. 죄송하지만, 잠깐 메이링이 뭐하고 있는지 보고 와 주지 않겠습니까?」
+					PRINTFORML 「그 아이은 잠깐 한 눈을 팔면 금방 졸아버리기 때문에……」
+					PRINTFORMW 사실 아까 이미 자고 있는 것을 보았습니다, 라고 말할 수는 없는 분위기다……
+				CASE 7
+					PRINTFORMW 사쿠야는 오로지 묵묵히 일만 하고 있다……
+				CASEELSE
+					PRINTFORML 「～～～♪」
+					PRINTFORML 사쿠야가 콧노래를 부르며 청소하고 있다……
+					PRINTFORML 「～～……」
+					PRINTFORMW 아무래도 이쪽을 눈치챈 것 같다. 얼굴을 붉게 물들이면서 당황하며 청소하러 돌아갔다……
+			ENDSELECT
+		ELSE
+			SELECTCASE RAND:5
+				CASE 0 to 1
+					PRINTFORML 「어머, %CALLNAME:MASTER%님. 무슨 일인가요?」
+					PRINTFORML 업무 중에 방문한 %CALLNAME:MASTER%에게 웃는 얼굴을 향하는 사쿠야
+					PRINTFORMW 「보고 있을 뿐? 그런가요……」
+				CASE 2 to 3
+					PRINTFORML 「……」
+					PRINTFORMW 사쿠야는 묵묵히 일을 하고 있다……
+				CASEELSE
+			ENDSELECT
+		ENDIF
+	ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+	;-------------------------------------------------
+	;일 종료
+	;기입 체크（=0, 비표시, 1, 표시）
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARG == 3
+		IF ABL:욕망 >= 5 && PALAM:욕정 >= PALAMLV:10
+			CALL HPH_PRINT("「하아～HPH, 하아～HPH……」", "L")
+			CALL HPH_PRINT("「이대로는……HPH」", "L")
+			PRINTFORML 업무중 계속 욕정한 육체를 주체하지 못하고 있던 사쿠야는, 
+			PRINTFORML 무심코 시야에 들어온 %마스터를% 보며
+			IF EXP:V절정경험 >= 200 || FLAG:이상기상 == 1
+				PRINTFORML 질내를 더이상 쓸모없어질 때까지
+			ELSEIF EXP:A절정경험 >= 200 || FLAG:이상기상 == 2
+				PRINTFORML 엉덩이구멍을 뻐끔 열려 닫히지 않게 될 정도로
+			ELSEIF EXP:B절정경험 >= 200 || FLAG:이상기상 == 3
+				PRINTFORML 가슴을 마구잡이로 주물러지면서
+			ELSEIF EXP:C절정경험 >= 200 || FLAG:이상기상 == 0
+				PRINTFORML 음핵을 눈이 뒤집힐 만큼
+			ELSEIF EXP:M절정경험 >= 200 || FLAG:이상기상 == 4
+				PRINTFORML 허리에 힘이 빠질 정도로 입술과 입안을
+			ELSE
+				PRINTFORML 육체를 마구 범해지며
+			ENDIF
+			PRINTFORML 유린당하는 망상에 빠지고 말았다
+			CALL HPH_PRINT("「앗……HPH」", "L") 
+		
+		ELSEIF ABL:욕망 >= 5 && PALAM:욕정 >= PALAMLV:7
+			PRINTFORML 「하아, 하아……」
+			CALL HPH_PRINT("「겨우, 일, 끝났……HPH」", "L") 
+			PRINTFORML 업무중 계속 욕정한 육체를 주체하지 못하고 있던 사쿠야는, 
+			PRINTFORML 무심코 시야에 들어온 %마스터를% 보며
+			IF EXP:V절정경험 >= 200 || FLAG:이상기상 == 1
+				PRINTFORM 질내를 
+			ELSEIF EXP:A절정경험 >= 200 || FLAG:이상기상 == 2
+				PRINTFORM 엉덩이구멍을 
+			ELSEIF EXP:B절정경험 >= 200 || FLAG:이상기상 == 3
+				PRINTFORM 유방을 
+			ELSEIF EXP:C절정경험 >= 200 || FLAG:이상기상 == 0
+				PRINTFORM 음핵을 
+			ELSEIF EXP:M절정경험 >= 200 || FLAG:이상기상 == 4
+				PRINTFORM 입술을 
+			ELSE
+				PRINTFORM 육체를 마구잡이로 
+			ENDIF
+			PRINTFORML 유린당하는 망상에 빠지고 말았다
+			PRINTFORMW 「읏……나도 드디어네……」
+		ELSE
+			SELECTCASE RAND:1
+				CASEELSE
+					PRINTFORMW 「업무 종료입니다」
+			ENDSELECT
+		ENDIF
+	ENDIF
+	;그 외
+	PRINTFORML  
+RETURN 1
+
+
