@@ -1,0 +1,1637 @@
+﻿;-------------------------------------------------
+;300, 회화
+;-------------------------------------------------
+;회화
+@MESSAGE_COM300
+IF TCVAR:회화불능
+	RETURN
+ENDIF
+
+IF TCVAR:만취
+	PRINTFORML %조교자는% %CALLNAME:TARGET%에게 말을 걸어봤지만, %타겟은% 혀가 안 돌아가 무슨 말을 하는지도 알아듣을 수 없었다
+	PRINTFORML 거의 회화가 이루어지지 않았다…
+ELSE
+	PRINTFORM %조교자는% %타겟과% 
+	IF CFLAG:빡침 > 0
+		IF TALENT:연인
+			PRINTDATA
+				DATAFORM 솔직해지지 못하는 태도로 
+				DATAFORM 살짝 오기를 내비치면서 
+				DATAFORM 일부러 사과는 뒷전으로 미루며 
+				DATAFORM 눈치를 살피면서 
+				DATAFORM 마음속으론 사과하면서 
+			ENDDATA
+		ELSE
+			PRINTDATA
+				DATAFORM 눈치를 살피면서 
+				DATAFORM 어색한 분위기로 
+				DATAFORM 켕기는 기분으로 
+				DATAFORM 오히려 떳떳하게 
+				DATAFORM 일방적으로 
+			ENDDATA
+		ENDIF
+	ELSEIF CFLAG:TARGET:20 > 0 && CFLAG:TARGET:350 == 49
+		IF TALENT:연모
+			PRINTDATA
+				DATAFORM 서로 잔을 채우면서 
+				DATAFORM 웃음을 주고받으면서 
+				DATAFORM 크게 웃으면서 
+				DATAFORM 편한 분위기로 
+				DATAFORM 살짝 대담한 화제에 관해 
+			ENDDATA
+		ELSEIF ABL:친밀 >= 5
+			PRINTDATA
+				DATAFORM 서로 잔을 채우면서 
+				DATAFORM 상대방을 신경 쓰면서 
+				DATAFORM 농담을 날리며 같이 웃으면서 
+				DATAFORM 편한 분위기로 
+				DATAFORM 일부러 거리를 유지하면서 
+			ENDDATA
+		ELSE
+			PRINTDATA
+				DATAFORM 홀짝홀짝 마시면서 
+				DATAFORM 살짝 친근하게 
+				DATAFORM 교우를 다지고자 
+				DATAFORM 그 자리 분위기를 타고 
+				DATAFORM 평소와는 다른 분위기로 
+			ENDDATA
+		ENDIF
+	ELSEIF CFLAG:TARGET:동침중
+		PRINTDATA
+			DATAFORM 손깍지를 끼면서 
+			DATAFORM 다가붙어서 
+			DATAFORM 좀 부끄러운 듯이 
+			DATAFORM 포옹하면서 
+			DATAFORM 서로 장난치면서 
+			DATAFORM 뺨에 손을 얹고서 
+			DATAFORM 이불 속에서 
+		ENDDATA
+	ELSEIF CHK_DATENOW(CFLAG:TARGET:데이트중)
+		IF TALENT:연모
+			PRINTDATA
+				DATAFORM 데이트 장소에에 관해서 
+				DATAFORM 나란히 걸으면서 
+				DATAFORM 살짝 수줍음을 띠면서 
+				DATAFORM 서로 장난치면서 
+				DATAFORM 미소를 주고받으면서 
+			ENDDATA
+		ELSE
+			PRINTDATA
+				DATAFORM 세상 사는 
+				DATAFORM 외출 장소에 관해서 
+				DATAFORM 실없는 
+				DATAFORM 대수롭잖은 
+				DATAFORM 걸으면서 
+			ENDDATA
+		ENDIF
+	ELSEIF TALENT:연모
+		PRINTDATA
+			DATAFORM 손깍지를 끼면서 
+			DATAFORM 곁에 붙어서 
+			DATAFORM 살짝 수줍음을 띠면서 
+			DATAFORM \@ TIME >= 360 && TIME <= 1080 ? 환한 낮에 # 고요한 밤에 \@ 
+			DATAFORM 서로 장난치면서 
+			DATAFORM 미소를 주고받으면서 
+		ENDDATA
+	ELSE
+		PRINTDATA
+			DATAFORM 세상 사는 
+			DATAFORM 두서없이 
+			DATAFORM 시답잖은 
+			DATAFORM 실없는 
+			DATAFORM 대수롭잖은 
+			DATAFORM 잠시 
+			DATAFORM 위쪽을 바라보며
+		ENDDATA
+	ENDIF
+	PRINTFORML 이야기를 나누었다
+	IF TFLAG:193 == 1
+		PRINTFORML 즐거운 시간이 흘렀다…
+	ELSEIF TFLAG:193 == 2
+		PRINTDATA
+		;		DATAFORM 새로운 이변의
+			DATAFORM 호들갑스런 
+			DATAFORM 비장의 
+			DATAFORM 생각치 못한 
+			DATAFORM 신경 쓰이던 
+		ENDDATA
+		PRINTFORML 이야기에 %CALLNAME:TARGET%\@ GET_TARGETNUM() > 1 ? 들 # \@은 크게 분위기가 살았다…
+	ELSEIF TFLAG:193 == -1
+		PRINTFORML 회화가 끊기더니 어색한 분위기가 흘렀다…
+	ELSEIF TFLAG:193 == -2
+		PRINTFORML 이야기가 서로 맞물리질 않는다…
+	ENDIF
+ENDIF
+
+;-------------------------------------------------
+;301, 차를 탄다
+;-------------------------------------------------
+@MESSAGE_COM301
+IF TFLAG:193 == 1 && ABL:[[메이링]]:친밀 >= 7 && !RAND:5
+	PRINTFORML %조교자는% 메이링의 흉내를 내며 차를 탔다
+	CALL COLORMESSAGE("*짜잔*　ﾄﾄﾄ",C_YELLOW,1)
+ELSE
+PRINTFORML %조교자는% \@ CFLAG:TARGET:행동 == 5 ? 휴식 겸 #  \@차를 타서 %CALLNAME:TARGET%\@ GET_TARGETNUM() > 1 ? 들 # \@에게 내었다…
+ENDIF
+IF TFLAG:193 == 1
+	PRINTFORML %타겟과% %조교자는% 차를 마시면서 \@ CFLAG:TARGET:행동 == 5 ? 휴식 시간을 즐겼다 # 즐거운 한때를 보냈다 \@…
+ELSEIF TFLAG:193 == -1
+	PRINTFORML …아무래도 %CALLNAME:TARGET%의 입맛에 맞지 않았던 모양이다
+ENDIF
+
+;-------------------------------------------------
+;302, 스킨십
+;-------------------------------------------------
+@MESSAGE_COM302
+;IF CFLAG:MASTER:현재위치 == 13 || CFLAG:MASTER:현재위치 == 24 || CFLAG:MASTER:현재위치 == 30 || CFLAG:MASTER:현재위치 == 39
+IF BATHCHECK(CFLAG:MASTER:현재위치) && IN_HOME(CFLAG:MASTER:현재위치)
+	IF TALENT:연인 && !RAND:2
+		PRINTFORML %조교자는% %CALLNAME:TARGET%에 등을 밀어주었다
+	ELSE
+		PRINTFORML %조교자는% %CALLNAME:TARGET%의 등을 밀었다
+	ENDIF
+ELSEIF CHK_DATENOW(CFLAG:TARGET:데이트중) && CFLAG:MASTER:현재위치 != OMANEKIBEYA()
+	PRINTFORML %조교자는% %타겟과% \@ (CFLAG:TARGET:현재위치 % 100) % 10 ? 함께 걸으면서 # 가볍게 \@스킨십을 꾀했다
+ELSEIF CFLAG:TARGET:350 == 49
+	PRINTFORML %조교자는% 평상시보다 대담하게 %타겟과%의 스킨십을 꾀했다
+ELSE
+	PRINTFORML %조교자는% %타겟과%의 스킨십을 꾀했다
+ENDIF
+IF TFLAG:193 == 1
+	PRINTFORML %타겟은% 왠지 조금 기쁜 듯 하다…
+ELSEIF TFLAG:193 == -1
+	PRINTFORML …아무래도, 좀 지나치게 허물없이 군 것 같다…
+ENDIF
+TFLAG:400 = RAND:2
+SIF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+	CALL DATE_HITOGOMI_MESSAGE(CFLAG:PLAYER:현재위치)
+
+;-------------------------------------------------
+;303, 사과한다
+;-------------------------------------------------
+@MESSAGE_COM303
+IF TFLAG:193 == -2 || TFLAG:193 == 2
+	PRINTFORML %조교자는% %CALLNAME:TARGET%에 무례를 사과하며 과자상자를 건네주었다
+ELSE
+	PRINTFORML %조교자는% %CALLNAME:TARGET%에 무례를 사과했다
+ENDIF
+IF TFLAG:193 == 1
+	PRINTFORML %타겟은% 웃으며 용서해주었다…
+ELSEIF TFLAG:193 == 2
+	PRINTFORML %타겟은% 지난 일을 없었던 것으로 쳐주었다…
+	PRINTFORMW %타겟은% 반발각인 LV1를 잃었다
+ELSEIF TFLAG:193 == 0
+	PRINTFORML %타겟은% 어쩔 수 없이 %조교자를% 허락했다…
+ELSEIF TFLAG:193 == -2
+	PRINTFORML %타겟은% 과자상자를 받아주지 않았다…
+	PRINTFORML %타겟은% 아직 용서해주진 않을 모양이다…
+ELSE
+	IF TALENT:담력 < 0
+		PRINTFORML 그러나%타겟은% 아직 울고 있다…
+	ELSE
+		PRINTFORML 그러나%타겟은% 아직 화가 나 있다…
+	ENDIF
+ENDIF
+
+;-------------------------------------------------
+;304, 일심부름
+;-------------------------------------------------
+@MESSAGE_COM304
+IF FLAG:70
+	IF CFLAG:TARGET:350 == 46
+		PRINTFORML %조교자는% 꿈쩍도 하지 않는 %타겟과% 놀아 보았다
+		PRINTL ……나는 대체 뭘 하는 것일까
+	ELSEIF CFLAG:TARGET:350 == 52 ;KR판 구잔재. 
+		PRINTFORML %조교자는% 멈추었을 때의 안에서 담소하고 있는 %CALLNAME:TARGET%에 『안다』라고 했다
+		PRINTL ……자신은 피곤할까
+	ELSEIF CFLAG:TARGET:350 == 41 || TCVAR:도울수없다 == 2
+		PRINTFORML %조교자는% 시간을 멈춘 사이에 %CALLNAME:TARGET%의 일을 도와주려고 했지만,
+		PRINTFORML 잘 생각해보니 시간정지 중에는 할 수 없는 일이었다
+	ELSE
+		PRINTFORML %조교자는% 시간을 멈춘 사이에 %CALLNAME:TARGET%의 일을 도와주었다
+		IF TFLAG:193 == 1
+			PRINTFORML 일이 상당히 진행된 것 같다…
+		ELSEIF TFLAG:193 == -1
+			PRINTFORML 그다지 도움이 된 것 같지가 않다…
+		ENDIF
+	ENDIF
+ELSE
+	IF CFLAG:TARGET:350 == 46
+		PRINTFORML %조교자는% %CALLNAME:TARGET%의 놀이에 참가했다
+	ELSEIF CFLAG:TARGET:350 == 52 ;KR판 구잔재
+		PRINTFORML %마스터는% 담소중이던 %CALLNAME:TARGET%의 회화에 끼어들었다
+		IF TFLAG:193 == 1
+			IF TARGET == 102 && TALENT:17:연모
+				PRINTFORML 『알았다』가, %마스터는% 필사적으로 『달라!』라고 부정하고 있다…
+			ELSE
+				PRINTFORML 아무래도 『알았다』같다…
+			ENDIF
+		ELSEIF TFLAG:193 == -1
+			PRINTFORML 몰랐다…
+		ENDIF
+	ELSE
+		PRINTFORML %조교자는% %CALLNAME:TARGET%의 일을 도왔다
+		IF TFLAG:193 == 1
+			PRINTFORML 매우 일이 진척된 것 같다…
+		ELSEIF TFLAG:193 == -1
+			PRINTFORML 그다지 도움이 되지 않은 모양이다…
+		ENDIF
+	ENDIF
+ENDIF
+
+;-------------------------------------------------
+;305, 무릎베개받는다
+;-------------------------------------------------
+@MESSAGE_COM305
+PRINTFORML %조교자는% %CALLNAME:TARGET%에 무릎베개받았다
+IF TFLAG:193 == -5
+	PRINTFORML %CALLNAME:MASTER%의 머리를 받친 %타겟은% 개구리가 짖밟힌 듯한 소리를 냈다
+	PRINTFORML %마스터는% 당황해 머리를 치웠다
+ELSEIF ABL:TARGET:친밀 > 5
+	SIF TALENT:TARGET:임신
+		PRINTFORML %마스터는% 우리 아이를 밴 %CALLNAME:TARGET%의 배에 귀를 대었다……
+	PRINTFORML %타겟은% %CALLNAME:MASTER%의 얼굴을 들여다 보며 머리를 부드럽게 어루만지고 있다…
+ELSEIF ABL:TARGET:친밀 > 2
+	PRINTFORML %타겟은% %CALLNAME:MASTER%의 머리를 부드럽게 어루만지고 있다…
+ELSE
+	PRINTFORML %타겟은% 몸을 움츠리며 가만히 있다…
+ENDIF
+TFLAG:400 = RAND:2
+SIF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+	CALL DATE_HITOGOMI_MESSAGE(CFLAG:PLAYER:현재위치)
+
+;-------------------------------------------------
+;306, 배를 어루만진다
+;-------------------------------------------------
+@MESSAGE_COM306
+PRINTFORM %조교자는% 
+IF TALENT:TARGET:임신
+	PRINTFORM %CALLNAME:PLAYER%의 아이를 품은
+ELSEIF 충전율(TARGET, 1) > 30
+	PRINT 충분히 정자를 심어둔 
+ENDIF
+PRINTFORML %CALLNAME:TARGET%의 배를 어루만졌다
+IF !FLAG:70
+	IF TFLAG:193 == 1
+		PRINTFORML %타겟은% %CALLNAME:MASTER%의 손에 자신의 손을 사랑스럽게 겹쳐왔다
+	ELSEIF TFLAG:193 == -1
+		PRINTFORML %타겟은% 노골적으로 불쾌해 보인다
+	ELSE
+		PRINTFORML %타겟은% 의아스러운 듯이 하고 있다…
+	ENDIF
+	TFLAG:400 = RAND:2
+	SIF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+		CALL DATE_HITOGOMI_MESSAGE(CFLAG:PLAYER:현재위치)
+ENDIF
+
+;-------------------------------------------------
+;307, 뺨을 집는다
+;-------------------------------------------------
+@MESSAGE_COM307
+IF FLAG:70 == 1
+	PRINTFORML %조교자는% %CALLNAME:TARGET%의 뺨에 손을 뻗었다…
+	PRINTFORML 시간이 정지된 %타겟은% 무저항인 채 뺨을 집어지고 있다…
+ELSEIF CFLAG:TARGET:수면
+	PRINTFORML %조교자는% 자고 있는 %CALLNAME:TARGET%의 뺨을 손가락으로 집었다…
+	PRINTFORML %타겟은% 싫은 듯이 얼굴을 돌렸다…
+ELSE
+	PRINTFORM %조교자는% \@ CFLAG:TARGET:동침중 ? 동침하는 # \@%CALLNAME:TARGET%의 뺨에 손을 뻗어
+	IF TARGET == (NO:14)
+		PRINTDATA
+			DATAFORM 포근포근 했다…
+			DATAFORM 말랑말랑 했다…
+			DATAFORM 물컹물컹 했다…
+			DATAFORM 구불구불 했다…
+			DATAFORM 쭈욱쭈욱 했다…
+		ENDDATA
+	ELSE
+		PRINTL 손가락으로 집었다…
+	ENDIF
+	IF TALENT:연모
+		PRINTFORML %타겟은% 쑥스러운 듯한 표정을 하면서 맞받아쳐왔다…
+	ELSEIF ABL:친밀 > 5
+		PRINTFORML %CALLNAME:TARGET%도 흠칫흠칫 %CALLNAME:PLAYER%의 뺨에 손을 뻗었다…
+	ELSEIF ABL:순종 >= 5
+		PRINTFORML %타겟은% 쑥스러운 듯한 표정을 하면서도 %CALLNAME:PLAYER%의 마음대로 되고 있다…
+	ELSE
+		PRINTFORML %타겟은% 뺨을 부풀리더니 %CALLNAME:PLAYER%의 손을 쳐냈다…
+	ENDIF
+ENDIF
+
+;-------------------------------------------------
+;308, 뺨을 쿡쿡 찌른다
+;-------------------------------------------------
+@MESSAGE_COM308
+IF CFLAG:TARGET:수면
+	PRINTFORML %조교자는% 자고 있는 %CALLNAME:TARGET%의 뺨을 손가락으로 쿡쿡 찔렀다
+	IF TFLAG:193 == 1
+		PRINTFORML %타겟은% 기쁜듯이 미소짓고 있다…
+	ELSEIF TFLAG:193 == -1
+		PRINTFORML %타겟은% 싫은 듯이 얼굴을 돌렸다…
+	ENDIF
+ELSE
+	PRINTFORML %조교자는% 동침하는 %CALLNAME:TARGET%의 뺨을 손가락으로 쿡쿡 찔렀다
+	IF TFLAG:193 == 1
+		PRINTFORML %타겟은% 히죽히죽 하면서 복수해왔다…
+	ELSEIF TFLAG:193 == -1
+		PRINTFORML %타겟은% 뺨을 부풀리더니 %CALLNAME:PLAYER%의 손을 쳐냈다…
+	ENDIF
+ENDIF
+
+;-------------------------------------------------
+;309, 머리를 어루만진다
+;-------------------------------------------------
+@MESSAGE_COM309
+IF FLAG:70 == 1
+	PRINTFORML %조교자는% %CALLNAME:TARGET%의 머리에 손을 뻗었다
+	PRINTFORML 시간이 정지된 %타겟은% 무저항인 채 머리를 어루만져지고 있다…
+ELSEIF CHK_DATENOW(CFLAG:TARGET:데이트중) && CFLAG:MASTER:현재위치 != OMANEKIBEYA()
+	PRINTFORML %조교자는% \@ DATE_REMAINTIME() ? 근처를 걷는 # 근처에 동행하는 \@%CALLNAME:TARGET%의 머리를 어루만졌다
+	SELECTCASE TFLAG:193
+		CASE 1
+			PRINTFORML %타겟은% 릴렉스 한 것 같은 표정을 지으며 눈을 가늘게 떴다…
+		CASE 0
+			IF ABL:친밀 > 5
+				PRINTFORML %타겟은% 쑥스러운 듯한 표정을 지으면서도 가만히 %CALLNAME:PLAYER%에게 어루만져지고 있다…
+			ELSE
+				PRINTFORML %타겟은% 얼굴을 붉히며 %CALLNAME:PLAYER%의 손을 뿌리쳤다…
+			ENDIF
+		CASE -1
+			PRINTFORML …좀 지나치게 허물없이 군 것 같다
+	ENDSELECT
+ELSEIF CFLAG:TARGET:수면
+	PRINTFORML %조교자는% 자고 있는 %CALLNAME:TARGET%의 머리를 상냥하게 어루만졌다
+	IF ABL:친밀 > 5
+		PRINTFORML %타겟은% 기분 좋은 듯이 웃고 있다…
+	ELSE
+		PRINTFORML %타겟은% 싫어하는 기색도 없이 %CALLNAME:PLAYER%에 어루만져지고 있다…
+	ENDIF
+ELSE
+	PRINTFORML %조교자는% \@ CFLAG:TARGET:동침중 ? 동침하는 # 다정하게 \@ %CALLNAME:TARGET%의 머리를 어루만졌다
+	SELECTCASE TFLAG:193
+		CASE 1
+			PRINTFORML %타겟은% 릴렉스 한 것 같은 표정을 지으며 눈을 가늘게 떴다…
+		CASE 0
+			IF ABL:친밀 > 5
+				PRINTFORML %타겟은% 쑥스러운 듯한 표정을 지으면서도 가만히 %CALLNAME:PLAYER%에 어루만져지고 있다…
+			ELSE
+				PRINTFORML %타겟은% 얼굴을 붉히며 %CALLNAME:PLAYER%의 손을 뿌리쳤다…
+			ENDIF
+		CASE -1
+			PRINTFORML …좀 지나치게 허물없이 군 것 같다
+	ENDSELECT
+ENDIF
+;-------------------------------------------------
+;331, 차를 넣는(약넣은)
+;-------------------------------------------------
+@MESSAGE_COM331
+#DIM DYNAMIC 인원수A
+#DIM DYNAMIC 인원수B
+#DIM DYNAMIC 가감상태
+VARSET LOCAL
+VARSET LOCALS
+IF TCVAR:TARGET:미약 == 210
+	LOCALS = 미약
+ELSEIF TCVAR:TARGET:이뇨제 == 210
+	LOCALS = 이뇨제
+ELSEIF TCVAR:TARGET:춘약 == 210
+	LOCALS = 춘약
+ELSEIF TCVAR:TARGET:수면제강도 == 2
+	LOCALS = 수면제
+ELSE
+	LOCALS = 약
+ENDIF
+IF !RAND:2
+	인원수A = CHARANUM - 1
+	인원수B = 0
+	가감상태 = -1
+ELSE
+	인원수A = 1
+	인원수B = CHARANUM
+	가감상태 = 1
+ENDIF
+
+PRINTFORML %조교자는% \@ CFLAG:TARGET:행동 == 5 ? 휴식겸 #  \@%LOCALS%들이 차를 엄라고 %CALLNAME:TARGET%\@ GET_TARGETNUM() > 1 ? 들 # \@에게 내밀었다…
+FOR LOCAL, 인원수A, 인원수B, 가감상태
+	SIF LOCAL == TARGET
+		CONTINUE
+	IF CFLAG:LOCAL:현재위치 == CFLAG:MASTER:현재위치 && (TCVAR:LOCAL:미약 == 210 || TCVAR:LOCAL:이뇨제 == 210 || TCVAR:LOCAL:춘약 == 210 || (TCVAR:LOCAL:수면제강도 == 2 && TCVAR:LOCAL:수면제차사용))
+		PRINTFORML %CALLNAME:LOCAL%는 맛있는 듯이 차를 마시고 있다
+		LOCAL:1 ++
+		IF LOCAL:1 > 4 && GET_TARGETNUM() > 5
+			PRINTFORML 잔을 나눠주는데 벅차서 다른 사람들이 마셨는지까지는 파악할 수 없었다
+			BREAK
+		ENDIF
+	ENDIF
+	IF CFLAG:LOCAL:현재위치 == CFLAG:MASTER:현재위치 && (TCVAR:LOCAL:미약 != 210 && TCVAR:LOCAL:이뇨제 != 210 && TCVAR:LOCAL:춘약 != 210 && (TCVAR:LOCAL:수면제강도 != 2 || !TCVAR:LOCAL:수면제차사용))
+		IF TCVAR:LOCAL:수면제강도 >= 2
+			PRINTFORML %CALLNAME:LOCAL%는 하품을 하면서 차를 거절했다
+		ELSE
+			PRINTFORML %CALLNAME:LOCAL%는 고개를 갸웃거리며 차에 입을 대지 않았다
+		ENDIF
+		LOCAL:2 ++
+		IF LOCAL:2 > 4 && GET_TARGETNUM() > 5
+			PRINTFORML 잔을 나눠주는데 벅차서 다른 사람들이 마셨는지까지는 파악할 수 없었다
+			BREAK
+		ENDIF
+	ENDIF
+NEXT
+PRINTL
+IF TFLAG:193 == 1
+	PRINTFORML %타겟과% %조교자는% 차를 마시면서\@ CFLAG:TARGET:행동 == 5 ? 휴식 시간 # 즐거운 한 때 \@를 보냈다…
+ELSEIF TFLAG:193 == -1
+	PRINTFORML %타겟은% 물건 묻고 싶어 하는 시선을 이쪽으로 향해 차에 입을 대지 않았다
+ELSE
+	PRINTFORML %타겟은% 맛있는 듯이 차를 마시고 있다
+ENDIF
+LOCAL:1 = 0
+PRINTL 
+FOR LOCAL, 인원수A, 인원수B, 가감상태
+	IF CFLAG:LOCAL:현재위치 == CFLAG:MASTER:현재위치 && (TCVAR:LOCAL:미약 == 210 || TCVAR:LOCAL:이뇨제 == 210 || TCVAR:LOCAL:춘약 == 210)
+		LOCAL:1 ++
+		IF LOCAL:1 > 4 && GET_TARGETNUM() > 5
+			PRINTFORML 다른 사람들의 모습까지는 파악할 수 없었다
+			BREAK
+		ENDIF
+		PRINTFORM %CALLNAME:LOCAL%는
+		IF TCVAR:LOCAL:미약 == 210
+			PRINTFORML 뺨을 홍조 시키고 묘하게 뜨거운 한숨을 흘리고 있다
+		ELSEIF TCVAR:LOCAL:이뇨제 == 210
+			PRINTFORML 살짝 안짱다리가 되어, 움찔움찔 허리를 흔들고 있다
+		ELSEIF TCVAR:LOCAL:춘약 == 210
+			PRINTFORML 황홀해 하는 표정으로 가만히 이쪽을 응시하고 있다
+		ELSEIF TCVAR:LOCAL:수면제강도 == 2
+			PRINTFORML 졸음을 견디듯이 하품을 꾹 참고 있다
+		ENDIF
+	ENDIF
+NEXT
+
+;-------------------------------------------------
+;333, 푸념을 (듣)묻는다
+;-------------------------------------------------
+@MESSAGE_COM333
+PRINTFORML %CALLNAME:TARGET%의 푸념을 들어 주었다
+SELECTCASE TFLAG:193
+	CASE 1
+		PRINTFORML 말하고 있는 동안에 화가 도진 것 같다…
+	CASE 2
+		PRINTFORML 말하고 싶은 것을 말하고 침착해진 것 같다
+	CASE 3
+		PRINTFORML 한차례 토해낸 %타겟은%, 얌전하게 들어준 %CALLNAME:MASTER%에게 감사를 전했다
+	CASE 4
+		;PRINTFORML %CALLNAME:TARGET%はますます理不尽な絡み方をしてきた…
+		PRINTFORML %타겟은% 더욱 더 불합리한 방식을 취하기 시작했다…
+	CASE 5
+		PRINTFORML 자기가 무슨 말을 하는지 알고 있는지도 모르겠다…
+		PRINTFORML 술주정꾼의 이야기를 성실하게 들어도 쓸데없는 짓 같다
+	CASE 6
+		PRINTFORML %마스터가% 적당하게 맞장구를 치고 있자, 무엇가를 자극한 것일까 %타겟은% 갑자기 웃기 시작했다
+		PRINTFORML 잘 모르지만 즐거운 것 같으니 좋은걸로 하자
+ENDSELECT
+
+;-------------------------------------------------
+;334, 잔을 주고 받는다
+;-------------------------------------------------
+@MESSAGE_COM334
+IF CFLAG:TARGET:임신자각상태 == 1
+	PRINTFORML %조교자는% 임신중이라 술을 삼가고 있는 %CALLNAME:TARGET%의 접시에 요리를 담으면서, 함께 식사를 즐겼다
+ELSEIF TALENT:TARGET:술내성 == -2
+	PRINTFORML %조교자는% 술에 약한 %CALLNAME:TARGET%의 접시에 요리를 담으면서, 함께 식사를 즐겼다
+ELSE
+	PRINTFORML %조교자는% %CALLNAME:TARGET%의 잔에 술을 따르면서, 함께 술을 마셨다
+ENDIF
+SELECTCASE TFLAG:193
+	CASE 1
+		PRINTFORML %타겟은% 매우 즐거운 듯 하다…
+	CASE -1
+		PRINTFORML 거의 대화가 이어지지 않았다…
+ENDSELECT
+
+;-------------------------------------------------
+;335, 간호한다
+;-------------------------------------------------
+@MESSAGE_COM335
+PRINTFORML %조교자는% %타겟을% 간호했다
+SELECTCASE TFLAG:193
+	CASE 1
+		PRINTFORML %CALLNAME:TARGET%의 취기를 좋게 깨울 수 있었던 것 같다…
+	CASE -1
+		PRINTFORML 별로 %CALLNAME:TARGET%의 도움은 되지 않았던 것 같다…
+ENDSELECT
+
+;-------------------------------------------------
+;336, 무릎베개한다
+;-------------------------------------------------
+@MESSAGE_COM336
+PRINTFORML %조교자는% %CALLNAME:TARGET%에게 무릎베개를 해주었다
+
+SELECTCASE ABL:TARGET:친밀
+	CASE IS < 5
+		PRINTFORML %타겟은% 거북스러운 듯이 하고 있다…
+	CASE 5 TO 9
+		PRINTFORML %타겟은% 부끄러운 것 같다……
+	CASEELSE
+		PRINTFORML %타겟은% 행복한 것 같다……
+ENDSELECT
+
+IF TFLAG:193 > 0
+	PRINTFORML 기분 좋았던 것일까, %타겟은% 그대로 선잠에 빠져버렸다
+	PRINTFORML %마스터는% %타겟이% 일어날 때까지 잠자는 얼굴을 바라보며 보냈다
+ENDIF
+
+TFLAG:400 = RAND:2
+SIF TFLAG:400 && (DATE_HITOGOMI() || WITH_MOB() == 9)
+	CALL DATE_HITOGOMI_MESSAGE(CFLAG:PLAYER:현재위치)
+
+;-------------------------------------------------
+;337,子供とふれあう
+;-------------------------------------------------
+@MESSAGE_COM337
+#DIM CHARA
+#DIM CHILDNUM
+#DIMS 아이의이름
+;自立後
+IF TFLAG:묘사중인아이 > 1000
+	CHARA = TFLAG:묘사중인아이 % 1000
+	CHILDNUM = TFLAG:묘사중인아이 / 1000
+;육아중
+ELSE
+	CHARA = TFLAG:묘사중인아이
+	CHILDNUM = TALENT:CHARA:육아중
+ENDIF
+아이의이름 = %CHILDNAME:CHARA:CHILDNUM%
+
+SELECTCASE CHILD_ACT:CHARA:CHILDNUM
+CASE "睡眠"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 잠들어 있는 %아이의이름%에게 손을 뻗자, 
+		PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 그 손을 뿌리쳤다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %마스터는% 잠들어 있는 %조사처리(아이의이름,"을")% 부드럽게 쓰다듬었다
+		PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 불안한 듯한 표정으로 그 모습을 살피고 있다……
+	ELSE
+		IF CFLAG:CHARA:출산경과일 < CHILD_어휘
+			PRINTFORML %마스터는% 잠들어 있는 %아이의이름%의 뺨을 부드럽게 쓰다듬었다
+			PRINTDATA
+				DATAFORM %조사처리(아이의이름,"는")% 조용히 숨소리를 내고 있다
+				DATAFORM %아이의이름%의 따스한 온기가 전해져 왔다
+				DATAFORM %조사처리(아이의이름,"는")% 기뻐하는 것처럼 보인다
+				DATAFORM %아이의이름%의 부드러운 피부의 감촉에 치유받는 것 같았다
+				DATAFORM %조사처리(아이의이름,"는")% 손가락을 물려고 했다
+				DATAFORM %조사처리(CALLNAME:CHARA,"는")% 그 손을 포개고 부드러운 미소를 지었다
+				DATAFORM %조사처리(CALLNAME:CHARA,"는")% 은은한 사랑의 온기를 나누었다
+			ENDDATA
+			PRINTL 
+		ELSE
+			PRINTFORML %마스터는% 잠들어 있는 %조사처리(아이의이름,"을")% 부드럽게 쓰다듬었다
+			PRINTFORML %조사처리(아이의이름,"는")% 조용히 숨소리를 내고 있다
+		ENDIF
+	ENDIF
+CASE "起床"
+	IF CFLAG:CHARA:출산경과일 < CHILD_어휘
+		IF TFLAG:193 == -1
+			PRINTFORML %마스터가% %조사처리(아이의이름,"을")% 달래주려고 하자
+			PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 그 손을 뿌리쳤다……
+		ELSEIF TFLAG:193 == 1
+			PRINTFORML %마스터는% 잠에서 깬 %조사처리(아이의이름,"을")% 달래주었다
+			PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 불안한 듯한 표정으로 그 모습을 살피고 있다……
+		ELSE
+			PRINTFORML %마스터는% 잠에서 깨어나 울고 있는 %조사처리(아이의이름,"을")% 달래주었다
+			PRINTDATA
+				DATAFORM %조사처리(아이의이름,"는")% 배가 고픈 것 같다……
+				DATAFORM %조사처리(아이의이름,"는")% 젖을 물고 싶은 것 같다……
+				DATAFORM %조사처리(아이의이름,"는")% %조사처리(CALLNAME:CHARA,"을")% 찾고 있는 것 같다……
+			ENDDATA
+			PRINTL 
+		ENDIF
+	ELSE
+		PRINTFORML %마스터는% %아이의이름%에게 좋은아침이라고 인사했다
+		IF TFLAG:193 == -1
+			PRINTFORML %조사처리(아이의이름,"는")% 졸린 듯이 대답했다
+		ELSEIF TFLAG:193 == 1
+			PRINTFORML %조사처리(아이의이름,"는")% 기운차게 인사를 돌려주었다
+		ELSE
+			PRINTDATA
+				DATAFORM %조사처리(아이의이름,"는")% 기운차게 인사를 돌려주었다
+				DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%에 기대어 왔다
+				DATAFORM %조사처리(아이의이름,"는")% 졸린 듯이 대답했다
+				DATAFORM %조사처리(아이의이름,"는")% 벌떡 일어나 인사를 했다
+				DATAFORM %조사처리(아이의이름,"는")% 하품을 하면서 인사를 돌려주었다
+			ENDDATA
+			PRINTL 
+		ENDIF
+	ENDIF
+CASE "入浴"
+	IF CFLAG:CHARA:출산경과일 < CHILD_어휘
+		;このへん状況的にありえるのだろうか……？
+		IF TFLAG:193 == -1
+			PRINTFORML %마스터가% %아이의이름%의 몸을 씻기려고 하자
+			PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 그 손을 뿌리쳤다……
+		ELSEIF TFLAG:193 == 1
+			PRINTFORML %마스터는% %아이의이름%의 몸을 씻겨주었다
+			PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 불안한 듯한 표정으로 그 모습을 살피고 있다……
+		ELSE
+			PRINTFORML %마스터는% %아이의이름%의 몸을 씻겨주었다
+			PRINTDATA
+				DATAFORM %조사처리(아이의이름,"는")% 간지러운 듯 하다
+				DATAFORM %조사처리(아이의이름,"는")% 물끄러미 이쪽을 바라보고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 불안한 듯이 %CALLNAME:CHARA%쪽을 보고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 손발을 버둥거리고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 릴렉스하고 있다
+			ENDDATA
+			PRINTL 
+		ENDIF
+	ELSE
+		IF TFLAG:193 == -1
+			PRINTFORML %마스터가% %아이의이름%의 몸을 씻기려고 하자
+			PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 그 손을 뿌리쳤다……
+		ELSEIF TFLAG:193 == 1
+			PRINTFORML %마스터는% %아이의이름%의 몸을 씻겨주었다
+			PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 불안한 듯한 표정으로 그 모습을 살피고 있다……
+		ELSE
+			PRINTFORML %마스터는% %아이의이름%의 몸을 씻겨주었다
+			PRINTDATA
+				DATAFORM %조사처리(아이의이름,"는")% 간지러운 듯 하다
+				DATAFORM %조사처리(아이의이름,"는")% 즐거운 듯이 들떠 있다
+				DATAFORM %조사처리(아이의이름,"는")% 비누 거품을 흩뿌리며 놀고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 따라하며 %CALLNAME:CHARA%의 몸을 씻기고 있다
+			ENDDATA
+			PRINTL 
+		ENDIF
+	ENDIF
+CASE "식사"
+	IF CFLAG:CHARA:출산경과일 < CHILD_離乳
+		IF TFLAG:193 == -1
+			PRINTFORML %마스터가% %아이의이름%에게 두 손을 뻗으려고 하면
+			PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 지키려는 듯이 %아이의이름%의 몸을 가리고、이쪽을 째려보았다……
+		ELSEIF TFLAG:193 == 1
+			PRINTFORML %마스터가% %아이의이름%의 머리를 쓰다듬으려고 하면
+			PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 날카로운 눈초리로 쏘아보며、%아이의이름%의 몸을 가렸다……
+		ELSE
+			PRINTFORML %마스터는% 젖을 빠는 %아이의이름%의 머리를 쓰다듬었다
+			PRINTDATA
+				DATAFORM %조사처리(아이의이름,"는")% 정신없이 젖을 빨고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 천천히 젖을 빨고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 얌전히 젖을 빨고 있다
+				DATAFORM %조사처리(CALLNAME:CHARA,"는")% 부끄러운듯 미소를 짓고 있다
+				DATAFORM %조사처리(CALLNAME:CHARA,"는")% 애정으로 감싸듯이 %아이의이름%의 몸을 흔들었다
+				DATAFORM %CALLNAME:CHARA%의 모습에서 모성애가 전해져 온다
+			ENDDATA
+			PRINTL 
+		ENDIF
+	ELSEIF CFLAG:CHARA:출산경과일 < CHILD_어휘
+		IF TFLAG:193 == -1
+			PRINTFORML %마스터가% %아이의이름%하고 같이 식사를 하려고 하니
+			PRINTFORML %조사처리(CALLNAME:CHARA,"는")%카로운 눈초리로 쏘아보며、%아이의이름%의 몸을 가렸다……
+		ELSEIF TFLAG:193 == 1
+			PRINTFORML %마스터는% %아이의이름%하고 같이 식사를 하려고 하니
+			PRINTFORML %CALLNAME:CHARA% 불안한 듯한 표정으로 그 모습을 살피고 있다……
+		ELSE
+			PRINTFORML %마스터와% %조사처리(CALLNAME:CHARA,"는")% %조사처리(아이의이름,"와")% 둘러앉아 식사를 했다
+			PRINTDATA
+				DATAFORM %조사처리(아이의이름,"는")% 무심하게 음식을 입에 넣고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 이따금씩 스스로 음식을 입에 물려고 하고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 찬찬히 맛보는 것처럼 음미하고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 입을 딱 벌리고 음식을 바라고 있다
+				DATAFORM %조사처리(CALLNAME:CHARA,"는")% 천천히 %아이의이름%의 입으로 음식을 옮기고 있다 
+				DATAFORM %조사처리(CALLNAME:CHARA,"는")% 아 하고 입을 벌리고 %아이의이름%의 흉내를 내고 있다
+				DATAFORM %조사처리(CALLNAME:CHARA,"는")% 입을 우물거리며 %아이의이름%의 흉내를 내고 있다
+			ENDDATA
+			PRINTL 
+		ENDIF
+	ELSE
+		IF TFLAG:193 == -1
+			PRINTFORML %마스터가% %아이의이름%하고 같이 식사를 하려고 하니
+			PRINTFORML %조사처리(CALLNAME:CHARA,"는")%카로운 눈초리로 쏘아보며、%아이의이름%의 몸을 숨기고た……
+		ELSEIF TFLAG:193 == 1
+			PRINTFORML %마스터는% %아이의이름%하고 같이 식사를 했다
+			PRINTFORML %조사처리(아이의이름,"는")% 신기한 듯이 이쪽을 살피면서 식사를 하고 있다
+		ELSE
+			PRINTFORML %마스터는% %아이의이름%와 함께 식사를 했다
+			PRINTDATA
+				DATAFORM %조사처리(아이의이름,"는")% 정신없이 식사를 하고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 서투르게 식사를 하고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 좋아하는 음식을 마지막으로 남겨 놓고 먹고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 자기가 좋아하는 음식을 가르쳐 주었다
+				DATAFORM %조사처리(아이의이름,"는")% 아무렇지도 않게 야채를 남기려고 하고 있다……
+				DATAFORM %조사처리(아이의이름,"는")% 먹고 있는 음식의 이름을 물어 왔다
+				DATAFORM %마스터는% %아이의이름%에게 식사 예절을 가르쳐 주었다
+				DATAFORM %마스터는% %아이의이름%에게 젓가락 잡는 법을 가르쳐 주었다
+				DATAFORM %마스터는% %아이의이름%에게 맛의 차이를 가르쳐 주었다
+			ENDDATA
+			PRINTL 
+		ENDIF
+	ENDIF
+CASE "玩具"
+	IF CFLAG:CHARA:출산경과일 < CHILD_自立前
+		IF TFLAG:193 <= 1
+			PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 장난감을 가지고 놀았다
+			PRINTFORML %조사처리(아이의이름,"는")% 천진난만하게 들떠 있다
+		ELSE
+			PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 장난감을 가지고 놀았다
+			PRINTDATA
+				DATAFORM %조사처리(아이의이름,"는")% 즐거운 듯이 들떠 있다
+				DATAFORM %조사처리(아이의이름,"는")% 장난감을 부딪치며 놀고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 장난감을 굴리며 놀고 있다
+				DATAFORM %조사처리(아이의이름,"는")% 장난감을 휘두르며 들떠 있다
+				DATAFORM %조사처리(아이의이름,"는")% 장난감을 던지면서 들떠 있다
+			ENDDATA
+			PRINTL 
+		ENDIF
+	ELSE
+		IF TFLAG:193 <= 1
+			PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 이야기를 했다
+			PRINTFORML 이야기는 별로 이어지지 않았다……
+		ELSE
+			PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 이야기를 했다
+			PRINTFORML %조사처리(아이의이름,"는")% 장난감에 대한 추억을 이야기해 주었다
+		ENDIF
+	ENDIF
+CASE "お絵かき"
+	PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 그림을 그리며 놀았다
+	PRINTDATA
+		DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%의 그림을 그리고 있다
+		DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 그림을 그리고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 요괴의 그림을 그리고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 과일의 그림을 그리고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 동물의 그림을 그리고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 산의 그림을 그리고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 집의 그림을 그리고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 자신의 그림을 그리고 있다
+	ENDDATA
+	PRINTL 
+CASE "遊び"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 놀려고 했다
+		PRINTFORML %조사처리(아이의이름,"는")% 혼자 놀고 싶은것 같다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 놀았다
+		PRINTFORML %조사처리(아이의이름,"는")% 천진난만하게 들떠 있다
+	ELSE
+		PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 탄막놀이 흉내를 냈다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 씩씩하게 떠들고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 필살의 스펠 카드를 생각하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%의 탄막을 흉내내고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 그레이즈 놀이를 하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%와 %CALLNAME:CHARA%중 어느 쪽이 강한지 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 볼을 내던지고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 몸으로 던지듯 껴안아 왔다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "勉強"
+	PRINTFORML %마스터는% %아이의이름%의 공부를 도와주었다
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% 묵묵히 책상에 앉아 있다
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% %CALLNAME:MASTER%에게 감사의 말을 전하고 공부를 계속했다
+	ELSE
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 모르는 것을 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 술술 문제를 풀어 나갔다
+			DATAFORM %조사처리(아이의이름,"는")% 눈 깜짝할 사이에 노트를 꽉 채워 버렸다
+			DATAFORM %조사처리(아이의이름,"과")% 문제를 서로 내면서 분위기가 달아올랐다
+			DATAFORM %CALLNAME:MASTER%도 모르는 문제를 같이 풀었다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "読書"
+	PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 책의 이야기를 했다
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% 무시하고 책을 읽고 있다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% 더듬거리며 대답했다
+	ELSE
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 좋아하는 등장인물에 대해 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 좋아하는 장면을 열정적으로 이야기해주었다
+			DATAFORM %조사처리(아이의이름,"는")% 이야기의 이상한 점을 지적했다
+			DATAFORM %조사처리(아이의이름,"는")% 의문스럽게 생각한 점을 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 읽을 수 없는 문자를 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 책의 감상을 이야기해 주었다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "料理"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터는% %아이의이름%의 요리를 도와주려고 했다
+		PRINTFORML %조사처리(아이의이름,"는")% 무시하고 묵묵히 작업을 계속하고 있다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %마스터는% %아이의이름%의 요리를 도와주었다
+		PRINTFORML %조사처리(아이의이름,"는")% 의아한 얼굴로 요리를 계속했다
+	ELSE
+		PRINTFORML %마스터는% %아이의이름%의 요리를 도와주었다
+		PRINTDATA
+			DATAFORM %아이의이름%에게 레시피 읽는 법을 가르쳐 주었다
+			DATAFORM %아이의이름%에게 도구를 다루는 방법을 가르쳤다
+			DATAFORM %아이의이름%에게 요리 순서를 가르쳐 주었다
+			DATAFORM %아이의이름%에게 껍질 벗기는 법을 가르쳤다
+			DATAFORM %아이의이름%의 위험한 작업을 대신했다
+			DATAFORM %아이의이름%에게 식재료의 이름을 알려주었다
+			DATAFORM %아이의이름%에게 조미료에 대한 지식을 가르쳤다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "絵描き"
+	PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 그림의 이야기를 했다
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% 무시하고 그림을 그리고 있다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% 더듬거리며 대답했다
+	ELSE
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 그리고 싶은 것을 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 그리고 있는 그림에 대해 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 요괴의 모습에 대해 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 동물의 모습에 대해 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 뭘 그리고 있는지 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 바깥 세계에 대해 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 꿈에서 본 경치에 대해 이야기해 주었다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "歌唱"
+	IF GROUPMATCH(1, MUSIC_ABLE(30), MUSIC_ABLE(31), MUSIC_ABLE(32), MUSIC_ABLE(33), MUSIC_ABLE(34), MUSIC_ABLE(35))
+		PRINTFORML %마스터는% %아이의이름%의 노래에 맞추어 반주했다
+	ELSE
+		PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 함께 노래했다
+	ENDIF
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% 혼자 노래하고 싶은것 같다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% 어색하게 맞춰서 불러주었다
+	ELSE
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 의욕적으로 노래하기 시작했다
+			DATAFORM %조사처리(아이의이름,"는")% 성량을 높여 노래하기 시작했다
+			DATAFORM %조사처리(아이의이름,"는")% 퍼포먼스 흉내를 내면서 노래했다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 흉내를 내면서 노래했다
+			DATAFORM %조사처리(아이의이름,"는")% 춤추면서 노래하기 시작했다
+			DATAFORM %조사처리(아이의이름,"는")% 웃는 얼굴로 노래했다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "掃除"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터는% %아이의이름%의 청소를 도와주려고 했다
+		PRINTFORML %조사처리(아이의이름,"는")% 무시하고 묵묵히 작업을 계속하고 있다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %마스터는% %아이의이름%의 청소를 도와주었다
+		PRINTFORML %조사처리(아이의이름,"는")% 의아한 얼굴로 청소를 계속했다
+	ELSE
+		PRINTFORML %마스터는% %아이의이름%의 청소를 도와주었다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 잡동사니를 소중하게 정리했다
+			DATAFORM %조사처리(아이의이름,"는")% 잃어버린 필기 도구를 찾고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 쓰레기통을 뒤지고 있다
+			DATAFORM %조사처리(아이의이름,"는")%걸레로 방을 흠뻑 적셨다……
+			DATAFORM %아이의이름%에게 효율적인 청소 순서를 가르쳐 주었다
+			DATAFORM %아이의이름%에게 빗자루와 쓰레받기의 사용법을 가르쳐 주었다
+			DATAFORM %아이의이름%에게 걸레질 하는 법을 가르쳐 주었다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "支度"
+	PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 서당의 이야기를 했다
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% 무시하고 묵묵히 작업을 계속하고 있다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% 더듬거리며 대답했다
+	ELSE
+		PRINTFORML %조사처리(아이의이름,"는")% 오늘의 시간표에 대한 이야기를 해주었다
+	ENDIF
+CASE "登校"
+	PRINTFORML %마스터는% %아이의이름%에게 다녀오라는 인사를 했다
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% 대답을 해주지 않았다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% 조그맣게 대답을 했다
+	ELSE
+		PRINTFORML %조사처리(아이의이름,"는")% 씩씩하게 대답을 했다
+	ENDIF
+CASE "授業"
+	PRINTFORML %마스터는% %아이의이름%의 수업을 지켜보았다
+	PRINTDATA
+		DATAFORM %조사처리(아이의이름,"는")% 동급생과 이야기하고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 동급생과 놀고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 문제를 풀고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 질문하고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 손을 번쩍 들고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 모두의 앞에 서 있다
+		DATAFORM %조사처리(아이의이름,"는")% 바깥 경치를 바라보고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 낭독하고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 계산하고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 선생님의 말씀을 듣고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 생각을 하고 있다
+		DATAFORM %조사처리(아이의이름,"는")% 꾸지람을 듣고 있다……
+		DATAFORM %조사처리(아이의이름,"는")% 자고 있다……
+	ENDDATA
+	PRINTL 
+CASE "帰宅"
+	PRINTFORML %마스터는% %아이의이름%에게 새해 인사를 했다
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% 대답을 해주지 않았다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% 조그맣게 대답을 했다
+	ELSE
+		PRINTFORML %조사처리(아이의이름,"는")% 씩씩하게 대답을 했다
+	ENDIF
+;仕事と散歩は自立後
+CASE "仕事"
+	PRINTFORML %마스터는% %아이의이름%에게 말을 걸었다
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% %마스터를% 기억하지 못하는 것 같았다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% %마스터를% 그다지 탐탁하게 여기지 않는 것 같았다……
+	ELSE
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 방문을 반겨 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 재회를 기뻐하며 얼싸안아 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 다시 와달라고 졸라 왔다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 소문에 대하 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%의 형편을 물어 왔다
+			DATAFORM %조사처리(아이의이름,"과")% 세상 이야기를 했다
+			DATAFORM %조사처리(아이의이름,"과")% 최근의 경기에 대한 이야기를 했다
+			DATAFORM %조사처리(아이의이름,"는")% 지금의 생활에 대해서 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 순조롭게 일을 해내고 있는 것 같다
+			DATAFORM %조사처리(아이의이름,"는")% %마스터가% 무슨 일을 하고 있는지 이상하다는 듯이 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 혼자 사는 것의 어려움과 편안함에 대해 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 존경하는 상사의 이야기를 해주었다
+			DATAFORM %조사처리(아이의이름,"는")% 장래의 꿈에 대해서 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 일의 바쁨에 대해 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 일의 가혹함에 대해 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 일의 보람에 대해 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 지금의 작업 모습을 보여 주었다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "散歩"
+	PRINTFORML %마스터는% %아이의이름%에게 말을 걸었다
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% %마스터를% 기억하지 못하는 것 같았다た……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% %마스터를% 그다지 탐탁하게 여기지 않는 것 같았다……
+	ELSE
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 방문을 반겨 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 재회를 기뻐하며 얼싸안아 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 다시 와달라고 졸라 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 같이 놀자고 권해 왔다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 소문에 대하 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%의 형편을 물어 왔다
+			DATAFORM %조사처리(아이의이름,"과")% 세상 이야기를 했다
+			DATAFORM %조사처리(아이의이름,"과")% 최근의 경기에 대한 이야기를 했다
+			DATAFORM %조사처리(아이의이름,"는")% 지금의 생활에 대해서 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"과")% 추억담으로 꽃을 피웠다
+			DATAFORM %조사처리(아이의이름,"는")% %마스터와% %조사처리(CALLNAME:CHARA,"가")% 처음 친해지게 된 계기에 대해 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 신경쓰이는 사람에 대한 얘기를 해왔다……
+			DATAFORM %조사처리(아이의이름,"는")% 요즘 취미에 대해서 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"과")% 탄막놀이에 대한 열띤 토론을 벌였다
+			DATAFORM %조사처리(아이의이름,"는")% 최근에 읽은 책에 대해서 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 장래의 꿈에 대해서 말해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%와의 추억을 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%와 지금 어떻게 지내냐고 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 친구에 대해 이야기를 해주었다
+			DATAFORM %조사처리(아이의이름,"는")% 일에 대한 이야기를 해주었다
+			DATAFORM %조사처리(아이의이름,"는")% 오리지널 자취 요리를 소개해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 바깥 세계에 대한 동경을 말했다
+			DATAFORM %조사처리(아이의이름,"는")% 종족 차이에 대한 고민을 털어놓았다
+			DATAFORM %조사처리(아이의이름,"는")% 최근의 고민거리에 대해서 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"과")% 가족의 이야기를 했다
+			DATAFORM %조사처리(아이의이름,"는")% 혼자 사는 비결을 알려주었다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 몸을 배려해 주었다.
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%와도 만나고 싶은 모양이다
+			DATAFORM %조사처리(아이의이름,"는")% 예전부터 생각하고 있던 의문에 대하여 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 자신의 출생에 대해서 물어 왔다
+		ENDDATA
+		PRINTL 
+	ENDIF
+;以降はその他の行動,一部はCHARAと同室限定
+CASE "幼児期_抱かれる", "幼児期_眠たそう", "幼児期_大人しい"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 안겨 있는 %아이의이름%에게 두 손을 뻗으려고 하면
+		PRINTFORML %CALLNAME:CHARA% 그 손을 뿌리쳤다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %마스터는% 안겨 있는 %아이의이름%을 부드럽게 쓰다듬었다
+		PRINTFORML %CALLNAME:CHARA% 불안한 듯한 표정으로 그 모습을 살피고 있다……
+	ELSE
+		PRINTFORML %마스터는% 안겨 있는 %아이의이름%을 부드럽게 쓰다듬었다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 기쁘게 들떠 있다
+			DATAFORM %조사처리(아이의이름,"는")% 입가를 느슨하게 하고 미소지었다
+			DATAFORM %조사처리(아이의이름,"는")% 손을 뻗어 %마스터의% 손을 잡으려 하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 생글생글 웃고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 눈을 감고 가만히 있다
+			DATAFORM %조사처리(아이의이름,"는")% 손의 움직임을 쫓고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 졸린 듯 하다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "幼児期_こちらを見る", "幼児期_何かを訴える"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 안겨 있는 %아이의이름%에게 두 손을 뻗으려고 하면
+		PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 그 손을 뿌리쳤다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %마스터는% 안겨 있는 %조사처리(아이의이름,"을")% 달래주었다
+		PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 불안한 듯한 표정으로 그 모습을 살피고 있다……
+	ELSE
+		PRINTFORML %마스터는% 안겨 있는 %조사처리(아이의이름,"을")% 달래주었다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 물끄러미 이쪽을 바라보고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 손을 버둥거리고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 울음이 터질 것 같다……
+			DATAFORM %조사처리(아이의이름,"는")% 기분이 나빠 보인다……
+			DATAFORM %조사처리(CALLNAME:CHARA,"가")% 그 모양을 보고 웃고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"가")% 올바른 달래기 시범을 보여 주었다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "幼児期_何かを目で追う"
+	PRINTFORML %마스터는% %아이의이름%의 시선 끝을 더듬어 보았지만、아무것도 없었다……
+CASE "幼児期_あやされる"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% %조사처리(아이의이름,"을")% 달래려고 하면
+		PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 그 손을 뿌리쳤다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %마스터는% 안겨 있는 %조사처리(아이의이름,"을")% 달래주었다
+		PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 불안한 듯한 표정으로 그 모습을 살피고 있다……
+	ELSE
+		PRINTFORML %마스터는% %조사처리(CALLNAME:CHARA,"을")% 따라서 %조사처리(아이의이름,"을")% 달래주었다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 꺌꺌 웃고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 손을 흔들며 들떠 있다
+			DATAFORM %조사처리(아이의이름,"는")% 온몸으로 기쁨을 표현하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 기분이 좋다
+			DATAFORM %조사처리(CALLNAME:CHARA,"가")% 그 모양을 보고 웃고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"가")% 다시 한번 %조사처리(아이의이름,"을")% 달래주었다
+		ENDDATA
+		PRINTL 
+	ENDIF
+
+CASE "幼少期_会話"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 귀를 곤두세우고 있으면 %CALLNAME:CHARA%에게 노려보아졌다……
+	ELSE
+		PRINTFORML %마스터는% 두 사람의 대화에 섞였다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 즐거운 듯이 이야기하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 더듬거리며 이야기를 하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 이야기를 하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%의 이야기를 하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 두 사람에게 의문을 던져 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 자기가 생각하고 있는 것을 말하려 하고 있다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "幼少期_教わる", "幼少期_しつけられる"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 귀를 곤두세우고 있으면 %CALLNAME:CHARA%에게 노려보아졌다……
+	ELSE
+		PRINTFORML %마스터는% 두 사람의 모습을 살폈다
+		PRINTDATA
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 예절에 대해 설명하고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 선악에 대해 설명하고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 규칙에 대해 설명하고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 물건의 이름을 가르치고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 말을 가르치고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 계속 질문을 받고 초조해하고 있다……
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "幼少期_親子遊び"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 놀이에 섞이려고 하면 %CALLNAME:CHARA%에게 노려보아졌다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %마스터는% 두 사람의 놀이에 섞였다
+		PRINTFORML %조사처리(아이의이름,"는")% 즐거운 듯이 들떠 있다
+	ELSE
+		PRINTFORML %마스터는% 두 사람의 놀이에 섞였다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 즐거운 듯이 들떠 있다
+			DATAFORM %조사처리(아이의이름,"는")% 씩씩하게 뛰어다니고 있다
+			DATAFORM %조사처리(아이의이름,"는")% %조사처리(CALLNAME:CHARA,"을")% 껴안고 있다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%로부터 허둥지둥 도망다니고 있다
+			DATAFORM 셋이서 화목한 한때를 보냈다……
+			DATAFORM 셋이서 함께 웃으며 행복한 분위기 싸였다……
+			DATAFORM 셋이서 손을 잡고 가족애를 나누었다……
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "幼少期_一人遊び", "幼少期_はしゃぐ", "幼少期_うろちょろ", "幼少期_うずうず", "幼少期_遊ぼう", "幼少期_ぺたぺた", "幼少期_かまって"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 놀려고 했다
+		PRINTFORML %조사처리(아이의이름,"는")% 부끄러워하며 숨어 버렸다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 놀았다
+		PRINTFORML %조사처리(아이의이름,"는")% 천진난만하게 들떠 있다
+	ELSE
+		PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 놀아주었다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 씩씩하게 들떠 있다
+			DATAFORM %조사처리(아이의이름,"는")% 싱글싱글 웃고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 놀아주어서 즐거워 보인다
+			DATAFORM %조사처리(아이의이름,"는")% 기뻐서 뛰어다니고 있다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%에게 얼싸안아 왔다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 팔에 매달리고 있다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 몸에 올라왔다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 얼굴을 괴롭혔다
+			DATAFORM %조사처리(아이의이름,"과")% 말장난을 하면서 분위기가 달아올랐다
+			DATAFORM %조사처리(아이의이름,"과")% 제스처 게임을 하면서 분위기가 달라올랐다
+			DATAFORM %조사처리(아이의이름,"과")% 손가락씨름을 하면서 분위기가 달아올랐다
+			DATAFORM %조사처리(아이의이름,"과")% 리듬 게임을 하면서 분위기가 달아올랐다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "幼少期_大人しい", "幼少期_考え事", "幼少期_眠そう", "幼少期_見つめる"
+	PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 이야기를 했다
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% 흥미가 없는 듯 하다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% 더듬거리며 이야기하고 있다
+	ELSE
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%에게 질문을 던져 왔다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%에게 어려운 의문을 던져 왔다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%에 대해 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 좋아하는 것을 가르쳐 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 싫어하는 것을 가르쳐 주었다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%가 좋아하는 곳을 가르쳐 주었다
+			DATAFORM %조사처리(아이의이름,"과")% 수수께끼를 내면서 분위기가 달아올랐다
+			DATAFORM %조사처리(아이의이름,"과")% 말장난을 하면서 분위기가 달아올랐다
+			DATAFORM %조사처리(아이의이름,"는")% 자기가 생각하고 있는 것을 말하려 하고 있다
+		ENDDATA
+		PRINTL 
+	ENDIF
+
+CASE "自立前_会話", "自立前_笑い合う"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 귀를 곤두세우고 있으면 %CALLNAME:CHARA%에게 노려보아졌다……
+	ELSE
+		PRINTFORML %마스터는% 두 사람의 대화에 섞였다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 즐거운 듯이 이야기하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 유창하게 이야기를 하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 이야기를 하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%의 이야기를 하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 두 사람에게 의문을 던져 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 친구의 이야기를 하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 어디서 배웠는지 모를 말을 쓰고 있다……
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "自立前_教わる", "自立前_しつけられる"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 귀를 곤두세우고 있으면 %CALLNAME:CHARA%에게 노려보아졌다……
+	ELSE
+		PRINTFORML %마스터는% 두 사람의 모습을 살폈다
+		PRINTDATA
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 조금 화가 난 모습으로 설명하고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 집안일을 가르치고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 일을 가르치고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 중요한 것에 대하여 설명하고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 어려운 단어을 가르치고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 역사를 가르치고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 종족에 대해 설명하고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 탄막놀이를 가르치고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% 어려운 질문을 하고 있다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "自立前_ひそひそ話"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 귀를 곤두세우고 있으면 
+		PRINTFORML %조사처리(CALLNAME:CHARA,"는")% 순간적으로 %아이의이름%의 몸을 숨겼다……
+	ELSE
+		PRINTFORML %마스터는% 두 사람의 모습을 살폈다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"과")% %조사처리(CALLNAME:CHARA,"는")% 미소지으며 이쪽으로 손을 흔들고 있다
+			DATAFORM %조사처리(아이의이름,"과")% %조사처리(CALLNAME:CHARA,"는")% 웃으며 이 쪽을 가리키고 있다
+			DATAFORM %조사처리(아이의이름,"과")% %조사처리(CALLNAME:CHARA,"는")% 히죽거리며 몸을 돌렸다
+			DATAFORM %조사처리(아이의이름,"는")% 황급히 뭔가를 숨겼다……
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "自立前_文句", "自立前_主張"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 귀를 곤두세우고 있으면 %CALLNAME:CHARA%에게 노려보아졌다……
+	ELSE
+		PRINTFORML %마스터는% %아이의이름%의 의견을 들어 주었다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 하고 싶은 일이 있는 것 같다
+			DATAFORM %조사처리(아이의이름,"는")% 가정의 규칙에 불만이 있는 것 같다
+			DATAFORM %조사처리(아이의이름,"는")% 통금 시간을 늘려 주었으면 하는 모양이다
+			DATAFORM %조사처리(아이의이름,"는")% 자기 방을 갖고 싶은 것 같다
+			DATAFORM %조사처리(아이의이름,"는")% 갖고 싶은 게 있는 것 같다
+			DATAFORM %조사처리(아이의이름,"는")% 잃어버린 것이 있는 것 같다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "自立前_教えて"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 귀를 곤두세우고 있으면 %CALLNAME:CHARA%에게 노려보아졌다……
+	ELSE
+		PRINTFORML %마스터는% %아이의이름%의 이야기를 들어 주었다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 어려운 단어의 뜻을 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 옛날 사건들에 대하여 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 맛있는 요리 만드는 법을 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 그림을 잘 그리는 법을 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 악기의 연주법을 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 가장 효율적인 청소 방법을 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 탄막놀이의 향상 수단을 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 도구의 원리에 대하여 물어 왔다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "自立前_手伝い"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터가% 두 사람의 모습을 살피려 하자 %CALLNAME:CHARA%에게 노려보아졌다……
+	ELSE
+		PRINTFORML %마스터는% 두 사람의 모습을 살폈다
+		PRINTDATA
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% %조사처리(아이의이름,"을")% 칭찬하고 있다
+			DATAFORM %조사처리(CALLNAME:CHARA,"는")% %아이의이름%에게 지도를 하고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 척척 거들어 주고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 즐거운 듯이 일을 거들고 있다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "自立前_一人遊び"
+	IF TFLAG:193 == -1
+		PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 놀려고 했다
+		PRINTFORML %조사처리(아이의이름,"는")% 부끄러워하며 숨어 버렸다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 놀았다
+		PRINTFORML %조사처리(아이의이름,"는")% 천진난만하게 들떠 있다
+	ELSE
+		PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 놀아주었다
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% 씩씩하게 들떠 있다
+			DATAFORM %조사처리(아이의이름,"는")% 싱글싱글 웃고 있다
+			DATAFORM %조사처리(아이의이름,"는")% 놀아주어서 즐거워 보인다
+			DATAFORM %조사처리(아이의이름,"과")% 추리 게임을 해면서 분위기가 달아올랐다
+			DATAFORM %조사처리(아이의이름,"과")% 제스처 게임을 하면서 분위기가 달라올랐다
+			DATAFORM %조사처리(아이의이름,"과")% 손가락씨름을 하면서 분위기가 달아올랐다
+			DATAFORM %조사처리(아이의이름,"과")% 리듬 게임을 하면서 분위기가 달아올랐다
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASE "自立前_考え事", "自立前_眠そう", "自立前_話したい", "自立前_気にする", "自立前_遠慮", "自立前_睨む"
+	PRINTFORML %마스터는% %조사처리(아이의이름,"과")% 이야기를 했다
+	IF TFLAG:193 == -1
+		PRINTFORML %조사처리(아이의이름,"는")% 흥미 없다는 듯이 맞장구를 쳤다……
+	ELSEIF TFLAG:193 == 1
+		PRINTFORML %조사처리(아이의이름,"는")% 부끄러운 듯이 이야기해 주었다
+	ELSE
+		PRINTDATA
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%에게 질문을 던져 왔다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%에게 어려운 의문을 던져 왔다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:CHARA%에 대해 물어 왔다
+			DATAFORM %조사처리(아이의이름,"과")% 수수께끼를 내면서 분위기가 달아올랐다
+			DATAFORM %조사처리(아이의이름,"과")% 말장난을 하면서 분위기가 달아올랐다
+			DATAFORM %조사처리(아이의이름,"는")% 친구에 대해서 얘기해주었다
+			DATAFORM %조사처리(아이의이름,"는")% 서당에서 있었던 일을 이야기해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 고민거리를 털어놓았다
+			DATAFORM %조사처리(아이의이름,"과")% %CALLNAME:CHARA%의 요리 이야기로 분위기가 달아올랐다
+			DATAFORM %조사처리(아이의이름,"과")% 탄막놀이 이야기로 분위기가 달아올랐다
+			DATAFORM %조사처리(아이의이름,"는")% 장래의 꿈에 대해서 말해 주었다
+			DATAFORM %조사처리(아이의이름,"는")% 서당의 유행을 가르쳐 주었다
+			DATAFORM %조사처리(아이의이름,"는")% %CALLNAME:MASTER%의 비밀에 대하여 물어 왔다
+			DATAFORM %조사처리(아이의이름,"는")% 어디서 배웠는지 모를 말을 쓰고 있다……
+		ENDDATA
+		PRINTL 
+	ENDIF
+CASEELSE
+	PRINTFORML 예외 발생
+	PRINTFORML %CHILD_ACT:CHARA:CHILDNUM%
+	THROW
+ENDSELECT
+PRINTFORML 
+SIF TFLAG:묘사중인아이 < 1000
+	PRINTFORML 애정도 +1(%아이의이름%)
+
+;-------------------------------------------------
+;352, 고백한다
+;-------------------------------------------------
+@MESSAGE_COM352
+IF TFLAG:193
+	PRINTFORML %조교자는% 결심을 굳히며 %CALLNAME:TARGET%에 연정을 전했다…
+ELSE
+	PRINTFORML %조교자는% %CALLNAME:TARGET%에 고백하려고 했지만 말이 입으로부터 나오지 않는다…
+ENDIF
+
+;-------------------------------------------------
+;353, 장난 한다
+;-------------------------------------------------
+@MESSAGE_COM353
+PRINTFORML %조교자는% %타겟을% 일으키지 않도록 천천히 가까워졌다…
+
+;-------------------------------------------------
+;354, 동침 한다
+;-------------------------------------------------
+@MESSAGE_COM354
+PRINTFORML %조교자는% %CALLNAME:TARGET%의 근처에 누웠다…
+IF CFLAG:TARGET:쇠약 || CFLAG:TARGET:초대
+	PRINTFORML %타겟은% 작게 몸을 비틀었다…
+ELSE
+	PRINTFORML %타겟은% 눈을 뜨자 기쁜듯이 %조교자를% 맞아들였다
+ENDIF
+
+;-------------------------------------------------
+;355, 시간정지
+;-------------------------------------------------
+@MESSAGE_COM355
+PRINTFORML 더 월드! 시간이여 멈춰라!
+
+;-------------------------------------------------
+;360, 몸을 맡긴다
+;-------------------------------------------------
+@MESSAGE_COM360
+SELECTCASE TCVAR:20
+;	;골짜기를 보인다
+;	CASE 27
+;		PRINTFORML %조교자는% %CALLNAME:TARGET%의 골짜기를 차분히 시간(視姦) 했다……
+	;키스
+	CASE 30
+		PRINTFORML %조교자는% 웃음을 띠며 살짝 입술을 대어 %CALLNAME:TARGET%에 응했다……
+	;앞에서 안겨든다
+	CASE 32
+		IF TALENT:TARGET:체형 > TALENT:PLAYER:체형
+			PRINTFORML %조교자는% %CALLNAME:TARGET%의 골짜기에 얼굴을 파묻고, 달콤한 향기를 들이 마셨다……
+		ELSE
+			PRINTFORML %조교자는% 기대오는 %CALLNAME:TARGET%의 체온을 조용히 느꼈다……
+		ENDIF
+	;가슴을 비비게 한다
+	CASE 33
+		PRINTFORML %조교자는% %CALLNAME:TARGET%의 팔에 따라 이끌리듯 %OPPAI_DESCRIPTION(TARGET)%를 애무했다……
+	;치마 안을 보인다
+	CASE 35
+;		PRINTFORML %조교자는% %CALLNAME:TARGET%의 형태가 좋은 엉덩이를 차분히 감상했다……
+		IF TEQUIP:TARGET:50 == MASTER
+			PRINTFORML %조교자는% 생생한 결합부를 보여주어, 한층 뜨겁게 끓어오르게 했다
+		ELSEIF !EQUIP:하반신속옷2
+			PRINTFORML %조교자는% 스커트의 장막으로부터 엿보이는 배덕적인 성기에 사로잡혔다……
+		ELSE
+			PRINTFORML %조교자는% 당당하게 드러난 %PANTSNAME(EQUIP:하반신속옷2, TARGET)%를 차분히 감상했다……
+		ENDIF
+	;애원
+	CASE 40 TO 49
+		;실행 불가
+;		PRINTFORML 
+	;수음, 가슴 애무
+	CASE 50, 58
+		PRINTFORML %조교자는% %타겟과% 서로 응시하면서 쾌락에 몸을 바쳤다……
+	;펠라치오, 쿠니, 유두 들이마셔
+	CASE 51, 59
+		PRINTFORML %조교자는% 열심히 봉사하는 %CALLNAME:TARGET%의 모습을 보면서 쾌락에 몸을 바쳤다……
+	;가랑이, 짝 맞추기 놀이, 젖 맞추어 삽입된다
+	CASE 52, 74, 80, 83, 84, 90
+		PRINTFORML %조교자는% %CALLNAME:TARGET%에 몸을 맡기고 둘이서 쾌락에 잠겼다……
+	;파이즈리
+	CASE 53
+		PRINTFORML %조교자는% 파이즈리 하고 있는 %CALLNAME:TARGET%의 머리를 어루만져 주었다
+		IF TALENT:TARGET:연모 || TALENT:TARGET:사모
+			PRINTFORML %타겟은% 기쁜듯이 웃음을 띠며 한층 더 격렬하게 가슴으로 봉사해 왔다……
+		ELSEIF TALENT:TARGET:애욕 || TALENT:TARGET:섹프
+			PRINTFORML %타겟은% 쓴웃음을 지으며, 한층 더 격렬하게 가슴으로 괴롭혀 왔다……
+		ELSE
+			PRINTFORML %타겟은% 쑥스러운 듯 웃으면서 페니스를 다루고 있다……
+		ENDIF
+	;다리 코키
+	CASE 54
+		PRINTFORML %조교자는% %CALLNAME:TARGET%에 굴복해 칠칠치 못하게 허덕이는 소리를 질렀다……
+	;애널 애무, 애널 빨고
+	CASE 55, 56
+		PRINTFORML %조교자는% 뺨을 붉히며 항문으로 받는 쾌감을 즐겼다……
+	;손가락 삽입
+	CASE 57
+		IF TALENT:PLAYER:처녀 && TALENT:PLAYER:처녀 != -1
+			PRINTFORML %조교자는% 얼굴을 굳어지게 하면서도 %CALLNAME:TARGET%에 몸을 맡겼다……
+		ELSE
+			PRINTFORML %조교자는% %타겟과% 서로 응시하면서 쾌락에 몸을 바쳤다……
+		ENDIF
+	;딥키스
+	CASE 60
+		PRINTFORML %조교자는% %CALLNAME:TARGET%에 응하듯이 혀를 얽 \@ TALENT:TARGET:연모 ? 혀, 서로의 사랑을 확인했다 …… # 혔다…… \@
+	;쿠니 강제, 애널 봉사
+	CASE 70, 72
+		PRINTFORML %조교자는% %CALLNAME:TARGET%에 따라, 혀만을 사용해 봉사했다……
+	;펠라치오 강제
+	CASE 71
+		PRINTFORML %조교자는% %CALLNAME:TARGET%에 따라, %TINKO(TARGET)%를 빨아 봉사했다……
+	;
+	CASE 73
+		SELECTCASE RAND:3
+		CASE 0
+			PRINTFORML %조교자는% %CALLNAME:TARGET%의 유방에 싸여 행복한 한때를 보냈다……
+		CASE 1
+			PRINTFORML %조교자는% %CALLNAME:TARGET%의 골짜기에 끼워져 달콤한 향기를 즐겼다……
+		CASEELSE
+			PRINTFORML %조교자는% %CALLNAME:TARGET%에 유방에 얼굴을 비비며 응석부렸다……
+		ENDSELECT
+	;강제 보지 애무
+	CASE 76
+		IF TALENT:TARGET:처녀
+			PRINTFORML %조교자는% %CALLNAME:TARGET%에 따라, 상냥하게 손가락을 미끄러뜨렸다……
+		ELSE
+			PRINTFORML %조교자는% %CALLNAME:TARGET%에 따라, 만족할때까지 애무해 주었다……
+		ENDIF
+	;젖을 들이마시게 한다
+	CASE 77
+		PRINTFORML %조교자는% %CALLNAME:TARGET%의 %NIPPLE_DESCRIPTION(TARGET)%의 탱탱한 감촉을 맛보았다……
+	;85=V삽입하는 87=A삽입하는 88=허리 모습 V 89=허리 모습 A
+	CASE 85,87 TO 89
+		PRINTFORML %타겟은% 필사적으로 허리를 흔들어 %CALLNAME:PLAYER%에게 봉사하고 있다……
+	;정말좋아 hold
+	CASE 86
+		PRINTFORML %조교자는% %CALLNAME:TARGET%에 안아 지친 채로 질육의 감촉을 즐기는 일로 했다
+		PRINTFORML 근처에 물소리와 살점이 서로 부딪치는 소리와 %CALLNAME:TARGET%의 허덕이는 목소리가 울리고 있다……
+	CASEELSE
+		PRINTFORML %조교자는% %CALLNAME:TARGET%에 몸을 맡겼다……
+ENDSELECT
+
+;-------------------------------------------------
+;361, 저항한다
+;-------------------------------------------------
+@MESSAGE_COM361
+SELECTCASE TCVAR:20
+	;키스
+	CASE 30
+		PRINTFORML %조교자는% 눈을 감고 아무렇지도 않게 턱을 당겼다……
+	;뒤로부터 안겨든, 앞에서 안겨든다
+	CASE 31, 32
+		PRINTFORML %조교자는% %타겟을% 뿌리치려고 발버둥쳤다……
+	;가슴을 비비게 한다
+	CASE 33
+		PRINTFORML %조교자는% 얼굴을 붉히며 당기는 쪽으로 힘을 주었다……
+	;고간뒤지는, 수음
+	CASE 34, 50
+		PRINTFORML %조교자는% 쾌감을 참았다……
+	;치마 안을 보인다
+	CASE 35
+		PRINTFORML %조교자는% 싫증난 듯이 시선을 뗐다……
+	;뒤로부터 가슴 만지작 만지작, 가슴 애무, 유두 들이마셔
+	CASE 36, 58, 59
+		PRINTFORML %조교자는% 몸을 뒤틀며 저항했다……
+	;애원
+	CASE 40 TO 49
+		IF BASE:PLAYER:기력 <= MAXBASE:PLAYER:기력 / 3 || BASE:PLAYER:정력 <= MAXBASE:PLAYER:정력 / 3
+			PRINTFORML %조교자는% 피곤한 모습으로 물러났다……
+		ELSEIF CFLAG:MASTER:성격경향 == 2
+			PRINTFORML %조교자는% 그런 일은 안된라고 부탁했다……
+		ELSE
+			PRINTFORML %조교자는% 참아달라고 부탁했다……
+		ENDIF
+	;펠라치오, 쿠니
+	CASE 51
+		IF TALENT:MASTER:악취내성 < 0
+			PRINTFORML %조교자는% 더럽기 때문에 그만두는 편이 좋다고 저항했다……
+		ELSE
+			PRINTFORML %조교자는% 필사적으로 쾌감을 참았다……
+		ENDIF
+	;가랑이, 짝 맞추기 놀이, 젖 맞추어 삽입되는, 삽입한다
+	CASE 52, 74, 80, 83, 84, 85, 87 TO 89, 90
+		PRINTFORML %조교자는% 필사적으로 쾌감을 참았다……
+	;파이즈리
+	CASE 53
+		IF TALENT:TARGET:가슴사이즈 < 0 || ABL:TARGET:가슴 < 2
+			PRINTFORML %조교자는% 노력해 파이즈리 하고 있는 %타겟을% 응시하면서 무리하지 않아도 된다고 쓴웃음을 짓자,
+			PRINTFORM %타겟은%
+			IF CFLAG:TARGET:성격경향 == 1 || CFLAG:TARGET:성격경향 == 3
+				PRINTFORML 슬픈 듯이 눈물을 머금었다……
+			ELSEIF CFLAG:TARGET:성격경향 == 2
+				PRINTFORML 분한 듯이 봉사를 계속했다……
+			ELSE
+				PRINTFORML 미안한 듯 낙담했다……
+			ENDIF
+		ELSE
+			PRINTFORML %조교자는% 얼굴을 뒤로 젖혀 쾌감을 참았다……
+		ENDIF
+	;다리 코키
+	CASE 54
+		PRINTFORML %조교자는% 이를 악물어 %CALLNAME:TARGET%에게 저항의 시선을 향했다……
+	;애널 애무, 애널 빨고
+	CASE 55, 56
+		IF TALENT:MASTER:악취내성 < 0
+			PRINTFORML %조교자는% 더럽기 때문에 그만두는 편이 좋다고 저항했다……
+		ELSEIF TALENT:MASTER:통각 > 0
+			PRINTFORML %조교자는% 아파 아프다고 아우성쳤다……
+		ELSE
+			PRINTFORML %조교자는% 필사적으로 쾌감을 참았다……
+		ENDIF
+	;손가락 삽입
+	CASE 57
+		IF TALENT:PLAYER:처녀 && TALENT:PLAYER:처녀 != -1
+			PRINTFORML %조교자는% 손으로 비소를 숨기려고 필사적으로 저항했다……
+		ELSE
+			PRINTFORML %조교자는% 쾌감을 참았다……
+		ENDIF
+	;딥키스
+	CASE 60
+		IF TALENT:MASTER:악취내성 < 0
+			PRINTFORML %조교자는% 보내져 오는 타액에 혐오감을 느끼고 언짢은 표정을 띠웠다……
+		ELSE
+			PRINTFORML %조교자는% 혀에 힘을 써 작게 저항했다……
+		ENDIF
+	;쿠니 강제
+	CASE 70
+		IF TALENT:MASTER:악취내성 < 0
+			PRINTFORML %조교자는% 꽉 눌린 %CALLNAME:TARGET%의 비소로부터 벗어나려고 했다……
+		ELSE
+			PRINTFORML %조교자는% 내키지 않는 듯 더듬거리며 봉사했다……
+		ENDIF
+	;펠라치오 강제, 애널 봉사
+	CASE 71, 72
+		IF TALENT:MASTER:악취내성 < 0
+			PRINTFORML %조교자는% 얼굴을 찡그리며 구역질을 했다……
+		ELSE
+			PRINTFORML %조교자는% 내키지 않는 듯 더듬거리며 봉사했다……
+		ENDIF
+	;
+	CASE 73
+		IF TALENT:TARGET:가슴사이즈 < 0
+			PRINTFORML %조교자는% 무리하지 않아도 된다고 쓴웃음을 짓자,
+			PRINTFORM %타겟은%
+			IF CFLAG:TARGET:성격경향 == 1 || CFLAG:TARGET:성격경향 == 3
+				PRINTFORML 슬픈 듯이 눈물을 머금었다……
+			ELSEIF CFLAG:TARGET:성격경향 == 2
+				PRINTFORML 분한 듯이 가슴을 꽉 눌렀다……
+			ELSE
+				PRINTFORML 미안한 듯 낙담했다……
+			ENDIF
+		ELSE
+			PRINTFORML %조교자는% 부들부들 얼굴을 떨었다……
+		ENDIF
+	;타와시 세탁
+	CASE 75
+		PRINTFORML %조교자는% 지루한듯 했다……
+	;강제 보지 애무
+	CASE 76
+		IF TALENT:TARGET:처녀
+			PRINTFORML %조교자는% 소중히 하는 편이 좋다고 소극적으로 애무했다……
+		ELSEIF TALENT:MASTER:악취내성 < 0
+			PRINTFORML %조교자는% 애액이 묻어나는 것에 저항을 느끼며, 무심코 손가락을 떼었다……
+		ELSE
+			PRINTFORML %조교자는% 내키지 않는 듯 더듬거리며 애무했다……
+		ENDIF
+	;젖을 들이마시게 한다
+	CASE 77
+		PRINTFORML %조교자는% 내키지 않는 듯 유두를 핥는 것만으로 그쳤다……
+	;엉덩이 즈리
+	CASE 78
+		IF TALENT:MASTER:악취내성 < 0
+			PRINTFORML %조교자는% 그쪽은 아니라고 저항했다……
+		ELSE
+			PRINTFORML %조교자는% 그쪽은 아니지 않냐고 투덜거렸다……
+		ENDIF
+	;정말좋아 hold
+	CASE 86
+		PRINTFORML 가버릴듯 한 %조교자는% 당황해 몸을 풀려고 하지만, 단단히 잡혀 있어
+		PRINTFORML 저항도 헛되이「미안해요」라고 사과받으면서 %CALLNAME:TARGET%에 정을 착취당했다……
+	CASEELSE
+		PRINTFORML %조교자는% 저항했다……
+ENDSELECT
+
+;-------------------------------------------------
+;363, 읽어 들려주고
+;-------------------------------------------------
+@MESSAGE_COM363
+IF CFLAG:TARGET:동침중
+	PRINTFORML %조교자는% \@ INROOM(CFLAG:MASTER:현재위치) == 2 ? 침대 # 이부자리 \@ 속에서 책을 읽어주었다…
+;		SIF CFLAG:TARGET:수면
+;			PRINTFORML %타겟은% 숨소리를 세우고 있다…
+;ELSEIF CFLAG:MASTER:현재위치 == 9
+ELSEIF TALENT:MASTER:체형 > TALENT:TARGET:체형 && INROOM(CFLAG:MASTER:현재위치)
+	PRINTFORML %조교자는% %타겟을% 무릎 위에 앉혀놓고 책을 읽어 주었다…
+ELSE
+	PRINTFORML %조교자는% %CALLNAME:TARGET%에 책을 읽어 주었다
+ENDIF
+
+;-------------------------------------------------
+;364, 콩장작
+;-------------------------------------------------
+@MESSAGE_COM364
+SIF TFLAG:193 > 1
+	PRINT 모두
+PRINTFORML %CALLNAME:TARGET%에게 콩을 던졌다
+PRINTW …
+PRINTW ……
+PRINTW ………복이 온 것 같다!
+
+
+;-------------------------------------------------
+;368,자유행동에 맡기다
+;-------------------------------------------------
+@MESSAGE_COM368
+TRYCALLFORM 자유행동내용_{Activity_Type:TARGET}(TARGET, "같이한다") 
+
+;-------------------------------------------------
+;380, 프로포즈한다 ;KR판 오리지날 요소, 368에서 옮김
+;-------------------------------------------------
+@MESSAGE_COM380
+IF TFLAG:193
+	PRINTFORML %조교자는% 결심을 굳히며 %CALLNAME:TARGET%에 프로포즈했다.
+ELSE
+	PRINTFORML %조교자는% %CALLNAME:TARGET%에 프로포즈하려고 했지만 말이 입으로부터 나오지 않는다…
+ENDIF
