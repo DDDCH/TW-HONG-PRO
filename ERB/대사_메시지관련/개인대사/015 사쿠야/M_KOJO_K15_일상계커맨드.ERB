@@ -33,7 +33,7 @@ IF LOCAL
 			A = RAND:4
 			IF A == 0
 				PRINTFORMW 「하, 기분 좋다~」
-				PRINTFORMW 「홍마관에서는 단 둘이 있기는 아무래도 힘들잖아?」
+				PRINTFORMW 「홍마관에서는 단 둘이 있기는 아무래도 힘들잖니?」
 				PRINTFORMW 「우리 홍마관 사람들은 거기서 잘 안나오니까 밖에서 마주칠 일도 별로 없을테고.」
 			ELSEIF A == 1
 				PRINTFORMW 「지금 우리, 누가봐도 연인처럼 보이겠지.」
@@ -205,7 +205,7 @@ IF LOCAL
 				PRINTFORMW 「사실 나도 아가씨께 종종 혼나. 메이링한테 푸는 것도 없지 않지.」
 			ELSEIF TALENT:연모
 				PRINTFORML 「메이링한테 잔소리가 심하다구? 뭐, 신경쓰지 마.」
-				PRINTFORMW 「졸지만 않으면 잔소리도 많이 줄어들텐데…」
+				PRINTFORMW 「졸지만 않으면 잔소리 할 일도 딱히 없다구…」
 			ELSE
 				PRINTFORMW 「메이링한테 잔소리가 심하다구? 신경 쓰지 마.」
 			ENDIF
@@ -219,7 +219,7 @@ IF LOCAL
 		ELSEIF RAND:3 == 0
 			IF TALENT:연인
 				PRINTFORML 「내 요리는 믿을만 하지?」
-				PRINTFORMW 「너랑 같이 요리하고 싶어♥」
+				PRINTFORMW 「너랑 같이 요리하고 싶어%UNICODE(0x2665)%」
 			ELSEIF TALENT:연모
 				PRINTFORML 「아…너, 요리도 하는구나.」
 				PRINTFORMW 「괜찮으면 맛 보여줄래?」
@@ -234,7 +234,7 @@ IF LOCAL
 			IF TALENT:연인 && RAND:2 == 0
 				PRINTFORMW 「좋아하는 거? …그래, 여러가지가 있는데.」
 				PRINTFORM 「…너,
-				PRINTFORMW 맛있을 것 같아…♥.」
+				PRINTFORMW 맛있을 것 같아…%UNICODE(0x2665)%.」
 			ELSEIF TALENT:연모
 				PRINTFORMW 「좋아하는 거?　…그래, 이것 저것 있지만」
 				PRINTFORMW 「…뜨거운 건 질색이야.」
@@ -453,428 +453,1072 @@ IF LOCAL
 					PRINTFORMW 「사실 나, 다른 사람 앞에서 이러는 거 좀 부끄럽다구…」
 				ELSE
 					PRINTFORMW 「밖에서 이러는 거 좀 부끄럽긴 한데…」
-					PRINTFORMW 「……그래도 좋아…♥.」
+					PRINTFORMW 「……그래도 좋아…%UNICODE(0x2665)%.」
 				ENDIF
 			ENDIF
 		;연모
 		ELSEIF TALENT:연모
-			IF ABL:친밀 >= 8
-				IF TFLAG:193 == 1
-					PRINTFORMW 「뭐, 모처럼 데이트니까 이 정도는 괜찮으려나.」
-				ELSEIF TFLAG:193 == -1
-					PRINTFORMW 「……미안, 조금만 떨어져줄래.」
-				ELSE
-					IF RAND:3 == 0
-						PRINTFORMW 「후훗……저기, %CALLNAME:MASTER%? 이렇게 노골적으로 응석부리는건 좀 그래…」
-						PRINTFORMW (……부끄럽지만, 뭐,뭐야… 나쁘진 않네…)
-					ELSEIF RAND:2 == 0
-						PRINTFORMW 「하아, 밖에서까지 끈적끈적거리다니… 못 당하겠네, %CALLNAME:MASTER%한테는」
-						PRINTFORMW 「…뭐 이제와서 새삼스러운걸까… 후훗」
-					ELSE
-						PRINTFORMW 「남들 앞에서 이러는 거 눈치보였었는데.」
-						PRINTFORMW 「……익숙해졌다니, 무섭네. 후후…♪」
-					ENDIF
-				ENDIF
+			IF TFLAG:193 == 1
+				PRINTFORMW 「뭐, 모처럼 데이트니까 이 정도는 괜찮으려나.」
+			ELSEIF TFLAG:193 == -1
+				PRINTFORMW 「……미안, 조금만 떨어져줄래.」
 			ELSE
-				IF TFLAG:193 == 1
-					PRINTFORMW 「……괜찮은거야? 지금 우리들 주변에서 보기엔, 그 뭐야… 연인 사이로 밖에 안 보인다구?」
-					PRINTFORMW (적당히 해야해… 희망같은 거 품으면 안된다구…)
-					PRINTFORMW 「이런 건… 좋아하는 사람이 생기면, 그 사람이랑 해.」
-					PRINTFORMW (아냐, 날 좋아할리 없어… 난 어울리지 않아… 이 녀석은 나를 좋아하지 않아.)
-				ELSEIF TFLAG:193 == -1
-					PRINTFORMW 「……바보」
+				IF RAND:3 == 0
+					PRINTFORMW 「음…… 저기, %CALLNAME:MASTER%? 갑자기 이렇게 붙어오면…」
+					PRINTFORMW (……부끄럽지만, 음… 싫진 않아…)
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「하아, 정말… 못 당하겠네, %CALLNAME:MASTER%한테는.」
+					PRINTFORMW 「…뭐 아주 싫은 건 아니지만…」
 				ELSE
-					IF RAND:3 == 0
-						PRINTFORML 「정말, 이상한 오해 살지도 몰라?」
-					ELSEIF RAND:2 == 0
-						PRINTFORMW 「왜 남들 앞에서 끈적거리는거야?」
-						PRINTFORMW 「너랑 이러는 게, 그… 막 완전 싫은 건 아니지만… 굳이 이런 곳에서……」
-					ELSE
-						PRINTFORMW 「……있잖아. 같이 돌아다닐 때 달라붙는 거 그만해줄래?」
-						PRINTFORMW (정말… 이 녀석 왜 이렇게 바보같이 구는거야…)
-					ENDIF
+					PRINTFORMW 「이제는 밖에서 이러는 것도 꽤 자연스럽네.」
+					PRINTFORMW 「……이런게 익숙해질 줄이야.」
 				ENDIF
-			ENDIF				
-		;합의
-		ELSEIF GETBIT(CFLAG:1, 0)
-			IF ABL:친밀 >= 8
-				IF TFLAG:193 == 1
-					PRINTFORMW 「이런이런, 못말리는 녀석이네. 너는.」
-					PRINTFORMW (뭐, 나도 완전 싫은 건 아니지만……)
-				ELSEIF TFLAG:193 == -1
-					PRINTFORMW 「……역시 사람들 앞에서는 좀.」
-				ELSE
-					IF RAND:2 == 0
-						PRINTFORMW 「정말 넌 눈치라는게 없어?」
-					ELSE
-						PRINTFORMW 「너무 꽁냥거리는건 주변에 민폐라구.」
-					ENDIF
-				ENDIF
+			ENDIF	
+		;사모
+		ELSEIF TALENT:사모
+			IF TFLAG:193 == 1
+				PRINTFORMW 「그러니까, 사람들 다 보는데서 끈적거리지 말라	구!」
+			ELSEIF TFLAG:193 == -1
+				PRINTFORMW 「……적당히 해줄래.」
 			ELSE
-				IF TFLAG:193 == 1
-					PRINTFORMW 「그러니까, 사람들 다 보는데서 끈적거리지 말라구!」
-				ELSEIF TFLAG:193 == -1
-					PRINTFORMW 「……적당히 해줄래.」
+				IF RAND:2 == 0
+					PRINTFORMW 「너 아는 사람이 이거 보면 완전 놀림감이지 않을까?」
 				ELSE
-					IF RAND:2 == 0
-						PRINTFORMW 「너 아는 사람이 이거 보면 완전 놀림감이지 않을까?」
-					ELSE
-						PRINTFORMW 「그만, 너무 붙지 마.」
-					ENDIF
+					PRINTFORMW 「그만, 너무 붙지 마.」
 				ENDIF
 			ENDIF
 		ELSE
-			IF ABL:친밀 >= 8
-				IF TFLAG:193 == 1
-					PRINTFORMW 「아아 정말, 싫다고 해도…… 어쩔 수 없는 녀석이네.」
-				ELSEIF TFLAG:193 == -1
-					PRINTFORMW 「……야, 끈질기게 굴지 마.」
-				ELSE
-					PRINTFORMW 「정말, 너란 녀석은…」
-				ENDIF
+			IF TFLAG:193 == 1
+				PRINTFORMW 「음, 뭐 묻었니……?」
+				PRINTFORMW 「딱히 그런 것 같진 않은데.」
+			ELSEIF TFLAG:193 == -1
+				PRINTFORMW 「……적당히 해.」
 			ELSE
-				IF TFLAG:193 == 1
-					PRINTFORMW 「참, 너란 녀석이란……」
-					PRINTFORMW 「이제 만족했지? 그만해.」
-				ELSEIF TFLAG:193 == -1
-					PRINTFORMW 「……적당히 해」
-				ELSE
-					PRINTFORMW 「어허, 달라붙지 좀 마.」
-				ENDIF
+				PRINTFORMW 「어허, 너무 붙지는 마렴.」
 			ENDIF
 		ENDIF
 	;데이트중이 아니다
 	ELSE
 		;연인
 		IF TALENT:연인
-			;목욕탕
-			IF CFLAG:현재위치 == 112
+			;◆성공
+			IF TFLAG:193 == 1
+				PRINTFORMW 「흐흥, %CALLNAME:MASTER%는 피부가 부드럽네.」
+				PRINTFORMW 「잔뜩 쓰담쓰담 하고싶어…%UNICODE(0x2665)%」
+			;실패
+			ELSEIF TFLAG:193 == -1
+				IF RAND:2 == 0
+					PRINTFORMW 「확실히, 때와 장소를 구분해줄래…」
 				;◆
-				IF TFLAG:193 == 1
-					PRINTFORMW 「고마워, 기분 좋았어……」
-					PRINTFORMW 「근데, 되게 정성스러운 손놀림이네?」
-					PRINTFORMW 「역시 자기 것은 깨끗하게 하고 싶은거야?」
-				;◆
-				ELSEIF TFLAG:193 == -1
-					PRINTFORMW 「……좀 더 상냥하게 해 줘」
 				ELSE
-					;◆
-					IF RAND:8 == 0
-						PRINTFORMW 「휴우, 느낌 좋던데… 다음은 앞쪽도 부탁해볼까?」
-						PRINTFORMW 「왜 그래? 이제 와서 부끄러워할 것도 없잖아? 후훗.」
-						PRINTFORMW 나즈린은 장난꾸러기같이 웃었다…
-					;◆
-					ELSEIF RAND:7 == 0
-						PRINTFORML 「귀랑 꼬리를 정성껏 씻겨줬네.
-						PRINTFORMW 　둘다 나한테 소중한 곳이니까, 기뻐.」
-						PRINTFORMW 「……그래도 가끔 꼬리를 가지고 노는 건 하지말아줘…」
-					;◆
-					ELSEIF RAND:6 == 0
-						PRINTFORMW 「응…… 고마워, 시원해.」
-						PRINTFORMW 평소와 다르게 기분이 좋다.
-						PRINTFORMW 「후훗, 따뜻한 목욕탕이랑 옆에는 네가 있다니…… 그것만으로도 행복해」
-				;/여기에서 거의 단순한 애무. 알몸이니까 어쩔 수가 없구나
-					ELSEIF RAND:5 == 0 
-						PRINTFORML 나즈린의 조그마한 나체를 미끄러지듯 쓰다듬었다…
-						PRINTFORMW 「읏응… 이런 볼륨없는 몸을 만지는게 즐거워…?」
-						;MASTER가 덮치기이라고 첫우후후
-						SIF CFLAG:1200 == 1
-							PRINTFORMW 「아… 이런 몸을 못 참는 너한테는 이상한 질문이였네… 후훗」
-					ELSEIF RAND:4 == 0 
-						PRINTFORML 「후후… 여기저기 쓰다듬어줄래?…」
-						PRINTFORMW 나즈린의 거품 투성이 몸을 마치 핥듯이 어루만지니 나즈린이 돌아서서 속삭였다…
-						PRINTFORMW 「좀 더 안쪽을 쓰다듬어도… 좋아…♪」
-					ELSEIF RAND:3 == 0 
-						PRINTFORML 손으로 직접 나즈린의 몸을 씻겨주니 매끈한 피부가 붉은 빛을 띈다…
-						PRINTFORMW 「응…후후, 너 들뜨게 하는데에 꽤 능숙하네…♪」
-					ELSEIF RAND:2 == 0
-						PRINTFORMW 「흐읏, 하아… 너무 애태우잖아… 으음…」
-						PRINTFORMW 「기대해도… 읏… 괜찮은거지…?」
-					ELSE
-						PRINTFORML 「후훗… 좋아 이런 거. 연인 같잖아.」
-						PRINTFORMW 등을 씻어낸 후, 나즈린은 장난스럽게 웃었다.
-					ENDIF
+					PRINTFORMW 「……너무 만지지는 마.」
 				ENDIF
-			;툇마루
-			ELSEIF CFLAG:현재위치 == 110
-				;유성
-				IF TIME:7 == 3
-					PRINTFORML 나즈린과 함께 유성을 바라보았다.
-					PRINTFORML 「로맨틱하네… 너도 유성한테 소원 빌어?」
-					PRINTFORMW 「나? 나는 여자애니까 좀 로맨틱을 즐겨도 용서받을 수 있잖아.」
-				;여름에 맑음
-				ELSEIF DAY:2 == 2 && (TIME:5 == 0 || TIME:5 == 1)
-					;10~16시
-					IF TIME:0 >= 600 || TIME:0 <= 960
-						PRINTFORML 차가워진 우물의 물을 채운 병을 건네주었다.
-						PRINTFORMW 「오오… 너… 정말…」
-					;17~19시
-					ELSEIF TIME:0 >= 1020 || TIME:0 <= 1140
-						PRINTFORML 나즈린과 저녁 바람을 쏘였다.
-						PRINTFORML 「 아직 덥지만, 역시 햇볕이 없으면 어떻게든 되네.」
-						PRINTFORMW 「…밤운동할때는 아직 덥지만.」
-					ENDIF
+			;◆
+			ELSEIF RAND:11 == 0
+				PRINTFORMW 「…그렇게까지 조심해서 건드릴 필요 없다구? 기쁘긴한데.」
+				PRINTFORMW 「좀 더 대담해져도… 괜찮은데?」
+			;◆
+			ELSEIF RAND:10 == 0
+				PRINTFORMW 「나 건드릴 때 네 얼굴 어떤지 알아?」
+				PRINTFORMW 「되게 행복해보여.」
+				IF RAND:2 == 0
+					PRINTFORMW 「……그걸 보고있는 나도, 분명 그렇겠지…?」
 				ELSE
-					PRINTFORML 나즈린과 밖의 경치를 멍하니 바라보았다.
-					PRINTFORMW 「…역시 나는 가만히 있는 건 성미에 안 맞는거 같아.」
-					PRINTFORMW 그렇게 말하면서도, 나즈린은 움직이려고 하지 않고 계속 당신에게 쓰다듬어지고 있다…
+					PRINTFORMW 그렇게 말하는 사쿠야의 표정은, 굉장히 행복해보였다…
+				ENDIF
+			;◆
+			ELSEIF RAND:9 == 0
+				PRINTFORMW 「정말, %CALLNAME:MASTER%… 이야기만 하는 건 무리야?」
+				PRINTFORMW 「뭐, 쓰담쓰담하면서 이야기해주는 것도 좋지만.」
+			ELSEIF RAND:8 == 0 
+				PRINTFORML 왠지 충동적으로 사쿠야를 어루만지고 싶어져서 해보았다.
+				PRINTFORMW 「응… 좀 더 해줘.」
+			ELSEIF RAND:7 == 0 
+				PRINTFORMW 「…으읏…」
+				PRINTFORMW 귀를 어루만지는 손에, 사쿠야는 기분이 좋은 듯 눈을 감고 있다…
+			ELSEIF RAND:6 == 0 
+				PRINTFORMW 사쿠야의 귀를 손가락으로 만지작…
+				PRINTFORMW 「이거 참… 간질간질하는거 그만 둬.」
+			ELSEIF RAND:5 == 0 
+				PRINTFORMW 「후후… 손놀림에 뭔가 다른 뜻이 있는 것 같은데?」
+			ELSEIF RAND:4 == 0 
+				PRINTFORMW 「음… 뭐야, 무슨 뜻이야?」
+			ELSEIF RAND:3 == 0
+				PRINTFORMW 사쿠야를 무릎 위에 앉게 했다.
+				PRINTFORML 「나… 무겁지는 않아?
+				PRINTFORMW 　확실히 관리하고 있기는 하지만.」
+			ELSEIF RAND:2 == 0
+				PRINTFORML 「…흐잇!」
+				PRINTFORMW 사쿠야의 귀에 입김을 불자, 사쿠야는 소리없는 비명을 질렀다…
+			ELSE
+				PRINTFORML 「어깨를 주물러준다구? 어머, 고마워라.」
+				PRINTFORMW 사쿠야의 작은 어깨에는 제법 뭉친 곳이 느껴진다.
+				PRINTFORMW 「아, 아파… 아무래도 평소에 일은 많이 하는 편이니까.」
+				PRINTFORMW 「자, 교대야. 나도 주물러 줄게.」
+			ENDIF
+		;연모
+		ELSEIF TALENT:연모
+			;실패
+			IF TFLAG:193 == -1
+				PRINTFORMW 「너무 이러지 마…」
+				PRINTFORMW 꽤 드문 소리를 들을 수 있었다.
+			ELSEIF RAND:8 == 0 
+				PRINTFORML 왠지 충동적으로 사쿠야 어루만지고 싶어져서 해버렸다.
+				PRINTFORMW 「엣… 갑자기 그러면 놀라잖아.」
+				PRINTFORML 싫어?
+				PRINTFORMW 「아니…… 그런 건, 아니지만…」
+			ELSEIF RAND:7 == 0 
+				PRINTFORMW 사쿠야는 몸을 긴장시키면서도 얌전하게 쓰다듬어지고 있다…
+			ELSEIF RAND:6 == 0 
+				PRINTFORMW 「…나한테 왜 이래.」
+			ELSEIF RAND:5 == 0 
+				PRINTFORMW 「자, 잠깐, 거기는, 꺅…」
+			ELSEIF RAND:4 == 0 
+				PRINTFORMW 「…」
+				PRINTFORMW 사쿠야는 슬그머니 다가왔다…
+			ELSEIF RAND:3 == 0
+				PRINTFORML 사쿠야를 자신의 무릎 위에 앉게 했다…
+				PRINTFORMW 「…무슨 짓이야.」
+			ELSEIF RAND:2 == 0
+				PRINTFORML 「…히익!」
+				PRINTFORMW 사쿠야의 귀에 입김을 불자, 사쿠야는 소리없는 비명을 질렀다…
+			ELSE
+				PRINTFORML 「어깨를 주물러 준다구…? 아―…그럼 부탁할까…」
+				PRINTFORMW 「…」
+				PRINTFORMW 어깨를 주무르는 동안, 사쿠야는 계속 말이 없었다…
+			ENDIF
+		;연인, 연모 없음
+		ELSE
+				;실패
+			IF TFLAG:193 == -1
+				;◆
+				IF RAND:2 == 0 
+					PRINTFORML 어깨 주물러 줄까?
+					PRINTFORML 
+					PRINTFORMW 「저의가 의심스러운데.
+					PRINTFORMW 　…무슨 뜻이야?」
+				ELSE
+					PRINTFORMW 「…스스럼없이 만지지 말아줄래.」
+				ENDIF
+			;◆성공
+			ELSEIF TFLAG:193 == 1
+				IF RAND:2 == 0
+					PRINTFORML 어깨 주물러 줄까?
+					PRINTFORML 
+					PRINTFORML 「아, 요즘 아무래도 좀 뭉친 것 같았는데…
+					PRINTFORMW 　마사지 잘 하니?」
+					PRINTFORML 
+					PRINTFORMW 「……나쁘지 않네.」
+				ELSE
+					PRINTFORMW 「정말, 어쩔 수 없는 녀석이네.」
+					PRINTFORMW 「……조금이라면 용서해줄게.」
+				ENDIF
+			;◆
+			ELSEIF RAND:6 == 0 
+				PRINTFORML 어깨 주물러 줄까?
+				PRINTFORML 
+				PRINTFORMW 「…확실히 뻐근하긴 하지만…」
+				PRINTFORMW 「…아니, 왠지 느낌이 쌔해서 역시 안되겠어.」
+			ELSEIF RAND:5 == 0 
+				PRINTFORML 왠지 충동적으로 사쿠야를 어루만지고 싶어져서 해버렸다
+				PRINTFORMW 「무슨 짓이니?」
+			ELSEIF RAND:4 == 0 
+				PRINTFORMW 「흐음.」
+			ELSEIF RAND:3 == 0 
+				PRINTFORMW 사쿠야를 쓰다듬었지만 사쿠야는 아무런 반응도 하지 않고 있다.
+			ELSEIF RAND:2 == 0 
+				PRINTFORMW 사쿠야는 당신의 손을 피하듯 몸을 움직였다.
+			ELSE
+				PRINTFORML 「…히얏!」
+				PRINTFORMW 사쿠야의 귀에 입김을 내뱉자, 사쿠야는 소리없는 비명을 질렀다…
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;◆303, 사과한다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_303
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_303_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_303_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TFLAG:193 == -1
+		PRINTFORMW  「……형식적인 사과는 필요 없어.」
+	ELSE
+		;◆첨삭 예정
+		;연인을 화나게 한다 라고 주인의 어떤 상황일까…?
+		IF TALENT:연인
+			PRINTFORML 
+			PRINTFORMW 「용서 안해.」
+			PRINTFORML 
+			PRINTFORMW 도게자하며 사죄하는 %CALLNAME:MASTER%를 앞에 두고, 나즈린은 그렇게 단언했다.
+			PRINTFORML 
+			PRINTFORMW 「당연하잖아? 겨우 머리 좀 숙인다고 풀리는 정도라면 애초에 화도 안 내지.」
+			PRINTFORML 
+			PRINTFORMW 고개를 못 드는 %CALLNAME:MASTER%의 가슴팍이, 가녀린 손에 잡아 올려져 냅다 밀쳐진다.
+			PRINTFORMW 엉덩방아를 찧은 %CALLNAME:MASTER%에게 다가오는 발소리.
+			PRINTFORML 
+			PRINTFORMW 그늘진 나즈린의 얼굴로부터 깊은 한숨소리가 나고…
+			PRINTFORML 
+			PRINTFORML 
+			PRINTFORML 
+			PRINTFORMW ………다음 순간에는, 웬일인지 무릎 위에 나즈린이 앉아 있었다.
+			PRINTFORML 
+			PRINTFORMW 「…벌로 내 의자로서 징역 5분 형이야.」
+			PRINTFORML 
+			PRINTFORMW %CALLNAME:MASTER%의 팔을 안고 힘차게 등을 기대며, 나즈린은 새침한 얼굴로 그런 말을 했다.
+		ELSE
+			PRINTFORML 
+			PRINTFORML 「그닥 이제 화 안났어.
+			PRINTFORML 　그래도, 앞으로도 계속 이런 일이 반복되면 히지리한테 이야기할거야.
+			PRINTFORMW 　…바보짓 하지 말고 해야 할 일만 하면 돼. 쉬운 일이지?」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;304, 일을돕는다
+;10%로 대성공, 10~1%로 실패, 나머지는 성공
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_304
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_304_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_304_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;시간정지중
+	IF FLAG:70
+		SELECTCASE TIME
+			;사무처리
+			CASE 780 TO 1019
+				PRINTFORMDL 그래도 어떻게 도와줄 수 없을까 하고 에이키의 수중에 있는 서류를 휙휙 넘겨 보았다
+				PRINTFORMDW 유감스럽게도 염마님의 판단이 없으면 안되는 것뿐이다…
+			;서류정리
+			CASE IS > 1019
+				PRINTFORMDL 도저히 평범하게 해서 끝낼 수 있는 일이라고는 생각되지 않는다…
+				PRINTFORMDW %마스터는% 얼어붙은 시간 속에서 묵묵히 서류정리를 했다
+		ENDSELECT
+	;통상
+	ELSE
+		;일기플래그
+		SIF DIARY:30:9 == 0
+			CALL K30_WRITE_DIARY(9)
+		SELECTCASE TIME
+			;사무처리
+			CASE 780 TO 1019
+				PRINTFORML 「%K30_C_NAME(MASTER)%, 도와주시는군요?」
+				PRINTFORML 「감사합니다. 덕분에 도움이 되었습니다」
+				PRINTFORMW 「네, 일은 얼마든지 있으니까요」
+			;서류정리
+			CASE IS > 1019
+				IF BASE:30:일량 > 0
+					PRINTFORML 「그… 조금 미안하지만…」
+					PRINTFORML 「이 시간의 월급은 안 나와요」
+					PRINTFORMW 「그래도 괜찮다면, 여기 서류부터 정리해 줄 수 있을까요?」
+				ELSE
+					PRINTFORML 「죄송해요. 이렇게 뒷정리까지 다 해주시고」
+					PRINTFORML 「정말 고맙습니다」
+				ENDIF
+		ENDSELECT
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;305, 무릎베개받는다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_305
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_305_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_305_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+;우후후가 해제되고 있는 것을 생각 눌러 하는 처리
+	CFLAG:1211 = 0
+	IF ABL:TARGET:친밀 > 2
+		IF TALENT:연인
+			;◆
+			IF RAND:9 == 0
+				PRINTFORMW 「이럴 땐 자장가라도 하나 불러야 될까?」
+				PRINTFORMW 「듣고싶어? 미안, 불러줄만큼 잘하지는 못해서…」
+				PRINTFORMW 「그래…… 언젠가 들려줄게. 언젠가는」
+			;◆
+			ELSEIF RAND:8 == 0
+				PRINTFORMW 「후훗, 이러고 있는 시간 꽤 좋아.」
+				PRINTFORMW 「이렇게도 무방비인 모습을 내 앞에서 보여주는거……」
+				PRINTFORMW 「너한테 신뢰받고 있구나, 하고 느낄 수 있으니까.」
+			;◆
+			ELSEIF RAND:7 == 0
+				PRINTFORMW 「지금만큼은 일상의 소음을 잠깐 잊고 쉬었으면 좋겠어.」
+				PRINTFORMW 「아주 조금 정도라면 이렇게 하고 있어도 아무도 비난하지 않을거야.」
+				PRINTFORMW 「뭐, 이 잠깐이 끝나면 다시 열심히 하자.」
+			;◆
+			ELSEIF RAND:6 == 0
+				PRINTFORMW 「정말, 야무지지 못한 얼굴이네……」
+				PRINTFORMW 「내 무릎을 베고 있는 기분은 어때, %MASTERNAME:39%?」
+				PRINTFORMW 「뭐, 얼굴만 봐도 대충 알 것 같아.」
+			;◆
+			ELSEIF RAND:5 == 0
+				PRINTFORMW 「근데… 너 지금 얼마나 위험한 상황인지 알아?」
+				PRINTFORMW 「내가 머리만 눌러도 너 꼼짝도 못한다니까?」
+				PRINTFORMW 「자, 어떻게 할까…… 키스? 아님 그것보다 더한 걸 해볼까…?」
+			;◆
+			ELSEIF RAND:4 == 0
+				PRINTFORMW 「자, 엄마가 여기 있으니 안심하고 자도록 하렴.」
+				PRINTFORMW 「뭐야. ……%MASTERNAME:39%, 어린애 취급 당하는 건 싫은거야?」
+				PRINTFORMW 「뭐, 네가 싫어하든 말든 그만 할 생각같은 건 없지만. 후후…♪」
+			ELSEIF RAND:3 == 0 
+				PRINTFORML 「주인이 나한테 자주 해달라고 해, 이거.」
+				PRINTFORMW 「부끄러우니까 항상 거절하는데…」
+				PRINTFORMW 「너는 괜찮냐고? …뭐, 이제와서 새삼스럽기는.」
+				PRINTFORMW 나즈린은 마지못해 웃으며 머리를 쓰다듬어 주었다…
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 무릎베개하고 있는 동안, 나즈린은 계속 말없이 머리를 쓰다듬어 주었다…
+			ELSE  
+				PRINTFORMW 「다음은 내가 받을까 봐.」
+			ENDIF
+		;연모
+		;/그만두고 싶지만 그만두고 싶지 않다
+		ELSEIF TALENT:연모
+			IF RAND:7 == 0
+				PRINTFORMW 「머리를 맡기다니 상대에게 생사여탈의 권한을 주는 거라구?」
+				PRINTFORMW 「심지어 나는 요괴야. 니가 얼마나 어처구니없는 일을 하고 있는지 알고는 있는거야?」
+				PRINTFORMW 그래도 나즈린, 그런 거 안 할거잖아.
+				PRINTFORMW 「흣!… 흥, 글쎄…」
+			;◆
+			ELSEIF RAND:6 == 0
+				PRINTFORMW 「이렇게 하면 돼?」
+				PRINTFORMW 「……내 무릎으로는 잠자기도 불편할텐데.」
+				PRINTFORMW (뭐, 니가 원한다면야 상관없지만……)
+			;◆
+			ELSEIF RAND:5 == 0
+				PRINTFORMW 「특이하네, 내 무릎을 베고싶어하다니… 기분은 보장할 수 없다구?」
+			;◆
+			ELSEIF RAND:4 == 0
+				PRINTFORMW 「이런 건 익숙하지가 않아서… 야, 자꾸 움직이지 좀 마! 머리 떨어져!」
+				PRINTFORMW 평소에 차분하던 여자애가 당황하는 게 귀엽네.
+				PRINTFORMW 「……머리, 좀 떨어뜨려 줄까?」
+			ELSEIF RAND:3 == 0
+				PRINTFORMW 「…으으… 이거 꽤 부끄러운데 슬슬… 아냐 됐어…」
+			ELSEIF RAND:3 == 0
+				PRINTFORMW (젠장, 진정 좀 해… 평정심을 찾는거야…)
+			ELSE
+				PRINTFORML 「…」
+				PRINTFORMW 「…무슨 말 좀 해줄래? 나 좀 어색해…」
+			ENDIF
+		;연모, 연인 없음
+		ELSE
+			IF RAND:5 == 0 
+				PRINTFORML 「주인이 나한테 자주 해달라고 해, 이거.」
+				PRINTFORMW 「부끄러우니까 항상 거절하고 있지만…」
+			ELSEIF RAND:4 == 0 
+				PRINTFORMW 나즈린의 무릎은 작아서 베고 자기 딱 좋은 높이다.
+			ELSEIF RAND:3 == 0 
+				PRINTFORMW 「…나 많이 부끄러운데, 그만하면 안돼?」
+			ELSEIF RAND:2 == 0 
+				PRINTFORMW 「…이런 거 주인한테 들키면 엄청 귀찮을 것 같은데…」
+			ELSE
+				PRINTFORMW 「이런 게 뭐가 즐거운거야?」
+			ENDIF
+		ENDIF
+	ELSE
+		;◆
+		IF RAND:4 == 0
+			PRINTFORMW 「……이걸로 된거야?」
+		;◆
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「……이렇게 하면 돼?」
+			PRINTFORMW 「이상하게 움직이면 바로 머리 떨어트릴거야.」
+		;◆
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「머리를 맡기다니 상대에게 생사여탈의 권한을 주는 거라구?」
+			PRINTFORMW 「심지어 나는 요괴야. 네가 얼마나 미친 짓을 하고 있는 건지 알고는 있는거야?」
+		ELSE
+			PRINTFORMW 「…슬슬 그만해도 돼?」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;◆332, 술을대접한다
+;술의 번호는 FLAG:19에 들어가 있다
+;==================================================
+
+@M_KOJO_MESSAGE_COM_K15_332
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_332_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_332_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF CFLAG:LOCAL:빡침
+		PRINTFORMW 「……볼일 다 봤으면 꺼져.」
+	;연회
+	ELSEIF GET_TARGETNUM() > 3
+		IF TFLAG:193 == 1
+			PRINTFORMW 「고마워, 덕분에 신나게 술 먹었네.」
+		ELSEIF TFLAG:193 == -1
+			PRINTFORMW 「……여기는 절이니까, 좀 더 절도를 가져…하아」
+		ELSE
+			PRINTFORMW 「뭐, 가끔씩은 괜찮으려나.」
+		ENDIF
+	;연모
+	ELSEIF TALENT:연모
+		IF TFLAG:193 == 1
+			PRINTFORMW 「흠, 역시 술은 좋네~ …음, 조금 취했나?」
+			PRINTFORMW 「미안, 잠깐만 기대게 해줘……」
+		ELSEIF TFLAG:193 == -1
+			PRINTFORMW 「……아무래도 좀 아닌 것 같아, 방금 거는.」
+			PRINTFORMW 「역시 술은 즐겁게 마셔야지.」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「응, 기분좋아…」
+			PRINTFORMW 「시끌벅적한 연회보다, 너ㄹ… 아니, 한 두명이랑 함께하는 작은 술자리가 좋아.」
+		ELSE
+			PRINTFORMW 「……응, 좀 취했나.」
+			PRINTFORMW 「괜찮아, 내 앞가림도 못할 정도는 아니니까.」
+		ENDIF
+	;호감도 높다
+	ELSEIF CFLAG:2 >= 500
+		IF TFLAG:193 == 1
+			PRINTFORMW 「이번 술자리는 오래간만에 좋았네.」
+			PRINTFORMW 「역시 마음이 통하는 사람끼리 먹는 술은 즐거운 법이야.」
+		ELSEIF TFLAG:193 == -1
+			PRINTFORMW 「……도가, 좀 지나친데.」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「흠, 역시 술은 좋은 거야.」
+		ELSE
+			PRINTFORMW 「후우……, 조금 알딸딸해졌어.」
+		ENDIF
+	ELSE
+		IF TFLAG:193 == 1
+			PRINTFORMW 「호오, 꽤 괜찮은 술이잖아?」
+		ELSEIF TFLAG:193 == -1
+			PRINTFORMW 「……알코올만 들어 있으면 다 되는 게 아니야, 술이란 건…」
+		ELSE
+			PRINTFORMW 「…………캬흐」
+		ENDIF
+	ENDIF
+ENDIF
+
+;==================================================
+;308, 뺨을쿡쿡 찌른다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_308
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_308_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_308_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF CFLAG:수면
+		IF TFLAG:193 == 1 
+			IF RAND:2 == 0
+				PRINTFORMW 「…으응, 그만둬 주인…」
+			;◆
+			ELSE
+				PRINTFORMW 「으응…후훗……새근……」
+			ENDIF
+		ELSEIF TFLAG:193 == -1
+			IF RAND:2 == 0
+				PRINTFORML 「…으응」
+			;◆
+			ELSE
+				PRINTFORML 「응…하지마……으음……」
+			ENDIF
+			PRINTFORMW 나즈린은 얼굴을 찡그리며 뒤척였다…
+		ELSE
+			IF RAND:2 == 0
+				PRINTFORML 「으응…뭐하는거냥……새근……」
+				PRINTFORMW 나즈린의 작은 뺨은, 매우 부드러웠다…
+			ELSE
+				PRINTFORML 「으응…」
+				PRINTFORMW 나즈린은 숨소리를 내고 있다…
+			ENDIF
+		ENDIF
+	ELSE
+		;연속
+		IF PREVCOM == SELECTCOM
+			IF RAND:2 == 0
+				PRINTFORMW 「정말… 이게 그렇게 재밌어?」
+			ELSE
+				PRINTFORML 「아 정말… 자꾸 이러면 혼낼거야?」
+				PRINTFORMW 나즈린이 귀여운 반응을 하는게 나쁜거야.
+			ENDIF
+		;성공
+		ELSEIF TFLAG:193 == 1
+			;◆
+			IF RAND:4 == 0
+				PRINTFORMW 「……자기도 당할 각오를 했으니 하는 거겠지?」
+				PRINTFORMW 나즈린은 히죽히죽 하면서 쿡쿡 찔러 반격했다…
+			ELSEIF RAND:3 == 0 
+				PRINTFORML 「…므으…」
+				PRINTFORMW 뺨을 쿡쿡 찌르자, 나즈린도 반격해왔다.
+				PRINTFORML 「참 끈질겨, 너도…」
+				PRINTFORMW 그러면서도 나즈린은 키득키득 웃으며 반격을 멈추지 않았다.
+				IF TALENT:연인
+					PRINTFORMW "마치 연인 사이 같은" 소통은 당분간 계속되었다…
+				ELSE
+					PRINTFORMW 마치 연인 사이 같은 소통은 당분간 계속되었다…
+				ENDIF
+			ELSEIF RAND:2 == 0 
+				PRINTFORML 나즈린의 어깨를 두드린다.
+				PRINTFORMW 「응? 왜 그ㄹ…」
+				PRINTFORML 
+				PRINTFORMW 말랑, 하고 소리가 날 것 같을 정도로 부드러운 뺨에 손가락이 박혔다.
+				PRINTFORML 
+				PRINTFORML 「…니가 애기야?」
+				PRINTFORMW 약간 분해 보인다. 이겼다.
+			ELSE
+				PRINTFORMW 말랑.
+				PRINTFORML 「…이 행위에 무슨 의미가 있는 걸까.」
+				PRINTFORMW 말랑말랑.
+				PRINTFORML 「어이, 적당히 좀 하지 않을래…」
+				PRINTFORMW 쿡쿡쿡.
+				PRINTFORMW 「젠장… 마음대로 해…」
+			ENDIF
+		;실패
+		ELSEIF TFLAG:193 == -1
+			;◆
+			IF RAND:4 == 0
+				PRINTFORMW 「그만해, 나의 단잠을 방해하지마.」
+			ELSEIF RAND:3 == 0 
+				PRINTFORML 나즈린의 어깨를 두드리며, 손가락을 쑥 내밀고 기다린다.
+				PRINTFORML 
+				PRINTFORMW 「…그 수법엔 매번 당했으니까. 이번엔 안 걸려.」
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「…너 좀 끈질기네」
+			ELSE
+				PRINTFORMW 「…」
+				PRINTFORMW 아무 반응도 해주지 않는다. 아무래도 기분이 안 좋은 것 같다…
+			ENDIF
+		ELSE
+			;◆
+			IF RAND:6 == 0
+				PRINTFORMW 「무우…… 뭐해」
+			;◆
+			ELSEIF RAND:5 == 0
+				PRINTFORMW 「내 뺨을 찌르는게 재밌어?」
+			;◆
+			ELSEIF RAND:4 == 0
+				PRINTFORMW 「의도를 모르겠어……」
+			ELSEIF RAND:3 == 0 
+				PRINTFORMW 「므으…」
+			ELSEIF RAND:2 == 0 
+				PRINTFORMW 「애완동물 취급하지 말라고 몇번을 말해야…」
+			ELSE
+				PRINTFORMW 나즈린은 시큰둥한 얼굴을 하면서도 얌전히 찔려지고 있다…
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;309, 머리를어루만진다
+;친밀 2이상으로 「쑥스러운 듯하게」친밀 5이상으로 「릴랙스 한 것 같은」
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_309
+;목욕탕에 있을 때는 정경 컷
+SIF !BATHROOM()
+	CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_309_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_309_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+;우후후가 해제되고 있는 것을 생각 눌러 하는 처리
+	CFLAG:1211 = 0
+	;자고 있는 나즈를 스윽스윽
+	IF CFLAG:TARGET:수면
+		IF ABL:친밀 > 5
+			;◆
+			IF RAND:2 == 0
+				PRINTFORMW 「응…후훗……새근……」
+			ELSE
+				PRINTFORMW 무의식적으로 나즈린은 머리를 쓰다듬는 손에 귀를 부비적거리고 있다…
+			ENDIF
+		ELSE
+			IF RAND:2 == 0
+				PRINTFORMW 「으응…」
+			;◆
+			ELSE
+				PRINTFORMW 「…으응……새근……」
+			ENDIF
+			PRINTFORMW 나즈린은 간질간질한듯 머리를 움직였다…
+		ENDIF
+	;◆처음
+	ELSEIF FIRSTTIME(SELECTCOM)
+		IF TALENT:MASTER:2
+			PRINTFORMW 「……그만해줘. 갑자기 건드리는거 말이야.」
+			PRINTFORMW 「그, 여러가지 이유로 이런 거 많이 낯설어.」
+		ELSE
+			PRINTFORMW 「뭐야, 어린애 같다고 무시하는 거야?」
+		ENDIF
+	;◆분노
+	ELSEIF CFLAG:LOCAL:빡침
+		PRINTFORMW 「……목숨이 아깝지 않은 모양이지?」
+	;◆데이트중에 스윽스윽
+	ELSEIF CHK_DATENOW(CFLAG:TARGET:데이트중)
+		IF FIRSTTIME(SELECTCOM)
+			PRINTFORMW 「…뭐 하는 거야 너? 그것도 이런 곳에서…」
+			PRINTFORMW 「꼴은 이래도 분명히 요괴라구, 나. …야, 듣고 있어?」
+			PRINTFORMW 그러나 뿌리칠 기색은 보이지 않는다…
+		;연인
+		ELSEIF TALENT:연인
+			IF ABL:친밀 >= 8
+				A = RAND:3
+				IF A == 0
+					PRINTFORMW 「눈치 보이지 않아? 아직도 좀 부끄러운데…」
+					PRINTFORMW 「그래도 있잖아? 부끄럽다고 이 소중한 시간을 놓치기는 너무 아까워.」
+					PRINTFORMW 「앞으로 지금 이 순간보다 더 좋은 순간은 그렇게 흔치 않을테니까……」
+				ELSEIF A == 1
+					PRINTFORMW 「현명한 장군이라고 불리는 나조차도, 사랑 앞에서는 어쩔 수 없는건가.」
+					PRINTFORMW 「참, 사랑이라는 건 신기해. 너도 그렇게 생각하지 않아?」
+					PRINTFORMW 「……저기, 골똘히 생각하는 건 좋은데 손은 멈추지 마.」
+				ELSE
+					PRINTFORMW 「아우, 남들 다 보는데서 뭐 하는 거야.」
+					PRINTFORMW 「명련사에 돌아가서라도 받을 수 있는데…」
+					PRINTFORMW 「그래도 이 유혹은 견디기 힘들어… 아니, 정말로.」
+				ENDIF
+			ELSEIF ABL:TARGET:친밀 > 5
+				A = RAND:3
+				IF A == 0
+					PRINTFORMW 「어설프게 저항이나 항의하면, 오히려 주위에서 어린아이 같다고 생각할거야.」
+					PRINTFORMW 「그렇게 결론이 났으니까, 이제는 순순히 받아들이기로 한 것 뿐.」
+					PRINTFORMW 「그러니까 너무 우쭐해하지 말라고…… 듣고 있어?」
+				ELSEIF A == 1
+					PRINTFORMW 「아아 정말, 결국 넌 날 이렇게 어린애처럼 취급해.」
+					PRINTFORMW 「단둘이 있을 때, 주변에 아무도 없을 때라면 모를까, 부끄럽고 불쾌하다구.」
+					PRINTFORMW 「뭐…… 하지 말라고는 안 했어.」
+				ELSE
+					PRINTFORMW 「……너, 좀 가학적인… 사디스트 성향이라도 있는거야?」
+					PRINTFORMW 「왜냐니, 좀 그렇잖아. 뻔히 내가 싫어하는 거 알면서 이런 사람들 다 보는 곳에서 나를 창피하게 하잖아.」
+					PRINTFORMW 「그리고 새빨개진 내 얼굴 보고 귀엽다고 생각하는거지? 이 변태.」
+				ENDIF
+			ELSEIF ABL:TARGET:친밀 > 2
+				IF A == 0
+					PRINTFORMW 「좋아좋아, 지금은 마음껏 나를 창피하게 해봐.」
+					PRINTFORMW 「돌아가면 발밑을 조심하는게 좋을거야.」
+				ELSEIF A == 1
+					PRINTFORMW 「……이런 거 할 바에야 그냥 꽁냥꽁냥하는게 낫겠네.」
+					PRINTFORMW 「아, 근데 오히려 그거 주위에서 바보커플 취급 당하려나?」
+					PRINTFORMW 「어린애 취급당하는 거랑 바보커플 중 어느 쪽이 나은 걸까…」
+				ELSE
+					PRINTFORMW 「아 정말, 차라리 수치심 같은 거 버려버릴까?」
+					PRINTFORMW 「아니 그건 안돼… 얼굴이 화끈거린다는게 이런 건가…」
 				ENDIF
 			ELSE
-				;◆성공
-				IF TFLAG:193 == 1
-					PRINTFORMW 「으응, 나한테 응석부리고 싶어? 네가 좋아하는거 해.」
-					PRINTFORMW 「그 대신 나중에 나도 좋아하는거 할거야…%UNICODE(0x2665)%」
-				;실패
-				ELSEIF TFLAG:193 == -1
-					IF RAND:2 == 0
-						PRINTFORMW 「확실히, 때와 장소를 구분해줄래…」
-					;◆
-					ELSE
-						PRINTFORMW 「……친한 사이에도 선이라는게 있어. 그렇지?」
-					ENDIF
-				;◆
-				ELSEIF RAND:11 == 0
-					PRINTFORMW 「…그렇게까지 조심해서 건드릴 필요 없다구? 기쁘긴한데.」
-					PRINTFORMW 「좀 더 대담해져도… 괜찮은데?」
-				;◆
-				ELSEIF RAND:10 == 0
-					PRINTFORMW 「나 건드릴 때 네 얼굴 어떤지 알아?」
-					PRINTFORMW 「되게 행복해보여.」
-					IF RAND:2 == 0
-						PRINTFORMW 「……그걸 보고있는 나도, 분명 그렇겠지…?」
-					ELSE
-						PRINTFORMW 그렇게 말하는 나즈린의 표정은, 굉장히 행복해보였다…
-					ENDIF
-				;◆
-				ELSEIF RAND:9 == 0
-					PRINTFORMW 「정말, 틈만나면 끈적끈적… 천천히 이야기만하는 것도 좋다구?」
-					PRINTFORMW 「뭐, 딱히 쓰담쓰담하면서 이야기해주는 것도 좋지만.」
-				ELSEIF RAND:8 == 0 
-					PRINTFORML 왠지 충동적으로 나즈린을 어루만지고 싶어져서 해보았다.
-					PRINTFORMW 「응… 쓰다듬을 거면 좀 더 가까이 와.」
-				ELSEIF RAND:7 == 0 
-					PRINTFORMW 「…으읏…」
-					PRINTFORMW 귀를 어루만지는 손에, 나즈린은 기분이 좋은 듯 눈을 감고 있다…
-				ELSEIF RAND:6 == 0 
-					PRINTFORMW 나즈린의 귀를 손가락으로 만지작…
-					PRINTFORMW 「이거 참… 간질간질하는거 그만 둬.」
-				ELSEIF RAND:5 == 0 
-					PRINTFORMW 「후후… 손놀림에 뭔가 다른 뜻이 있는 것 같은데?」
-				ELSEIF RAND:4 == 0 
-					PRINTFORMW 「음… 뭐야, 꼬시는거야?」
-				ELSEIF RAND:3 == 0
-					PRINTFORMW 나즈린을 무릎 위에 앉게 했다.
-					PRINTFORML 「근데 이런 건 애인이라기보다는 동생이나 딸 아냐?
-					PRINTFORMW 　난 좀 더 레벨을 올려줬으면 좋겠는데.」
-					PRINTFORMW 그러나, 도망가려고는 하지 않았다.
-				ELSEIF RAND:2 == 0
-					PRINTFORML 「…흐잇!」
-					PRINTFORMW 눈앞에서 흔들거리는 나즈린의 귀에 입김을 불자, 나즈린은 소리없는 비명을 질렀다…
+				A = RAND:3
+				IF A == 0
+					PRINTFORMW 「아 정말, 이런 것 좀 하지마!」
+					PRINTFORMW 「이상한 오해가 퍼질지도 모른다구?!」
+				ELSEIF A == 1
+					PRINTFORMW 「에에… 있잖아, 너랑 나는 부모 자식 사이같은게 아니라니까…」
+					PRINTFORMW 「한다면 더 다른 사이가 있겠지…?」
 				ELSE
-					PRINTFORML 「어깨를 주물러준다구? 자, 부탁해.」
-					PRINTFORMW 나즈린의 작은 어깨에는 딱히 뭉친 곳이 느껴지지 않는다.
-					PRINTFORMW 「바보야…? 주무른다는 행위 자체가 의미있는 거라구.」
-					PRINTFORMW 「자, 교대야. 스킨십이라는 것은 일방적으로 하는게 아니야.」
+					PRINTFORMW 「이, 이런 거 할 바에야, 끈적끈적 달라 붙는게 차라리 나아!」
+					PRINTFORMW 「난 네 딸이 아니라구 정말……」
 				ENDIF
 			ENDIF
 		;연모
 		ELSEIF TALENT:연모
-			;목욕탕
-			;/초긴장하고 있기 때문에, 일견 쌀쌀해집니다.
-			IF CFLAG:현재위치 == 112
+			IF ABL:친밀 >= 8
 				IF RAND:2 == 0
-					PRINTFORMW 나즈린에게 등을 좀 밀어달라고 부탁했다.
-					PRINTFORML 「……뭐, 좋은데」
-					PRINTFORM 「나, 나? 아니…
-					IF RAND:2 == 0 
-						PRINTFORMW 뭐… 부탁들어줄까…」
-					ELSE
-						PRINTFORMW 응, 좋아…!」
-					ENDIF
-				ELSE
-					PRINTFORML 「등 밀어주는 건 뭐, 좋은데…」
-					PRINTFORMW 「여기 절대 보지 마…」
+					PRINTFORMW 「하아……좋아, 너 좋을대로 해.」
+					PRINTFORMW 「주변에 어린애라고 보이는 것도 그냥 포기하자.」
+				ELSE	
+					PRINTFORMW 「……네가 머리를 쓰다듬어 주면 마음이 진정돼…」
+					PRINTFORMW 「뭐, 한편으로는 부끄러워서 초초해지기도 하지만.」
+				ENDIF			
+			ELSEIF ABL:TARGET:친밀 > 5
+				IF RAND:2 == 0
+					PRINTFORMW 「이제 너 설득하는 건 포기했으니까……」
+					PRINTFORMW 「적어도 머리카락 안 헝클어지게 부탁할게.」
+				ELSE	
+					PRINTFORMW 「……하아, 주위에서 도대체 어떤 눈으로 보여지고 있는 걸까.」
+					PRINTFORMW 「그걸 생각하니까 마음이 울적하네……」
 				ENDIF
-			;툇마루
-			ELSEIF CFLAG:현재위치 == 110
-				;유성
-				IF TIME:7 == 3
-					PRINTFORML 나즈린과 함께 유성을 바라보았다.
-					PRINTFORML 「…」
-					PRINTFORMW 「아, 아니, 지금의 소원은 취소야, 취소!」
-				;여름에 맑음
-				ELSEIF DAY:2 == 2 && (TIME:5 == 0 || TIME:5 == 1)
-					;10~16시
-					IF TIME:0 >= 600 || TIME:0 <= 960
-						PRINTFORML 차가워진 우물의 물을 채운 병을 건네주었다.
-						PRINTFORMW 「오오… 얘는… 참…」
-					;17~19시
-					ELSEIF TIME:0 >= 1020 || TIME:0 <= 1140
-						PRINTFORML 나즈린과 저녁 바람을 쏘였다.
-						PRINTFORML 「아직 덥긴해도, 햇볕이 없으면 어떻게든 괜찮네.」
-						PRINTFORMW (…근데, 얘 가까이 있으면 뜨거워 죽겠어…)
-					ENDIF
+			ELSEIF ABL:TARGET:친밀 > 2
+				IF RAND:2 == 0
+					PRINTFORMW 「아아 정말 너란 녀석은, 왜 날 그렇게 창피하게 만들고 싶은거야……」
 				ELSE
-					PRINTFORML 나즈린과 밖의 경치를 멍하니 바라보았다.
-					PRINTFORMW 그러나, 나즈린은 안절부절못하며 바깥 경치를 감상할 처지가 아닌 것 같다…
+					PRINTFORMW 「하아, 쥐구멍에 들어가고 싶은 기분이야……」
 				ENDIF
+			;/연모로 친밀 2 이하라든지 있는 야
 			ELSE
-				;실패
-				IF TFLAG:193 == -1
-					PRINTFORMW 「싫어…」
-					PRINTFORMW 꽤 드문 소리를 들을 수 있었다.
-				ELSEIF RAND:8 == 0 
-					PRINTFORML 왠지 충동적으로 나즈린 어루만지고 싶어져서 해버렸다.
-					PRINTFORMW 「엣… 갑자기 그러면 놀라잖아.」
-					PRINTFORML 싫어?
-					PRINTFORMW 「아니…… 그런 건, 아니지만…」
-				ELSEIF RAND:7 == 0 
-					PRINTFORMW 나즈린은 몸을 긴장시키면서도 얌전하게 쓰다듬어지고 있다…
-				ELSEIF RAND:6 == 0 
-					PRINTFORMW 「…그런 건 여자친구라도 만들어서 그 애한테 해.」
-				ELSEIF RAND:5 == 0 
-					PRINTFORMW 「자, 잠깐, 거기는, 꺅…」
-				ELSEIF RAND:4 == 0 
-					PRINTFORMW 「…」
-					PRINTFORMW 나즈린은 슬그머니 다가왔다…
-				ELSEIF RAND:3 == 0
-					PRINTFORML 나즈린을 자신의 무릎 위에 앉게 했다…
-					PRINTFORMW 「…혹시 요괴를 애완동물처럼 생각하는게 아닐까 싶어.」
-					PRINTFORMW 요괴는 아니고 나즈린이다.
-					PRINTFORMW 「…마음대로 해」
-				ELSEIF RAND:2 == 0
-					PRINTFORML 「…히익!」
-					PRINTFORMW 눈앞에서 흔들거리는 나즈린의 귀에 입김을 불자, 나즈린은 소리없는 비명을 질렀다…
+				IF RAND:2 == 0
+					PRINTFORMW 「야, 하지마… 윽!」
 				ELSE
-					PRINTFORML 「어깨를 주물러 준다구…? 아―…그럼 부탁할까…」
-					PRINTFORMW 「…」
-					PRINTFORMW 어깨를 주무르는 동안, 나즈린은 계속 말이 없었다…
+					PRINTFORMW 「야! 이런 데서까지 애완동물 취급하지 마!」
 				ENDIF
 			ENDIF
-		;연인, 연모 없음
 		ELSE
-			;목욕탕
-			IF CFLAG:현재위치 == 112
-				;◆호감도 1000이상
-				IF CFLAG:2 >= 1000
-					;성공
-					IF TFLAG:193 == 1
-						IF RAND:2 == 0
-							PRINTFORMW 「아……후우, 기분 좋았어.」
-							PRINTFORMW 「너한테라면 귀랑 꼬리 손질 맡겨도 괜찮으려나?」
-						ELSE
-							PRINTFORMW 「다음엔 머리도 감겨줄래?」
-						ENDIF
-					;실패
-					ELSEIF TFLAG:193 == -1
-						PRINTFORMW 「……너무 힘이 들어갔어.」
-					ELSE
-						IF RAND:3 == 0
-							PRINTFORMW 「응, 살살 부탁할게.」
-							PRINTFORMW 「나 피부가 예민해서.」
-						ELSEIF RAND:2 == 0
-							PRINTFORMW 「고마워. 혼자서는 씻기 힘든 부분도 있으니까.」
-						ELSE
-							PRINTFORMW 「벅벅 문지르지 좀 마!」
-							PRINTFORMW 「응, 근데 지금은 좀 약했어. 지금보단 좀 더 세게 해줘.」
-						ENDIF
-					ENDIF
-				;호감도 1000 미만
+			IF ABL:친밀 >= 8
+				PRINTFORMW 「현장이라고 불리는 이 나에게…… 저기?」
+			ELSEIF ABL:TARGET:친밀 > 5
+				PRINTFORMW 「무슨 말을 해도 소용없으니까… 어쩔 수 없네 정말.」
+			ELSEIF ABL:TARGET:친밀 > 2
+				PRINTFORML 「이런 데서 하지마. 부끄럽잖아……」
+				PRINTFORMW 「아니, 넌 부끄럼도 안 타?」
+			ELSE
+				PRINTFORMW 「저기, 외출 중일 때만큼은 그만두는 게 어때?」
+			ENDIF
+		ENDIF
+	;동침중
+	;/동침중이라면 다소 솔직하게
+	ELSEIF CFLAG:동침중
+		;연인
+		IF TALENT:연인
+			;◆
+			IF RAND:6 == 0
+				PRINTFORMW 「…응…오늘 밤은 푹 잘 수 있을 것 같아.」
+				PRINTFORMW 「옆에서 악몽을 몰아내줘.」
+				PRINTFORMW 「…그래도 악몽을 꾸게 되면 꿈속까지 구하러 오라고.」
+			;◆
+			ELSEIF RAND:5 == 0
+				PRINTFORMW 「……오늘도 나름 열심히 했으니까, 하게 해줄게.」
+				PRINTFORMW 「말은 없어도, 너의 손으로부터 따뜻한 마음이 흘러들어 와」
+				PRINTFORMW 「오늘 하루도 고생 많았어……」
+			;◆
+			ELSEIF RAND:4 == 0
+				PRINTFORMW 「…응…이렇게 해주는 것만으로도 충분해.」
+				PRINTFORMW 「이렇게 네가 옆에 있어준다면 안심하고 잘 수 있으니까……」
+				PRINTFORMW 「뭐, 보디가드치고는 좀 못미덥지만.」
+			ELSEIF RAND:3 == 0 
+				PRINTFORML 「응…」
+				PRINTFORMW 나즈린은 편하게 눈을 감으며 당신이 어루만질 수 있고 있다…
+			ELSEIF RAND:2 == 0 
+				PRINTFORMW 「…응…%MASTERNAME:39%…」
+				PRINTFORMW 아무래도 의식을 손떼기 걸려 있는 것 같다…
+			ELSE
+				PRINTFORML 「…어째서, 나인거야…?」
+				PRINTFORMW 「너라면 나보다 예쁜 애든, 성격 좋은 애든 고를 수 있었을텐데…」
+			ENDIF
+		;연모
+		ELSEIF TALENT:연모
+			;◆
+			IF RAND:8 == 0
+				PRINTFORMW 「……굳이 이린 거 안해줘도 잘 수 있어.」
+				PRINTFORMW 「정말, 넌 날 뭐라고 생각하는거야?」
+				PRINTFORMW 「역시 어린애? 아님 애완동물? ……여자로서는 봐주지 않는거야…?」
+			;◆
+			ELSEIF RAND:7 == 0
+				PRINTFORMW 「아, 정말… 너란 놈은, 너란 놈으으으은!」
+				PRINTFORMW 「이래보여도 식인 요괴라고 몇 번이나 설명했지!」
+				PRINTFORMW 「그런데, 왜 이런 걸 하는거야?! 엉?!」
+			;◆
+			ELSEIF RAND:6 == 0
+				PRINTFORMW 「……뭐, 이제부터 그냥 잠만 잘건데,」
+				PRINTFORMW 「괜히 언성 높여서 잠깨는 것도 어이 없지.」
+				PRINTFORMW 「만족할만큼 하고 얼른 %MASTERNAME:39%도 잠이나 자.」
+			;◆
+			ELSEIF RAND:5 == 0
+				PRINTFORMW 「……네가 내 머리 쓰다듬는 걸 관두게 하는 건 이제 포기했지만」
+				PRINTFORMW 「너무 머리 헝클어뜨리는 마.」
+				PRINTFORMW 「잠버릇 심하다고 명련사 식구들이 비웃을지도 몰라.」
+			;◆
+			ELSEIF RAND:4 == 0
+				PRINTFORMW 「……흥, 좋아하지도 않는 여자 이불 속으로 기어들어와서 이런 짓을 하다니… 발칙한 놈이네 너.」
+				PRINTFORMW 「뭐, 지금 졸리니까 봐줄게……」
+			ELSEIF RAND:3 == 0
+				PRINTFORMW 「…흐응…」
+				PRINTFORMW 무의식적으로 나즈린은 머리를 쓰다듬는 손에 귀를 부비적대고 있다…
+			ELSEIF RAND:2 == 0
+				PRINTFORMW 「…애인도 아닌데 이불까지 기어들어와서 이렇게 대해주는 건 뭐야…」
+				;그 밖에 연인 소유가 있다
+				IF TALENT:(NO:2):연인 || TALENT:(NO:3):연인 || TALENT:(NO:4):연인 || TALENT:(NO:5):연인 || TALENT:(NO:6):연인 || TALENT:(NO:7):연인 || TALENT:(NO:8):연인 || TALENT:(NO:9):연인
+					PRINTFORMW 「네가 얼마나 의리없는 일 하고 있는건지 알고 있어?」
 				ELSE
-					;◆성공
-					IF TFLAG:193 == 1
-						PRINTFORMW 「……고마워, 개운하네.」
-					;◆실패
-					ELSEIF TFLAG:193 == -1
-						PRINTFORMW 「……이제 끝났지? 저리가.」
-					ELSE
-						;◆
-						IF RAND:3 == 0
-							PRINTFORMW 「……개운해」
-						ELSEIF RAND:2 == 0
-							PRINTFORMW 「등 밀어주기? 별로 상관은 없는데, 이상한 짓 하면 가만 안둘거야?」
-							PRINTFORMW 「그리고, 여기를 뒤돌아 보는 것도 금지!」
-						ELSE
-							PRINTFORML 「등 밀어주기? 됐어.」
-							PRINTFORMW 「뭐 할지 뻔하잖아. 특히 이 수컷자식! 사양이라구!」
-						ENDIF
-					ENDIF
+					PRINTFORMW 「지금 내가 얼마나 괘씸한지 알고 있어?」
 				ENDIF
-			;툇마루
-			ELSEIF CFLAG:현재위치 == 110
-				;유성
-				IF TIME:7 == 3
-					PRINTFORML 나즈린과 함께 유성을 바라보았다
-					PRINTFORMW 「너…로맨티스트야?」
-				;여름에 맑음
-				ELSEIF DAY:2 == 2 && (TIME:5 == 0 || TIME:5 == 1)
-					;10~16시
-					IF TIME:0 >= 600 || TIME:0 <= 960
-						PRINTFORML 차가워진 우물의 물을 채운 병을 건네주었다
-						PRINTFORMW 「오오… 얘는… 참…」
-					;17~19시
-					ELSEIF TIME:0 >= 1020 || TIME:0 <= 1140
-						PRINTFORML 나즈린과 저녁 바람을 쏘였다.
-						PRINTFORML 「아직 덥지만, 확실히 햇볕이 없으니 좀 낫네.」
-					ENDIF
+				PRINTFORMW 싫으면 나갈까?
+				PRINTFORMW 「…」
+			ELSE
+				PRINTFORMW 「…잠들 때 까지만, 조금만 더 해줘…」
+				PRINTFORMW 「그럼 나도… 꿈에서라도…」
+				;그 밖에 연인 소유가 있다
+				SIF TALENT:(NO:2):연인 || TALENT:(NO:3):연인 || TALENT:(NO:4):연인 || TALENT:(NO:5):연인 || TALENT:(NO:6):연인 || TALENT:(NO:7):연인 || TALENT:(NO:8):연인 || TALENT:(NO:9):연인
+					PRINTFORMW 「…다음엔… 번지수 제대로 찾아가서 해…」
+			ENDIF
+		;친밀 5이상
+		ELSEIF ABL:친밀 > 5
+			IF RAND:2 == 0
+				PRINTFORML 「정말, 너도 참 속을 모를 녀석이네…」
+				PRINTFORMW 「뭐가 좋아서 이런 데에 오는거야…」
+			ELSE
+				PRINTFORMW 「후후… 가끔은 이런 것도 괜찮겠지…」
+			ENDIF
+		ELSE
+			IF RAND:2 == 0
+				PRINTFORMW 「정말, 주인이랑 비슷한 정신머리를 가지고 있는 것 같네, 너는…」
+			;◆
+			ELSE
+				PRINTFORMW 「……난 말이야, 어린애가 아니거든.」
+				PRINTFORMW 「그러니까, 이런 거 해줄 필요 없어.」
+			ENDIF
+		ENDIF
+	;목욕탕에 있다
+	ELSEIF CFLAG:현재위치 == 112
+		;욕실로 느긋하게 쉬는 것 직후
+		IF PREVCOM == 403
+			;연인
+			IF TALENT:연인
+				PRINTFORMW 나즈린은 입다물어 눈을 감고,  당신에게 몸을 맡기고 있다…
+			;연모
+			ELSEIF TALENT:연모
+				IF RAND:2 == 0
+					PRINTFORML 「어째서 목욕탕에 와서까지 그러고 있는거야…」
+					PRINTFORMW 「ㅇ,아니 딱히 뭘 하라는 건 아니지만…」
 				ELSE
-					PRINTFORML 나즈린과 밖의 경치를 멍하니 바라보았다
-					PRINTFORMW 「…역시 나는 멍하니 바라만 보는 건 성미에 안 맞는 것 같은데.」
+					PRINTFORML 「…히잇!, 손 닿았어!」
+					PRINTFORMW 귀에 닿자, 나즈린은 깜짝과 몸을 진동시켰다…
+				ENDIF
+			;친밀 5이상
+			ELSEIF ABL:친밀 > 5
+				IF RAND:2 == 0
+					PRINTFORML 「응―？여기서도 쓰담쓰담?」
+					PRINTFORMW 「이런 점은 주인이랑 똑 닮았네.」
+				ELSE
+					PRINTFORMW 귀의 잔털이 뜨거운 물을 튀기는게 보인다…
 				ENDIF
 			ELSE
-				;실패
-				IF TFLAG:193 == -1
-					;◆
-					IF RAND:2 == 0 
-						PRINTFORML 귀 만져도 될까요?
-						PRINTFORML 
-						PRINTFORMW 「안돼. 싫어. 만지게 해줄 생각 없어. 돌아가.
-						PRINTFORMW 　…안된다고 했잖아! 이 자식아!」
-					ELSE
-						PRINTFORMW 「…스스럼없이 만지지 말아줄래.」
-					ENDIF
-				;◆성공
-				ELSEIF TFLAG:193 == 1
-					IF RAND:2 == 0
-						PRINTFORML 귀 만질거야!
-						PRINTFORML 
-						PRINTFORML 「이게 허락도 안 받고…!
-						PRINTFORMW 　주인한테도 한번도 허락해준 적 없는데…」
-						PRINTFORML 
-						PRINTFORMW 「……다정하게 부탁할게.」
-					ELSE
-						PRINTFORMW 「정말, 어쩔 수 없는 녀석이네.」
-						PRINTFORMW 「……조금이라면 용서해줄게.」
-					ENDIF
-				;◆
-				ELSEIF RAND:9 == 0 
-					PRINTFORML 귀 만져도 될까요?
-					PRINTFORML 
-					PRINTFORMW 「…어쩔 수 없지. 조금만이라면…」
-					PRINTFORMW 「…아니, 왠지 느낌이 쌔해서 역시 안되겠어.」
-				ELSEIF RAND:8 == 0 
-					PRINTFORML 왠지 충동적으로 나즈린을 어루만지고 싶어져서 해버렸다
-					PRINTFORMW 「저기, 뭐하는거야.」
-				ELSEIF RAND:7 == 0 
-					PRINTFORMW 「흐음.」
-				ELSEIF RAND:6 == 0 
-					PRINTFORMW 나즈린을 쓰다듬었지만 나즈린은 아무런 반응도 하지 않고 있다.
-				ELSEIF RAND:5 == 0 
-					PRINTFORMW 나즈린은 당신의 손을 피하듯 몸을 움직였다.
-				ELSEIF RAND:4 == 0 
-					PRINTFORMW 나즈린을 자신의 무릎 위에 올리려고 했지만 스르르 도망가 버렸다…
-				ELSEIF RAND:2 == 0
-					PRINTFORML 「…히얏!」
-					PRINTFORMW 눈앞에서 흔들리는 나즈린의 귀에 입김을 내뱉자, 나즈린은 소리없는 비명을 질렀다…
+				PRINTFORML 「있잖아…여기 욕실이라구?」
+				PRINTFORMW 「조금만이라도 거리감이라는 걸 파악하는게 어때.」
+			ENDIF
+		ELSE
+			PRINTFORML 나즈린의 머리를 감겨주었다.
+			;랜덤1/2, MASTER의 기교가 5이상인가 능숙한손가락, 다만 연모때는 이런 여유 물릴 수 없다
+			IF RAND:2 == 0  && (ABL:MASTER:기교 >= 5 || TALENT:MASTER:51 == 1) && TALENT:연모 == 0
+				IF RAND:2 == 0
+					PRINTFORMW 「호오, 다른 사람의 몸을 다루는 방법이 능숙하네.」
 				ELSE
-					PRINTFORML 「어깨를 주물러 준다고? 나는 보이는 것처럼 딱히 뭉친 곳이 없어서 주물러 줄 필요는 없는데.」
-					PRINTFORMW 「그런데도 할 거면 좋을대로 해.」
+					PRINTFORMW 「오오… 제법 시원하잖아.」
+				ENDIF
+			ELSEIF TALENT:연인
+				IF RAND:3 == 0
+					PRINTFORMW 「으음… 다른 사람이 머리를 감겨준다는게 이렇게 편할 줄이야…」 
+				ELSEIF RAND:2 == 0 
+					PRINTFORMW 「응 그렇게… 귀는 조심스럽게…」
+				ELSE
+					PRINTFORMW 「이봐… 머리카락 가지고 장난치지 마…」
+				ENDIF
+			ELSEIF TALENT:연모
+				IF RAND:3 == 0 
+					PRINTFORMW 「…응」
+					PRINTFORMW 「…간지러워」
+				ELSEIF RAND:2 == 0 
+					PRINTFORMW 「…」
+					PRINTFORMW 머리를 행궈주는 동안에도 나즈린은 시종일관 말이 없었다…
+				ELSE
+					PRINTFORMW 「히아앗!」
+					PRINTFORMW 「…크흠… 실례」
+				ENDIF
+			ELSEIF ABL:친밀 > 5
+				IF RAND:3 == 0 
+					PRINTFORMW 「으읏…귀 안까지 할 필요는 없다구!」
+				ELSEIF RAND:2 == 0 
+					PRINTFORMW 「아앗!, 귀 세게 만지지 마!」
+				ELSE
+					PRINTFORMW 「응 그래… 딱 좋아…」
+				ENDIF
+			ELSE
+				IF RAND:3 == 0 
+					PRINTFORMW 「야야, 귀에 거품 안 들어가게 조심해 줘.」
+				ELSEIF RAND:2 == 0 
+					PRINTFORMW 「정말 맡겨도 되는거야…?」
+				ELSE
+					PRINTFORMW 「얼른 끝내줘…」
+				ENDIF
+			ENDIF
+		ENDIF
+	ELSE
+		;끌어안는다 직후
+		IF PREVCOM == 311
+			PRINTFORML 꼭 껴안은 나즈린을 상냥하게 어루만졌다
+			IF TALENT:연인
+				PRINTFORMW 「이런 걸로 안심하는 건, 동물의 본능때문일거야…」
+			ELSEIF TALENT:연모
+				PRINTFORMW 나즈린은 새빨갛게 되어 입을 다물고 있다…
+			ELSEIF ABL:친밀 > 5
+				PRINTFORMW 「으응… 뭐 나쁘지 않은 기분이네.」
+			ELSE
+				PRINTFORMW 「마치 애완동물같아…」
+			ENDIF
+		ELSE
+			;연인
+			IF TALENT:연인
+				;실패
+				;/연인으로 어루만지는데 실패는 어떤 상황이다
+				IF TFLAG:193 == -1
+					PRINTFORMW 「…너무 쓰다듬는거 아냐?」
+				;욕정 Lv. 3이상으로, 강하게 하고의 랜덤 분기가 3개 추가된다
+				ELSEIF RAND:4 == 0 && PALAM:욕정 >= PALAMLV:3
+					PRINTFORMW 「…쓰다듬기만 하는거야…?」
+				ELSEIF RAND:3 == 0 && PALAM:욕정 >= PALAMLV:3
+					PRINTFORMW 「…이렇게까지 애태워놓고, 쓰다듬기만 하구…」
+					PRINTFORMW 「정말, 도대체 어디서 이런 나쁜 심술을 배워온거야?」
+				ELSEIF RAND:2 == 0 && PALAM:욕정 >= PALAMLV:3
+					PRINTFORMW 「…내가 뭘 원하는지 알면서.」
+					PRINTFORMW 「…심술쟁이.」
+				ELSEIF RAND:7 == 0 
+					PRINTFORMW 「저기? 나 식인 요괴라구?」
+					PRINTFORMW 스윽스윽.
+					PRINTFORMW 「아무리 이런 관계라지만 그래도 나름의 경외심이랄까, 존중을…」
+					PRINTFORMW 스윽스윽스윽.
+					PRINTFORMW 「…됐어.」
+				ELSEIF RAND:6 == 0 
+					PRINTFORMW 「저… 연인이라고 해도, 일단 내가 선배인데…?」
+					PRINTFORMW 스윽스윽.
+					PRINTFORMW 「조금은 존중을 해주는게… 어이, 듣고 있는 거냐.」
+					PRINTFORMW 스윽스윽.
+				ELSEIF RAND:5 == 0 
+					PRINTFORMW 「아 진짜 짜증나! 애완동물 취급 좀 하지 말라니까-」
+					PRINTFORMW 스윽스윽.
+					PRINTFORMW 「그러니까 하지 말라고!!!」
+					PRINTFORMW 스윽스윽.
+				ELSEIF RAND:4 == 0 
+					PRINTFORMW 「아아 정말… 머리가 헝클어지잖아.」
+					PRINTFORMW 나즈린은 쿡쿡 웃으면서 푸념했다…
+				;◆
+				ELSEIF RAND:5 == 0
+					PRINTFORML 「…있잖아, 난 너보다 훨씬 오래 살아왔다구.」
+					PRINTFORMW 음음.
+					PRINTFORML 「너보다 틀림없이 아는 것도 많고, 전투능력에 대해서는 비교하는 거 자체가 우스운 일이겠지.」
+					PRINTFORMW 예예.
+					PRINTFORML 「…즉」
+					PRINTFORMW 알겠다 알겠어.
+					PRINTFORML 
+					PRINTFORML 「그 동네 꼬마 대하는 태도를 고치라는 얘기야…!」
+					PRINTFORML 
+					PRINTFORMW 오냐 그래그래. 지금 치즈 줄게~
+					PRINTFORMW 「쳐죽여버릴거야 휴먼.」
+				ELSEIF RAND:4 == 0 
+					PRINTFORML 「…역시 슬슬 짜증나는데.」
+					PRINTFORMW 스윽스윽.
+					PRINTFORML 「…듣고 있는거야?」
+					PRINTFORMW 스윽스윽스윽.
+				ELSEIF RAND:3 == 0 
+					PRINTFORMW 「응…」
+					PRINTFORMW 「기분 좋아.」
+				ELSEIF RAND:2 == 0 
+					PRINTFORMW 나즈린은 기분 좋은 듯 눈을 감고 있다…
+				ELSE
+					PRINTFORMW 쓰다듬어 주니 나즈린은 머리를 기대어왔다…
+				ENDIF
+			;연모
+			ELSEIF TALENT:연모
+				IF TFLAG:193 == -1
+					PRINTFORMW 「…읏」
+					PRINTFORMW 쓰다듬어 주니, 나즈린은 얼굴을 보이지 않으려 뒤돌아 버렸다…
+				;욕정 Lv. 3이상으로, 강하게 하고의 랜덤 분기가 3개 추가된다
+				ELSEIF RAND:4 == 0 && PALAM:욕정 >= PALAMLV:3
+					PRINTFORMW 「…좀 더 가까이, 더 세게… 만져줘…」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「…」
+					PRINTFORMW 나즈린을 쓰다듬으니, 뭔가 말하고 싶은 듯한 눈빛으로 이쪽을 바라보았다…
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「…」
+					PRINTFORMW 「…좀 더.」
+				ELSEIF RAND:4 == 0 
+					PRINTFORML 나즈린은 시큰둥해 하면서도, 얌전하게 어루만질 수 있고 있다
+					PRINTFORMW 그 뺨은, 기분 탓일까 살짝 붉은 듯 보였다…
+				ELSEIF RAND:3 == 0
+					PRINTFORML 「…」
+					PRINTFORMW 무의식적으로 나즈린은 머리를 어루만지는 손에 귀를 부비적거리고 있다…
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「…연인도 아닌데, 이런 거 안하는게 좋지 않을까.」
+					PRINTFORMW 그럼 그만할까?
+					PRINTFORMW 「…」
+				ELSE
+					PRINTFORMW 「…젠장, 아무 생각없이 쓰다듬고 있네…」
+				ENDIF
+			;친밀 5이상
+			ELSEIF ABL:친밀 > 5
+				IF TFLAG:193 == -1
+					PRINTFORMW 「…너무 쓰다듬는 거 아냐?」
+				ELSEIF RAND:6 == 0 
+					PRINTFORMW 「저기, 나 식인 요괴라구…?」
+					PRINTFORMW 스윽스윽.
+					PRINTFORMW 「다른 명련사 사람들이랑은 달리 나는 저 박애주의자같은 히지리 말을 들을 의리같은 건 없어. 그러니까-」
+					PRINTFORMW 스윽스윽스윽.
+					PRINTFORMW 「…아아 정말!」
+				ELSEIF RAND:5 == 0 
+					PRINTFORMW 「저… 우리 식구라고 해도, 일단 내가 선배인데?」
+					PRINTFORMW 스윽스윽.
+					PRINTFORMW 「조금은 경의를 표하는게… 어이, 듣고 있는 거냐…」
+					PRINTFORMW 스윽스윽.
+				ELSEIF RAND:4 == 0 
+					PRINTFORMW 「아 정말 짜증나! 날 애완동물 취급하지 말라고-」
+					PRINTFORMW 스윽스윽.
+					PRINTFORMW 「그러니까, 그만두라고!」
+					PRINTFORMW 스윽스윽.
+				ELSEIF RAND:3 == 0 
+					PRINTFORMW 「아아 정말… 머리가 헝클어지잖아.」
+					PRINTFORMW 딱히 진심으로 싫어하는 것 같지 않아서 계속 쓰담쓰담했다.
+				;◆
+				ELSEIF RAND:2 == 0
+					PRINTFORML 「…있잖아, 난 너보다 훨씬 오래 살아왔어.」
+					PRINTFORMW 음음.
+					PRINTFORML 「너보다 틀림없이 아는 것도 많고, 전투능력은 비교도 안되겠지.」
+					PRINTFORMW 예예.
+					PRINTFORML 「…즉」
+					PRINTFORMW 알겠다 알겠어.
+					PRINTFORML 
+					PRINTFORML 「그 동네꼬마 대하는 듯한 태도를 고치라는 얘기야…!!!」
+					PRINTFORML 
+					PRINTFORMW 오냐 그래그래. 지금 치즈 줄 테니까―.
+					PRINTFORMW 「쳐죽인다 휴먼.」
+				ELSE
+					PRINTFORML 「…역시 슬슬 짜증나는데.」
+					PRINTFORMW 스윽스윽.
+					PRINTFORML 「…듣고 있는거야?」
+					PRINTFORMW 스윽스윽스윽.
+				ENDIF
+			ELSE
+				IF TFLAG:193 == -1
+					PRINTFORMW 「좀 짜증나.」
+				ELSEIF RAND:3 == 0 
+					PRINTFORMW 「…네가 쓰다듬을 수 있을만큼 난 착하지 않다구?」
+				ELSEIF RAND:2 == 0 
+					PRINTFORMW 「흥, 날 여기 애완동물 정도로 착각하고 있는거 아니야?」
+				ELSE
+					PRINTFORMW 「…뭔 뜻이야?」
 				ENDIF
 			ENDIF
 		ENDIF
 	ENDIF
 ENDIF
 RETURN 1
+
 ;==================================================
 ;317,腰を動かす
 ;ABL:V감각(2未満=まだ気持ち良くない 5未満=ちょっと気持ちいい 5以上=カイカン
