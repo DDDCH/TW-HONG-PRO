@@ -1,0 +1,323 @@
+「」
+PRINTFORMDW
+PRINTFORMW 「」
+PRINTFORMW
+PRINTFORML
+%MASTERNAME:15%
+%CALLNAME:MASTER%
+MAIN_MAP == 3
+A == 
+%조사선택(CALLNAME:MASTER,"이")%
+	IF LOCAL:1 && ARG == 1
+		SELECTCASE CFLAG:현재위치
+			;사쿠야 방
+			CASE 320
+			;일하는 중일 때
+				IF TALENT:연인 && MAIN_MAP == 3 && 업무중체크(TARGET)
+					A = RAND:3
+					IF A == 0
+						PRINTFORMW 「어머, %마스터잖%니, 어쩐 일이야?」
+						PRINTFORML
+						PRINTFORMDW 사쿠야는 웃으며 당신을 맞이했다
+						PRINTFORML
+						PRINTFORMW 「일 하는데 너무 힘들진 않아?」
+						PRINTFORMW 「잠깐 여기서 쉬다가. 아, 차라도 한 잔 타줄까?」
+					ELSEIF A == 1
+						PRINTFORML %마스터가% 다가가자 사쿠야는 웃으며 맞이해주었다.
+						PRINTFORML
+						PRINTFORMW 「아, %CALLNAME:MASTER%.」
+						PRINTFORMW 「업무 시간에 어쩐 일이야?」
+						PRINTFORMW 「……날 만나러 왔다거나?」
+						PRINTFORML
+						PRINTFORML 속삭이듯 물끄러미 사쿠야가 %CALLNAME:MASTER%의 눈을 들여다본다.
+						PRINTFORML
+						PRINTFORMW 「그냥 해본 말이야. 우후훗♪」
+					ELSE
+						PRINTFORMW 「아아, 역시 %마스터였%구나.」
+						PRINTFORML
+						PRINTFORMDW 사쿠야는 %마스터가% 올 것을 알고 있었던 것처럼 따스한 눈빛을 보낸다.
+						PRINTFORML
+						PRINTFORMW 「안 그래도 슬슬 %CALLNAME:MASTER%를 충전할 시간이였는데. 딱 좋은 시간에 왔네?」
+					ENDIF
+				ELSEIF TALENT:연모 && MAIN_MAP == 3 && 업무중체크(TARGET)
+					A = RAND:3
+					IF A == 0
+						PRINTFORMW 「어머, %마스터잖%니, 어쩐 일이야?」
+						PRINTFORML
+						PRINTFORMDW 사쿠야는 웃으며 당신을 맞이했다
+						PRINTFORML
+						PRINTFORMW 「일 하는데 너무 힘들진 않아?」
+						PRINTFORMW 「잠깐 여기서 쉬다가. 아, 차라도 한 잔 타줄까?」
+					ELSEIF A == 1
+						PRINTFORMW 「아아, 역시 %마스터였%구나.」
+						PRINTFORMW 「왠지 모르게 그럴 것 같더라.」
+						PRINTFORML
+						PRINTFORMDW %마스터를% 알아챈 사쿠야는 왠지 기쁜 눈치다.
+					ELSE
+						PRINTFORMW 「히야아아앗?!」
+						PRINTFORMDW 순간 속옷 차림으로 메이드복을 갈아입는 사쿠야의 모습이…
+						PRINTFORML
+						PRINTFORMW 「크, 크흠, 어쩐 일이야? 일하는 데에 궁금한 거라도 생겼어?」
+						PRINTFORML
+						PRINTFORMDW 눈을 감았다 뜨니 눈 앞에 있는 것은 평소의 퍼펙트한 메이드복 차림의 사쿠야였다.
+					ENDIF
+				ELSEIF TALENT:사모 && MAIN_MAP == 3 && 업무중체크(TARGET)
+					A = RAND:2
+					IF A == 0
+						PRINTFORMW 「……」
+						PRINTFORML
+						PRINTFORMDW 묵묵히 청소를 하고 있는 모양이다.
+					ELSE
+						PRINTFORMW 「……휴우」
+						PRINTFORML
+						PRINTFORMDW 그녀는 분명 청소를 하면서 순간이동을 하는 것처럼 보인다.
+						PRINTFORMDW 이것이 소문으로만 듣던 스펠카드 환세「더 월드 크리닝」인가…!
+					ENDIF
+				ELSEIF  !TALENT:사모 && !TALENT:연모 && !TALENT:연모 && MAIN_MAP == 3 && 업무중체크(TARGET)
+					A = RAND:2
+					IF A == 0
+						PRINTFORMW 「……」
+						PRINTFORML
+						PRINTFORMDW 묵묵히 청소를 하고 있는 모양이다.
+					ELSE
+						PRINTFORMW 「업무 중에 무슨 일이지?」
+						PRINTFORML
+						PRINTFORMDW 사쿠야는 잠깐 휴식을 취하고 있었던 것 같다.
+					ENDIF
+				ELSEIF !업무중체크(TARGET)
+					IF TALENT:연모 || TALENT:연인
+						SELECTCASE RAND:4
+						CASE 0
+							PRINTFORML 「어머, %CALLNAME:MASTER%. 이쪽에 같이 앉죠?」
+							PRINTFORML 앉아서 쉬고 있던 사쿠야는 %마스터를% 알아채자 
+							PRINTFORML 탁탁 하고 손으로 자기 옆자리로 권한다
+							PRINTFORML 
+							PRINTFORML 「자자, 더 가까이, 더 가까이♪」
+							PRINTFORML %마스터가% 옆에 앉아 사쿠야가 부대끼기 시작했다
+							PRINTFORMW 평소 일할 때의 그녀와는 딴판이다
+						CASE 1 TO 2
+							PRINTFORML 「아아, 역시 %마스터였%구나」
+							PRINTFORML 사쿠야는 %마스터가% 올 것을 알고 있었던 것처럼 따스한 눈빛을 보낸다
+							PRINTFORMW 「오늘은 웬일이야?」
+						CASEELSE
+							PRINTFORML 「어머, %CALLNAME:MASTER%. 이쪽에 같이 앉죠?」
+							PRINTFORML 앉아서 쉬고 있던 사쿠야는 %마스터를% 알아채자 
+							PRINTFORML 탁탁 하고 손으로 자기 옆자리로 권한다
+							PRINTFORML 
+							PRINTFORML 「자자, 더 가까이, 더 가까이♪」
+							PRINTFORML %마스터가% 옆에 앉아 사쿠야가 부대끼기 시작했다
+							PRINTFORMW 평소 일할 때의 그녀와는 딴판이다
+						ENDSELECT
+					ELSEIF TALENT:사모
+						SELECTCASE RAND:5
+						CASE 0 TO 2
+							PRINTFORML 「아아, 역시 %마스터였%구나」
+							PRINTFORML 사쿠야는 %마스터가% 올 것을 알고 있었던 것처럼 따스한 눈빛을 보낸다
+							PRINTFORMW 「오늘은 웬일이야?」
+						CASE 3
+							PRINTFORML 「어머, %CALLNAME:MASTER%잖니」
+							PRINTFORML %마스터를% 발견한 사쿠야는 옅게 미소 짓고 있다
+							PRINTFORML 왠지 그냥 이유를 물어보니,
+							PRINTFORML 「아니? 딱히 아무것도 아닌데요?」
+							PRINTFORMW 사쿠야는 더욱 웃음이 짙어지면서 갸우뚱했다
+						CASEELSE
+							PRINTFORML 「%CALLNAME:MASTER%, 안녕」
+							PRINTFORML 목소리 쪽을 쳐다보니 어느 틈에 사쿠야가 있었다
+							PRINTFORML 「지금은 휴식 중이야」
+							PRINTFORMW 사쿠야는 한가로운 눈치다
+						ENDSELECT
+					ELSE
+						SELECTCASE RAND:2
+						CASE 0
+							PRINTFORML 「……」
+							PRINTFORMW 묵묵히 청소를 하고 있는 모양이다
+						CASEELSE
+							PRINTFORML 「이런, 평안하신지요」
+							PRINTFORML 인사를 해오는 사쿠야에게 %CALLNAME:MASTER%도 인사를 돌려준다
+							PRINTFORMW 그 행동거지에서 빈틈은 찾아볼 수 없다
+						ENDSELECT
+					ENDIF
+					;시간각인이 있을 때 시간각인/7로
+					IF MARK:시간각인 > 0 && RAND:7 < MARK:시간각인
+						PRINTFORML %마스터가% 다가서는 바람에 \@MARK:쾌락각인>0? #시간(時姦)으로 \@ 강렬한 쾌락을 새긴 사쿠야의 육체는
+						PRINTFORMW 무의식중에 %CALLNAME:MASTER%의 자비를 갈구하며 욱신거리고 있다……
+					ENDIF
+				ENDIF
+			CASEELSE
+				IF 업무중체크(TARGET)
+					PRINTFORMW 일할 때는 일만!
+				ENDIF
+		ENDSELECT
+		RETURN 1
+	ENDIF
+ENDIF
+	IF LOCAL:1 && ARG == 1
+		;◆분노
+		IF CFLAG:LOCAL:빡침
+			PRINTFORMW 「……뭐하러 왔어?」
+		;사쿠야 이외의 여자애와 연인이 되어 첫대면 이야기, 1회만.
+		ELSEIF CFLAG:1331 == 0 && (TALENT:(NO:16):연인 || TALENT:(NO:58):연인 || TALENT:(NO:59):연인 || TALENT:(NO:54):연인 || TALENT:(NO:50):연인 || TALENT:(NO:1):연인 || TALENT:(NO:11):연인)
+			PRINTFORM 「들었어.
+			;연인의 상대에 의해 대사가 바뀐다.
+			IF TALENT:(NO:16):연인
+				PRINTFORMW 아가씨랑 연인이 됐다면서? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「아가씨를 잘 부탁해. 물론 누구보다 강한 분이시긴 하지만, 한편으론 외로움도 많이 타시고 챙겨드릴 부분이 많은 분이니까.」
+				PRINTFORMW 「아가씨의 연인이라고 해서 바깥주인님 대접해줄 생각은 없으니 기대하지마렴.」
+			ELSEIF TALENT:(NO:58):연인
+				PRINTFORMW 메이링이랑 연인 사이가 됐다면서? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「물론 못 미덥고, 바보같고, 업무시간에 졸기만 하고, 쓸데없이 큰… 아니, 아무튼, 그 메이링을 잘 부탁해.」
+					IF MAIN_MAP == 3
+						PRINTFORMW 「사내연애한다고 둘다 더 업무에 소홀해지면, 가만히 안 둘테니 꾸준히 성실히 일해주렴. 메이링한테도 전해주고.」
+						PRINTFORML
+						PRINTFORMDW 사쿠야는 나이프를 들고 싱긋 웃으며 말을 맺었다.
+					ENDIF
+			ELSEIF TALENT:(NO:59):연인
+				PRINTFORMW 소악마와 연인이 됐다면서? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「파츄리님이 어떻게 반응하실지 궁금하네. 그나저나 악마와 연인이라니, 너도 취향 참 특이하구나. 
+				PRINTFORMW 악마치고 좀 지나치게 약한 면이 없잖아 있긴하지만.」
+			ELSEIF TALENT:(NO:54):연인
+				PRINTFORMW 파츄리님이랑 연인이 됐다면서? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「파츄리님은 아무래도 몸이 별로 안좋으시니까 옆에서 잘 챙겨드려.
+				PRINTFORMW 　매일 대도서관에만 계시니까 바깥 공기 좀 자주 쏘이게 해드리고, 커피를 좋아하시지만 빈혈에 안 좋으니 조금 줄이라고도…」
+				PRINTFORMW 「너무 잔소리해서 미안. 여튼 아가씨께 소중한 분이니 부디 잘 부탁할게.」
+			ELSEIF TALENT:(NO:50):연인
+				PRINTFORMW 작은 아가씨랑 좋은 사이가 됐다며? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「너 생각보다 간이 크구나. 그래도 마리사 작은 아가씨께 좋은 영향을 줬던걸까. 부디 너도 그랬으면 좋겠네.」
+					IF MAIN_MAP == 3
+						PRINTFORMW 「그럼 지하실 청소는 너에게 맡길게♪」
+			ELSEIF TALENT:(NO:1):연인
+				PRINTFORMW 레이무랑 좋은 사이가 됐다며? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「용케 그 무녀와 친해졌네. 그 아이는 자신의 책무 이외에는 거의 무관심한 편인데. 조금은 그 아이도 부드러워졌으려나.」
+			ELSEIF TALENT:(NO:11):연인
+				PRINTFORMW 마리사랑 좋은 사이가 됐다며? 후후, 벌써 메이드 요정들 사이에서 난리야.」
+				PRINTFORMW 「마리사는 우리 홍마관에서는 도둑으로 악명이 높거든. 특히 파츄리님이 싫어하시니까, 대도서관에 갈때 조심해.」
+			ENDIF
+			CFLAG:1331 = 1
+		ENDIF
+		RETURN 1
+	ENDIF
+	;==================================================
+;이름을 알려주는 이벤트(함수)
+;K39ひねくれナズー口上様より拝借
+;==================================================
+
+@NAME_SET_K15
+PRINTL 이름을 입력해 주세요(버튼으로 선택해주세요/타이핑한 이름 대응안함 조사처리가 안되서)
+IF NAME:MASTER != "당신"
+	LOCALS = %NAME:MASTER%
+ELSE
+	LOCALS = %CALLNAME:MASTER%
+ENDIF
+PRINTBUTTON @"[이름(%LOCALS%)을 대다]", @"%LOCALS%"
+PRINTL 　
+;名前を入力するループ
+$INPUT_LOOP_ONAMAE
+INPUTS
+; 行頭行尾の空白文字削除
+LOCALS = %RESULTS%
+REPLACE LOCALS, "\(\^\\s\+\|\\s\+\$)", ""
+;10文字以上は受け付けない
+IF STRLENS(LOCALS) > 10
+	CLEARLINE 1
+	REUSELASTLINE 「너무 길다.」
+	GOTO INPUT_LOOP_ONAMAE
+;空白は受け付けない
+ELSEIF RESULTS == ""
+	PRINTL 이름을 입력해 주세요
+	GOTO INPUT_LOOP_ONAMAE
+ELSE
+	PRINTFORML 「%RESULTS%…?」
+ENDIF
+PRINTL [0] 네
+PRINTL [1] 아니요
+;入力した名前を確定するループ
+$INPUT_LOOP_KAKUTEI_1
+INPUT
+IF RESULT == 0
+	;あなたの名前を%MASTERNAME:42%に格納
+	MASTERNAME:15 = %RESULTS%
+	;K42NAME = %RESULTS%/에러가 나와서 봉인
+	PRINTFORML 
+ELSEIF RESULT == 1
+	PRINTL 이름을 입력해 주세요
+	GOTO INPUT_LOOP_ONAMAE
+ELSE
+	PRINTL 이름을 입력해 주세요
+	GOTO INPUT_LOOP_ONAMAE
+ENDIF
+;拝借ここまで
+
+
+100, 스팽킹
+104, 눈가리개
+105, 밧줄
+108, 젖스팽킹
+40, 로터
+41, E마사지기
+42, 클리캡
+44, 바이브
+45, 애널바이브
+47, 유두캡
+49, 유두 로터
+80, 자위
+81, 펠라치오
+82, 파이즈리
+83, 스마타
+85, 풋잡
+88, 진공펠라
+60, 정상위
+61, 후배위
+62, 정상위 애널
+63, 후배위 애널
+65, 승마위
+66, 승마위 애널
+67, 대면좌위
+68, 배면좌위
+69, 대면좌위 애널
+;70, 배면좌위 애널
+;72, 삽입 G스팟 고문
+;73, 삽입 자궁구 고문
+;74, S장 결장 고문
+;75, 질리고문
+;0, 애무
+;1, 쿤닐링구스
+;3, 손가락 삽입해라
+;4, 애널 빨고
+;5, 애널 애무
+;6, 가슴 애무
+;7, 유두 고문
+;8, 보벌
+;9, 자위
+;11, 유두빨기
+;12, 가슴 주무르기
+;13, 애널 벌리기
+;19, 키스 한다
+;20, 키스 한다
+;21, 아무것도 하지 않는다
+파생 1, 식스나인
+;2, 이와시미즈
+;3, G스팟 자극
+;4, 혼란 모란
+;5, 자위 페라
+;6, 삽입 G스포 고문
+;7, 삽입 자궁구 고문
+;8, 69 파이즈리
+;9, 더블 페라
+;10, 더블 가랑이
+;11, 다브르파이즈리
+;12, 파이즈리페라
+;13, 교호 삽입
+;14, S장 결장 고문
+;15, 질리고문
+;17, 유두 동시 들이마셔
+;때 멈춤 종료시M_KOJO_EVENT_K15_17
+;310, 엉덩이를 어루만진다
+;311, 껴안는다
+;312, 키스 한다
+;313, 가슴 애무
+;314, 애널 애무
+;315, 클리 애무
+;316, 손가락 삽입해라
+;330, 스커트 넘기기
+;140, 이라마치오
+;150, 가슴의 골짜기를 범한다

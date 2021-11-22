@@ -31,7 +31,7 @@
 ;안 넣으면 시간정지시, 면간시에는 일절 말 안 합니다
 ;X에는 캐릭터 번호를 넣어주세요
 
-;CFLAG:15:면간대사있음 = 0
+CFLAG:15:면간대사있음 = 1
 CFLAG:15:시간정지대사있음 = 1
 
 ;대사 존재 판정입니다. 절대 코멘트아웃하지 마세요
@@ -1639,20 +1639,20 @@ IF LOCAL
 		IF ABL:욕망 >= 5 && PALAM:욕정 >= PALAMLV:7
 			PRINTFORML 「……업무 시간이 된 것 같네」
 			PRINTFORML 「자, 그럼 나는 이쯤에서……」
-			PRINTFORML （……안돼요. 적어도, 적어도 일이 끝날 때까지는……읏）
+			PRINTFORML （……안돼. 적어도, 적어도 일이 끝날 때까지는……읏）
 			PRINTFORMW 아무렇지도 않음을 가장하고 있지만, 분명하게 얼굴이 붉고 호흡도 난폭해진 사쿠야는 일터로 향했다……
 		ELSE
 			IF TALENT:연인
-				PRINTFORML 「어머, 벌써 이런 시간」
-				PRINTFORML 「%CALLNAME:MASTER%, 조금 일하러 갔다올게」
-				PRINTFORML 「또 다음에, 네♪　%CALLNAME:MASTER%♪」
+				PRINTFORML 「어머, 벌써 이런 시간이네.」
+				PRINTFORML 「%CALLNAME:MASTER%, 잠깐 일하러 다녀올게.」
+				PRINTFORML 「또 다음에 봐♪　%CALLNAME:MASTER%♪」
 				PRINTFORMW 만족스럽게 고개를 끄덕이자, 눈부시게 웃는 얼굴로 사쿠야는 일터로 향하고 있었다
 			ELSEIF TALENT:연모
-				PRINTFORML 「――아, 업무 시간이예요」
-				PRINTFORML 「그렇게 됐으니까, 나는 이쯤에서……
+				PRINTFORML 「――아, 업무 시간이네.」
+				PRINTFORML 「그렇게 됐으니까, 나는 이쯤에서……」
 				PRINTFORMW 그렇게 말하고, 사쿠야는 가볍게 스킨쉽을 하면서 일터로 향했다
 			ELSE
-				PRINTFORML 「자, 업무 시간이니까 이만」
+				PRINTFORML 「자, 업무 시간이니까 이만.」
 				PRINTFORMW 사쿠야가 꾸벅 고개를 숙인 그 다음 순간 그 자리에 사쿠야의 모습은 없었다……
 			ENDIF
 		ENDIF
