@@ -1,4 +1,5 @@
 「」
+||
 PRINTFORMDW
 PRINTFORMW 「」
 PRINTFORMW
@@ -323,7 +324,7 @@ ENDIF
 ;150, 가슴의 골짜기를 범한다
 
 	IF FLAG:70
-		IF FIRSTTIME("timestop_aware")
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
 		ELSEIF CFLAG:[[사쿠야]]:2
 			PRINTFORMW 「…얘기할 가치도 없네.」
@@ -345,3 +346,26 @@ ENDIF
 			PRINTFORMW
 		ENDIF
 
+CFLAG:[[사쿠야]]:언짢음 = 3
+CFLAG:[[사쿠야]]:빡침 = 1
+TALENT:기분 = -1
+MARK:반발각인 +=3
+SIF MARK:반발각인 > 3
+	MARK:반발각인 = 3
+TFLAG:반발각인취득 = MARK:반발각인
+
+CALL 시간정지해제
+;(은)탈의 플래그를 오프
+TEQUIP:2 = 0
+TEQUIP:상반신탈의상태 = 0
+;캐릭터 전원의 복재세팅
+FOR LOCAL,0,CHARANUM
+	CALL CLOTHES_SETTING_TRAIN(LOCAL)
+	;윗도리탈의가끝난상태 플래그를 오프
+	TEQUIP:LOCAL:5 = 0
+	;신체측정 종료
+	SIF CFLAG:LOCAL:신체측정 == 2
+		CFLAG:LOCAL:신체측정 = 1
+NEXT
+
+CFLAG:기정사실 & 합의_우후후

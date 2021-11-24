@@ -685,7 +685,7 @@ IF LOCAL
 	;시간정지중
 	IF FLAG:70
 		;시간 정지 능력 들킴 플래그
-		IF FIRSTTIME("timestop_aware")
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			PRINTFORMW 「어머, 너, 어떻게 이걸…?」
 			PRINTFORML
 			PRINTFORMDW 분명 시간을 멈췄다고 생각했는데, 사쿠야가 말을 걸어왔다.
@@ -845,7 +845,7 @@ LOCAL = 0
 IF LOCAL
 	;시간정지중
 	IF FLAG:70
-		IF FIRSTTIME("timestop_aware")
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
 		ELSEIF CFLAG:[[사쿠야]]:2
 			PRINTFORMW 「…얘기할 가치도 없네.」
@@ -935,7 +935,7 @@ LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
 	IF FLAG:70
-		IF FIRSTTIME("timestop_aware")
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
 		ELSEIF CFLAG:[[사쿠야]]:2
 			PRINTFORMW 「…얘기할 가치도 없네.」
@@ -1027,7 +1027,7 @@ IF LOCAL
 			ENDIF
 		ENDIF
 	ELSEIF FLAG:70
-		IF FIRSTTIME("timestop_aware")
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
 		ELSEIF CFLAG:[[사쿠야]]:2
 			PRINTFORMW 「…얘기할 가치도 없네.」
@@ -1153,7 +1153,7 @@ IF LOCAL
 			PRINTFORMW 사쿠야는 간질간질한듯 머리를 움직였다…
 		ENDIF
 	ELSEIF FLAG:70
-		IF FIRSTTIME("timestop_aware")
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
 		ELSEIF CFLAG:[[사쿠야]]:2
 			PRINTFORMW 「…얘기할 가치도 없네.」
