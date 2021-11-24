@@ -22,15 +22,34 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「그게 뭐야…꺄악!? 눈앞에서 갑자기 움직이지 마세요! 이 바보…」
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;시간중
 	IF FLAG:70
-		PRINTFORMW 
-		RETURN 1
+		IF FIRSTTIME("timestop_aware")
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:3
+			PRINTFORMW
+		ENDIF
+	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 「그게 뭐야…꺄악!? 눈앞에서 갑자기 움직이지 마세요! 이 바보…」
+		RETURN 1		
 	;연모
 	ELSEIF TALENT:연모
 		PRINTFORMW 「응…. 아이… 그런 데가 아니야…! 여기다 세게 누르라고…」
@@ -71,16 +90,35 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「굉장한 진동이군요… 정말 그렇게 쓰는 거 맞습니까?」
-		PRINTFORMW 「그걸, 클리에 꽉 누르는 건가요…히이…꺄아아아아아아!」
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;시간중
 	IF FLAG:70
-		PRINTFORMW 
-		RETURN 1
+		IF FIRSTTIME("timestop_aware")
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:3
+			PRINTFORMW
+		ENDIF
+	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 「굉장한 진동이군요… 정말 그렇게 쓰는 거 맞습니까?」
+		PRINTFORMW 「그걸, 클리에 꽉 누르는 건가요…히이…꺄아아아아아아!」
+		RETURN 1	
 	;연모
 	ELSEIF TALENT:연모
 		PRINTFORMW 「으아아아아아아앗! 시러어어어어! 아아아아앙!」
@@ -119,18 +157,37 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「이것이…클리토리스를 빨아들여…아아……」
-		PRINTFORMW 사쿠야는 상상한 것 만으로도 고간을 머뭇거리고 있다
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;장착
 	IF TEQUIP:클리캡
 		;시간중
 		IF FLAG:70
-			PRINTFORMW 
-			RETURN 1
+			IF FIRSTTIME("timestop_aware")
+				CALL SAKUYA_TIMESTOP_EV
+			ELSEIF CFLAG:[[사쿠야]]:2
+				PRINTFORMW 「…얘기할 가치도 없네.」
+				CALL 시간정지해제
+				;(은)탈의 플래그를 오프
+				TEQUIP:2 = 0
+				TEQUIP:상반신탈의상태 = 0
+				;캐릭터 전원의 복재세팅
+				FOR LOCAL,0,CHARANUM
+					CALL CLOTHES_SETTING_TRAIN(LOCAL)
+					;윗도리탈의가끝난상태 플래그를 오프
+					TEQUIP:LOCAL:5 = 0
+					;신체측정 종료
+					SIF CFLAG:LOCAL:신체측정 == 2
+						CFLAG:LOCAL:신체측정 = 1
+				NEXT
+				PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+			ELSEIF CFLAG:[[사쿠야]]:3
+				PRINTFORMW
+			ENDIF
+		ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
+			PRINTFORMW 「이것이…클리토리스를 빨아들여…아아……」
+			PRINTFORMW 사쿠야는 상상한 것 만으로도 고간을 머뭇거리고 있다
+			RETURN 1		
 		;연모
 		ELSEIF TALENT:연모
 			PRINTFORMW 「저기…이 도구, 전보다 크지 않습니까?」
@@ -224,25 +281,44 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		IF TCVAR:파과 == 1
-			PRINTFORMW 「그런…이런 거는……기억해 두세요…!」
-			PRINTFORMW 사쿠야는 어두운 표정인 채로 당신을 노려보았다
-			RETURN 1
-		ELSE
-			PRINTFORMW 「사용법은 아무튼, 알지만……이 표면의 요철은 뭐죠…그로테스크하네요」
-			PRINTFORMW 「…읏!? 이거 움직여!? …이거……우흐읏, 굉장해…」
-			PRINTFORMW 「이거……으, 넣으면…어떤 느낌일까요…」
-			RETURN 1
-		ENDIF
-	ENDIF
+
 	;기본 세트
 	;장착
 	IF TEQUIP:바이브
 		;시간중
 		IF FLAG:70
-			PRINTFORMW 
-			RETURN 1
+			IF FIRSTTIME("timestop_aware")
+				CALL SAKUYA_TIMESTOP_EV
+			ELSEIF CFLAG:[[사쿠야]]:2
+				PRINTFORMW 「…얘기할 가치도 없네.」
+				CALL 시간정지해제
+				;(은)탈의 플래그를 오프
+				TEQUIP:2 = 0
+				TEQUIP:상반신탈의상태 = 0
+				;캐릭터 전원의 복재세팅
+				FOR LOCAL,0,CHARANUM
+					CALL CLOTHES_SETTING_TRAIN(LOCAL)
+					;윗도리탈의가끝난상태 플래그를 오프
+					TEQUIP:LOCAL:5 = 0
+					;신체측정 종료
+					SIF CFLAG:LOCAL:신체측정 == 2
+						CFLAG:LOCAL:신체측정 = 1
+				NEXT
+				PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+			ELSEIF CFLAG:[[사쿠야]]:3
+				PRINTFORMW
+			ENDIF
+		ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
+			IF TCVAR:파과 == 1
+				PRINTFORMW 「그런…이런 거는……기억해 두세요…!」
+				PRINTFORMW 사쿠야는 어두운 표정인 채로 당신을 노려보았다
+				RETURN 1
+			ELSE
+				PRINTFORMW 「사용법은 아무튼, 알지만……이 표면의 요철은 뭐죠…그로테스크하네요」
+				PRINTFORMW 「…읏!? 이거 움직여!? …이거……우흐읏, 굉장해…」
+				PRINTFORMW 「이거……으, 넣으면…어떤 느낌일까요…」
+				RETURN 1
+			ENDIF			
 		;연모
 		ELSEIF TALENT:연모
 			PRINTFORMW  (…굉장하게 움직여……거기에다 굵어서…)
@@ -291,18 +367,37 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「이것을 애널에 입니까……아…부탁드려요」
-		PRINTFORMW 「…에엣? …후우으으읏! …배가 꿈틀거리고 있어요오……우아아아…!」
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;장착
 	IF TEQUIP:애널바이브
 		;시간중
 		IF FLAG:70
-			PRINTFORMW 
-			RETURN 1
+			IF FIRSTTIME("timestop_aware")
+				CALL SAKUYA_TIMESTOP_EV
+			ELSEIF CFLAG:[[사쿠야]]:2
+				PRINTFORMW 「…얘기할 가치도 없네.」
+				CALL 시간정지해제
+				;(은)탈의 플래그를 오프
+				TEQUIP:2 = 0
+				TEQUIP:상반신탈의상태 = 0
+				;캐릭터 전원의 복재세팅
+				FOR LOCAL,0,CHARANUM
+					CALL CLOTHES_SETTING_TRAIN(LOCAL)
+					;윗도리탈의가끝난상태 플래그를 오프
+					TEQUIP:LOCAL:5 = 0
+					;신체측정 종료
+					SIF CFLAG:LOCAL:신체측정 == 2
+						CFLAG:LOCAL:신체측정 = 1
+				NEXT
+				PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+			ELSEIF CFLAG:[[사쿠야]]:3
+				PRINTFORMW
+			ENDIF
+		ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
+			PRINTFORMW 「이것을 애널에 입니까……아…부탁드려요」
+			PRINTFORMW 「…에엣? …후우으으읏! …배가 꿈틀거리고 있어요오……우아아아…!」
+			RETURN 1			
 		;연모
 		ELSEIF TALENT:연모
 			PRINTFORMW 「……그것, 그만둬요…힘이 빠져버려…안 돼에, 아아아앗…히이야아앙!」
@@ -396,17 +491,36 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「쿠으앗…이것, 꼭 젖가슴이 빨리고 있는 거 같습니다…」
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;장착
 	IF TEQUIP:유두캡
 		;시간중
 		IF FLAG:70
-			PRINTFORMW 
-			RETURN 1
+			IF FIRSTTIME("timestop_aware")
+				CALL SAKUYA_TIMESTOP_EV
+			ELSEIF CFLAG:[[사쿠야]]:2
+				PRINTFORMW 「…얘기할 가치도 없네.」
+				CALL 시간정지해제
+				;(은)탈의 플래그를 오프
+				TEQUIP:2 = 0
+				TEQUIP:상반신탈의상태 = 0
+				;캐릭터 전원의 복재세팅
+				FOR LOCAL,0,CHARANUM
+					CALL CLOTHES_SETTING_TRAIN(LOCAL)
+					;윗도리탈의가끝난상태 플래그를 오프
+					TEQUIP:LOCAL:5 = 0
+					;신체측정 종료
+					SIF CFLAG:LOCAL:신체측정 == 2
+						CFLAG:LOCAL:신체측정 = 1
+				NEXT
+				PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+			ELSEIF CFLAG:[[사쿠야]]:3
+				PRINTFORMW
+			ENDIF
+		ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
+			PRINTFORMW 「쿠으앗…이것, 꼭 젖가슴이 빨리고 있는 거 같습니다…」
+			RETURN 1		
 		;연모
 		ELSEIF TALENT:연모
 			PRINTFORMW 「…그거, 아프다구요…이보세요, 당신도 한번 해보지 그래요」
@@ -503,15 +617,34 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;시간중
 	IF FLAG:70
+		IF FIRSTTIME("timestop_aware")
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:3
+			PRINTFORMW
+		ENDIF
+	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
-		RETURN 1
+		RETURN 1		
 	;연모
 	ELSEIF TALENT:연모
 		PRINTFORMW 
@@ -548,15 +681,34 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;시간중
 	IF FLAG:70
+		IF FIRSTTIME("timestop_aware")
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:3
+			PRINTFORMW
+		ENDIF
+	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
-		RETURN 1
+		RETURN 1		
 	;연모
 	ELSEIF TALENT:연모
 		PRINTFORMW 

@@ -22,14 +22,33 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「네…당신이 그렇게 말한다면 참겠습니다…부디……」
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;시 간중
 	IF FLAG:70
-		PRINTFORMW 
+		IF FIRSTTIME("timestop_aware")
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:3
+			PRINTFORMW
+		ENDIF
+	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 「네…당신이 그렇게 말한다면 참겠습니다…부디……」
 		RETURN 1
 	;연모
 	ELSEIF TALENT:연모
@@ -202,17 +221,36 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「눈 가리개…예요? 으으… 그렇게 상관하는건 아닙니다만…… 당신이 안 보이는 것은 무섭습니다…」
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;장착
 	IF TEQUIP:눈가리개
 		;시간중
 		IF FLAG:70
-			PRINTFORMW 
-			RETURN 1
+			IF FIRSTTIME("timestop_aware")
+				CALL SAKUYA_TIMESTOP_EV
+			ELSEIF CFLAG:[[사쿠야]]:2
+				PRINTFORMW 「…얘기할 가치도 없네.」
+				CALL 시간정지해제
+				;(은)탈의 플래그를 오프
+				TEQUIP:2 = 0
+				TEQUIP:상반신탈의상태 = 0
+				;캐릭터 전원의 복재세팅
+				FOR LOCAL,0,CHARANUM
+					CALL CLOTHES_SETTING_TRAIN(LOCAL)
+					;윗도리탈의가끝난상태 플래그를 오프
+					TEQUIP:LOCAL:5 = 0
+					;신체측정 종료
+					SIF CFLAG:LOCAL:신체측정 == 2
+						CFLAG:LOCAL:신체측정 = 1
+				NEXT
+				PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+			ELSEIF CFLAG:[[사쿠야]]:3
+				PRINTFORMW
+			ENDIF
+		ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
+		PRINTFORMW 「눈 가리개…예요? 으으… 그렇게 상관하는건 아닙니다만…… 당신이 안 보이는 것은 무섭습니다…」
+		RETURN 1	
 		;연모
 		ELSEIF TALENT:연모
 			PRINTFORMW 「…무서워요……」
@@ -259,17 +297,36 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「에…잠깐 이건……이런 건 기분이 좋은 건가요…?」
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;장착
 	IF TEQUIP:밧줄
 		;시 간중
 		IF FLAG:70
-			PRINTFORMW 
-			RETURN 1
+			IF FIRSTTIME("timestop_aware")
+				CALL SAKUYA_TIMESTOP_EV
+			ELSEIF CFLAG:[[사쿠야]]:2
+				PRINTFORMW 「…얘기할 가치도 없네.」
+				CALL 시간정지해제
+				;(은)탈의 플래그를 오프
+				TEQUIP:2 = 0
+				TEQUIP:상반신탈의상태 = 0
+				;캐릭터 전원의 복재세팅
+				FOR LOCAL,0,CHARANUM
+					CALL CLOTHES_SETTING_TRAIN(LOCAL)
+					;윗도리탈의가끝난상태 플래그를 오프
+					TEQUIP:LOCAL:5 = 0
+					;신체측정 종료
+					SIF CFLAG:LOCAL:신체측정 == 2
+						CFLAG:LOCAL:신체측정 = 1
+				NEXT
+				PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+			ELSEIF CFLAG:[[사쿠야]]:3
+				PRINTFORMW
+			ENDIF
+		ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
+			PRINTFORMW 「에…잠깐 이건……이런 건 기분이 좋은 건가요…?」
+			RETURN 1			
 		;연모
 		ELSEIF TALENT:연모
 			PRINTFORMW 「…후후…… 나를 묶어서… 어쩔 생각이신지…?」
@@ -410,15 +467,34 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 
-		RETURN 1
-	ENDIF
+
 	;기본 세트
 	;시 간중
 	IF FLAG:70
+		IF FIRSTTIME("timestop_aware")
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:3
+			PRINTFORMW
+		ENDIF
+	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
-		RETURN 1
+		RETURN 1	
 	;연모
 	ELSEIF TALENT:연모
 		PRINTFORMW 

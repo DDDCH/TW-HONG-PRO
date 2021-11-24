@@ -23,13 +23,32 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+	IF FLAG:70
+		IF FIRSTTIME("timestop_aware")
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:3
+			PRINTFORMW
+		ENDIF
+	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
-	ENDIF
-	;기본 세트
-	;연모
-	IF TALENT:연모
+	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
 	;굴복 3
@@ -65,15 +84,34 @@ IF LOCAL
 	;-------------------------------------------------
 	;처음
 	;기입 체크
-	LOCAL:1 = 0
+	LOCAL:1 = 1
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+	IF FLAG:70
+		IF FIRSTTIME("timestop_aware")
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:3
+			PRINTFORMW
+		ENDIF
+	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
-	ENDIF
-	;기본 세트
-	;연모
-	IF TALENT:연모
+	ELSEIF TALENT:연모
 		CALL HPH_PRINT("「후웃, 우, 응……히잇……HPH」","L")
 		PRINTFORMW 사쿠야는 질내에 주먹을 받아들이면서 아무래도 다소의 쾌락을 느끼고 있는 것 같다……
 		RETURN 1
@@ -437,13 +475,32 @@ IF LOCAL
 	;기입 체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
-	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
+	IF FLAG:70
+		IF FIRSTTIME("timestop_aware")
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:3
+			PRINTFORMW
+		ENDIF
+	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
-	ENDIF
-	;기본 세트
-	;연모
-	IF TALENT:연모
+	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
 	;굴복 3
