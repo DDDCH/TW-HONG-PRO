@@ -500,7 +500,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -516,7 +516,7 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
@@ -564,7 +564,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -580,7 +580,7 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
@@ -625,7 +625,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -641,7 +641,7 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)

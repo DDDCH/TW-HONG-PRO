@@ -25,7 +25,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -41,7 +41,7 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW 「히악……. 앗…」
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
@@ -54,11 +54,11 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF FLAG:70
-		IF CFLAG:[[사쿠야]]:3
+		IF CFLAG:[[사쿠야]]:1510 == 3
 			IF LOCAL:1 && TEQUIP:50 == PLAYER
 				;사정했다
 				IF NOWEX:PLAYER:11
-					PRINTFORMW 「저… 좀 더 강하게……으읏, 거기… 능숙해요…」
+					PRINTFORMW 「저… 좀 더 강하게……으읏, 거기… 능숙해…」
 					PRINTFORMW %마스터는% 사쿠야의 말에 애무를 계속하고 있다
 					RETURN 1
 				ELSE
@@ -70,7 +70,7 @@ IF LOCAL
 			ELSEIF LOCAL:1 && TEQUIP:51 == PLAYER
 				;사정했다
 				IF NOWEX:PLAYER:11
-					PRINTFORMW 「저… 좀 더 강하게……으읏, 거기… 능숙해요…」
+					PRINTFORMW 「저… 좀 더 강하게……으읏, 거기… 능숙해…」
 					PRINTFORMW %마스터는% 사쿠야의 말에 애무를 계속하고 있다
 					RETURN 1
 				ELSE
@@ -83,7 +83,7 @@ IF LOCAL
 	ELSEIF LOCAL:1 && TEQUIP:50 == PLAYER
 		;사정했다
 		IF NOWEX:PLAYER:11
-			PRINTFORMW 「저… 좀 더 강하게……으읏, 거기… 능숙해요…」
+			PRINTFORMW 「저… 좀 더 강하게……으읏, 거기… 능숙해…」
 			PRINTFORMW %마스터는% 사쿠야의 말에 애무를 계속하고 있다
 			RETURN 1
 		ELSE
@@ -95,7 +95,7 @@ IF LOCAL
 	ELSEIF LOCAL:1 && TEQUIP:51 == PLAYER
 		;사정했다
 		IF NOWEX:PLAYER:11
-			PRINTFORMW 「저… 좀 더 강하게……으읏, 거기… 능숙해요…」
+			PRINTFORMW 「저… 좀 더 강하게……으읏, 거기… 능숙해…」
 			PRINTFORMW %마스터는% 사쿠야의 말에 애무를 계속하고 있다
 			RETURN 1
 		ELSE
@@ -116,25 +116,25 @@ IF LOCAL
 	;기본 세트
 	;시간중
 	IF FLAG:70
-		IF CFLAG:[[사쿠야]]:3
-			PRINTFORMW 「가슴도 만져주세요… 앗… 어때요…… 부드럽지요?」
+		IF CFLAG:[[사쿠야]]:1510 == 3
+			PRINTFORMW 「가슴도 만져줘… 앗… 어때…… 부드럽지?」
 			PRINTFORMW 「으읏…히잇! 그렇게…꼬집으면 참…! 아아앗…」
 			RETURN 1
 		ENDIF
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「가슴도 만져주세요… 앗… 어때요…… 부드럽지요?」
+		PRINTFORMW 「가슴도 만져줘… 앗… 어때…… 부드럽지?」
 		PRINTFORMW 「으읏…히잇! 그렇게…꼬집으면 참…! 아아앗…」
 		RETURN 1
 	;굴복 3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「저… 좀 더 강하게……으읏, 거기… 능숙해요…」
-		PRINTFORMW 「……이거 원…냄새 나서 냄새를 안 맡는건가요 이 바보!」
+		PRINTFORMW 「저… 좀 더 강하게……으읏, 거기… 능숙해…」
+		PRINTFORMW 「……이거 원…냄새 나서 냄새를 안 맡는거야 이 바보!」
 		RETURN 1
 	;그 이외
 	ELSE
-		PRINTFORMW 「그렇게까지 붙지 않아도 도망치지 않아요…… 정말로 짐승같군요 …」
-		PRINTFORMW 「격렬한 것도 좋지만… 쉬는 것도 기분이 좋다고 생각한다고요…?」
+		PRINTFORMW 「그렇게까지 붙지 않아도 도망치지 않아…… 정말로 짐승같네…」
+		PRINTFORMW 「격렬한 것도 좋지만… 쉬는 것도 기분이 좋다고 생각한다구…?」
 		RETURN 1
 	ENDIF
 ENDIF
@@ -163,7 +163,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -179,13 +179,13 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
-			PRINTFORMW 「그렇게 빨면…아아, 더 흘러넘쳐 나와요……」
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
+			PRINTFORMW 「그렇게 빨면…아아, 더 흘러넘쳐 나와……」
 			PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 머리에 손을 대며 달콤한 소리를 높이고 있다
 			RETURN 1
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「그렇게 빨면…아아, 더 흘러넘쳐 나와요……」
+		PRINTFORMW 「그렇게 빨면…아아, 더 흘러넘쳐 나와……」
 		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 머리에 손을 대며 달콤한 소리를 높이고 있다
 		RETURN 1
 	ENDIF
@@ -195,10 +195,10 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF FLAG:70
-		IF CFLAG:[[사쿠야]]:3
+		IF CFLAG:[[사쿠야]]:1510 == 3
 			IF LOCAL:1 && TCVAR:100 == PLAYER
 				IF TCVAR:102
-					PRINTFORMW 「그렇게 빨면… 아아, 다 흘러넘쳐 나와요……」
+					PRINTFORMW 「그렇게 빨면… 아아, 다 흘러넘쳐 나와……」
 					PRINTFORMW 「앗…… 크읏… 당신에게 핥어지고 있어엇…!」
 					PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 머리에 손을 대며 달콤한 소리를 높이고 있다
 					RETURN 1
@@ -207,7 +207,7 @@ IF LOCAL
 		ENDIF
 	ELSEIF LOCAL:1 && TCVAR:100 == PLAYER
 		IF TCVAR:102
-			PRINTFORMW 「그렇게 빨면… 아아, 다 흘러넘쳐 나와요……」
+			PRINTFORMW 「그렇게 빨면… 아아, 다 흘러넘쳐 나와……」
 			PRINTFORMW 「앗…… 크읏… 당신에게 핥어지고 있어엇…!」
 			PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 머리에 손을 대며 달콤한 소리를 높이고 있다
 			RETURN 1
@@ -226,15 +226,15 @@ IF LOCAL
 	;기본 세트
 	;시간중
 	IF FLAG:70
-		IF CFLAG:[[사쿠야]]:3
-			PRINTFORMW 「그렇게 빨면… 아아, 더 흘러넘쳐 나와요……」
+		IF CFLAG:[[사쿠야]]:1510 == 3
+			PRINTFORMW 「그렇게 빨면… 아아, 더 흘러넘쳐 나와……」
 			PRINTFORMW 「앗…… 크읏… %CALLNAME:MASTER%에게 핥아지고 있어엇…!」
 			PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 머리에 손을 대며 달콤한 소리를 높이고 있다
 			RETURN 1
 		ENDIF
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「그렇게 빨면… 아아, 더 흘러넘쳐 나와요……」
+		PRINTFORMW 「그렇게 빨면… 아아, 더 흘러넘쳐 나와……」
 		PRINTFORMW 「앗…… 크읏… %CALLNAME:MASTER%에게 핥아지고 있어엇…!」
 		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 머리에 손을 대며 달콤한 소리를 높이고 있다
 		RETURN 1
@@ -245,13 +245,13 @@ IF LOCAL
 		RETURN 1
 	;그 이외
 	ELSE
-		PRINTFORMW 「이봐요 …좋게 하지 않으면 몇 시까지도 이대로…? 응……후으응…」
-		PRINTFORMW 「좀 더 넓혀서…입구의 주위를…아아아앗……그래요……」
+		PRINTFORMW 「이봐 …좋게 하지 않으면 몇 시까지도 이대로…? 응……후으응…」
+		PRINTFORMW 「좀 더 넓혀서…입구의 주위를…아아아앗……그래……」
 		RETURN 1
 	ENDIF
 ENDIF
 RETURN 1
-;그리고는 적당한 분기를 추가해 주세요
+;그리고는 적당한 분기를 추가해 줘
 ;==================================================
 ;2, 펠라한다
 ;==================================================
@@ -276,7 +276,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -292,7 +292,7 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
@@ -337,7 +337,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -353,14 +353,14 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW 「보지가 가득 괴롭혀져서… 애액이 멈추지 않게 되어버렸어…」
 			PRINTFORMW 「부탁해…사쿠야의 안, 이상하지 않은지…확인해줘……」
 			PRINTFORMW 사쿠야는 양손으로 음부를 밀어 열고, 숙이면서 %CALLNAME:MASTER%에게 속삭였다
 			RETURN 1
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「들어오고 있습니다…… 아아, 더러운 액이… 넘쳐 흘러요…읏…!」
+		PRINTFORMW 「들어오고 있습니다…… 아아, 더러운 액이… 넘쳐 흘러…읏…!」
 		RETURN 1
 	;연모
 	ELSEIF TALENT:연모
@@ -374,7 +374,7 @@ IF LOCAL
 		RETURN 1
 	;그 이외
 	ELSE
-		PRINTFORMW 「…아아아앗……상처라도 나면…가만 안두겠어요…? 응우읏…!」
+		PRINTFORMW 「…아아아앗……상처라도 나면…가만 안둘거야…? 응우읏…!」
 		RETURN 1
 	ENDIF
 ENDIF
@@ -404,7 +404,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -420,7 +420,7 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
@@ -468,7 +468,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -484,11 +484,11 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW 「으응…아앗? 잠깐… 이런 게… 후아아! 거짓말…… 히야아앗!」
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「아앗……사쿠야의 엉덩이에 들어, 오고 있어요……!」
+		PRINTFORMW 「아앗……사쿠야의 엉덩이에 들어, 오고 있어……!」
 		RETURN 1
 	;기본 세트
 	;연모
@@ -498,11 +498,11 @@ IF LOCAL
 	;굴복 3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 「으읏… 크아아앗…」
-		PRINTFORMW 「사쿠야의 더러운 구멍을 만져 주시다니… 기쁩니다……」
+		PRINTFORMW 「사쿠야의 더러운 구멍을 만져 주다니… 기뻐……」
 		RETURN 1
 	;그 이외
 	ELSE
-		PRINTFORMW 「…싫어……그만두세요…빨리, 아아…」
+		PRINTFORMW 「…싫어……그만둬…빨리, 아아…」
 		RETURN 1
 	ENDIF
 ENDIF
@@ -532,7 +532,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -548,18 +548,18 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
-			PRINTFORMW 「하아앗…좋아아……능숙해요…」
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
+			PRINTFORMW 「하아앗…좋아아……능숙해…」
 			PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 애무에 피부를 상기시키고 있다
 			RETURN 1
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「저기, 가슴을 좋아하는가 봐요? ……가득 손대게 해주겠어요…?」
+		PRINTFORMW 「저기, 가슴을 좋아하는가 봐? ……가득 만져줄래…?」
 		RETURN 1
 	;기본 세트
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「하아앗…좋아아……능숙해요…」
+		PRINTFORMW 「하아앗…좋아아……능숙해…」
 		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 애무에 피부를 상기시키고 있다
 		RETURN 1
 	;굴복 3
@@ -569,7 +569,7 @@ IF LOCAL
 		RETURN 1
 	;그 이외
 	ELSE
-		PRINTFORMW 「으응, 거기…능숙해요……하아아…더 세게 해도 괜찮다고요…?」
+		PRINTFORMW 「으응, 거기…능숙해……하아아…더 세게 해도 괜찮다구…?」
 		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 가슴으로부터 전해지는 쾌감에 눈썹을 떨고 있다
 		RETURN 1
 	ENDIF
@@ -600,7 +600,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -616,8 +616,8 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
-			PRINTFORMW 「으응, 거기…능숙해요……하아아…더 세게 해도 괜찮다고요…?」
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
+			PRINTFORMW 「으응, 거기…능숙해……하아아…더 세게 해도 괜찮다구…?」
 			PRINTFORMW 사쿠야는 쾌감에 눈썹을 떨고 있다
 			RETURN 1
 		ENDIF
@@ -628,7 +628,7 @@ IF LOCAL
 	;기본 세트
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「으응, 거기…능숙해요……하아아…더 세게 해도 괜찮다고요…?」
+		PRINTFORMW 「으응, 거기…능숙해……하아아…더 세게 해도 괜찮다구…?」
 		PRINTFORMW 사쿠야는 쾌감에 눈썹을 떨고 있다
 		RETURN 1
 	;굴복 3
@@ -667,7 +667,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -683,7 +683,7 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
@@ -728,21 +728,21 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「…어쩔 수 없네요 ……그 대신, 다음에 즐기게 해 주세요…?」
+		PRINTFORMW 「…어쩔 수 없네요 ……그 대신, 다음에 즐기게 해 줘…?」
 		RETURN 1
 	ENDIF
 	;기본 세트
 	;연모
 	IF TALENT:연모
-		PRINTFORMW 「…더 잘 보세요……나의 여기…눈에 새겨두세요…아아…」
-		PRINTFORMW 「아앗…다른 여자 아이로서라도… 나의 일… 잊을 수 없게 해 주겠어요…」
+		PRINTFORMW 「…더 잘 보세요……나의 여기…눈에 새겨둬…아아…」
+		PRINTFORMW 「아앗…다른 여자 아이로서라도… 나의 일… 잊을 수 없게 해 줄래…」
 		PRINTFORMW 「……후후…%마스터는% 나의 것이니까……아아앙…」
 		RETURN 1
 	;굴복 3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW  「아아앗…… 이봐요… 이렇게 젖어서는…넣고 싶을 것에요?」
+		PRINTFORMW  「아아앗…… 이봐… 이렇게 젖어서는…넣고 싶겠지?」
 		PRINTFORMW 사쿠야는 손가락으로 음순을 밀어 열면서, 클리토리스를 문지르면서 자극하고 있다
-		PRINTFORMW 「그렇지만 안 돼요……후아앗… 이것은 예의 범절이니까… 인내도 기억해두지 않으면 안된답니다…」
+		PRINTFORMW 「그렇지만 안 돼……후아앗… 이것은 예의 범절이니까… 인내도 기억해두지 않으면 안된다구…」
 		RETURN 1
 	;그 이외
 	ELSE
@@ -819,7 +819,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -835,14 +835,14 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW 「좋아요………열중한 모습이, 마치 아이같아…후훗…」
 			PRINTFORMW 사쿠야는 미소를 지으면서도, %CALLNAME:MASTER%의 애무에 피부를 상기시키고 있다
 			RETURN 1
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「이봐요…입만으로 하세요……으응…그렇게…혀로 핥짝핥짝 해…」
-		PRINTFORMW 「어때요…?나의 가슴 맛있을 꺼에요? …후후…군침까지 늘어트리면서…」
+		PRINTFORMW 「이봐…입만으로 해줘……으응…그렇게…혀로 핥짝핥짝 해…」
+		PRINTFORMW 「어때…?나의 가슴 맛있니? …후후…군침까지 늘어트리면서…」
 		RETURN 1
 	;연모
 	ELSEIF TALENT:연모
@@ -851,11 +851,11 @@ IF LOCAL
 		RETURN 1
 	;굴복 3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「아아…더 빨아주세요……사쿠야에게 당신의 자국이, 남게에…!」
+		PRINTFORMW 「아아…더 빨아줘……사쿠야에게 너의 자국이, 남게에…!」
 		RETURN 1
 	;그 이외
 	ELSE
-		PRINTFORMW 「아아…더 빨아주세요……사쿠야에게 당신의 자국이, 남게에…!」
+		PRINTFORMW 「아아…더 빨아줘……사쿠야에게 너의 자국이, 남게에…!」
 		RETURN 1
 	ENDIF
 ENDIF
@@ -884,7 +884,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -900,27 +900,27 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
-			PRINTFORMW 「하아앗…좋아아……능숙해요…」
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
+			PRINTFORMW 「하아앗…좋아아……능숙해…」
 			PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 애무에 피부를 상기시키고 있다
 			RETURN 1
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「으응, 거기…능숙해요……하아아…더 세게 해도 괜찮다고요…?」
+		PRINTFORMW 「으응, 거기…능숙해……하아아…더 세게 해도 괜찮다구…?」
 		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 가슴으로부터 전해지는 쾌감에 눈썹을 떨고 있다
 		RETURN 1
 	;연모
 	ELSEIF TALENT:연모
-		PRINTFORMW 「하아앗…좋아아……능숙해요…」
+		PRINTFORMW 「하아앗…좋아아……능숙해…」
 		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 애무에 피부를 상기시키고 있다
 		RETURN 1
 	;굴복 3
 	ELSEIF MARK:괘씸각인 == 3
-		PRINTFORMW 「후아아앗…더 강하게 해도 좋다구요?」
+		PRINTFORMW 「후아아앗…더 강하게 해도 좋다구?」
 		RETURN 1
 	;그 이외
 	ELSE
-		PRINTFORMW 「후아아앗…더 강하게 해도 좋다구요?」
+		PRINTFORMW 「후아아앗…더 강하게 해도 좋다구?」
 		RETURN 1
 	ENDIF
 ENDIF
@@ -949,7 +949,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -965,7 +965,7 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			PRINTFORMW
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
@@ -1015,7 +1015,7 @@ IF LOCAL
 	IF FLAG:70
 		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
 			CALL SAKUYA_TIMESTOP_EV
-		ELSEIF CFLAG:[[사쿠야]]:2
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
 			PRINTFORMW 「…얘기할 가치도 없네.」
 			CALL 시간정지해제
 			;(은)탈의 플래그를 오프
@@ -1031,37 +1031,37 @@ IF LOCAL
 					CFLAG:LOCAL:신체측정 = 1
 			NEXT
 			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
-		ELSEIF CFLAG:[[사쿠야]]:3
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
 			IF RAND:3 == 0
-				PRINTFORMW 「저기…나의 침이에요…? …입 연채로 가득 마시세요……그래요……귀엽네요…」
-				PRINTFORMW 「이번엔…나에게서 받은 것…혀가 촥 달라붙을 정도로 많이 합시다…?」
+				PRINTFORMW 「저기…나의 침이라구…? …입 연채로 가득 마셔……그래……귀엽네…」
+				PRINTFORMW 「이번엔…나에게서 받은 것…혀가 촥 달라붙을 정도로 많이 하자…?」
 				RETURN 1
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「응…후우……당신이 하고 싶다면, 쭉 키스만 해도…좋은걸까…?」
-				PRINTFORMW 「…츄우웃……후아…정말로 좋아하는구나……나도…싫지는 않지만요…」
+				PRINTFORMW 「…츄우웃……후아…정말로 좋아하는구나……나도…싫지는 않지만…」
 				RETURN 1
 			ELSE
-				PRINTFORMW 「푸하앗…뭐야……키스만으로도 녹아가지곤…그렇게 좋았던 건가요?」
+				PRINTFORMW 「푸하앗…뭐야……키스만으로도 녹아가지곤…그렇게 좋았던 거야?」
 				PRINTFORMW 사쿠야는 숨을 난폭하게 쉬는 %CALLNAME:MASTER%의 의 입술을, 안색 하나 바꾸지 않고 혀로 핥고 있다…
 				RETURN 1
 			ENDIF	
 		ENDIF
 	ELSEIF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「응츄우…후우웃……사쿠야의 혀는 어떠신가요…츄웃」
+		PRINTFORMW 「응츄우…후우웃……사쿠야의 혀는 어떄…츄웃」
 		PRINTFORMW 사쿠야는 그렇게 말하면서, 또 혀의 움직임에 몰두하기 시작했다
 		RETURN 1
 	;연모
 	ELSEIF TALENT:연모
 		IF RAND:3 == 0
-			PRINTFORMW 「저기…나의 침이에요…? …입 연채로 가득 마시세요……그래요……귀엽네요…」
-			PRINTFORMW 「이번엔…나에게서 받은 것…혀가 촥 달라붙을 정도로 많이 합시다…?」
+			PRINTFORMW 「저기…나의 침이라구…? …입 연채로 가득 마셔……그래……귀엽네…」
+			PRINTFORMW 「이번엔…나에게서 받은 것…혀가 촥 달라붙을 정도로 많이 하자…?」
 			RETURN 1
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「응…후우……당신이 하고 싶다면, 쭉 키스만 해도…좋은걸까…?」
-			PRINTFORMW 「…츄우웃……후아…정말로 좋아하는구나……나도…싫지는 않지만요…」
+			PRINTFORMW 「…츄우웃……후아…정말로 좋아하는구나……나도…싫지는 않지만…」
 			RETURN 1
         ELSE
-			PRINTFORMW 「푸하앗…뭐야……키스만으로도 녹아가지곤…그렇게 좋았던 건가요?」
+			PRINTFORMW 「푸하앗…뭐야……키스만으로도 녹아가지곤…그렇게 좋았던 거야?」
 			PRINTFORMW 사쿠야는 숨을 난폭하게 쉬는 %CALLNAME:MASTER%의 의 입술을, 안색 하나 바꾸지 않고 혀로 핥고 있다…
 			RETURN 1
         ENDIF	
@@ -1069,11 +1069,11 @@ IF LOCAL
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW %마스터가% 혀를 격렬하게 얽어오면서 타액을 흘려 넣으면, 사쿠야는 몸을 진동시켰다
 		PRINTFORMW 「…츄웃…아아, 타액…맛있습니다……」
-		PRINTFORMW 「……하아…사쿠야의 것은 어떠신가요…으구읏」
+		PRINTFORMW 「……하아…사쿠야의 것은 어떄…으구읏」
 		RETURN 1
 	;그 이외
 	ELSE
-		PRINTFORMW 「뭐야……혀 넣지 않는건가요? …근성같은 건 없나봐요」
+		PRINTFORMW 「뭐야……혀 넣지 않는거야? …근성같은 건 없나봐」
 		RETURN 1
 	ENDIF
 ENDIF
