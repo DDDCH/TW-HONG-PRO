@@ -284,7 +284,9 @@ IF LOCAL
 			PRINTFORML
 			PRINTFORMW 「나는……」
 			PRINTFORMW 「너와 함께 있는 게 즐거워. 조금씩 아가씨의 메이드로서의 삶 뿐만이 아닌, 더 많은 걸 원하게 되어버려.」
-			PRINTFORMW 「우리가 능력이 있다고 한들 시간을 멈춘 채 영원히 함께 할 수는 없지만…」
+			IF CFLAG:[[사쿠야]]:1510 == 1 || CFLAG:[[사쿠야]]:1510 == 2 || CFLAG:[[사쿠야]]:1510 == 3
+				PRINTFORMW 「우리가 능력이 있다고 한들 시간을 멈춘 채 영원히 함께 할 수는 없지만…」
+			ENDIF
 			PRINTFORML
 			PRINTFORMDW 살며시 붉은색과 긴장에 물든 얼굴로 그 말을 꺼낸다―
 			PRINTFORML

@@ -420,6 +420,854 @@ IF LOCAL
 ENDIF
 RETURN 1
 ;==================================================
+;316, 손가락 삽입
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_316
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_316_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_316_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+;처녀　PRINTFORML %타겟은% %CALLNAME:PLAYER%의 손가락을 거절하는 것 같이 허벅지를 꽉 닫고 있다…
+;ABL:V감각 < 1　PRINTFORML %타겟은% 이물감이 강한지 몸을 긴장시켰다…
+;ABL:V감각 <= 4　PRINTFORML %타겟은% 애무에 뜨거운 숨결을 흘리기 시작했다…
+;ABL:V감각 > 5　PRINTFORML %타겟은% 군침을 침을 흘리며, 스스로 허리를 쑥 내밀어 쾌락을 탐하고 있다…
+IF LOCAL
+	IF FLAG:70
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
+			IF ABL:V감각 < 2
+				IF RAND:3 == 0 
+					PRINTFORMW 「응…아직 조금 익숙하지 않으니까 살살…」
+				ELSEIF RAND:2 == 0 
+					PRINTFORMW 「크…으응…」
+				ELSE
+					PRINTFORMW 「아… 아읏… 응…」
+				ENDIF
+			ELSE
+				;카운타쿤니 강제
+				IF TCVAR:20 == 70
+					;하반신알몸 또는 노팬티 치마또는 목욕탕플레이중
+					IF TEQUIP:0 == 0  ||  TEQUIP:0 == 1 || TEQUIP:31
+						;윤활 4이상
+						IF PALAM:윤활 >= PALAMLV:4
+							IF RAND:3 == 0
+								PRINTFORML 「우웃…아앗 아앗, 아악!…」
+								PRINTFORMW 다 풀려버린 사쿠야의 질구가 눈 앞에서 당신의 손가락을 삼켜간다…
+							ELSEIF RAND:2 == 0
+								PRINTFORML 「하앗… 응, 거기, 위쪽, 빙글빙글… 히, 히잇!」
+								PRINTFORMW 손가락을 삽입하자, 눈 앞의 질구로부터 애액이 뿜어져 나와, 당신의 얼굴에 흩날렸다…
+							ELSE
+								PRINTFORML 「히앗!, 손가락도…, 드, 들어와…」
+								PRINTFORMW 클리토리스를 핥으며 손가락을 삽입하자, 넘친 애액이 당신의 손을 더럽혀갔다…
+							ENDIF
+						ELSE
+							IF RAND:2 == 0 
+								PRINTFORML 「아, 아앗, 손가락, 들어와…!」
+								PRINTFORMW 커닐링구스와 함께 손가락을 삼입당하는 감각을 참을 수 없는지 사쿠야의 질이 꽉 조여졌다…
+							ELSE
+								PRINTFORML 「아, 그거, 좋아, 좋아아앗…!」
+								PRINTFORMW 타액을 윤활제삼아 손가락을 균열 안에 삽입하자, 사쿠야의 목소리가 환희에 떨렸다…
+							ENDIF
+						ENDIF
+					;팬티를 입고 있다
+					ELSEIF TEQUIP:0 == 3
+						;윤활 4이상
+						IF PALAM:윤활 >= PALAMLV:4
+							IF RAND:3 == 0
+								PRINTFORML 「우웃…아하앗, 아앗, 아악!…」
+								PRINTFORMW 이제 더 이상 볼일 없는 속옷을 재껴 작은 균열을 노출시키고 손가락과 혀를 집어 넣었다…
+							ELSEIF RAND:2 == 0
+								PRINTFORML 「하앗… 그렇게, 거기, 위쪽, 빙글빙글… 히, 히잇!」
+								PRINTFORMW 손가락을 삽입하자, 눈 앞의 질구로부터 애액이 뿜어져 나와, 속옷에 새로운 얼룩을 만들어 갔다…
+							ELSE
+								PRINTFORML 「히앗!, 손, 가락도…, 드, 들어와, 하아앗…」
+								PRINTFORMW 속옷을 재끼고 클리토리스를 핥으며 손가락을 삽입하자 흘러넘치는 애액이 당신의 손을 더럽혀갔다…
+							ENDIF
+						ELSE
+							IF RAND:2 == 0 
+								PRINTFORML 「아, 아하앗, 손가락, 들어와…!」
+								PRINTFORMW 클리토리스에의 자극과 함께 손가락을 삼입당하는 감각을 참을 수 없는지 사쿠야의 질이 꽉 조여졌다…
+							ELSE
+								PRINTFORML 「아앗, 그거, 좋아, 좋아앗…!」
+								PRINTFORMW 애액에 눌러붙은 속옷을 재끼고, 타액을 윤활제삼아 손가락을 균열 안에 삽입하자, 사쿠야의 목소리가 환희에 떨렸다…
+							ENDIF
+						ENDIF
+					;바지도 입고 있다
+					ELSE
+						;윤활 4이상
+						IF PALAM:윤활 >= PALAMLV:4
+							IF RAND:3 == 0
+								PRINTFORML 「우웃…아앗 아앗, 아악!…」
+								PRINTFORMW 크게 얼룩진 바지 속에 손을 넣어 입과 손가락으로 질구를 자극했다…
+							ELSEIF RAND:2 == 0
+								PRINTFORML 「하앗… 그렇게, 거기, 위쪽, 빙글빙글… 히, 히잇!」
+								PRINTFORMW 손가락을 삽입하자, 눈 앞의 질구로부터 애액이 뿜어져 나와, 바지에 새로운 얼룩을 만들어 갔다…
+							ELSE
+								PRINTFORML 「히앗!, 손, 가락도…, 드, 들어와, 하아앗…」
+								PRINTFORMW 바지 안에 손을 넣어 손가락을 삽입하자, 흘러넘치는 애액이 당신의 손을 더럽혀갔다…
+							ENDIF
+						ELSE
+							IF RAND:2 == 0 
+								PRINTFORML 「아, 아하앗, 손가락, 들어와…!」
+								PRINTFORMW 클리토리스에의 자극과 함께 손가락을 삼입당하는 감각을 참을 수 없는지 사쿠야의 질이 꽉 조여졌다…
+							ELSE
+								PRINTFORML 「아앗, 그거, 좋아, 좋아앗…!」
+								PRINTFORMW 타액을 윤활제삼아 손가락을 균열 안에 삽입하자, 사쿠야의 목소리가 환희에 떨렸다…
+							ENDIF
+						ENDIF
+					ENDIF
+				ELSE
+					;윤활 4이상
+					IF PALAM:윤활 >= PALAMLV:4
+						IF RAND:3 == 0
+							PRINTFORML 질내를 손가락으로 휘젓자 넘쳐흐르는 애액이 음란한 물소리를 냈다…
+							PRINTFORMW 「아… 그런 소리 내지마앗… 바보…」
+						ELSEIF RAND:2 == 0
+							PRINTFORML 「아우웃, 앗, 아핫… 크읏… 아…%UNICODE(0x2665)%」
+							PRINTFORMW 당신이 손가락을 움직일 때마다 거품이 이는 애액이 나와 당신의 손을 따라 투명한 실을 만들었다…
+						ELSE
+							PRINTFORML 사쿠야의 질에서 손가락을 빼내자 끈적한 이슬이 엉겨붙어 반짝이고 있었다.
+							PRINTFORM 「앗… 왜 빼…?
+							;∨절정 했다
+							IF NOWEX:V절정 >= 1
+								PRINTFORMW 빼지마… 바보…」
+							ELSE
+								PRINTFORMW 모처럼 기분 좋았는데… 바보…」
+							ENDIF
+						ENDIF
+					ELSE
+						IF RAND:3 == 0 
+							PRINTFORML 「우웃… 거기… 꾸욱하면… 아앗…%UNICODE(0x2665)%」
+							PRINTFORMW 질 내의 조금 부풀어 오른 곳을 문질러 줄 때마다 사쿠야의 질이 빠르게 조여들었다…
+						ELSEIF RAND:2 == 0
+							PRINTFORML 「아…아앗, 으읏, 흣, 으응……　거기, 좋아 …거기 문지르는 거, 하앗, 좋아…%UNICODE(0x2665)%」
+							PRINTFORMW 안의 성감대에 손가락이 닿자, 사쿠야은 민감하게 반응해왔다…
+						ELSE
+							PRINTFORMW 「후아, 하아앗… 으읏, 조, 조금만, 천천히…!」
+						ENDIF
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+	ELSEIF ABL:V감각 < 2
+		IF RAND:3 == 0 
+			PRINTFORMW 「응…아직 조금 익숙하지 않으니까 살살…」
+		ELSEIF RAND:2 == 0 
+			PRINTFORMW 「크…으응…」
+		ELSE
+			PRINTFORMW 「아… 아읏… 응…」
+		ENDIF
+	ELSE
+		;카운타쿤니 강제
+		IF TCVAR:20 == 70
+			;하반신알몸 또는 노팬티 치마또는 목욕탕플레이중
+			IF TEQUIP:0 == 0  ||  TEQUIP:0 == 1 || TEQUIP:31
+				;윤활 4이상
+				IF PALAM:윤활 >= PALAMLV:4
+					IF RAND:3 == 0
+						PRINTFORML 「우웃…아앗 아앗, 아악!…」
+						PRINTFORMW 다 풀려버린 사쿠야의 질구가 눈 앞에서 당신의 손가락을 삼켜간다…
+					ELSEIF RAND:2 == 0
+						PRINTFORML 「하앗… 응, 거기, 위쪽, 빙글빙글… 히, 히잇!」
+						PRINTFORMW 손가락을 삽입하자, 눈 앞의 질구로부터 애액이 뿜어져 나와, 당신의 얼굴에 흩날렸다…
+					ELSE
+						PRINTFORML 「히앗!, 손가락도…, 드, 들어와…」
+						PRINTFORMW 클리토리스를 핥으며 손가락을 삽입하자, 넘친 애액이 당신의 손을 더럽혀갔다…
+					ENDIF
+				ELSE
+					IF RAND:2 == 0 
+						PRINTFORML 「아, 아앗, 손가락, 들어와…!」
+						PRINTFORMW 커닐링구스와 함께 손가락을 삼입당하는 감각을 참을 수 없는지 사쿠야의 질이 꽉 조여졌다…
+					ELSE
+						PRINTFORML 「아, 그거, 좋아, 좋아아앗…!」
+						PRINTFORMW 타액을 윤활제삼아 손가락을 균열 안에 삽입하자, 사쿠야의 목소리가 환희에 떨렸다…
+					ENDIF
+				ENDIF
+			;팬티를 입고 있다
+			ELSEIF TEQUIP:0 == 3
+				;윤활 4이상
+				IF PALAM:윤활 >= PALAMLV:4
+					IF RAND:3 == 0
+						PRINTFORML 「우웃…아하앗, 아앗, 아악!…」
+						PRINTFORMW 이제 더 이상 볼일 없는 속옷을 재껴 작은 균열을 노출시키고 손가락과 혀를 집어 넣었다…
+					ELSEIF RAND:2 == 0
+						PRINTFORML 「하앗… 그렇게, 거기, 위쪽, 빙글빙글… 히, 히잇!」
+						PRINTFORMW 손가락을 삽입하자, 눈 앞의 질구로부터 애액이 뿜어져 나와, 속옷에 새로운 얼룩을 만들어 갔다…
+					ELSE
+						PRINTFORML 「히앗!, 손, 가락도…, 드, 들어와, 하아앗…」
+						PRINTFORMW 속옷을 재끼고 클리토리스를 핥으며 손가락을 삽입하자 흘러넘치는 애액이 당신의 손을 더럽혀갔다…
+					ENDIF
+				ELSE
+					IF RAND:2 == 0 
+						PRINTFORML 「아, 아하앗, 손가락, 들어와…!」
+						PRINTFORMW 클리토리스에의 자극과 함께 손가락을 삼입당하는 감각을 참을 수 없는지 사쿠야의 질이 꽉 조여졌다…
+					ELSE
+						PRINTFORML 「아앗, 그거, 좋아, 좋아앗…!」
+						PRINTFORMW 애액에 눌러붙은 속옷을 재끼고, 타액을 윤활제삼아 손가락을 균열 안에 삽입하자, 사쿠야의 목소리가 환희에 떨렸다…
+					ENDIF
+				ENDIF
+			;바지도 입고 있다
+			ELSE
+				;윤활 4이상
+				IF PALAM:윤활 >= PALAMLV:4
+					IF RAND:3 == 0
+						PRINTFORML 「우웃…아앗 아앗, 아악!…」
+						PRINTFORMW 크게 얼룩진 바지 속에 손을 넣어 입과 손가락으로 질구를 자극했다…
+					ELSEIF RAND:2 == 0
+						PRINTFORML 「하앗… 그렇게, 거기, 위쪽, 빙글빙글… 히, 히잇!」
+						PRINTFORMW 손가락을 삽입하자, 눈 앞의 질구로부터 애액이 뿜어져 나와, 바지에 새로운 얼룩을 만들어 갔다…
+					ELSE
+						PRINTFORML 「히앗!, 손, 가락도…, 드, 들어와, 하아앗…」
+						PRINTFORMW 바지 안에 손을 넣어 손가락을 삽입하자, 흘러넘치는 애액이 당신의 손을 더럽혀갔다…
+					ENDIF
+				ELSE
+					IF RAND:2 == 0 
+						PRINTFORML 「아, 아하앗, 손가락, 들어와…!」
+						PRINTFORMW 클리토리스에의 자극과 함께 손가락을 삼입당하는 감각을 참을 수 없는지 사쿠야의 질이 꽉 조여졌다…
+					ELSE
+						PRINTFORML 「아앗, 그거, 좋아, 좋아앗…!」
+						PRINTFORMW 타액을 윤활제삼아 손가락을 균열 안에 삽입하자, 사쿠야의 목소리가 환희에 떨렸다…
+					ENDIF
+				ENDIF
+			ENDIF
+		ELSE
+			;윤활 4이상
+			IF PALAM:윤활 >= PALAMLV:4
+				IF RAND:3 == 0
+					PRINTFORML 질내를 손가락으로 휘젓자 넘쳐흐르는 애액이 음란한 물소리를 냈다…
+					PRINTFORMW 「아… 그런 소리 내지마앗… 바보…」
+				ELSEIF RAND:2 == 0
+					PRINTFORML 「아우웃, 앗, 아핫… 크읏… 아…%UNICODE(0x2665)%」
+					PRINTFORMW 당신이 손가락을 움직일 때마다 거품이 이는 애액이 나와 당신의 손을 따라 투명한 실을 만들었다…
+				ELSE
+					PRINTFORML 사쿠야의 질에서 손가락을 빼내자 끈적한 이슬이 엉겨붙어 반짝이고 있었다.
+					PRINTFORM 「앗… 왜 빼…?
+					;∨절정 했다
+					IF NOWEX:V절정 >= 1
+						PRINTFORMW 빼지마… 바보…」
+					ELSE
+						PRINTFORMW 모처럼 기분 좋았는데… 바보…」
+					ENDIF
+				ENDIF
+			ELSE
+				IF RAND:3 == 0 
+					PRINTFORML 「우웃… 거기… 꾸욱하면… 아앗…%UNICODE(0x2665)%」
+					PRINTFORMW 질 내의 조금 부풀어 오른 곳을 문질러 줄 때마다 사쿠야의 질이 빠르게 조여들었다…
+				ELSEIF RAND:2 == 0
+					PRINTFORML 「아…아앗, 으읏, 흣, 으응……　거기, 좋아 …거기 문지르는 거, 하앗, 좋아…%UNICODE(0x2665)%」
+					PRINTFORMW 안의 성감대에 손가락이 닿자, 사쿠야은 민감하게 반응해왔다…
+				ELSE
+					PRINTFORMW 「후아, 하아앗… 으읏, 조, 조금만, 천천히…!」
+				ENDIF
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;350, 밀어 넘어뜨린다(시간 시에는 장난한다)
+;TFLAG:194 (0=성공 1=명째가 있다 2=야외는 싫어 입니다만 3=많은 사람 플레이는 용서 4=합의가 있어도 무드가 충분하지 않다)
+;TCVAR:껴안고첫회 1=보통으로 합의Get 2=먼저 키스 정도 해라 3=미약or발정에는 이길 수 없었어요 … 4=분한…각인조차 없으면 히″쿠히″군
+;5=억지로 재촉당한다고 거절할 수 없는(소질 겁장이 소유 전용) 6=반드시 싫지만은 않다 7=안 돼 8=논외
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_350
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_350_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_350_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
+			IF TFLAG:194
+				SELECTCASE TFLAG:194
+					CASE 1
+						IF TALENT:연인
+							PRINTFORML 
+							PRINTFORMW 「――그, 여기서?」
+							PRINTFORMW 「……다른 사람도 있잖니.」
+							PRINTFORMW 상관없지 않을까?
+							PRINTFORMW 「……그런 건 절대 못해. 미안.」
+							PRINTFORMW 작고, 유감스럽게 한숨을 토하는 %CALLNAME:MASTER%.
+							PRINTFORMW 「――그, 저기, 있잖아? 여기가 아니라면, 상관 없는데?」
+							PRINTFORMW 사쿠야는 눈을 치켜 뜨고 그렇게 말해 왔다.
+							RETURN 1
+						ELSEIF TALENT:연모
+							PRINTFORML 
+							PRINTFORMW 「――에, ㅇ, 여기서?」
+							PRINTFORMW 「다른 사람도 있는데……」
+							PRINTFORMW 상관없지 않을까?
+							PRINTFORMW 「……그런 건 절대 못해. 미안」
+							PRINTFORMW 하고, 사쿠야는 얼굴을 붉게 물들인 채로 말했다.
+							PRINTFORMW %CALLNAME:MASTER%도 역시 사쿠야가 걱정되어 단념했다.
+						ELSE
+							PRINTFORML 
+							PRINTFORMW 「――뭐? ……한 번 더 말해줄래?」
+							PRINTFORMW 하지 않겠는가?
+							PRINTFORMW 「……그래도 여기선, 안 돼」
+							PRINTFORMW 그렇구나, 유감이다.
+							PRINTFORMW 「……보는 사람이 없다면, 뭐……」
+							PRINTFORMW 사쿠야는 작게 속삭였다.
+						ENDIF
+					CASE 2
+						IF TALENT:연인
+							PRINTFORML 
+							PRINTFORMW 「――뭐, 여기서?」
+							PRINTFORMW 「저기, 밖이잖아, 싫어, 안 돼.」
+							PRINTFORMW 사쿠야는 잠깐 생각하는 것 같은 기색을 보였지만, 거부해 왔다.
+							PRINTFORMW 「……짐승처럼…… 아니, 안 돼, 안 돼애애앳」
+							PRINTFORMW 사쿠야는 얼굴을 붉힌 채 망상에 빠져 있다.
+							RETURN 1
+						ELSEIF TALENT:연모
+							PRINTFORML 
+							PRINTFORMW 「――에? 이런 곳에서, 하고 싶은거야?」
+							PRINTFORMW 가끔씩은 좋지 않을까, 하고 %마스터는% 중얼거렸다.
+							PRINTFORMW 「……안 돼. 그래도 싫어」
+							PRINTFORMW 사쿠야는 얼굴을 붉힌 채로 거절했다.
+						ELSE
+							PRINTFORML 
+							PRINTFORMW 「――뭐? 농담이지?」
+							PRINTFORMW 「……제정신이니?」
+							PRINTFORMW 미쳐 있는 건 아닐거야, 하고 %마스터는% 대답한다.
+							PRINTFORMW 「……절대 안 돼.」
+							PRINTFORMW 사쿠야는 얼굴을 붉힌 채 거절했다.
+						ENDIF
+					CASE 3
+						IF TALENT:연인
+							PRINTFORML 
+							PRINTFORMW 「――뭐? 여기서?」
+							PRINTFORMW %마스터는% 강하게 수긍한다.
+							PRINTFORMW 「……사람이, 있잖니.」
+							PRINTFORMW 사람이 많은 것도, 가끔씩은 좋을지도 몰라.
+							PRINTFORMW 「좋지 않앗! 일단, 부끄럽잖아!」
+							PRINTFORMW 그런가, 유감이다.
+							PRINTFORMW 「……좀 더 마음 편히 너를 느끼고 싶다구……」
+							PRINTFORMW 사랑스러운 말을 하는 사쿠야였다.
+							RETURN 1
+						ELSEIF TALENT:연모
+							PRINTFORML 
+							PRINTFORMW 「――에? ……여기서?」
+							PRINTFORMW 「……머리가 어떻게 된 거 아니니……?」
+							PRINTFORMW 사쿠야는 얼굴을 붉힌 채 고개를 숙였다.
+							PRINTFORMW 어쩔 수 없네, 포기할까, 라고 생각하는 %CALLNAME:MASTER%.
+							PRINTFORMW 「……할거면, 따로……」
+							PRINTFORMW 사쿠야는 고개를 숙인 채, 작게 속삭였다.
+							PRINTFORMW 사랑스럽기는, %마스터는% 희미하게 미소를 지었다.
+						ELSE
+							PRINTFORML 
+							PRINTFORMW 「혹시, 바보야?」
+							PRINTFORMW 사쿠야는 얼굴이 새빨개진 채로 말한다.
+							PRINTFORMW 「사람도 있는 곳에서 그런 걸 하자니……」
+							PRINTFORMW 사쿠야는 우물거린다.
+							PRINTFORMW 뭐 어쩔 수 없네, %마스터는% 중얼거렸다.
+						ENDIF
+					CASE 4
+						IF TALENT:연인
+							PRINTFORML 
+							PRINTFORMW 「――그, 딱히 하는 건 좋지만……」
+							PRINTFORMW 「……좀 더 무드를 챙겨줄래……」
+							PRINTFORMW 사쿠야는 아직 그럴 기분이 아닌 것 같다……
+							RETURN 1
+						ELSEIF TALENT:연모
+							PRINTFORML 
+							PRINTFORMW 「――에…… 지금?」
+							PRINTFORMW 「그…… 지금은, 좀.」
+							PRINTFORMW 사쿠야는 어색하게 말했다.
+							PRINTFORMW 「분위기라는 게 있잖아.」
+							PRINTFORMW 그런가, 미안해.
+							PRINTFORMW 「아니, 사과할 필요는 없는데」
+							PRINTFORMW 사쿠야는 웃는 얼굴로 그렇게 말해 왔다.
+						ELSE
+							PRINTFORML 
+							PRINTFORMW 「여자는 분위기를 중요시 여긴다구?」
+							PRINTFORMW 사쿠야는 어색한 얼굴로, 그렇게 말해 온다.
+							PRINTFORMW 「알겠어? 분위기는 중요해, 확실히 기억해 둬」
+							PRINTFORMW %마스터는% 소중한 교훈을 배웠다.
+						ENDIF
+				ENDSELECT
+			ELSEIF TCVAR:껴안고첫회
+				SELECTCASE TCVAR:껴안고첫회
+					CASE 1
+						IF TALENT:연인
+							;V경험 없음의 분기, 재생 처녀라든가 하는 것은 잘 모른다
+							IF !EXP:20 && (TALENT:연모 || TALENT:연인)
+								PRINTFORML 
+								PRINTFORMW 「――아……」
+								PRINTFORMW 사쿠야는 얼굴을 빨갛게 물들이고 있다.
+								PRINTFORMW 「……하는, 거야……이제부터?」
+								PRINTFORMW 사쿠야는 촉촉한 눈으로 %마스터를% 바라보고 있다.
+								PRINTFORMW 「……나, 여자로서의 매력이, 없는 건 아닐까하고 생각하고 있었어」
+								PRINTFORMW 「연인이 되고 나서 이상한 일도 당한 적 없었고」
+								PRINTFORMW 「%마스터가% 상냥했던 것 뿐이었지만」
+								PRINTFORMW 「……그런데도, 무서웠어」
+								PRINTFORMW 「그런 일은 없겠지만, 버려질 것 같아서」
+								PRINTFORMW 「……………」
+								PRINTFORMW 「……너무 어두운 이야기만 하면, 안 되겠지」
+								PRINTFORMW 「……응, 이제 결심했어」
+								PRINTFORMW 그렇게 말한, 사쿠야는 천천히 입을 열었다.
+								PRINTFORMW 「――잘 부탁해……상냥하게, 해 줘?」
+								PRINTFORMW 
+							ELSE
+								PRINTFORML 
+								PRINTFORMW 「――읏……」
+								PRINTFORMW 사쿠야는 얼굴을 붉히고 있다.
+								PRINTFORMW 「……하는, 구나……」
+								PRINTFORMW 사쿠야의 목소리는 조금 떨리고 있다.
+								PRINTFORMW 「……%CALLNAME:MASTER%, 시작할까?」
+								PRINTFORMW 하고, 정사의 개시를 선언했다.
+								PRINTFORMW 
+								RETURN 1
+							ENDIF
+						ENDIF
+						IF TALENT:연모
+							;V경험 없음의 분기
+							IF !EXP:20
+								PRINTFORML 
+								PRINTFORMW 「――아……」
+								PRINTFORMW 사쿠야는 얼굴이 새빨개져서 굳어있다.
+								PRINTFORMW 「……하는, 거야?」
+								PRINTFORMW 「……어쩐지, 빠른 것 같기도, 늦었던 것 같기도」
+								PRINTFORMW 사쿠야는 촉촉한 눈으로 %마스터를% 바라보고 있다.
+								PRINTFORMW 그리고 사쿠야는 정좌하고, 예를 갖춘다.
+								PRINTFORMW 「――아무쪼록, 잘 부탁해……」
+							ELSE
+								PRINTFORML 
+								PRINTFORMW 「――아앗……」
+								PRINTFORMW 사쿠야는 작게 떨고 있다.
+								PRINTFORMW 「……하는, 거야?」
+								PRINTFORMW 사쿠야는 예의를 갖추고 말했다.
+								PRINTFORMW 「――잘 부탁해.」
+							ENDIF
+						ELSE
+							PRINTFORML 
+							PRINTFORMW 「――에엣, 아, 그게」
+							PRINTFORMW 「이건, 몸을 섞는다는 뜻으로 받아들이면 되는거야?」
+							PRINTFORMW 「……그래, 알았어」
+							PRINTFORMW 「――그, 상냥하게 해 줘?」
+						ENDIF
+					CASE 2
+						IF TALENT:연인
+							;이 분기는 보는 사람이 적을 것 같다 - 작자의, 마음 속 한 마디
+							PRINTFORML 
+							PRINTFORMW 「그, 아, 아직 입맞춤도 주고 받지 않았잖니」
+							PRINTFORMW 「조금, 빠르지 않아?」
+							PRINTFORMW 입맞춤을 주고 받지 않으면 행위를 주고 받는 것도 싫은가.
+							PRINTFORMW 「그, 그래. 조금 더 순서라는 게……」
+							PRINTFORMW 싫어도 좋아의 한 종류, 라고 하잖아? 문답무용.
+							PRINTFORMW 「햐아앗! ……정말%UNICODE(0x2665)%」
+							PRINTFORMW 결국 %마스터는% 사쿠야를 덮쳤다.
+							RETURN 1
+						ELSEIF TALENT:연모
+							PRINTFORML 
+							PRINTFORMW 「그러니까……하는 거야?」
+							PRINTFORMW 「나는 입맞춤을 주고 받은 기억도 없는데」
+							PRINTFORMW 이쪽도 입맞춤을 주고 받은 기억은 없는데.
+							PRINTFORMW 「……조금 더 순서라는 게……뭐 좋아」
+							PRINTFORMW 「%CALLNAME:MASTER%, 잘 부탁해. 상냥하게 해줘?」
+							PRINTFORMW 사쿠야는 웃으며 그렇게 말했다.
+						ELSE
+							PRINTFORML 
+							PRINTFORMW 「――저기, %CALLNAME:MASTER%?」
+							PRINTFORMW 응? 왜 그래 사쿠야,  무서워진거야?
+							PRINTFORMW 「우리들, 아직 입맞춤도 주고 받지 않다고 생각하는데」
+							PRINTFORMW ……그랬었던가? 
+							PRINTFORMW 「……뭐, 좋아. 이미 늦었으니까」
+							PRINTFORMW 「자, 시작할까?」
+							PRINTFORMW 사쿠야는 정사의 개시를 재촉했다.
+						ENDIF
+					CASE 3
+						IF TALENT:연인 || TALENT:연모 || TALENT:사모
+							PRINTFORML 
+							PRINTFORMW 「응읏……하앗……크윽……」
+							PRINTFORMW 「하앗, 하아……하아……」
+							PRINTFORMW 사쿠야는 얼굴을 상기시키고, 달콤한 숨을 단속적으로 내뱉고 있다.
+							PRINTFORMW 「핫, 응……이런 일, 하지 않아도, 좋았는데……」
+							PRINTFORMW 사쿠야는 소곤소곤 작게 속삭거리면서, %CALLNAME:MASTER%에게 힘없이 기대왔다.
+							RETURN 1
+						ELSE
+							PRINTFORML 
+							PRINTFORMW 「읏……크읏……쌓여있나보네……」
+							PRINTFORMW 글쎄, 무슨 소린지, %마스터는% 모르는 척하는 얼굴을 하고 있다.
+							PRINTFORMW 「웃, 크읏…… 하아……하아……」
+							PRINTFORMW 점점 사쿠야의 눈은 초점이 흐려지기 시작한 것 같다
+							PRINTFORMW 「하아, 몸이, 뜨거워……안 돼, 참을 수, 없어……」
+							PRINTFORMW 사쿠야는 %CALLNAME:MASTER%에게 기대어왔다.
+						ENDIF
+					CASE 4
+						PRINTFORML 
+						PRINTFORMW 「읏! 싫어, 그만, 그만해앳」
+						PRINTFORMW 사쿠야의 저항하는 손에는, 힘이 들어가 있지 않았다.
+						PRINTFORMW 「……최악이야, 이런, 이런……」
+						PRINTFORMW 「좀 더, 제대로 하고 싶었는데……」
+						PRINTFORMW 사쿠야는 %CALLNAME:MASTER%에게 기대어 왔다.
+					CASE 5
+					CASE 6
+						PRINTFORML 
+						PRINTFORMW 「――어째서, 내가 %조사처리(CALLNAME:MASTER, "와")% 해야하는거야?」
+						PRINTFORMW 「……안 돼, 아직. 아직, 너무 일러」
+						PRINTFORMW 「아직」그 단어에 반응하는 %CALLNAME:MASTER%.
+						PRINTFORMW 「……뭔가 이상한 걸 생각한 건 아니겠지」
+						PRINTFORMW 아니, %마스터는% 조건반사 하듯이 말했다.
+					CASE 7
+						PRINTFORML 
+						PRINTFORMW 「싫어. 어째서 내가 %조사처리(CALLNAME:MASTER, "와")% 해야하는거야?」
+						PRINTFORMW 「아니, 그만 둬. 그 이상 가까이 오면……」
+						PRINTFORMW 사쿠야는 주먹을 쥐었다.
+						PRINTFORMW %마스터는% 마지못해 물러난다.
+						PRINTFORMW 「……좋아. 조금만 더 가까이 왔다면, 유카리를 귀찮게 할 뻔했어」
+						PRINTFORMW 사쿠야의 말에, 섬뜩함을 느꼈다.
+					CASE 8
+						PRINTFORML 
+						PRINTFORMW 「싫어, 그만해, 그만둬! 싫어!」
+						PRINTFORMW ――짜악!
+						PRINTFORMW %CALLNAME:MASTER%의 뺨에 붉은색 단풍이 물든다.
+						PRINTFORMW 「하아……하아……」
+						PRINTFORMW 사쿠야는 어깨를 들썩이고 있다.
+						PRINTFORMW 「웃,  다음에, 또 했다간……알고 있겠지? 죽을거야?」
+						PRINTFORMW 사쿠야는 얼굴이 굳은 채로, 그렇게 말해 왔다.
+						PRINTFORMW %마스터는% 뺨으로부터 전해지는 날카로운 아픔에 얼굴을 찡그렸다.
+				ENDSELECT
+			ELSE
+				IF TALENT:연인
+					PRINTFORML 
+					PRINTFORMW 「아…… 하는, 거야?」
+					PRINTFORMW 사쿠야는 뺨을 붉게 물들인 채로 물어본다.
+					PRINTFORMW 「……응……좋아, 와 줘」
+					PRINTFORMW 사쿠야는 눈을 감으며, 그렇게 말했다.
+					RETURN 1
+				ELSEIF TALENT:연모
+					PRINTFORML 
+					PRINTFORMW 「아……하는, 거야?」
+					PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 눈을 바라보면서 그렇게 물어본다.
+					PRINTFORMW 「……%CALLNAME:MASTER%…… 제대로, 기분 좋게 해줘?」
+					PRINTFORMW 사쿠야는 뺨을 붉히며 그렇게 말했다.
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「……하는, 구나……」
+					PRINTFORMW 사쿠야는 무표정으로 중얼거렸다.
+					PRINTFORMW 「좋아, 마음대로 해 줘」
+					PRINTFORMW 사쿠야는 어딘가 단념한 것 같은 느낌으로, 그렇게 말했다.
+				ENDIF
+			ENDIF
+		ENDIF
+	ELSEIF TFLAG:194
+		SELECTCASE TFLAG:194
+			CASE 1
+				IF TALENT:연인
+					PRINTFORML 
+					PRINTFORMW 「――그, 여기서?」
+					PRINTFORMW 「……다른 사람도 있잖니.」
+					PRINTFORMW 상관없지 않을까?
+					PRINTFORMW 「……그런 건 절대 못해. 미안.」
+					PRINTFORMW 작고, 유감스럽게 한숨을 토하는 %CALLNAME:MASTER%.
+					PRINTFORMW 「――그, 저기, 있잖아? 여기가 아니라면, 상관 없는데?」
+					PRINTFORMW 사쿠야는 눈을 치켜 뜨고 그렇게 말해 왔다.
+					RETURN 1
+				ELSEIF TALENT:연모
+					PRINTFORML 
+					PRINTFORMW 「――에, ㅇ, 여기서?」
+					PRINTFORMW 「다른 사람도 있는데……」
+					PRINTFORMW 상관없지 않을까?
+					PRINTFORMW 「……그런 건 절대 못해. 미안」
+					PRINTFORMW 하고, 사쿠야는 얼굴을 붉게 물들인 채로 말했다.
+					PRINTFORMW %CALLNAME:MASTER%도 역시 사쿠야가 걱정되어 단념했다.
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「――뭐? ……한 번 더 말해줄래?」
+					PRINTFORMW 하지 않겠는가?
+					PRINTFORMW 「……그래도 여기선, 안 돼」
+					PRINTFORMW 그렇구나, 유감이다.
+					PRINTFORMW 「……보는 사람이 없다면, 뭐……」
+					PRINTFORMW 사쿠야는 작게 속삭였다.
+				ENDIF
+			CASE 2
+				IF TALENT:연인
+					PRINTFORML 
+					PRINTFORMW 「――뭐, 여기서?」
+					PRINTFORMW 「저기, 밖이잖아, 싫어, 안 돼.」
+					PRINTFORMW 사쿠야는 잠깐 생각하는 것 같은 기색을 보였지만, 거부해 왔다.
+					PRINTFORMW 「……짐승처럼…… 아니, 안 돼, 안 돼애애앳」
+					PRINTFORMW 사쿠야는 얼굴을 붉힌 채 망상에 빠져 있다.
+					RETURN 1
+				ELSEIF TALENT:연모
+					PRINTFORML 
+					PRINTFORMW 「――에? 이런 곳에서, 하고 싶은거야?」
+					PRINTFORMW 가끔씩은 좋지 않을까, 하고 %마스터는% 중얼거렸다.
+					PRINTFORMW 「……안 돼. 그래도 싫어」
+					PRINTFORMW 사쿠야는 얼굴을 붉힌 채로 거절했다.
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「――뭐? 농담이지?」
+					PRINTFORMW 「……제정신이니?」
+					PRINTFORMW 미쳐 있는 건 아닐거야, 하고 %마스터는% 대답한다.
+					PRINTFORMW 「……절대 안 돼.」
+					PRINTFORMW 사쿠야는 얼굴을 붉힌 채 거절했다.
+				ENDIF
+			CASE 3
+				IF TALENT:연인
+					PRINTFORML 
+					PRINTFORMW 「――뭐? 여기서?」
+					PRINTFORMW %마스터는% 강하게 수긍한다.
+					PRINTFORMW 「……사람이, 있잖니.」
+					PRINTFORMW 사람이 많은 것도, 가끔씩은 좋을지도 몰라.
+					PRINTFORMW 「좋지 않앗! 일단, 부끄럽잖아!」
+					PRINTFORMW 그런가, 유감이다.
+					PRINTFORMW 「……좀 더 마음 편히 너를 느끼고 싶다구……」
+					PRINTFORMW 사랑스러운 말을 하는 사쿠야였다.
+					RETURN 1
+				ELSEIF TALENT:연모
+					PRINTFORML 
+					PRINTFORMW 「――에? ……여기서?」
+					PRINTFORMW 「……머리가 어떻게 된 거 아니니……?」
+					PRINTFORMW 사쿠야는 얼굴을 붉힌 채 고개를 숙였다.
+					PRINTFORMW 어쩔 수 없네, 포기할까, 라고 생각하는 %CALLNAME:MASTER%.
+					PRINTFORMW 「……할거면, 따로……」
+					PRINTFORMW 사쿠야는 고개를 숙인 채, 작게 속삭였다.
+					PRINTFORMW 사랑스럽기는, %마스터는% 희미하게 미소를 지었다.
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「혹시, 바보야?」
+					PRINTFORMW 사쿠야는 얼굴이 새빨개진 채로 말한다.
+					PRINTFORMW 「사람도 있는 곳에서 그런 걸 하자니……」
+					PRINTFORMW 사쿠야는 우물거린다.
+					PRINTFORMW 뭐 어쩔 수 없네, %마스터는% 중얼거렸다.
+				ENDIF
+			CASE 4
+				IF TALENT:연인
+					PRINTFORML 
+					PRINTFORMW 「――그, 딱히 하는 건 좋지만……」
+					PRINTFORMW 「……좀 더 무드를 챙겨줄래……」
+					PRINTFORMW 사쿠야는 아직 그럴 기분이 아닌 것 같다……
+					RETURN 1
+				ELSEIF TALENT:연모
+					PRINTFORML 
+					PRINTFORMW 「――에…… 지금?」
+					PRINTFORMW 「그…… 지금은, 좀.」
+					PRINTFORMW 사쿠야는 어색하게 말했다.
+					PRINTFORMW 「분위기라는 게 있잖아.」
+					PRINTFORMW 그런가, 미안해.
+					PRINTFORMW 「아니, 사과할 필요는 없는데」
+					PRINTFORMW 사쿠야는 웃는 얼굴로 그렇게 말해 왔다.
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「여자는 분위기를 중요시 여긴다구?」
+					PRINTFORMW 사쿠야는 어색한 얼굴로, 그렇게 말해 온다.
+					PRINTFORMW 「알겠어? 분위기는 중요해, 확실히 기억해 둬」
+					PRINTFORMW %마스터는% 소중한 교훈을 배웠다.
+				ENDIF
+		ENDSELECT
+	ELSEIF TCVAR:껴안고첫회
+		SELECTCASE TCVAR:껴안고첫회
+			CASE 1
+				IF TALENT:연인
+					;V경험 없음의 분기, 재생 처녀라든가 하는 것은 잘 모른다
+					IF !EXP:20 && (TALENT:연모 || TALENT:연인)
+						PRINTFORML 
+						PRINTFORMW 「――아……」
+						PRINTFORMW 사쿠야는 얼굴을 빨갛게 물들이고 있다.
+						PRINTFORMW 「……하는, 거야……이제부터?」
+						PRINTFORMW 사쿠야는 촉촉한 눈으로 %마스터를% 바라보고 있다.
+						PRINTFORMW 「……나, 여자로서의 매력이, 없는 건 아닐까하고 생각하고 있었어」
+						PRINTFORMW 「연인이 되고 나서 이상한 일도 당한 적 없었고」
+						PRINTFORMW 「%마스터가% 상냥했던 것 뿐이었지만」
+						PRINTFORMW 「……그런데도, 무서웠어」
+						PRINTFORMW 「그런 일은 없겠지만, 버려질 것 같아서」
+						PRINTFORMW 「……………」
+						PRINTFORMW 「……너무 어두운 이야기만 하면, 안 되겠지」
+						PRINTFORMW 「……응, 이제 결심했어」
+						PRINTFORMW 그렇게 말한, 사쿠야는 천천히 입을 열었다.
+						PRINTFORMW 「――잘 부탁해……상냥하게, 해 줘?」
+						PRINTFORMW 
+					ELSE
+						PRINTFORML 
+						PRINTFORMW 「――읏……」
+						PRINTFORMW 사쿠야는 얼굴을 붉히고 있다.
+						PRINTFORMW 「……하는, 구나……」
+						PRINTFORMW 사쿠야의 목소리는 조금 떨리고 있다.
+						PRINTFORMW 「……%CALLNAME:MASTER%, 시작할까?」
+						PRINTFORMW 하고, 정사의 개시를 선언했다.
+						PRINTFORMW 
+						RETURN 1
+					ENDIF
+				ENDIF
+				IF TALENT:연모
+					;V경험 없음의 분기
+					IF !EXP:20
+						PRINTFORML 
+						PRINTFORMW 「――아……」
+						PRINTFORMW 사쿠야는 얼굴이 새빨개져서 굳어있다.
+						PRINTFORMW 「……하는, 거야?」
+						PRINTFORMW 「……어쩐지, 빠른 것 같기도, 늦었던 것 같기도」
+						PRINTFORMW 사쿠야는 촉촉한 눈으로 %마스터를% 바라보고 있다.
+						PRINTFORMW 그리고 사쿠야는 정좌하고, 예를 갖춘다.
+						PRINTFORMW 「――아무쪼록, 잘 부탁해……」
+					ELSE
+						PRINTFORML 
+						PRINTFORMW 「――아앗……」
+						PRINTFORMW 사쿠야는 작게 떨고 있다.
+						PRINTFORMW 「……하는, 거야?」
+						PRINTFORMW 사쿠야는 예의를 갖추고 말했다.
+						PRINTFORMW 「――잘 부탁해.」
+					ENDIF
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「――에엣, 아, 그게」
+					PRINTFORMW 「이건, 몸을 섞는다는 뜻으로 받아들이면 되는거야?」
+					PRINTFORMW 「……그래, 알았어」
+					PRINTFORMW 「――그, 상냥하게 해 줘?」
+				ENDIF
+			CASE 2
+				IF TALENT:연인
+					;이 분기는 보는 사람이 적을 것 같다 - 작자의, 마음 속 한 마디
+					PRINTFORML 
+					PRINTFORMW 「그, 아, 아직 입맞춤도 주고 받지 않았잖니」
+					PRINTFORMW 「조금, 빠르지 않아?」
+					PRINTFORMW 입맞춤을 주고 받지 않으면 행위를 주고 받는 것도 싫은가.
+					PRINTFORMW 「그, 그래. 조금 더 순서라는 게……」
+					PRINTFORMW 싫어도 좋아의 한 종류, 라고 하잖아? 문답무용.
+					PRINTFORMW 「햐아앗! ……정말%UNICODE(0x2665)%」
+					PRINTFORMW 결국 %마스터는% 사쿠야를 덮쳤다.
+					RETURN 1
+				ELSEIF TALENT:연모
+					PRINTFORML 
+					PRINTFORMW 「그러니까……하는 거야?」
+					PRINTFORMW 「나는 입맞춤을 주고 받은 기억도 없는데」
+					PRINTFORMW 이쪽도 입맞춤을 주고 받은 기억은 없는데.
+					PRINTFORMW 「……조금 더 순서라는 게……뭐 좋아」
+					PRINTFORMW 「%CALLNAME:MASTER%, 잘 부탁해. 상냥하게 해줘?」
+					PRINTFORMW 사쿠야는 웃으며 그렇게 말했다.
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「――저기, %CALLNAME:MASTER%?」
+					PRINTFORMW 응? 왜 그래 사쿠야,  무서워진거야?
+					PRINTFORMW 「우리들, 아직 입맞춤도 주고 받지 않다고 생각하는데」
+					PRINTFORMW ……그랬었던가? 
+					PRINTFORMW 「……뭐, 좋아. 이미 늦었으니까」
+					PRINTFORMW 「자, 시작할까?」
+					PRINTFORMW 사쿠야는 정사의 개시를 재촉했다.
+				ENDIF
+			CASE 3
+				IF TALENT:연인 || TALENT:연모 || TALENT:사모
+					PRINTFORML 
+					PRINTFORMW 「응읏……하앗……크윽……」
+					PRINTFORMW 「하앗, 하아……하아……」
+					PRINTFORMW 사쿠야는 얼굴을 상기시키고, 달콤한 숨을 단속적으로 내뱉고 있다.
+					PRINTFORMW 「핫, 응……이런 일, 하지 않아도, 좋았는데……」
+					PRINTFORMW 사쿠야는 소곤소곤 작게 속삭거리면서, %CALLNAME:MASTER%에게 힘없이 기대왔다.
+					RETURN 1
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「읏……크읏……쌓여있나보네……」
+					PRINTFORMW 글쎄, 무슨 소린지, %마스터는% 모르는 척하는 얼굴을 하고 있다.
+					PRINTFORMW 「웃, 크읏…… 하아……하아……」
+					PRINTFORMW 점점 사쿠야의 눈은 초점이 흐려지기 시작한 것 같다
+					PRINTFORMW 「하아, 몸이, 뜨거워……안 돼, 참을 수, 없어……」
+					PRINTFORMW 사쿠야는 %CALLNAME:MASTER%에게 기대어왔다.
+				ENDIF
+			CASE 4
+				PRINTFORML 
+				PRINTFORMW 「읏! 싫어, 그만, 그만해앳」
+				PRINTFORMW 사쿠야의 저항하는 손에는, 힘이 들어가 있지 않았다.
+				PRINTFORMW 「……최악이야, 이런, 이런……」
+				PRINTFORMW 「좀 더, 제대로 하고 싶었는데……」
+				PRINTFORMW 사쿠야는 %CALLNAME:MASTER%에게 기대어 왔다.
+			CASE 5
+			CASE 6
+				PRINTFORML 
+				PRINTFORMW 「――어째서, 내가 %조사처리(CALLNAME:MASTER, "와")% 해야하는거야?」
+				PRINTFORMW 「……안 돼, 아직. 아직, 너무 일러」
+				PRINTFORMW 「아직」그 단어에 반응하는 %CALLNAME:MASTER%.
+				PRINTFORMW 「……뭔가 이상한 걸 생각한 건 아니겠지」
+				PRINTFORMW 아니, %마스터는% 조건반사 하듯이 말했다.
+			CASE 7
+				PRINTFORML 
+				PRINTFORMW 「싫어. 어째서 내가 %조사처리(CALLNAME:MASTER, "와")% 해야하는거야?」
+				PRINTFORMW 「아니, 그만 둬. 그 이상 가까이 오면……」
+				PRINTFORMW 사쿠야는 주먹을 쥐었다.
+				PRINTFORMW %마스터는% 마지못해 물러난다.
+				PRINTFORMW 「……좋아. 조금만 더 가까이 왔다면, 유카리를 귀찮게 할 뻔했어」
+				PRINTFORMW 사쿠야의 말에, 섬뜩함을 느꼈다.
+			CASE 8
+				PRINTFORML 
+				PRINTFORMW 「싫어, 그만해, 그만둬! 싫어!」
+				PRINTFORMW ――짜악!
+				PRINTFORMW %CALLNAME:MASTER%의 뺨에 붉은색 단풍이 물든다.
+				PRINTFORMW 「하아……하아……」
+				PRINTFORMW 사쿠야는 어깨를 들썩이고 있다.
+				PRINTFORMW 「웃,  다음에, 또 했다간……알고 있겠지? 죽을거야?」
+				PRINTFORMW 사쿠야는 얼굴이 굳은 채로, 그렇게 말해 왔다.
+				PRINTFORMW %마스터는% 뺨으로부터 전해지는 날카로운 아픔에 얼굴을 찡그렸다.
+		ENDSELECT
+	ELSE
+		IF TALENT:연인
+			PRINTFORML 
+			PRINTFORMW 「아…… 하는, 거야?」
+			PRINTFORMW 사쿠야는 뺨을 붉게 물들인 채로 물어본다.
+			PRINTFORMW 「……응……좋아, 와 줘」
+			PRINTFORMW 사쿠야는 눈을 감으며, 그렇게 말했다.
+			RETURN 1
+		ELSEIF TALENT:연모
+			PRINTFORML 
+			PRINTFORMW 「아……하는, 거야?」
+			PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 눈을 바라보면서 그렇게 물어본다.
+			PRINTFORMW 「……%CALLNAME:MASTER%…… 제대로, 기분 좋게 해줘?」
+			PRINTFORMW 사쿠야는 뺨을 붉히며 그렇게 말했다.
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 「……하는, 구나……」
+			PRINTFORMW 사쿠야는 무표정으로 중얼거렸다.
+			PRINTFORMW 「좋아, 마음대로 해 줘」
+			PRINTFORMW 사쿠야는 어딘가 단념한 것 같은 느낌으로, 그렇게 말했다.
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
 ;325,로터삽입
 ;CFLAG:うふふ==2&&TCVAR:20(35=スカートの中を見せる 70=クンニ強制 85=Ｖ挿入する 86=だいしゅきホールド 87=Ａ挿入する 88=腰振りＶ 89=腰振り
 ;ABL:Ｃ感覚(4未満=くすぐったい 6未満=ちょっといいかも 6以上=カイカン)
@@ -460,6 +1308,46 @@ IF LOCAL
 		ENDIF    
 	ENDIF
 ENDIF
+;==================================================
+;330, 치마걷어 올리기
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_330
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_330_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_330_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
+			PRINTFORMW
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
 ;==================================================
 ;326,로터삽입A
 ;CFLAG:うふふ==2&&TCVAR:20(35=スカートの中を見せる 70=クンニ強制 85=Ｖ挿入する 86=だいしゅきホールド 87=Ａ挿入する 88=腰振りＶ 89=腰振り

@@ -958,31 +958,31 @@ IF LOCAL
 		ENDIF
 	ELSEIF TALENT:연인
 		PRINTFORML 「――응?　히잇」
-		PRINTFORMW %마스터는% 레이무의 뺨을 집어 보았다.
+		PRINTFORMW %마스터는% 사쿠야의 뺨을 집어 보았다.
 		PRINTFORMW 「째라고, 있고」
-		PRINTFORMW 레이무의 뺨은 물컹물컹하고 하고 있어, 부드럽다.
+		PRINTFORMW 사쿠야의 뺨은 물컹물컹하고 하고 있어, 부드럽다.
 		PRINTFORMW 「……에잇」
-		PRINTFORMW 레이무는 %CALLNAME:MASTER%의 뺨을 안주 돌려주어 왔다.
+		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 뺨을 안주 돌려주어 왔다.
 		RETURN 1
 	ELSEIF ABL:친밀 > 5
 		PRINTFORML 
 		PRINTFORMW 「――으음?　」
-		PRINTFORMW %마스터는% 레이무의 뺨을 집었다.
+		PRINTFORMW %마스터는% 사쿠야의 뺨을 집었다.
 		PRINTFORMW 「……에잇」
-		PRINTFORMW 레이무는 미소를 띠면서 다시해 왔다.
+		PRINTFORMW 사쿠야는 미소를 띠면서 다시해 왔다.
 		PRINTFORMW 즐거운 듯 하다.
 	ELSEIF ABL:순종 >= 5
 		PRINTFORML 
 		PRINTFORMW 「――」
-		PRINTFORMW %마스터는% 레이무의 뺨을 집었다.
+		PRINTFORMW %마스터는% 사쿠야의 뺨을 집었다.
 		PRINTFORMW 「으응, 집지 말아 ……」
-		PRINTFORMW 레이무는 입에서는 그렇게 말하면서도, 되는 대로 되어 있다.
+		PRINTFORMW 사쿠야는 입에서는 그렇게 말하면서도, 되는 대로 되어 있다.
 	ELSE
 		PRINTFORML 
 		PRINTFORMW 「――저, 있고 히괜찮다 하지만」
-		PRINTFORMW 레이무는 %CALLNAME:MASTER%에 뺨을 집어지고 있다.
+		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%에 뺨을 집어지고 있다.
 		PRINTFORMW 「째, 그만두세요」
-		PRINTFORMW 레이무는 그렇게 말해, %CALLNAME:MASTER%의 손을 뿌리쳤다.
+		PRINTFORMW 사쿠야는 그렇게 말해, %CALLNAME:MASTER%의 손을 뿌리쳤다.
 	ENDIF
 ENDIF
 RETURN 1
@@ -1843,6 +1843,1349 @@ IF LOCAL
 		ENDIF
 	ENDIF	
 RETURN 1
+;==================================================
+;351, 데리고나간다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_351
+;데리고 나가에는 TRAIN_MESSAGE가 없다
+CALL M_KOJO_MESSAGE_COM_K15_351_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_351_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+;우후후가 해제되고 있는 것을 생각 눌러 하는 처리
+	;욕정 5이상으로 발정해 버렸다 나즈
+	IF PALAM:욕정 >= PALAMLV:5
+		IF RAND:3 == 0
+			PRINTFORMW 「후후… 어디 가려구…?」
+		ELSEIF RAND:2 == 0 
+			PRINTFORMW 「빨리 갈까…?」
+		ELSE
+			PRINTFORMW 「후후… 눈치는 있네…?」
+		ENDIF 
+		PRINTFORML 상기된 사쿠야의 손을 잡아당기자 작게 웃으며 당신의 뒤를 따라왔다…
+		RETURN 1
+	;연인
+	ELSEIF TALENT:연인
+		PRINTFORML 작디 작은 연인의 손을 잡아 데리고 나갔다…
+		IF RAND:4 == 0 
+			PRINTFORMW 「후후, 어디 가려구?」
+		ELSEIF RAND:3 == 0 
+			PRINTFORMW 「으응, 뭐야?」
+		ELSEIF RAND:2 == 0 
+			PRINTFORMW 「응, 같이 가자.」
+		ELSE
+			PRINTFORMW 「왜 그러니?」
+		ENDIF
+		RETURN 1
+	;연모
+	ELSEIF TALENT:연모
+		PRINTFORML 사쿠야의 손을 잡아 데리고 나가자, 갑작스러운 일에 사쿠야는 몸을 긴장시켰다
+		IF RAND:4 == 0 
+			PRINTFORMW 「엣, 무슨 일이니…?」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「이, 이봐…」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「응…?」
+		ELSE
+			PRINTFORMW 「…읏!」
+		ENDIF
+		RETURN 1
+	ELSE
+		IF RAND:4 == 0 
+			PRINTFORMW 「…무슨 일이니?」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「무슨 용건이라도?」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「나 바쁜데…」
+		ELSE
+			PRINTFORMW 「이런이런…」
+		ENDIF
+		RETURN 1
+	ENDIF 
+ENDIF
+RETURN 1
+;==================================================
+;352, 고백한다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_352
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_352_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_352_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TFLAG:193
+		PRINTFORML 
+		PRINTFORMDW %CALLNAME:MASTER%는 크흠, 하고 목을 가다듬고, 사쿠야를 불렀다.
+		PRINTFORML
+		PRINTFORMW 「……음? 왜?」
+		PRINTFORML
+		PRINTFORMDW %CALLNAME:MASTER%는 조심스럽게, 사쿠야에게 고백의 말을 전했다.
+		PRINTFORML
+		PRINTFORMW 「?」
+		PRINTFORMW 「?!?!?!??!!??!?!?!?」
+		PRINTFORMW 「으에에에에엣?! 잠깐만?! 무슨?!!」
+		PRINTFORML
+		PRINTFORMDW 순간 사쿠야의 얼굴이 새빨게지더니, 주변 풍경의 색이 반전되었다.
+		PRINTFORML
+		PRINTFORMW 「휴, 잠깐만 멈춰놓고 생각을 좀…」
+		PRINTFORML
+		IF CFLAG:[[사쿠야]]:1510 == 1 || CFLAG:[[사쿠야]]:1510 == 2 || CFLAG:[[사쿠야]]:1510 == 3
+			PRINTFORMW 「…이 아니라 이 녀석도 능력자였지?! 으아아아앗?!」
+			PRINTFORML
+			PRINTFORMDW 평소의 사쿠야라고는 믿기지 않을 정도로 당황하는 듯 했다…
+			PRINTFORML
+			PRINTFORMW 「나 바본가?! 정말 어떡해… 가 아니라, 크흠!」
+		ELSE
+			PRINTFORMDW 사쿠야의 낌새를 알아차리고 %마스터는% 같이 능력을 발동시켜 보았다.
+			PRINTFORML
+			PRINTFORMW 「…?」
+			PRINTFORML
+			PRINTFORMDW 한숨 돌리던 사쿠야는, 뭔가 이상한 낌새를 감지하고 %CALLNAME:MASTER%의 눈앞에 손을 흔들었다.
+			PRINTFORML
+			PRINTFORMW 「분명 멈춰있어야 하는데… 왜 갑자기 이질감이…」
+			PRINTFORML
+			PRINTFORMDW 끔뻑끔뻑.
+			PRINTFORML
+			PRINTFORMW 「꺄아아아앗?!!?!? ㄴ, 너, 어떻게?!」
+			PRINTFORMW 「말도 안돼?!?!? 어떻게 움직이는 거야?!」
+			PRINTFORML
+			PRINTFORMDW 사쿠야는 거기서 한층 더 얼굴이 빨개지며 당황했다.
+			PRINTFORML
+			PRINTFORMW 「크, 크흠, 일단!」
+			CFLAG:[[사쿠야]]:1510 = 1
+		ENDIF
+		PRINTFORML
+		PRINTFORMDW 갑작스럽게 목을 가다듬은 사쿠야는, 이제는 어울리지 않는 진지한 얼굴로 말했다. 
+		PRINTFORML
+		PRINTFORMW 「진심이야?」
+		PRINTFORML
+		PRINTFORMDW %마스터는% 고개를 끄덕였다.
+		IF TALENT:[[레밀리아]]:연인
+			PRINTFORML
+			PRINTFORMW 「넌 분명 아가씨랑 그런 관계면서, 나한테 왜 이러는 거야…」
+			PRINTFORMW 「나도 분명 네가 좋긴 한데… 아니, 오히려 아가씨께서는 재밌어 하시려나.」
+		ENDIF
+		PRINTFORMDW 사쿠야는 결심한 듯, 결의에 찬 얼굴로 말했다.
+		PRINTFORML
+		PRINTFORMW 「사실, 나도 너랑 지내면서 진작 포기했던 욕심들이 생기기 시작했어.」
+		PRINTFORMW 「포기했던 것들을, 지금이라도 다시 주워담을 수 있을까?」
+		PRINTFORMW 「나, 정말 큰 욕심일지도 모르지만, 그래도 그동안 아무 욕심도 부리지 않았으니까,」
+		PRINTFORMW 「이번엔 조금 억지로라도 부려볼래.」
+		PRINTFORMW 「나도 좋아해, %CALLNAME:MASTER%.」
+	ELSE
+		PRINTFORML 
+		PRINTFORMW %CALLNAME:MASTER%는 크흠, 하고 목을 가다듬고, 사쿠야를 불렀다.
+		PRINTFORML
+		PRINTFORMW 「……음? 왜?」
+		PRINTFORML
+		PRINTFORMDW %CALLNAME:MASTER%는 조심스럽게, 사쿠야에게 고백의 말을 전했다.
+		PRINTFORML
+		PRINTFORMW 「?」
+		PRINTFORML
+		PRINTFORMDW 사쿠야는 진심으로 의아하다는 듯한 표정을 짓곤, 이내 대답했다.
+		PRINTFORML
+		PRINTFORMW 「미안. 난 별로.」
+		PRINTFORML
+		PRINTFORMDW 사쿠야는 짧은 답변을 끝으로, 더 이상 할말 없다는 제스쳐를 취했다…
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;353, 장난한다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_353
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_353_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_353_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORML 당신은 자고 있는 사쿠야을 물었다
+	PRINTFORML 「……응…」
+	PRINTFORMW 지금으로서 일어나는 기색은 없는 것 같다
+ENDIF
+RETURN 1
+;==================================================
+;354, 동침한다(상대는 일어나 이불에 부르는 느낌)
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_354
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_354_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_354_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF CFLAG:쇠약
+		PRINTFORML 「아… 아직도 몸이 나른해. …누구누구씨 덕분에.」
+		PRINTFORMW 「…뭐, 같이 눕는 거 정도는 허락할게.」
+	ELSE
+		IF RAND:2 == 0
+			PRINTFORML 「응… 어서오렴…」
+		ELSE
+			PRINTFORML 「뭐, 상관없지.」
+			PRINTFORMW 사쿠야는 약간 끝에 붙어서 자리를 비워 주었다…
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;360, 몸을맡긴다
+;/연모라든지 생각하지 않고 써 버렸다. 발정하고 있어 강요하고 좋겠어요
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_360
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_360_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_360_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;카운터 키스
+	IF TCVAR:20 == 30
+		IF RAND:2 == 0
+			PRINTFORML 「츄릅… 츄… 후후, 니 입술 꽤 맛있네.」
+			PRINTFORMW 「조금만 더 할까나…♪」
+		ELSE
+			PRINTFORML 「츄… 츄릅… 으음… 기분 좋아?」
+			PRINTFORMW 「혀 좀 더 내밀어봐…」
+		ENDIF
+	;카운터가슴을 비비게 한다
+	ELSEIF TCVAR:20 == 33
+		IF RAND:3 == 0 
+			PRINTFORML 「…왜 갑자기 메이링이 떠오르는 거지…?」
+			PRINTFORMW 사쿠야는 의기소침한 목소리로 물었다…
+		ELSEIF RAND:2 == 0 
+			PRINTFORML 「…역시, 남자는 거유가 아니면 사랑해주지 않는구나…」
+			PRINTFORMW 눈을 내리깐 사쿠야가 씁쓸하게 중얼거렸다…
+		ELSE
+			PRINTFORML 「…메이링보다 작은 건 나도 알아.
+			PRINTFORMW 　그래도, 아주 없는 정도는 아니라구…」
+			PRINTFORMW 사쿠야는 약간 뾰로통한 말투로 그렇게 말했다…
+		ENDIF
+	;카운터 고간뒤진다
+	ELSEIF TCVAR:20 == 34
+		;※TEQUIP:PLAYER:0 > 3이 조건
+		IF RAND:2 == 0 
+			PRINTFORML 가만히 있는 당신의 다리 사이에 강하게 손을 문질러온다.
+			PRINTFORMW 「오, 얌전히 있네… 바지 벗으면 더 좋은 거 해줄게…%UNICODE(0x2665)%」
+		ELSE
+			PRINTFORML 가만히 있던 당신의 손에, 사쿠야가 가랑이를 문질러온다.
+			PRINTFORMW 「이럴 때는, 서로 같이 만져주는 게 더 흥분돼… 뭐해, 움직여야지?」
+		ENDIF
+	;카운터 가랑이
+	ELSEIF TCVAR:20 == 52
+		IF RAND:3 == 0 
+			PRINTFORML 「후앗…%UNICODE(0x2665)%　으, 응, 그렇게 가만히… 으읏… 이거 좋아아앙…」
+			PRINTFORMW 「문지르는거… 평소보다, 더 기분 좋아…」
+		ELSEIF RAND:2 == 0 
+			PRINTFORMW 「흐, 으읏, 내, 미끈미끈한 보지, 기분 좋아…?」
+			PRINTFORMW 「너도 움직여주면… 크흣, 좀 더, 기분 좋아, 으응, 질 수 있을텐데…」
+		ELSE
+			PRINTFORML 「후후…, 네가 움직이지 않아도, 네 거기는 움직이고 싶어하는 것 같은데?」
+			PRINTFORMW 「그럼… 좀 더 기분 좋게 만들어 줘 볼까…… 흐응, 하앗…%UNICODE(0x2665)%」
+		ENDIF
+	;카운터 파이즈리
+	ELSEIF TCVAR:20 == 53
+		IF RAND:3 == 0 
+			PRINTFORML 「흐응… 가만있어봐, 좀 더 기분 좋게 해줄게…」
+			PRINTFORMW 「…최선을 다하고 있다구.」
+		ELSEIF RAND:2 == 0
+			PRINTFORML 「우웃… 네 꺼에, 젖꼭지가 꾸욱 하고 눌러서, 으읏…」
+		ELSE
+			PRINTFORML 「후후후…, 맛있어 보여…」
+			PRINTFORMW 「이렇게 하면 얼굴까지 닿는데…%UNICODE(0x2665)%」
+		ENDIF
+	;카운터 딥키스
+	ELSEIF TCVAR:20 == 60
+		IF RAND:3 == 0 
+			PRINTFORML 「음츄… 츄릅… 하앙… 하아, 뉴우… 움… 쮸웁… 츄…」
+			PRINTFORMW 당신이 몸을 맡기자, 사쿠야의 뜨거운 혀가 당신의 입을 삼켜왔다…
+		ELSEIF RAND:2 == 0
+			PRINTFORML 「으음… 츄릅… 뉴루, 츕… 흐응…」
+			PRINTFORMW 당신이 몸을 맡기자, 사쿠야는 자신의 침을 당신의 입에 흘려보냈다…
+		ELSE
+			PRINTFORML 「응……… 츄릅…」
+			PRINTFORMW 「더… 더, 마셔 줘… 내 거… 쮸웁, 츄우, 츄―…」
+		ENDIF
+	;카운타쿤니 강제
+	ELSEIF TCVAR:20 == 70
+		IF RAND:3 == 0 
+			PRINTFORML 「저기… 혀… 혀 내밀어 줘… 흐아앗%UNICODE(0x2665)%, 그렇게…!」
+			PRINTFORMW 「네, 얼굴… 위로, 히이잇… 클리가, 찌릿찌릿해…%UNICODE(0x2665)%」
+		ELSEIF RAND:2 == 0 
+			PRINTFORML 「흐응, 아앗, 그렇게, 더 안쪽까지, 혀 넣어줘, 움직여줘어엇…」
+			PRINTFORMW 「하앗, 응, 내 거, 마, 마셔줘…!」
+		ELSE
+			PRINTFORML 「히잇, 햐, 햐아앗! 거기, 내 민감한 곳, 빨아당기면…!」
+			PRINTFORMW 사쿠야는 허리를 움직여 당신의 얼굴에 자신이 느끼는 장소를 문지르며, 한층 더 큰 자극을 기다리고 있다…
+		ENDIF
+	;카운터 애널 봉사
+	ELSEIF TCVAR:20 == 72
+		IF ABL:A감각 == 0
+			PRINTFORMW 「…미, 미안, 흥분해버렸어…」
+		ELSEIF ABL:A감각 <= 3
+			PRINTFORMW 「야아… 그렇게 만져놓고 싫다고 하지는 않겠지…?」
+		ELSE
+			PRINTFORML 「왜 아무것도 안 해주는 거야…! 손가락이든 혀든 뭐든 좋으니까… 빨리 괴롭혀줘…」
+			PRINTFORMW 사쿠야는 호흡에 맞춰 벌렁거리는 부드러운 애널을 당신의 입가에 밀어붙이고 있다…
+		ENDIF
+	;카운터 기승위
+	ELSEIF TCVAR:20 == 81
+		IF RAND:3 == 0
+			PRINTFORMW 「흐으으, 하앙, 읏, 으응, 아앗! 햐이잇, 으으응…!」
+			PRINTFORMW 사쿠야는 질퍽질퍽한 추잡한 물소리내며, 당신을 범하고 있다…
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「후후… 봐봐, 너의 여기, 나한테 먹히고 있다구…?」
+			PRINTFORMW 사쿠야는 묘하게 미소지으면서, 결합부를 과시해 왔다…
+		ELSE
+			PRINTFORML 「아아, 하앗, 흐아앙, 대단해, 여기, 좋아아아아…%UNICODE(0x2665)%」
+			PRINTFORMW 당신이 아무것도 하지 않아도 사쿠야는 허리를 추잡하게 움직이며, 정액을 짜내려고 하고 있다…
+		ENDIF
+	ELSE
+		;MASTER의 기력이 0
+		IF BASE:MASTER:기력 <= 0
+			PRINTFORML 「어머… 벌써 시들어버린거니?」
+			PRINTFORMW 「후후… 그럼 내 맘대로 신나게 해줄게…♪」
+		ELSE
+			PRINTFORML 「흐응… 왜 그래? 힘드니?」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;402, 취침(동침 때)
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_402
+;취침에 TRAIN_MESSAGE는 없다
+;※안아 베개로 자는 묘사가 쓰는 것을 막기 위해
+SIF PREVCOM != 311
+	CALL M_KOJO_MESSAGE_COM_K15_402_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_402_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF CFLAG:수면
+		PRINTFORMW 사쿠야의 잠자는 얼굴을 보면서 천천히 눈을 감았다…
+	ELSE
+		IF RAND:3 == 0 && TALENT:연인
+			PRINTFORML 「이제 잘거야?　그럼 나도 잘까…」
+			PRINTFORMW 
+			PRINTFORMW 「…」
+			PRINTFORMW 「잘자, %CALLNAME:MASTER%…」
+		ELSEIF RAND:2 == 0 && TALENT:연모
+			PRINTFORMW 당신은 눈을 감고 잠이 들었다.
+			PRINTFORMW 　
+			PRINTFORMW 　
+			PRINTFORMW 　
+			PRINTFORML 「…벌써 잠든건가…?」
+		ELSE
+			PRINTFORML 「…슬슬, 나 잘래…」
+			PRINTFORML 
+			PRINTFORML 사쿠야가 잠드는 것을 확인하고 나서, 당신은 살며시 등불를 껐다…
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;403, 휴식(목욕탕이라면 목욕통에 잠긴다)
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_403
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_403_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_403_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;나즈의 체력 800 이하
+	IF BASE:TARGET:체력 <= 800
+		IF TALENT:연인
+			PRINTFORML 「후우… 나도 꽤 지쳤나봐.」
+			PRINTFORMW 「옆에 있어도, 돼?」
+		ELSEIF TALENT:연모
+			PRINTFORML 「…나도 피곤해서… 여기 있어도 괜찮아?」
+			PRINTFORMW 바로 옆에서 쉬고있는 사쿠야는, 행복한 얼굴로 졸고 있다…
+		ELSE
+			PRINTFORML 「후우… 나도 꽤 지쳤나봐.」
+			PRINTFORMW 「내 맘대로 쉴래.」
+		ENDIF
+	ELSE
+		PRINTFORMW 「응… 무리했나봐.」
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;405, 데이트
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_405
+;나가는에 TRAIN_MESSAGE는 없다
+CALL M_KOJO_MESSAGE_COM_K15_405_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_405_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;데이트
+	IF CFLAG:TARGET:동행
+		IF TALENT:연인
+			PRINTFORML 
+			PRINTFORMW 사쿠야에게 동행 제의를 했다.
+			PRINTFORMW 「응, 좋아…… 어디에 갈 생각이야?」
+			PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 옆에서 걸으며, 즐거운 듯이 행선지를 물어 왔다.
+		ELSEIF TALENT:연모
+			PRINTFORML 
+			PRINTFORMW 사쿠야에게 동행 제의를 했다.
+			PRINTFORMW 「어…… 뭐, 좋아.」
+			PRINTFORMW 사쿠야는 뺨을 붉힌 채 승낙했다.
+			PRINTFORMW 앞에서 걷는 %CALLNAME:MASTER%에게 사쿠야는 사뿐사뿐 사랑스럽게 따라 갔다
+		ELSEIF TALENT:사모
+			PRINTFORML 
+			PRINTFORMW 사쿠야에게 동행 제의를 했다.
+			PRINTFORMW 「어…… 뭐, 좋아.」
+			PRINTFORMW 사쿠야는 가볍게 승낙했다.
+			PRINTFORMW 앞에서 걷는 %CALLNAME:MASTER%에게 사쿠야는 사뿐사뿐 따라 갔다
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 사쿠야에게 동행 제의를 했다.
+			PRINTFORMW 「……함께?」
+			PRINTFORMW 「어…… 뭐, 좋아.」
+			PRINTFORMW 사쿠야는 가볍게 승낙했다.
+			PRINTFORMW 앞에서 걷는 %CALLNAME:MASTER%에게 사쿠야는 사뿐사뿐 따라 갔다
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;410, 청소
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_410
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_410_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_410_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:시간정지
+		IF CFLAG:[[사쿠야]]:1510 == 0
+			PRINTFORMW 「어머, 너, 어떻게 이걸…?」
+			PRINTFORML
+			PRINTFORMDW 분명 시간을 멈췄다고 생각했는데, 사쿠야가 말을 걸어왔다.
+			PRINTFORML
+			PRINTFORMW 「역시 너도 평범한 인간은 아니었구나…」
+			PRINTFORMW 「분명 청소에 유용한 능력이지만, 그걸로 엄한 짓하면 가만 안 둘거야.」
+			PRINTFORML
+			PRINTFORMDW 사쿠야에게 시간 정지 능력을 들켜버렸다…
+			CFLAG:1510 = 1
+		ELSE
+			PRINTFORMW 「어머, 청소하려구?」
+			PRINTFORML
+			PRINTFORMDW 얼어붙은 시간 속에서, 사쿠야가 말을 걸어왔다.
+			PRINTFORML
+			PRINTFORMW 「이왕이면 깔끔하게 부탁할게.」
+		ENDIF
+	ELSEIF CFLAG:TARGET:수면
+		PRINTFORML 
+		PRINTFORMW 「새근……응, 새근……」
+		PRINTFORMW %마스터는% 가능한 한 소리가 나지않게 빗자루를 움직이고 있다.
+		PRINTFORMW 그 손은 빠르지만, 먼지를 날리지는 않는다.
+		PRINTFORMW 마치 그 손은 달인과 같은 움직임이다.
+	ELSE
+		IF TALENT:연인
+			PRINTFORML 
+			PRINTFORMW 「――어머, 청소하는 거니?」
+			PRINTFORMW 「도와줄까?」
+			PRINTFORMW 사쿠야와 함께 깔끔히 청소했다.
+		ELSEIF TALENT:연모
+			PRINTFORML 
+			PRINTFORMW 「――아, 청소하는 거니?」
+			PRINTFORMW 「도와줄까?」
+			PRINTFORMW 사쿠야와 함께 말끔히 청소했다.
+		ELSEIF MAIN_MAP == 3
+			PRINTFORML 
+			PRINTFORMW 「어머, 청소하는 거니? %CALLNAME:MASTER%.」
+			PRINTFORMW 「인사고과에 반영할게.」
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 「어머, 청소하는 거니? %CALLNAME:MASTER%.」
+			PRINTFORMW 「기특한 면이 있네?」
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;411, 전투훈련
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_411
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_411_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_411_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;MASTER의 전투능력 3이상
+	IF ABL:MASTER:전투능력 >= 3
+		IF RAND:3 == 0
+			PRINTFORML 「어머, 제법이네?」
+			PRINTFORML 사쿠야와 가볍게 모의전을 치렀다.
+			PRINTFORMW 「속공이 아니면 힘들다구…?」
+		ELSEIF RAND:2 == 0
+			PRINTFORML 「후후후… 제법이잖니.」
+			PRINTFORML 종이 한 끗 차이로 탄막의 빈틈을 파고들지 못해서, 사쿠야의 스펠 카드를 얻지 못했다.
+			PRINTFORMW 「나름 지령전 전까지는 최강의 5면 보스였… 응?」
+			;/성련선의 Hard 이상은 진짜 기지.
+		ELSE
+			PRINTFORML 「으응… 꽤 재밌었어.」
+			PRINTFORMW 「잠깐 쉬자. 차나 한 잔 할까?」
+		ENDIF
+	ELSE
+		IF RAND:4 == 0 
+			PRINTFORML 「흠, 아직 멀었네.
+			PRINTFORMW 　빈틈 투성이라구.」
+		;꾸중 사쿠야 덧붙여서 전부 나에 대해이지만 그것이 무엇인가
+		ELSEIF RAND:3 == 0
+			PRINTFORML 「너무 느려.
+			PRINTFORMW 　이 정도면 스펠 따위 안 써도 되겠는데?」
+		ELSEIF RAND:2 == 0
+			PRINTFORML 「폭탄을 쓸때 미련 가지지 마.
+			PRINTFORML 　그 미련 때문에 잔기까지 없어질걸?」
+			;그렇지만 상대는 스페카 마구 의지해 가 아닙니까나다―
+		ELSE
+			PRINTFORML 「최대한 옆으로 빠지렴.
+			PRINTFORMW 　막막한 탄들은 일단 옆으로 유도해놓고 재빠르게 피하는게 상책이야.」
+			;스페카에 의하지 않습니까-나다―
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;412, 공부
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_412
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_412_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_412_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	;연속
+	IF PREVCOM == SELECTCOM
+		PRINTFORML 「어머, 꽤 열심히하네.」
+	ELSE
+		IF RAND:3 == 0
+			PRINTFORML 「차 끓이는 법이라도 알려줄까?」
+			PRINTFORMW 「일단 찻잔의 종류부터 알려줘야 하나…」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「홍차는 녹차와는 천지차이니까, 혹시 차이점을 모른다면 꼭 공부해놓도록 해.」
+		ELSE
+			PRINTFORML 「'이거 하나로 반짝반짝· 당신의 집에 맞는 청소봉을 만드는 법'」
+			PRINTFORMW 「그 책, 나도 같이 봐도 될까?」
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;413, 요리
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_413
+;요리에 TRAIN_MESSAGE는 없다
+CALL M_KOJO_MESSAGE_COM_K15_413_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_413_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF RAND:3 == 0
+		PRINTFORML 「간이 좀 안 맞는데?
+	ELSEIF RAND:2 == 0
+		PRINTFORML 「이 각도에서… 건더기가 보이게…좋아.
+		PRINTFORMW 　배치는… 퍼지는 느낌이 좋으려나? 중앙에는 채썬 야채를 놓아서…」
+		PRINTFORML 
+		PRINTFORMW 그… 슬슬 가져 가도 될까요…?
+	ELSE
+		PRINTFORML 「플람베 보여줄까?」
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;414, 식사
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_414
+;CALL TRAIN_MESSAGE
+;※「식사를대접한다」의 말을 사용하는 관계로 CALL를 닫는다
+CALL M_KOJO_MESSAGE_COM_K15_414_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_414_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	PRINTFORML %조교자는% %CALLNAME:TARGET%\@ GET_TARGETNUM() > 1 ?  들 # \@을 식사 제의를 했다
+	PRINTFORML 　
+	;요리를 만드는 것 직후
+	IF PREVCOM == 413
+		PRINTFORML 「어, 여기서 먹자구?」
+		IF CFLAG:2 >= 1000
+			PRINTFORMW 「뭐, 갓 만든 음식이 제일 맛있는 법이니까. 잘 먹을게.」
+			PRINTFORMW 「내친 김에 차도 끓여주면 안 돼?」
+		ELSE
+			PRINTFORMW 「…뭐, 만드는 거 보니까 딱히 맛 없을 것 같지는 않고… 먹어볼게.」
+		ENDIF
+		PRINTFORML 　
+	ELSE
+		IF CFLAG:2 >= 1000
+			IF RAND:2 == 0 
+				PRINTFORML 「흐응… 네가 만들었다고?」
+				PRINTFORMW 「그럼, 평가 좀 해줄까나…」
+			ENDIF
+		ELSE
+			PRINTFORML 「…흠, 이상해 보이진 않네.」
+			PRINTFORMW 「잘 먹을게.」
+		ENDIF
+		PRINTFORML 　
+	ENDIF
+	;「식사를대접한다」의 말호출
+	CALL MESSAGE_EAT_DISH_DRG(39)
+	CALL M_KOJO_MESSAGE_COM_K15_415_1
+ENDIF
+RETURN 1
+;==================================================
+;415, 식사를대접한다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_415
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_415_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_415_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+;미각기호 01111001
+;좋아하는 것은 진한 맛 혼합하고 것전내성
+IF LOCAL
+	IF !TASTE_REACTION("매운") && !TASTE_REACTION("단") && !TASTE_REACTION("품위있는") && !TASTE_REACTION("시큼한")
+		;414, 식사로부터 불려 갔을 때
+		IF SELECTCOM == 414
+			SIF TCVAR:TARGET:요리평가치 >= 700
+				PRINTFORML %타겟은% 이 맛이 마음에 든 것 같다.
+			IF TFLAG:193 == 1
+				PRINTFORML %타겟과% %조교자는% %DISHNAME%를 먹으면서 즐거운 한 때를 보냈다…
+			ELSEIF TFLAG:193 == -1
+				PRINTFORML …아무래도 %타겟이% 입맛에 맞지 않았던 것 같다
+			ELSE
+				PRINTFORML %타겟은% 나온 %DISHNAME%를 맛있게 먹어 치웠다.
+			ENDIF
+		ENDIF
+		;성공
+		IF TFLAG:193 == 1
+			PRINTFORML 「오…! 맛있잖니, 잘하네 너.」
+			PRINTFORMW 「익힘 정도도 좋고, 재료의 크기나 간도 딱 적당해.」
+			;기호의 맛내기
+			SIF CFLAG:TARGET:미각기호 & TCVAR:MASTER:308
+				PRINTFORMW 「게다가 농후해. 평소의 식사는 나한테 좀 싱거운데… 마음에 들어.」
+		;실패
+		ELSEIF TFLAG:193 == -1
+			PRINTFORML 사쿠야는 맛을 보자, 미묘한 표정을 지었다.
+			IF RAND:5 == 0 
+				PRINTFORMW 「오버쿡이야…」
+			ELSEIF RAND:4 == 0 
+				PRINTFORMW 「소금이 덩어리째로 있는데…?」
+			ELSEIF RAND:3 == 0 
+				PRINTFORMW 「초 슈퍼 레어…?」
+			ELSEIF RAND:2 == 0 
+				PRINTFORMW 「이거, 생으로 먹는 음식 아닌데…」
+			ELSE
+				PRINTFORMW 「…숯이야…?」
+			ENDIF
+				;기호의 맛내기
+			SIF CFLAG:TARGET:미각기호 & TCVAR:MASTER:308
+				PRINTFORMW 「내 취향의 맛인데… 아깝다.」
+		ELSE
+			IF RAND:2 == 0 
+				PRINTFORMW 「…으응, 꽤 맛있었어. 잘 먹었습니다.」
+			ELSE
+				PRINTFORML 「…꽤 하는데?」
+			ENDIF
+		ENDIF
+	ENDIF
+ENDIF
+RETURN 1
+
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;데이트계 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;603, 손을잡는다　CFLAG:1603
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_603
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_603_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_603_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연인
+		PRINTFORML 
+		PRINTFORMW %마스터는% 사쿠야의 손을 잡았다.
+		PRINTFORMW 사쿠야는 손을 잡은 채로 팔을 걸어오며, 몸을 밀착시킨다.
+		PRINTFORMW 「우후훗, %CALLNAME:MASTER%%UNICODE(0x2665)%」
+		PRINTFORMW 사쿠야는 웃는 얼굴로 %CALLNAME:MASTER%의 얼굴을 바라보았다……
+		RETURN 1
+	ELSEIF TALENT:연모
+		PRINTFORML 
+		PRINTFORMW %마스터가% 손을 잡자, 사쿠야는 얼굴이 붉게 물들었다.
+		PRINTFORMW 「으읏, 뭐야……」
+		PRINTFORMW 사쿠야는 조금 놀라고 있었지만, 이윽고 그 손을 잡았다.
+		PRINTFORMW 「……에휴……」
+		PRINTFORMW 마지못해 잡는 척 뺨을 붉히며 손을 잡고 있었다.
+	ELSE
+		PRINTFORML 
+		PRINTFORMW %마스터는% 사쿠야의 손을 잡는다.
+		PRINTFORMW 「……뭐야?」.
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;605, 다른 곳에 들른다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_605
+;다른 곳에 들르는 TRAIN_MESSAGE가 없다
+CALL M_KOJO_MESSAGE_COM_K15_605_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_605_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연인
+		PRINTFORML 
+		PRINTFORMW 「어디 들렀다 가려구?」
+		PRINTFORMW 「응, 좋아……」
+		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 팔에 가느다란 팔을 걸고 걸어갔다……
+		RETURN 1
+	ELSEIF TALENT:연모
+		PRINTFORML 
+		PRINTFORMW 「어디 들렀다 가려구?」
+		PRINTFORMW 「으응, 좋아.」
+		PRINTFORMW 사쿠야는 자연스럽게 손을 잡아 왔다.
+	ELSE
+		PRINTFORML 
+		PRINTFORMW 「어디 들렀다 가려구?」 
+		PRINTFORMW 「뭐… 상관없어.」
+		PRINTFORMW 그렇게 말한 사쿠야는 %CALLNAME:MASTER%의 뒤에서 따라갔다.
+	ENDIF
+ENDIF
+RETURN 1
+
+;==================================================
+;610, 식사 제의를 한다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_610
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_610_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_610_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연인
+		PRINTFORML 
+		PRINTFORMW 사쿠야에게 뭔가 먹지 않을까 물어봤다. 
+		PRINTFORMW 「그래 좋아, 나도 조금 배고픈 참이었으니까.」
+		PRINTFORMW %마스터와% 사쿠야는 적당하게 음식이 있는 곳을 골라, 식사를 했다.
+		PRINTFORMW 사쿠야는 식사하며, 줄곧 웃는 얼굴로 %조사처리(CALLNAME:MASTER, "와")% 이야기하고 있다.
+		RETURN 1
+	ELSEIF TALENT:연모
+		PRINTFORML 
+		PRINTFORMW 사쿠야에게 뭔가 먹지 않을까 물어봤다. 
+		PRINTFORMW 「……그러네, 이제 점심시간이네」
+		PRINTFORMW ……배가, 고프다.
+		PRINTFORMW 「……가게를 찾아보자」
+		PRINTFORMW 사쿠야와 %마스터는% 적당하게 음식이 있는 곳을 골라, 식사를 했다.
+	ELSE
+		PRINTFORML 
+		PRINTFORMW 사쿠야에게 뭔가 먹지 않을까 물어봤다. 
+		PRINTFORMW 「……그래, 저기 어때?」
+		PRINTFORMW 적당한 곳을 찾아, 사쿠야와 식사했다.
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;613, 돈을 번다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_613
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_613_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_613_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;615, 식재료를 산다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_614
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_614_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_614_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연인
+		PRINTFORML 
+		PRINTFORMW 사쿠야,  이 야채는 어때? 
+		PRINTFORMW 「……조금 색이 나쁠지도……」
+		PRINTFORMW 흐음…… 어렵네.
+		PRINTFORMW 「이거 봐, 이런 식으로 선명한 녹색을 가진 게 좋아」
+		PRINTFORMW 사쿠야는 웃는 얼굴로 %마스터와% 식재료를 고르고 있다.
+		PRINTFORMW 그 모습은, 신혼부부로 밖에 안보였다.
+		RETURN 1
+	ELSEIF TALENT:연모
+		PRINTFORML 
+		PRINTFORMW 사쿠야,  무는 이것으로 괜찮을까.
+		PRINTFORMW 「으음― ……조금 매울 것 같지만 ……괜찮지 않을까?」
+		PRINTFORMW 사쿠야는 진지한 눈으로 무를 보고 있다.
+		PRINTFORMW ……사쿠야라면, 좋은 신부가 될 수 있을 것이다.
+		PRINTFORMW 「……뭐? ……뭐어?」
+		PRINTFORMW 사쿠야는 얼굴이 새빨개져서 %CALLNAME:MASTER%에게 되묻는다.
+		PRINTFORMW %마스터는% 그런 사쿠야를 무시하며, 다음은 오이를 고르기 시작했다.
+	ELSE
+		PRINTFORML 
+		PRINTFORMW 「자, %CALLNAME:MASTER%」
+		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%에게 식재료를 건네주었다.
+		PRINTFORMW 「으ㅡ음, 이 정도겠네……」
+		PRINTFORMW 사쿠야는 재빠르게 식재료를 선택하고, 장보기를 끝냈다.
+		PRINTFORMW 그 손은, 달인이라고 할 수 있을 정도다.
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;615, 도시락을 먹는다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_615
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_615_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_615_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연인
+		PRINTFORML 
+		PRINTFORMW 「자, %CALLNAME:MASTER%」
+		PRINTFORMW 사쿠야는 %CALLNAME:MASTER% 앞에 도시락을 펼쳤다.
+		PRINTFORMW 「좀 힘 좀 줘봤지.」
+		PRINTFORMW 너무 많은 거 아닌가.
+		RETURN 1
+	ELSEIF TALENT:연모
+		PRINTFORML 
+		PRINTFORMW 「자, %CALLNAME:MASTER%」
+		PRINTFORMW 사쿠야는 %CALLNAME:MASTER% 앞에 도시락을 펼쳤다.
+		PRINTFORMW 「홍마관 메이드장의 도시락이라구……?」
+		PRINTFORMW 맛은 역시 훌륭했다.
+	ELSE
+		PRINTFORML 
+		PRINTFORMW 「자, %CALLNAME:MASTER%」
+		PRINTFORMW 사쿠야는 %CALLNAME:MASTER% 앞에 도시락을 펼쳤다.
+		PRINTFORMW 「요리실력은 나름 자신 있으니까……」
+		PRINTFORMW 맛은 역시 훌륭했다.
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;617, 단 것을 먹는다
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_617
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_617_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_617_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;620, 스즈나안
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_620
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_620_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_620_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+;==================================================
+;660, 독서
+;==================================================
+@M_KOJO_MESSAGE_COM_K15_660
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_COM_K15_660_1
+RETURN RESULT
+
+@M_KOJO_MESSAGE_COM_K15_660_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+
+ENDIF
+RETURN 1
+
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;파생 커맨드
+;※※※※※※※※※※※※※※※※※※※※※※※※※
+;==================================================
+;60, 귀이개
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K15_60
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K15_60_1
+RETURN RESULT
+@M_KOJO_MESSAGE_SCOM_K15_60_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연인
+		PRINTFORML 
+		PRINTFORMW 「어때? 아프진 않니?」
+		PRINTFORMW 괜찮아, 라고 %마스터는% 대답한다.
+		PRINTFORMW 사쿠야는 손에 익은 손놀림으로 스륵스륵, 하고 %CALLNAME:MASTER%의 귀를 청소하고 있다.
+		PRINTFORMW 기분이 좋아서 무심코, 꾸벅꾸벅 졸아 버릴 것 같다.
+	ELSEIF TALENT:연모
+		PRINTFORML 
+		PRINTFORMW 「어때? 아프진 않니?」
+		PRINTFORMW 응, 하고 %마스터는% 대답한다.
+		PRINTFORMW 이것이 메이드의 청소솜씨인건가.
+		PRINTFORMW 귀 파는 솜씨가 심상치 않다.
+		PRINTFORMW 「이건 비밀인데, 아가씨도 가끔 파달라고 하시거든.」
+	ELSEIF TALENT:사모
+		PRINTFORMW 「어때? 아프진 않니?」
+		PRINTFORMW 괜찮아, 라고 %마스터는% 대답한다.
+		PRINTFORMW 사쿠야는 손에 익은 손놀림으로 스륵스륵, 하고 %CALLNAME:MASTER%의 귀를 청소하고 있다.
+		PRINTFORMW 기분이 좋아서 무심코, 꾸벅꾸벅 졸아 버릴 것 같다.
+	ELSE
+		PRINTFORMW 「어때? 아프진 않니?」
+		PRINTFORMW 괜찮아, 라고 %마스터는% 대답한다.
+		PRINTFORMW 사쿠야는 손에 익은 손놀림으로 스륵스륵, 하고 %CALLNAME:MASTER%의 귀를 청소하고 있다.
+		PRINTFORMW 기분이 좋아서 무심코, 꾸벅꾸벅 졸아 버릴 것 같다.
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;61, 다키마쿠라
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K15_61
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K15_61_1
+RETURN RESULT
+@M_KOJO_MESSAGE_SCOM_K15_61_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF TALENT:연인
+		PRINTFORML 
+		PRINTFORMW 「새근……새근……」
+		PRINTFORMW 사쿠야는 조용히 자고 있다.
+		PRINTFORMW %마스터는% 사쿠야를 가슴에 안았다.
+		PRINTFORMW 「응…… %CALLNAME:MASTER%……」
+		PRINTFORMW 사쿠야는 %CALLNAME:MASTER%의 이름을 부르며, 행복하게 웃고 있다.
+		PRINTFORMW 그 웃는 얼굴을 조금 바라보고 나서, %마스터는% 잠에 빠졌다.
+	ELSEIF TALENT:연모
+		PRINTFORML 
+		PRINTFORMW 「새근……새근……」
+		PRINTFORMW 사쿠야는 조용히 자고 있다.
+		PRINTFORMW %마스터는% 사쿠야를 가슴에 안아, 잘 준비를 했다.
+		PRINTFORMW 「으음…… 새근……」
+		PRINTFORMW 사쿠야는 미소를 띠었다.
+		PRINTFORMW %마스터는% 부드러운 베개의 감촉에, 곧바로 잠에 떨어졌다.
+	ELSE
+		PRINTFORML 
+		PRINTFORMW 「새근……새근……」
+		PRINTFORMW 사쿠야는 조용한 숨소리를 내고 있다.
+		PRINTFORMW %마스터는% 사쿠야를 가슴에 안아 자기로 했다.
+		PRINTFORMW 소위 말하는, 다키마쿠라다.
+		PRINTFORMW 「응……새근……」
+		PRINTFORMW 사쿠야는 조금 싫은 듯이 몸을 비틀었지만, 곧바로 얌전해졌다.
+		PRINTFORMW %마스터는% 잠시 뒤, 잠에 떨어졌다.
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;62, 이마키스
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K15_62
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K15_62_1
+RETURN RESULT
+@M_KOJO_MESSAGE_SCOM_K15_62_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
+			IF TALENT:연인
+				IF CFLAG:TARGET:수면
+					PRINTFORML 
+					PRINTFORMW 「새근……응……」
+					PRINTFORMW 사쿠야는 규칙적인 숨소리를 내고 있다.
+					PRINTFORMW %마스터는% 자고 있는 사쿠야의 이마에 입맞춤했다.
+					PRINTFORMW 「으음……에헤헤……」
+					PRINTFORMW 사쿠야는 행복한 듯 웃었다.
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「――웬일로, 입술로 하지 않는거야?」
+					PRINTFORMW 「변덕, 이구나. 뭐, 이건 이것대로 좋을지도」
+					PRINTFORMW 사쿠야는 미소를 띠며 중얼거리고 있다.
+				ENDIF
+				RETURN 1
+			ELSEIF TALENT:연모
+				IF CFLAG:TARGET:수면
+					PRINTFORML 
+					PRINTFORMW 「새근……새근……」
+					PRINTFORMW 사쿠야는 조용하게 숨소리를 내고 있다.
+					PRINTFORMW %마스터가% 사쿠야의 이마에 입을 맞추자,
+					PRINTFORMW 「응……에헤……」
+					PRINTFORMW 사쿠야는 뺨을 약간 붉게 물들였다.
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「―――――」
+					PRINTFORMW 사쿠야는 얼굴이 새빨개져서 침묵을 지키고 있다.
+					PRINTFORMW 「――어째서, 이마에 하는거야」
+					PRINTFORMW 사쿠야는 얼굴을 한층 더 붉히고 있다.
+					PRINTFORMW 그런 반응이 사랑스럽다고, %마스터는% 내심 생각했다.
+				ENDIF
+				RETURN 1
+			ENDIF
+		ENDIF
+	ELSEIF TALENT:연인
+		IF CFLAG:TARGET:수면
+			PRINTFORML 
+			PRINTFORMW 「새근……응……」
+			PRINTFORMW 사쿠야는 규칙적인 숨소리를 내고 있다.
+			PRINTFORMW %마스터는% 자고 있는 사쿠야의 이마에 입맞춤했다.
+			PRINTFORMW 「으음……에헤헤……」
+			PRINTFORMW 사쿠야는 행복한 듯 웃었다.
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 「――웬일로, 입술로 하지 않는거야?」
+			PRINTFORMW 「변덕, 이구나. 뭐, 이건 이것대로 좋을지도」
+			PRINTFORMW 사쿠야는 미소를 띠며 중얼거리고 있다.
+		ENDIF
+		RETURN 1
+	ELSEIF TALENT:연모
+		IF CFLAG:TARGET:수면
+			PRINTFORML 
+			PRINTFORMW 「새근……새근……」
+			PRINTFORMW 사쿠야는 조용하게 숨소리를 내고 있다.
+			PRINTFORMW %마스터가% 사쿠야의 이마에 입을 맞추자,
+			PRINTFORMW 「응……에헤……」
+			PRINTFORMW 사쿠야는 뺨을 약간 붉게 물들였다.
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 「―――――」
+			PRINTFORMW 사쿠야는 얼굴이 새빨개져서 침묵을 지키고 있다.
+			PRINTFORMW 「――어째서, 이마에 하는거야」
+			PRINTFORMW 사쿠야는 얼굴을 한층 더 붉히고 있다.
+			PRINTFORMW 그런 반응이 사랑스럽다고, %마스터는% 내심 생각했다.
+		ENDIF
+		RETURN 1
+	ELSEIF TALENT:사모
+		IF CFLAG:TARGET:수면
+			PRINTFORML 
+			PRINTFORMW 「새근……응……」
+			PRINTFORMW 사쿠야는 온화한 숨소리를 내고 있다.
+			PRINTFORMW %마스터는% 사쿠야의 이마에 입맞추었다.
+			PRINTFORMW 「으음……%CALLNAME:MASTER%……」
+			PRINTFORMW 사쿠야는 왠지 %CALLNAME:MASTER%의 이름을 불렀다.
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 「――아……」
+			PRINTFORMW 사쿠야는 얼굴을 붉힌 채 침묵을 지키고 있다.
+			PRINTFORMW 「――ㅇ, 이마…… 이마에 하는거야?」
+			PRINTFORMW 아무래도 이마에 키스하는 행위에는 익숙해지지 않은 것 같다.
+		ENDIF
+		RETURN 1
+	ELSE
+		IF CFLAG:TARGET:수면
+			PRINTFORML 
+			PRINTFORMW 「새근……새근……」
+			PRINTFORMW 사쿠야는 규칙적으로 숨소리를 내고 있다.
+			PRINTFORMW %마스터는% 사쿠야의 이마에 입맞추어 보았다.
+			PRINTFORMW 「응……새근……새근……」
+			PRINTFORMW 사쿠야에게 변화는 없다.
+			PRINTFORMW 온화한 그대로다.
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 「――뭐야, 지금 건」
+			PRINTFORMW 사쿠야는 이마를 닦으면서 말했다.
+			PRINTFORMW 그야 물론, 이마키스다.
+			PRINTFORMW 「입술에 맞추는 것만으로도 이상한데, 이마?」
+			PRINTFORMW 사쿠야는 곤혹스러워 하고있다.
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;63, 좀 더 키스한다
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K15_63
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K15_63_1
+RETURN RESULT
+@M_KOJO_MESSAGE_SCOM_K15_63_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL
+	IF FLAG:70
+		IF FIRSTTIME("timestop_aware") || CFLAG:[[사쿠야]]:1510 == 1
+			CALL SAKUYA_TIMESTOP_EV
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 2
+			PRINTFORMW 「…얘기할 가치도 없네.」
+			CALL 시간정지해제
+			;(은)탈의 플래그를 오프
+			TEQUIP:2 = 0
+			TEQUIP:상반신탈의상태 = 0
+			;캐릭터 전원의 복재세팅
+			FOR LOCAL,0,CHARANUM
+				CALL CLOTHES_SETTING_TRAIN(LOCAL)
+				;윗도리탈의가끝난상태 플래그를 오프
+				TEQUIP:LOCAL:5 = 0
+				;신체측정 종료
+				SIF CFLAG:LOCAL:신체측정 == 2
+					CFLAG:LOCAL:신체측정 = 1
+			NEXT
+			PRINTFORMDW 「사쿠야가 강제로 능력을 풀어버린 것 같다…」
+		ELSEIF CFLAG:[[사쿠야]]:1510 == 3
+			IF TALENT:연인
+				IF CFLAG:TARGET:수면
+					PRINTFORML 
+					PRINTFORMW 「새근……새근……」
+					PRINTFORMW %마스터는% 자고 있는 사쿠야에 한층 더 입맞추었다.
+					PRINTFORMW 「응……츄릇, 츄븟……응……새근……」
+					PRINTFORMW 사쿠야는 전혀 일어나지 않는다
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「응……레릅……부핫」
+					PRINTFORMW %마스터는% 틈을 주지 않고, 더욱 더 사쿠야의 입술을 막았다.
+					PRINTFORMW 「응브읍! 잠ㄲ……응읍……」
+					PRINTFORMW 「레릇……츄르릇…… 후핫, 하아, 하아」
+					PRINTFORMW 사쿠야는 완전히 키스에 열중하고 있다
+				ENDIF
+				RETURN 1
+			ELSEIF TALENT:연모
+				IF CFLAG:TARGET:수면
+					PRINTFORML 
+					PRINTFORMW 「새근……새근……」
+					PRINTFORMW %마스터는% 자고 있는 사쿠야에 더욱 더 입맞춤을 했다.
+					PRINTFORMW 「응……쥬르릇, 응츄……응……응으……」
+					PRINTFORMW 사쿠야는 전혀 일어나지 않는다
+					PRINTFORMW 신기할 정도다.
+				ELSE
+					PRINTFORML 
+					PRINTFORMW 「응츄……응믑……후핫」
+					PRINTFORMW 「응흐……읍! 츄우, 응므읏」
+					PRINTFORMW 「쥬르르, 츄웃…………하아앗, 하아……」
+					PRINTFORMW 사쿠야는 풀려버린 얼굴로 긴 입맞춤의 여운을 맛보고 있다.
+				ENDIF
+				RETURN 1
+			ENDIF
+		ENDIF
+	ELSEIF TALENT:연인
+		IF CFLAG:TARGET:수면
+			PRINTFORML 
+			PRINTFORMW 「새근……새근……」
+			PRINTFORMW %마스터는% 자고 있는 사쿠야에 한층 더 입맞추었다.
+			PRINTFORMW 「응……츄릇, 츄븟……응……새근……」
+			PRINTFORMW 사쿠야는 전혀 일어나지 않는다
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 「응……레릅……부핫」
+			PRINTFORMW %마스터는% 틈을 주지 않고, 더욱 더 사쿠야의 입술을 막았다.
+			PRINTFORMW 「응브읍! 잠ㄲ……응읍……」
+			PRINTFORMW 「레릇……츄르릇…… 후핫, 하아, 하아」
+			PRINTFORMW 사쿠야는 완전히 키스에 열중하고 있다
+		ENDIF
+		RETURN 1
+	ELSEIF TALENT:연모
+		IF CFLAG:TARGET:수면
+			PRINTFORML 
+			PRINTFORMW 「새근……새근……」
+			PRINTFORMW %마스터는% 자고 있는 사쿠야에 더욱 더 입맞춤을 했다.
+			PRINTFORMW 「응……쥬르릇, 응츄……응……응으……」
+			PRINTFORMW 사쿠야는 전혀 일어나지 않는다
+			PRINTFORMW 신기할 정도다.
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 「응츄……응믑……후핫」
+			PRINTFORMW 「응흐……읍! 츄우, 응므읏」
+			PRINTFORMW 「쥬르르, 츄웃…………하아앗, 하아……」
+			PRINTFORMW 사쿠야는 풀려버린 얼굴로 긴 입맞춤의 여운을 맛보고 있다.
+		ENDIF
+		RETURN 1
+	ELSEIF TALENT:사모
+		IF CFLAG:TARGET:수면
+			PRINTFORML 
+			PRINTFORMW 「새근……새근……」
+			PRINTFORMW %마스터는% 자고 있는 사쿠야에게 더욱 더 입맞춤을 했다.
+			PRINTFORMW 「응읏……쥬릇, 응츄우……응……응으……」
+			PRINTFORMW 사쿠야는 전혀 일어나지 않는다
+			PRINTFORMW 신기할 정도다.
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 「레릇……츄우, 응읍……츄우웃」
+			PRINTFORMW 「츄르, 츄르릇……응, 쥬르릇, 후아」
+			PRINTFORMW 「……잠깐만……너무 길어……」
+			PRINTFORMW 사쿠야는 얼굴을 붉히며, 어깨를 들썩이고 있다.
+		ENDIF
+		RETURN 1
+	ELSE
+		IF CFLAG:TARGET:수면
+			PRINTFORML 
+			PRINTFORMW 「새근……새근……」
+			PRINTFORMW %마스터는% 자고 있는 사쿠야에 더욱 더 입맞춤을 했다.
+			PRINTFORMW 「응읍……쥬르릇, 응츄우……응……으읍……」
+			PRINTFORMW 사쿠야는 낮게 신음소리를 냈다.
+		ELSE
+			PRINTFORML 
+			PRINTFORMW 「응으……응읍, 잠깐만, 너무 긴 것……응읍」
+			PRINTFORMW 「쥬르릇, 레롯, 응븟……후핫」
+			PRINTFORMW 「……긴 것도, 괜찮을 지도……」
+			PRINTFORMW 장시간의 입맞춤에, 아무래도 맛을 들인 모습의 사쿠야인 것이었다.
+		ENDIF
+		RETURN 1
+	ENDIF
+ENDIF
+RETURN 1
+;==================================================
+;80, 손을 잡아 당긴다
+;==================================================
+@M_KOJO_MESSAGE_SCOM_K15_80
+CALL TRAIN_MESSAGE
+CALL M_KOJO_MESSAGE_SCOM_K15_80_1
+RETURN RESULT
+@M_KOJO_MESSAGE_SCOM_K15_80_1
+;-------------------------------------------------
+;기입 체크(=0, 비표시, 1, 표시)
+LOCAL = 0
+;-------------------------------------------------
+IF LOCAL
+	
+ENDIF
+RETURN 1
+
+
 ;====================================================================================================
 ;323, 상대주도후배위A
 ;====================================================================================================

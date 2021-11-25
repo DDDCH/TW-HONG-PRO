@@ -1,0 +1,227 @@
+﻿;==================================================
+;탄막승부
+;==================================================
+;
+@M_KOJO_MESSAGE_COM_K15_DANMAKU(ARGS, 相手残機)
+#DIM 相手残機
+;전체의 흐름
+;①【戦闘前】→ ②다이스 롤과 플레이어 선택지、핸디캡을 추가했을 경우【ハンデ구상】→ ③대응 기술이 발동 시【スキル구상】→ ④피탄판정、캐릭터가 피탄했다면【被弾구상】→
+;어느 한쪽의 잔기가 0이 되지 않으면 ②로 돌아간다 → ⑤【戦闘後구상】
+
+;--------------------------------------------------
+;기입체크 (=0, 비표시、1, 표시)
+LOCAL = 1
+;-------------
+IF LOCAL
+SIF FLAG:대사색깔
+	TRYCALLFORM M_KOJO_COLOR_K{NO:TARGET}
+	;-------------------------------------------------
+	;소분기
+	;-------------------------------------------------
+	;전투전
+	HANDICAP_FIXED = 0
+	HANDICAP_RAND = 0
+	;핸디캡을 추가해, 수치가 클수록 아나타가 불리해진다   수치가 음수면 아나타가 유리하게
+	;캐릭터의 능력에 관계없이 강하게 하거나 약하게 할 수 있다
+	;기입체크 (=0, 비표시、1, 표시)
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "戦闘前"
+		IF CFLAG:318 == 1
+			PRINTFORML 「진심이 나와버릴지도.」
+		ELSEIF RAND:4 == 0
+			PRINTFORMW 「환상향에서 인간으로서 살아간다는 게 뭔지 보여줄게.」
+		ELSEIF RAND:3 == 0
+			PRINTFORMW 「몇 분쯤 걸리려나?」
+		ELSEIF RAND:2 == 0
+			PRINTFORMW 「더러워지면 안되는데…」
+		ELSE
+			PRINTFORML 「말 그대로 시간을 멈춘다는 게 뭔지 똑똑히 알려 줄게.」
+		ENDIF
+		RETURN 0
+	ENDIF
+	;-------------------------------------------------
+	;핸디캡
+	;기입체크 (=0, 비표시、1, 표시)
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "ハンデ"
+		;핸디캡을 추기하지 않으면 표시되지 않기 때문에 미기입으로 좋다
+		PRINTFORML 
+		RETURN 0
+	ENDIF
+	;-------------------------------------------------
+	;전투중 TARGET 피탄시 구상
+	;기입체크 (=0, 비표시、1, 표시)
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "被弾" 
+		;일률적으로「당했다ー」정도만 해도 돼
+		SELECTCASE 相手残機
+			;残り残機3が表示されるのは【洽覧深識】持ちのみ
+			CASE 3
+				;怒り
+				IF CFLAG:318 == 1
+					PRINTFORMW 「방심했나…」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「아직 멀었어.」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「어머, 맞아버렸네.」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「…청소 거리가 늘었네.」
+				ELSE
+					PRINTFORMW 「너무 소란스러운데…」
+				ENDIF
+			CASE 2
+				;怒り
+				IF CFLAG:318 == 1
+					PRINTFORMW 「아읏!」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「으음, 점점 더러워지는데…」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「꽤 뛰어난 솜씨구나, %CALLNAME:MASTER%」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「…능력이 다가 아니라는 걸 보여줄게!」
+				ELSE
+					PRINTFORMW 「쉽지 않은데?」
+				ENDIF
+			CASE 1
+				;怒り
+				IF CFLAG:318 == 1
+					PRINTFORMW 「…이대로라면 난처한데.」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「아, 아가씨?」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「끝인가…」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「후우, 쉽지 않네.」
+				ELSE
+					PRINTFORMW 「여기까지 몰아붙인 건 칭찬해 줄게.」
+				ENDIF
+			CASE 0
+				;怒り
+				IF CFLAG:318 == 1
+					PRINTFORMW 「……」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「말, 도 안돼…」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「이런 게, 인간?」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「아, 져버렸다.」
+				ELSE
+					PRINTFORMW 「…차나 마시러 가고 싶어.」
+				ENDIF
+		ENDSELECT
+	ENDIF
+	;-------------------------------------------------
+	;전투중
+	;TARGET의【잔인무도】발동시
+	;ARG는 TARGET의 잔기
+	;기입체크 (=0, 비표시、1, 표시)
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "残忍酷薄"
+		
+	ENDIF
+	;-------------------------------------------------
+	;전투중
+	;TARGETの【건곤일척】발동시
+	;ARG는 TARGET의 잔기
+	;기입체크 (=0, 비표시、1, 표시)
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "乾坤一擲"
+		
+	ENDIF
+	;-------------------------------------------------
+	;전투중
+	;TARGETの【괴력난신】발동시
+	;ARG는 TARGET의 잔기
+	;기입체크 (=0, 비표시、1, 표시)
+	LOCAL:1 = 0
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "怪力乱神"
+		
+	ENDIF
+	
+	;-------------------------------------------------
+	;전투후
+	;기입체크 (=0, 비표시、1, 표시)
+	LOCAL:1 = 1
+	;-------------------------------------------------
+	IF LOCAL:1 && ARGS == "戦闘後" 
+		PRINTFORML 
+		;남은 잔기 3가 표시될 수 있는건【습람심식】소유만
+		;잔기가 1 이상이라면 당신이 패배, 0의 경우는 당신의 승리
+		SELECTCASE 相手残機
+			CASE 4
+				;怒り
+				IF CFLAG:318 == 1
+					PRINTFORMW 「그 정도로 폼 잡은 거야? 한참 멀었네.」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「능력을 안 써도 이거밖에 안 돼?」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「약해빠졌네.」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「간단했어.」
+				ELSE
+					PRINTFORMW 「그럼 오늘은 이만 가볼게.」
+				ENDIF
+			CASE 3
+				;怒り
+				IF CFLAG:318 == 1
+					PRINTFORMW 「시간 낭비했네. 뭐, 시간이야 무한히 있지만.」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「환상향에서 살아가는 인간은 녹록치 않다구.」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「간단했어.」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「능력을 안 써도 이거밖에 안 돼?」
+				ELSE
+					PRINTFORMW 「그 정도로 폼 잡은 거야? 한참 멀었네.」
+				ENDIF
+			CASE 2
+				;怒り
+				IF CFLAG:318 == 1
+					PRINTFORMW 「자, 수고하렴.」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「아야야… 만만찮네.」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「어때, 좀 할만하니?」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「아직이라구.」
+				ELSE
+					PRINTFORMW 「후후, 낙승.」
+				ENDIF
+			CASE 1
+				;怒り
+				IF CFLAG:318 == 1
+					PRINTFORMW 「너… 만만찮네.」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「재능이 있네, %CALLNAME:MASTER%」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「쉽지않잖아, %CALLNAME:MASTER%」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「어때? 파츄리님의 심부름이라도 대신 다녀오는 건?」
+				ELSE
+					PRINTFORMW 「아슬아슬했네…,」
+				ENDIF
+			CASE 0
+				;怒り
+				IF CFLAG:318 == 1
+					PRINTFORMW 「…앗, 아가씨의 티타임이…！」
+				ELSEIF RAND:4 == 0
+					PRINTFORMW 「아파…」
+				ELSEIF RAND:3 == 0
+					PRINTFORMW 「당했다…」
+				ELSEIF RAND:2 == 0
+					PRINTFORMW 「그래도 아가씨께는 안될껄?」
+				ELSE
+					PRINTFORMW 「레이무나 마리사랑 붙여보고 싶네.」
+				ENDIF
+		ENDSELECT
+	ENDIF
+RESETCOLOR
+ENDIF
+RETURN 1
+
