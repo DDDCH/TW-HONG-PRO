@@ -2,7 +2,7 @@
 ;봉사계 커맨드
 ;※※※※※※※※※※※※※※※※※※※※※※※※※
 ;==================================================
-;80, 자위
+;80,手淫
 ;==================================================
 @M_KOJO_MESSAGE_COM_K33_80
 CALL TRAIN_MESSAGE
@@ -11,7 +11,7 @@ RETURN RESULT
 
 @M_KOJO_MESSAGE_COM_K33_80_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -19,14 +19,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -34,23 +34,23 @@ IF LOCAL
 	ELSEIF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		IF NOWEX:MASTER:사정
 			PRINTDATAW
-				DATAFORM 「자제 하고 있어? 좋아, 가 버려도―」
-				DATAFORM 「움찔움찔 해 버려. 후후, 내 버려라―%UNICODE(0x2764)%」
-				DATAFORM 「쿠퍼액으로 미끈미끈이구나. 벌써 가 버려?」
+				DATAFORM 「참고 있는거야?　괜찮아ー, 가버려도ー」
+				DATAFORM 「움찔움찔거리네. 후후, 싸버려ー%UNICODE(0x2764)%」
+				DATAFORM 「즙으로 미끈미끈해졌네. 이제 갈 것 같아?」
 			ENDDATA
 		ELSE
 			PRINTDATAW
-				DATAFORM 「응─? 기분이 좋아? 후후─」
-				DATAFORM 「후후, 작은 라고라고로 훑어 내져, 이렇게 해 버려……%UNICODE(0x2764)%」
-				DATAFORM 「이렇게 하면…… 아하, 역시 기분이 좋다―♪」
+				DATAFORM 「응ー?　기분 좋아?　후훗ー」
+				DATAFORM 「쿡쿡, 조그만 손으로 훑어져서 이렇게 되버렸네……%UNICODE(0x2764)%」
+				DATAFORM 「이렇게 하면……아핫, 역시 기분 좋은가보네ー♪」
 			ENDDATA
 		ENDIF
 		RETURN 1
 
 		IF NOWEX:MASTER:사정
-			PRINTFORMW 「자제 하고 있어? 좋아, 가 버려도―」
+			PRINTFORMW 「참고 있는거야?　괜찮아ー, 가버려도ー」
 		ELSE
-			PRINTFORMW 「응─? 기분이 좋아? 후후─」
+			PRINTFORMW 「응ー?　기분 좋아?　후훗ー」
 		ENDIF
 		RETURN 1
 	ENDIF
@@ -58,7 +58,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;81, 펠라치오
+;81,フェラチオ
 ;==================================================
 @M_KOJO_MESSAGE_COM_K33_81
 CALL TRAIN_MESSAGE
@@ -67,7 +67,7 @@ RETURN RESULT
 
 @M_KOJO_MESSAGE_COM_K33_81_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -75,14 +75,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -90,26 +90,26 @@ IF LOCAL
 	ELSEIF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		IF NOWEX:MASTER:사정
 			PRINTDATAW
-				DATAFORM 「응무…… 자제 하고 있어? 좋아, 가 버려도―」
-				DATAFORM 「츄…… 도, 두는 치노안으로 움찔움찔 시키지 않고―%UNICODE(0x2764)%」
-				DATAFORM 「읏, 푸핫…… 갈 것 같다? 응후후─, 트드메%UNICODE(0x2764)%」
-				DATAFORM 「응도―, 느슨해진 얼굴 해 버려. 사랑스럽기 때문에……%UNICODE(0x2764)%」
+				DATAFORM 「응읍……참고 있는거야?　괜찮아ー, 가버려도ー」
+				DATAFORM 「츄우…… 정말, 입안에서 꿈틀거리지 마ー%UNICODE(0x2764)%」
+				DATAFORM 「응읏, 푸핫…… 가버려?　응흐흐－、마무리잇%UNICODE(0x2764)%」
+				DATAFORM 「아 정말ー 그렇게 풀어져서는. 귀엽다니까……%UNICODE(0x2764)%」
 			ENDDATA
 		ELSE
 			PRINTDATAW
-				DATAFORM 「날름…… 기분이 좋아? 후후─」
-				DATAFORM 「%CALLNAME:MASTER%의 맛…… 진해져 왔어? 읏…… 후우……%UNICODE(0x2764)%」
-				DATAFORM 「츄…… 읏…… 핫……」
-				DATAFORM 「후후, 코코가 약한 것, 알고 있기 때문에…… 날름…… 츄……%UNICODE(0x2764)%」
+				DATAFORM 「할짝……　기분 좋아?　후후ー」
+				DATAFORM 「%CALLNAME:MASTER%의 맛…… 진해졌어.　응읍…… 후우……%UNICODE(0x2764)%」
+				DATAFORM 「츄우…… 으읍…… 하압……」
+				DATAFORM 「킥킥, 여기가 약한거 알고 있으니까…… 할짝……츄우……%UNICODE(0x2764)%」
 			ENDDATA
 		ENDIF
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		IF NOWEX:MASTER:사정
-			PRINTFORMW 「츄…… 도, 두는 치노안으로 움찔움찔 시키지 않고―%UNICODE(0x2764)%」
+			PRINTFORMW 「츄우…… 정말, 입안에서 꿈틀거리지 마ー%UNICODE(0x2764)%」
 		ELSE
-			PRINTFORMW 「츄…… 읏…… 핫……」
+			PRINTFORMW 「츄우…… 으읍…… 하압……」
 		ENDIF
 		RETURN 1
 	ENDIF
@@ -117,7 +117,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;82, 파이즈리
+;82,パイズリ
 ;==================================================
 @M_KOJO_MESSAGE_COM_K33_82
 CALL TRAIN_MESSAGE
@@ -126,7 +126,7 @@ RETURN RESULT
 
 @M_KOJO_MESSAGE_COM_K33_82_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -134,14 +134,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -149,37 +149,37 @@ IF LOCAL
 	ELSEIF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		IF NOWEX:MASTER:사정 && NOWEX:TARGET:B절정
 			PRINTDATAW
-				DATAFORM 「자제 하지 않아도…… 괜찮아, 함께, 가……%UNICODE(0x2764)%」
-				DATAFORM 「군요, 지릿지릿 햇, %CALLNAME:MASTER%의가 뜨거워서……%UNICODE(0x2764)%」
-				DATAFORM 「야아…… 내가, 먼저 가게 하기 때문에……%UNICODE(0x2764)%」
+				DATAFORM 「참지 않아도……되니까, 같이, 가버리자……%UNICODE(0x2764)%」
+				DATAFORM 「가슴, 찌릿거려서…… %CALLNAME:MASTER%의 것이 뜨거워……%UNICODE(0x2764)%」
+				DATAFORM 「시러…… 내가 먼저, 가게 만들거야아……%UNICODE(0x2764)%」
 			ENDDATA
 		ELSEIF NOWEX:TARGET:B절정
 			PRINTDATAW
-				DATAFORM 「공격하고 있는 것, 나의, 는 두인데……%UNICODE(0x2764)%」
-				DATAFORM 「군요, 지릿지릿 햇, %CALLNAME:MASTER%의가 뜨거워서……%UNICODE(0x2764)%」
-				DATAFORM 「안돼, 자꾸자꾸 민감하게 되어 버리고 있는……%UNICODE(0x2764)%」
+				DATAFORM 「공격하는건, 분명히 내쪽인데에……%UNICODE(0x2764)%」
+				DATAFORM 「가슴, 찌릿거려서…… %CALLNAME:MASTER%의 것이 뜨거워……%UNICODE(0x2764)%」
+				DATAFORM 「안 돼, 점점 민감해지고 있어……%UNICODE(0x2764)%」
 			ENDDATA
 		ELSEIF NOWEX:MASTER:사정
 			PRINTDATAW
-				DATAFORM 「자꾸자꾸 미끈미끈 해 왔어? 아핫, 이대로 내 버려라―♪」
-				DATAFORM 「확실히 느껴 주고 있는…… 무엇인가, 기쁘다%UNICODE(0x2764)%」
-				DATAFORM 「읏, 실마리…… 응후후─, 트드메%UNICODE(0x2764)%」
+				DATAFORM 「점점 끈적끈적해지기 시작했네?　아핫, 이대로 내버려ー♪」
+				DATAFORM 「확실히 느끼기 시작했구나…… 왠지 기쁜걸%UNICODE(0x2764)%」
+				DATAFORM 「영, 차……　으흐흐－, 마무리잇%UNICODE(0x2764)%」
 			ENDDATA
 		ELSE
 			PRINTDATAW
-				DATAFORM 「어때? 젖가슴, 기분이 좋아? 후후─」
-				DATAFORM 「%CALLNAME:MASTER%의, 굉장한 냄새…… 후후―%UNICODE(0x2764)%」
-				DATAFORM 「읏…… 꽤 큰일인 것이니까, 이것♪」
-				DATAFORM 「%CALLNAME:MASTER%의, 굉장히 뜨거운……%UNICODE(0x2764)%」
+				DATAFORM 「어때? 가슴, 기분 좋아?　후후ー」
+				DATAFORM 「%CALLNAME:MASTER% 거, 냄새가 엄청나…… 후후ー%UNICODE(0x2764)%」
+				DATAFORM 「으응… 이거 꽤 힘드네♪」
+				DATAFORM 「%CALLNAME:MASTER% 거, 엄청 뜨거워……%UNICODE(0x2764)%」
 			ENDDATA
 		ENDIF
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		IF NOWEX:MASTER:사정
-			PRINTFORMW 「자꾸자꾸 미끈미끈 해 왔어? 아핫, 이대로 내 버려라―♪」
+			PRINTFORMW 「점점 끈적끈적해지기 시작했네?　아핫, 이대로 내버려ー♪」
 		ELSE
-			PRINTFORMW 「어때? 젖가슴, 기분이 좋아? 후후─」
+			PRINTFORMW 「어때? 가슴, 기분 좋아?　후후ー」
 		ENDIF
 		RETURN 1
 	ENDIF
@@ -187,7 +187,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;83, 가랑이
+;83,素股
 ;==================================================
 @M_KOJO_MESSAGE_COM_K33_83
 CALL TRAIN_MESSAGE
@@ -196,7 +196,7 @@ RETURN RESULT
 
 @M_KOJO_MESSAGE_COM_K33_83_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -204,14 +204,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -219,36 +219,36 @@ IF LOCAL
 	ELSEIF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		IF NOWEX:MASTER:사정 && NOWEX:TARGET:C절정
 			PRINTDATAW
-				DATAFORM 「자제 하지 않아도…… 괜찮아, 함께, 가……%UNICODE(0x2764)%」
-				DATAFORM 「아앙…… 도, 어느 쪽의 탓으로 미끈미끈인가 모른다…… 아%UNICODE(0x2764)%」
-				DATAFORM 「좀 더 부비부비 해 주는%UNICODE(0x2764)% 후~, 좋아♪」
+				DATAFORM 「참지 않아도……되니까, 같이, 가버리자……%UNICODE(0x2764)%」
+				DATAFORM 「아앙…… 정말, 누구 때문에 질척질척해졌는지 모르겠네…… 햐앗%UNICODE(0x2764)%」
+				DATAFORM 「좀 더 문질문질 해 줄게%UNICODE(0x2764)%　아핫, 괜찮아♪」
 			ENDDATA
 		ELSEIF NOWEX:TARGET:C절정
 			PRINTDATAW
-				DATAFORM 「공격하고 있는 것, 나의, 는 두인데……%UNICODE(0x2764)%」
-				DATAFORM 「(이)나%UNICODE(0x2764)% 안돼 안돼에, 그렇게 뜨거운 것, 문질러 바르지 말아 %UNICODE(0x2764)%」
-				DATAFORM 「이런 건…… 넣기 전에, 가 버릴 것 같아……%UNICODE(0x2764)%」
+				DATAFORM 「공격하는건, 분명히 내쪽인데에……%UNICODE(0x2764)%」
+				DATAFORM 「시러%UNICODE(0x2764)%　안대 안대앳, 그렇게 뜨거운 거… 문지르지 마앗%UNICODE(0x2764)%」
+				DATAFORM 「이런 거어…… 넣기도 전에 가버릴 것 같아……%UNICODE(0x2764)%」
 			ENDDATA
 		ELSEIF NOWEX:MASTER:사정
 			PRINTDATAW
-				DATAFORM 「아랴, 갈 것 같아? 좋은거야? 이대로 내 버려%UNICODE(0x2764)%」
-				DATAFORM 「앞달리기와 나의 것으로 자꾸자꾸 미끈미끈이 되어…… 굉장한%UNICODE(0x2764)%」
-				DATAFORM 「이제(벌써) 나와 버려? 후후, 어쩔 수 없는데―%UNICODE(0x2764)%」
+				DATAFORM 「어라, 갈 것 같아?　괜찮겠어? 이대로 싸버려도%UNICODE(0x2764)%」
+				DATAFORM 「애액이랑 당신 걸로 점점 질척질척해졌어…… 굉장해%UNICODE(0x2764)%」
+				DATAFORM 「이제 나올 것 같아?　후후, 어쩔 수 없네ー%UNICODE(0x2764)%」
 			ENDDATA
 		ELSE
 			PRINTDATAW
-				DATAFORM 「후후─, 이대로 들어가져 버려? 그렇지 않으면 이대로?」
-				DATAFORM 「%CALLNAME:MASTER%의, 딱딱이 아닌%UNICODE(0x2764)%」
-				DATAFORM 「영차─, 읏…… 민감한 곳이 스쳐, 기분이 좋은%UNICODE(0x2764)%」
+				DATAFORM 「킥킥ー, 그대로 넣을래?　아니면 이대로?」
+				DATAFORM 「%CALLNAME:MASTER%의 것 벌써 딱딱해졌잖아%UNICODE(0x2764)%」
+				DATAFORM 「영차ー앗…… 민감한 부분이 스쳐서, 기분 좋아%UNICODE(0x2764)%」
 			ENDDATA
 		ENDIF
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		IF NOWEX:MASTER:사정
-			PRINTFORMW 「이제(벌써) 나와 버려? 후후, 어쩔 수 없는데―%UNICODE(0x2764)%」
+			PRINTFORMW 「이제 나올 것 같아?　후후, 어쩔 수 없네ー%UNICODE(0x2764)%」
 		ELSE
-			PRINTFORMW 「영차─, 읏…… 민감한 곳이 스쳐, 기분이 좋은%UNICODE(0x2764)%」
+			PRINTFORMW 「영차ー앗…… 민감한 부분이 스쳐서, 기분 좋아%UNICODE(0x2764)%」
 		ENDIF
 		RETURN 1
 	ENDIF
@@ -256,7 +256,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;84, 거품 춤
+;84,泡踊り
 ;==================================================
 @M_KOJO_MESSAGE_COM_K33_84
 CALL TRAIN_MESSAGE
@@ -265,7 +265,7 @@ RETURN RESULT
 
 @M_KOJO_MESSAGE_COM_K33_84_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -273,36 +273,36 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	IF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		IF NOWEX:MASTER:사정
 			PRINTDATAW
-				DATAFORM 「아랴, 갈 것 같아? 좋은거야? 이대로 내 버려%UNICODE(0x2764)%」
-				DATAFORM 「움찔움찔 해 버려…… 기분이 좋으면, 이대로 내 버려라%UNICODE(0x2764)%」
-				DATAFORM 「에─. 모처럼 씻었는데―…… 랄까? 가 버려라%UNICODE(0x2764)%」
+				DATAFORM 「어라, 갈 것 같아?　괜찮겠어? 이대로 싸버려도%UNICODE(0x2764)%」
+				DATAFORM 「움찔움찔거리고는…… 기분 좋으면, 이대로 싸버려%UNICODE(0x2764)%」
+				DATAFORM 「에ー. 모처럼 씻었는데ー……랄까나?　가버려%UNICODE(0x2764)%」
 			ENDDATA
 		ELSE
 			PRINTDATAW
-				DATAFORM 「신님에게 이런 일 시킨다든가, 정말 어쩔 수 없는 사람이구나 %UNICODE(0x2764)%」
-				DATAFORM 「어때? 나의 몸, 전부를 느껴지는 것은 %UNICODE(0x2764)%」
-				DATAFORM 「영차─, 읏…… 민감한 곳이 스쳐, 기분이 좋은%UNICODE(0x2764)%」
-				DATAFORM 「후후─, 쓱쓱 , 라고―♪」
+				DATAFORM 「신님에게 이런 일을 시키다니, 정말 어쩔 수 없는 사람이네%UNICODE(0x2764)%」
+				DATAFORM 「어때?　내 몸을, 전부 느끼고 있는 소감은%UNICODE(0x2764)%」
+				DATAFORM 「영차ー앗…… 민감한 부분이 스쳐서 기분 좋아%UNICODE(0x2764)%」
+				DATAFORM 「후훗ー 문질문질ー♪」
 			ENDDATA
 		ENDIF
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		IF NOWEX:MASTER:사정
-			PRINTFORMW 「움찔움찔 해 버려…… 기분이 좋으면, 이대로 내 버려라%UNICODE(0x2764)%」
+			PRINTFORMW 「움찔움찔거리고는…… 기분 좋으면, 이대로 싸버려%UNICODE(0x2764)%」
 		ELSE
-			PRINTFORMW 「후후─, 쓱쓱 , 라고―♪」
+			PRINTFORMW 「후훗ー 문질문질ー♪」
 		ENDIF
 		RETURN 1
 	ENDIF
@@ -310,7 +310,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;85, 다리 호된 훈련
+;85,足扱き
 ;==================================================
 @M_KOJO_MESSAGE_COM_K33_85
 CALL TRAIN_MESSAGE
@@ -319,7 +319,7 @@ RETURN RESULT
 
 @M_KOJO_MESSAGE_COM_K33_85_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -327,14 +327,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -342,31 +342,31 @@ IF LOCAL
 	ELSEIF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		IF NOWEX:MASTER:사정
 			PRINTDATAW
-				DATAFORM 「발바닥에 내 버려? 짓밟을 수 있어도 괜찮으면, 아무쪼록%UNICODE(0x2764)%」
-				DATAFORM 「미끈미끈이 되어 왔어? 이런 일 당하고 느껴 버리고 있는 것일까%UNICODE(0x2764)%」
-				DATAFORM 「이제 내자? 후후, 그러면, 트드메이%UNICODE(0x2764)%」
+				DATAFORM 「발바닥에 싸고 싶어?　밟힌채로도 좋다면, 부디%UNICODE(0x2764)%」
+				DATAFORM 「끈적거리기 시작했네?　이런 일을 당하고도 느껴버리는구나%UNICODE(0x2764)%」
+				DATAFORM 「벌써 나올 것 같아?　후훗, 그럼 마무리야ー%UNICODE(0x2764)%」
 			ENDDATA
 		ELSE
 			PRINTDATAW
-				DATAFORM 「그것, 동글동글―…… 후후, 여러가지 의미로 몸부림치는 것이 좋은 거야─♪」
-				DATAFORM 「후훗, 버릇이 되어 버려? 뭐, 나는 좋지만 %UNICODE(0x2764)%」
-				DATAFORM 「이런 것이라도 느껴 버린다든가, 정말 어쩔 수 없는 사람%UNICODE(0x2764)%」
+				DATAFORM 「자, 문질문질ー……킥킥, 여러가지 의미로 괴로워하도록 해ー♪」
+				DATAFORM 「후훗, 버릇이 될 것 같아?　뭐어, 나는 상관 없지만%UNICODE(0x2764)%」
+				DATAFORM 「이런 걸로도 느끼다니, 정말 어쩔 수 없는 사람이네%UNICODE(0x2764)%」
 			ENDDATA
 		ENDIF
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		IF NOWEX:MASTER:사정
-			PRINTFORMW 「발바닥에 내 버려? 짓밟을 수 있어도 괜찮으면, 아무쪼록%UNICODE(0x2764)%」
+			PRINTFORMW 「발바닥에 싸고 싶어?　밟힌채로도 좋다면, 부디%UNICODE(0x2764)%」
 		ELSE
-			PRINTFORMW 「그것, 동글동글―…… 후후, 여러가지 의미로 몸부림치는 것이 좋은 거야─♪」
+			PRINTFORMW 「자, 문질문질ー……킥킥, 여러가지 의미로 괴로워하도록 해ー♪」
 		ENDIF
 		RETURN 1
 	ENDIF
 ENDIF
 RETURN 1
 ;==================================================
-;88, 진공 페라
+;88,バキュームフェラ
 ;==================================================
 @M_KOJO_MESSAGE_COM_K33_88
 CALL TRAIN_MESSAGE
@@ -375,7 +375,7 @@ RETURN RESULT
 
 @M_KOJO_MESSAGE_COM_K33_88_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -383,14 +383,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -398,32 +398,32 @@ IF LOCAL
 	ELSEIF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		IF NOWEX:MASTER:사정
 			PRINTDATAL LOCAL:99
-				DATAFORM 「읏, 응므우……―%UNICODE(0x2764)%」
-				DATAFORM 「는…… 훗, 응츄, 응응―%UNICODE(0x2764)%」
-				DATAFORM (열심히 허리 내려 버려…… 사랑스럽기 때문에%UNICODE(0x2764)%)
+				DATAFORM 「응읍, 응으읏……쥬르르르르ー%UNICODE(0x2764)%」
+				DATAFORM 「읏하…… 후ー읍, 응츄우, 으응ー%UNICODE(0x2764)%」
+				DATAFORM （열심히 허리를 흔들고 있어…… 귀여워%UNICODE(0x2764)%）
 			ENDDATA
 		ELSE
 			PRINTDATAL LOCAL:99
-				DATAFORM 「응읏…… 쥬, 루루우……♪」
-				DATAFORM 「응브우, 츄부, 응긋, 쥬……%UNICODE(0x2764)%」
-				DATAFORM (그렇게 강압하지 않아도, 팥고물과 기분 좋게 해 주는%UNICODE(0x2764)%)
+				DATAFORM 「으으읍……쥬, 르읏……♪」
+				DATAFORM 「응프읍, 츄븟, 응그읏, 쥬우……%UNICODE(0x2764)%」
+				DATAFORM （그렇게 밀어붙이지 않아도, 제대로 기분 좋게 해 줄게%UNICODE(0x2764)%）
 			ENDDATA
 		ENDIF
 		SELECTCASE LOCAL:99
 			CASE 1
-				PRINTFORMW 스와코는 여유의 표정으로, 목 안을 뚫는 삽입질을 돌려보내고 있다…
+				PRINTFORMW 스와코는 여유로운 표정으로 목구멍을 파고드는 추송을 받아넘기고 있다…
 			CASE 2
-				PRINTFORMW 이쪽을 올려보는 스와코의 눈은, 우월과 유열에 물들고 있다…
+				PRINTFORMW 이쪽을 올려다보는 스와코의 눈은 우월과 기쁨에 젖어있다…
 			CASE 3
-				PRINTFORMW 스와코는 질내의 점막 모두로 %마스터를% 기쁘게 하려고 해 주고 있다…
+				PRINTFORMW 스와코는 입 안의 점막 모든 부분으로 %조사처리(CALLNAME:MASTER, "를")% 기쁘게 하고 있다…
 		ENDSELECT
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		IF NOWEX:MASTER:사정
-			PRINTFORMW 「읏, 응므우……―%UNICODE(0x2764)%」
+			PRINTFORMW 「응읍, 응으읏……쥬르르르르ー%UNICODE(0x2764)%」
 		ELSE
-			PRINTFORMW 「응브우, 츄부, 응긋, 쥬……%UNICODE(0x2764)%」
+			PRINTFORMW 「응프읍, 츄븟, 응그읏, 쥬우……%UNICODE(0x2764)%」
 		ENDIF
 		RETURN 1
 	ENDIF

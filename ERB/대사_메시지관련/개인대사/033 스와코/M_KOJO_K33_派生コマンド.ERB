@@ -1,9 +1,9 @@
 ﻿
 ;※※※※※※※※※※※※※※※※※※※※※※※※※
-;파생 커맨드
+;派生コマンド
 ;※※※※※※※※※※※※※※※※※※※※※※※※※
 ;==================================================
-;1, 식스나인
+;1,シックスナイン
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_1
 CALL TRAIN_MESSAGE
@@ -11,7 +11,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_1_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_1_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -19,55 +19,55 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
 		RETURN 1
 	ELSEIF NOWEX:TARGET:C절정
 		PRINTDATAW
-			DATAFORM 「응%UNICODE(0x2764)% 안됏, 가게 되어 버린다%UNICODE(0x2764)%」
-			DATAFORM 「츄…… 응부……! 야아…… 먼저, 가서는…… 아%UNICODE(0x2764)%」
-			DATAFORM 「좋아, 좀 더 격렬하게 해……%UNICODE(0x2764)%」
+			DATAFORM 「응읏%UNICODE(0x2764)%　안돼앳, 가버려어어어%UNICODE(0x2764)%」
+			DATAFORM 「츄우…… 응븟……!　시러…… 먼저, 가는거…… 후아아아앗%UNICODE(0x2764)%」
+			DATAFORM 「괜찮앗, 더 격렬하게 해줘어……%UNICODE(0x2764)%」
 		ENDDATA
 		RETURN 1
 	ELSEIF NOWEX:MASTER:사정
 		PRINTDATAW
-			DATAFORM 「응츄, 츄부…… 에헤헤, 가 버려? 좋아, 내고 내―♪」
-			DATAFORM 「응─, 손이 멈추어 버리고 있다―? 갈 것 같다…… 후후%UNICODE(0x2764)%」
+			DATAFORM 「응츄우, 츄붓…… 에헤헤, 갈 것 같아?　괜찮아, 빨리 싸 줘ー♪」
+			DATAFORM 「응ー, 손이 멈췄잖아ー?　갈 것 같구나…… 후후%UNICODE(0x2764)%」
 		ENDDATA
 		RETURN 1
 	ELSEIF NOWEX:MASTER:사정 && NOWEX:TARGET:C절정
 		PRINTDATAW
-			DATAFORM 「야아…… 도, 가 버리는……%UNICODE(0x2764)% 그런데, 함께……응, 츄…… 아 %UNICODE(0x2764)%」
-			DATAFORM 「읏, 날름…… 나 %UNICODE(0x2764)% 도, 자제 하지 않고, 가 버려……%UNICODE(0x2764)%」
+			DATAFORM 「시러…… 이제, 가버려어……%UNICODE(0x2764)%　저기, 같이…… 응, 츄우…… 후아아앗%UNICODE(0x2764)%」
+			DATAFORM 「응ー읏, 할짝…… 후아앗%UNICODE(0x2764)%　이제, 참지 말고 싸줘……%UNICODE(0x2764)%」
 		ENDDATA
 		RETURN 1
 	ELSEIF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		PRINTDATAW
-			DATAFORM 「팥고물%UNICODE(0x2764)% 응……, 지고 있을 수 없구나♪응츄, 응구…… 우우%UNICODE(0x2764)%」
-			DATAFORM 「, 어느 쪽이 먼저, , 가 버리는 것일까―%UNICODE(0x2764)%」
-			DATAFORM 「읏, 츄……, 하앗…… 기분이 좋아, 좀 더 해……%UNICODE(0x2764)%」
+			DATAFORM 「햐아앙%UNICODE(0x2764)%　응……, 지고 있을 수만은 없겠네♪　영차앗%UNICODE(0x2764)%」
+			DATAFORM 「아앙, 누가 먼저, 엇, 가버릴까ー%UNICODE(0x2764)%」
+			DATAFORM 「응, 츄우……웃, 하앗…… 기분 좋아앗, 계속 해줘어……%UNICODE(0x2764)%」
 		ENDDATA
 		RETURN 1
 	ELSE
-		PRINTFORMW 「팥고물%UNICODE(0x2764)% 응……, 지고 있을 수 없구나♪응츄, 응구…… 우우%UNICODE(0x2764)%」
+		PRINTFORMW 「햐아앙%UNICODE(0x2764)%　응……, 지고 있을 수만은 없겠네♪　영차앗%UNICODE(0x2764)%」
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================
-;2, 이와시미즈
+;2,岩清水
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_2
 CALL TRAIN_MESSAGE
@@ -75,7 +75,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_2_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_2_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -83,14 +83,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -99,22 +99,22 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================
-;3, G스팟 자극
+;3,Gスポット刺激
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_3
 CALL TRAIN_MESSAGE
@@ -122,7 +122,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_3_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_3_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -130,14 +130,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(4)
@@ -146,22 +146,22 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================
-;4, 혼란 모란
+;4,乱れ牡丹
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_4
 CALL TRAIN_MESSAGE
@@ -169,7 +169,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_4_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_4_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -177,14 +177,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -193,22 +193,22 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================
-;5, 자위 페라
+;5,手淫フェラ
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_5
 CALL TRAIN_MESSAGE
@@ -216,7 +216,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_5_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_5_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -224,14 +224,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -240,36 +240,36 @@ IF LOCAL
 	ELSEIF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		IF NOWEX:MASTER:사정
 			PRINTDATAW
-				DATAFORM 「응무…… 자제 하고 있어? 좋아, 가 버려도―」
-				DATAFORM 「츄…… 도, 두는 치노안으로 움찔움찔 시키지 않고―%UNICODE(0x2764)%」
-				DATAFORM 「읏, 푸핫…… 갈 것 같다? 응후후─, 트드메%UNICODE(0x2764)%」
-				DATAFORM 「응도―, 느슨해진 얼굴 해 버려. 사랑스럽기 때문에……%UNICODE(0x2764)%」
+				DATAFORM 「응읍…… 참고 있는거야?　가버려도 괜찮아ー」
+				DATAFORM 「츄우…… 정말, 입안에서 꿈틀거리지 마ー%UNICODE(0x2764)%」
+				DATAFORM 「응읏, 푸핫…… 갈 것 같아?　응후후－, 라스트 스퍼트%UNICODE(0x2764)%」
+				DATAFORM 「아 정말ー, 그렇게 풀린 표정을 하고선, 귀엽다니까……%UNICODE(0x2764)%」
 			ENDDATA
 		ELSE
 			PRINTDATAW
-				DATAFORM 「날름…… 기분이 좋아? 후후─」
-				DATAFORM 「%CALLNAME:MASTER%의 맛…… 진해져 왔어? 읏…… 후우……%UNICODE(0x2764)%」
-				DATAFORM 「츄…… 읏…… 손으로 쫄깃쫄깃 되면서, 지?」
-				DATAFORM 「후후, 코코가 약한 것, 알고 있기 때문에…… 날름…… 츄……%UNICODE(0x2764)%」
+				DATAFORM 「할짝……　기분 좋아?　후후ー」
+				DATAFORM 「%CALLNAME:MASTER%의 맛…… 진해진 것 같은데?　응읍…… 후우……%UNICODE(0x2764)%」
+				DATAFORM 「츄우…… 응읏…… 손으로 흔들면서 핥아지는 건 어때?」
+				DATAFORM 「후후, 여기가 약한 건 알고 있으니까…… 할짝…… 츄우……%UNICODE(0x2764)%」
 			ENDDATA
 		ENDIF
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		IF NOWEX:MASTER:사정
-			PRINTFORMW 「츄…… 도, 두는 치노안으로 움찔움찔 시키지 않고―%UNICODE(0x2764)%」
+			PRINTFORMW 「츄우…… 정말, 입안에서 꿈틀거리지 마ー%UNICODE(0x2764)%」
 		ELSE
-			PRINTFORMW 「츄…… 읏…… 핫……」
+			PRINTFORMW 「츄우…… 응읏…… 하앗……」
 		ENDIF
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================
-;6, 삽입 G스포 고문
+;6,挿入Ｇスポ責め
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_6
 CALL TRAIN_MESSAGE
@@ -277,7 +277,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_6_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_6_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -285,14 +285,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(4)
@@ -301,22 +301,22 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================
-;7, 삽입 자궁구 고문
+;7,挿入子宮口責め
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_7
 CALL TRAIN_MESSAGE
@@ -324,7 +324,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_7_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_7_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -332,14 +332,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(4)
@@ -348,12 +348,12 @@ IF LOCAL
 
 	ENDIF
 ENDIF
-;미기입
+;未記入
 CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================
-;8, 69 파이즈리
+;8,６９パイズリ
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_8
 CALL TRAIN_MESSAGE
@@ -361,7 +361,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_8_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_8_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -369,14 +369,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -384,45 +384,45 @@ IF LOCAL
 	;연모
 	ELSEIF NOWEX:TARGET:B절정 || NOWEX:TARGET:C절정
 		PRINTDATAW
-			DATAFORM 「응%UNICODE(0x2764)% 안됏, 공격하고 있을 것, 인데 %UNICODE(0x2764)%」
-			DATAFORM 「야아…… 먼저, 가서는…… 아%UNICODE(0x2764)%」
+			DATAFORM 「응읏%UNICODE(0x2764)%　안대앳, 괴롭히는 건, 내 쪽인데엣%UNICODE(0x2764)%」
+			DATAFORM 「아아…… 먼저, 가버리면…… 후아아아앗%UNICODE(0x2764)%」
 		ENDDATA
 	ELSEIF NOWEX:MASTER:사정
 		PRINTDATAW
-			DATAFORM 「헤헤, 가 버려? 좋아, 내고 내―♪」
-			DATAFORM 「응─, 손이 멈추어 버리고 있다―? 갈 것 같다…… 후후%UNICODE(0x2764)%」
+			DATAFORM 「헤헤, 갈 것 같아?　괜찮아, 빨리 싸 줘ー♪」
+			DATAFORM 「응ー, 손이 멈췄잖아ー?　갈 것 같구나…… 후후%UNICODE(0x2764)%」
 		ENDDATA
 	ELSEIF NOWEX:MASTER:사정 && (NOWEX:TARGET:B절정 || NOWEX:TARGET:C절정)
 		PRINTDATAW
-			DATAFORM 「야아…… 도, 가 버리는……%UNICODE(0x2764)% 그런데, 함께…… 응…… 아 %UNICODE(0x2764)%」
-			DATAFORM 「읏, 이 %UNICODE(0x2764)% 도, 자제 하지 않고, 가 버려……%UNICODE(0x2764)%」
+			DATAFORM 「시러…… 이제, 가버려어……%UNICODE(0x2764)%　이제, 같이…… 응…… 후아아앗%UNICODE(0x2764)%」
+			DATAFORM 「응ー읏, 이게엣%UNICODE(0x2764)%　이제, 참지 말고 싸줘……%UNICODE(0x2764)%」
 		ENDDATA
 	ELSEIF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		PRINTDATAW
-			DATAFORM 「팥고물%UNICODE(0x2764)% 응……, 지고 있을 수 없구나♪영차, 와%UNICODE(0x2764)%」
-			DATAFORM 「, 어느 쪽이 먼저, , 가 버리는 것일까―%UNICODE(0x2764)%」
-			DATAFORM 「읏, 츄……, 하앗…… 기분이 좋아, 좀 더 해……%UNICODE(0x2764)%」
+			DATAFORM 「햐아앙%UNICODE(0x2764)%　응……, 지고 있을 수만은 없겠네♪　영차앗%UNICODE(0x2764)%」
+			DATAFORM 「아앙, 누가 먼저, 엇, 가버릴까ー%UNICODE(0x2764)%」
+			DATAFORM 「응, 츄우……웃, 하앗…… 기분 좋아앗, 계속 해줘어……%UNICODE(0x2764)%」
 		ENDDATA
 		RETURN 1
 	ELSE
-		PRINTFORMW 「팥고물%UNICODE(0x2764)% 응……, 지고 있을 수 없구나♪영차, 와%UNICODE(0x2764)%」
+		PRINTFORMW 「햐아앙%UNICODE(0x2764)%　응……, 지고 있을 수만은 없겠네♪　영차앗%UNICODE(0x2764)%」
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================
-;9, 더블 페라
+;9,ダブルフェラ
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_9
 CALL TRAIN_MESSAGE
 CALL M_KOJO_MESSAGE_SCOM_K33_9_1
-;반환값과 TARGET를 보존, TARGET를 2인째에 일시적으로 교대해 2인째 말을 호출한 후, TARGET도 제도해 보존한 반환값으로 RETURN 한다
-;2인째는 필요없는 경우는 여기서 처리
-;2인째
-LOCAL = MASTER_POSE(4, 1, 1)
+;戻り値とTARGETを保存、TARGETを二人目に一時的に交代して二人目口上を呼び出した後、TARGETをもどして保存した戻り値でRETURNする
+;二人目はいらない場合はここで処理
+;二人目
+LOCAL = MASTER_POSE(4,1,1)
 LOCAL:1 = RESULT
 LOCAL:2 = TARGET
 TARGET = LOCAL
@@ -430,10 +430,10 @@ TRYCALLFORM M_KOJO_MESSAGE_SCOM_K{TARGET}_9_2
 TARGET = LOCAL:2
 RETURN LOCAL:1
 
-;1인째 말
+;一人目口上
 @M_KOJO_MESSAGE_SCOM_K33_9_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -441,14 +441,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -457,27 +457,27 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
-;2인째 말
+;二人目口上
 @M_KOJO_MESSAGE_SCOM_K33_9_2
 VARSET LOCAL
-;1인째
-LOCAL:101 = MASTER_POSE(4, 1)
+;一人目
+LOCAL:101 = MASTER_POSE(4,1)
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -485,14 +485,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -501,11 +501,11 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
@@ -514,15 +514,15 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;10, 더블 가랑이
+;10,ダブル素股
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_10
 CALL TRAIN_MESSAGE
 CALL M_KOJO_MESSAGE_SCOM_K33_10_1
-;반환값과 TARGET를 보존, TARGET를 2인째에 일시적으로 교대해 2인째 말을 호출한 후, TARGET도 제도해 보존한 반환값으로 RETURN 한다
-;2인째는 필요없는 경우는 여기서 처리
-;2인째
-LOCAL = MASTER_POSE(2, 1, 1)
+;戻り値とTARGETを保存、TARGETを二人目に一時的に交代して二人目口上を呼び出した後、TARGETをもどして保存した戻り値でRETURNする
+;二人目はいらない場合はここで処理
+;二人目
+LOCAL = MASTER_POSE(2,1,1)
 LOCAL:1 = RESULT
 LOCAL:2 = TARGET
 TARGET = LOCAL
@@ -532,7 +532,7 @@ RETURN LOCAL:1
 
 @M_KOJO_MESSAGE_SCOM_K33_10_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -540,14 +540,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(2)
@@ -556,23 +556,23 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 @M_KOJO_MESSAGE_SCOM_K33_10_2
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -580,14 +580,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(2)
@@ -596,11 +596,11 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
@@ -609,15 +609,15 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;11, 다브르파이즈리
+;11,ダブルパイズリ
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_11
 CALL TRAIN_MESSAGE
 CALL M_KOJO_MESSAGE_SCOM_K33_11_1
-;반환값과 TARGET를 보존, TARGET를 2인째에 일시적으로 교대해 2인째 말을 호출한 후, TARGET도 제도해 보존한 반환값으로 RETURN 한다
-;2인째는 필요없는 경우는 여기서 처리
-;2인째
-LOCAL = MASTER_POSE(5, 1, 1)
+;戻り値とTARGETを保存、TARGETを二人目に一時的に交代して二人目口上を呼び出した後、TARGETをもどして保存した戻り値でRETURNする
+;二人目はいらない場合はここで処理
+;二人目
+LOCAL = MASTER_POSE(5,1,1)
 LOCAL:1 = RESULT
 LOCAL:2 = TARGET
 TARGET = LOCAL
@@ -627,7 +627,7 @@ RETURN LOCAL:1
 
 @M_KOJO_MESSAGE_SCOM_K33_11_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -635,14 +635,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -651,23 +651,23 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 @M_KOJO_MESSAGE_SCOM_K33_11_2
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 0
 ;-------------------------------------------------
 IF LOCAL
@@ -675,14 +675,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -691,11 +691,11 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
@@ -704,7 +704,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;12, 파이즈리페라
+;12,パイズリフェラ
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_12
 CALL TRAIN_MESSAGE
@@ -712,7 +712,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_12_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_12_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -720,14 +720,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -736,44 +736,44 @@ IF LOCAL
 	ELSEIF TALENT:연모 || TALENT:애욕 || TALENT:섹프
 		IF NOWEX:MASTER:사정
 			PRINTDATAW
-				DATAFORM 「응무…… 자제 하고 있어? 좋아, 가 버려도―」
-				DATAFORM 「츄…… 도, 망나니씨인 것이니까%UNICODE(0x2764)%」
-				DATAFORM 「읏, 푸핫…… 갈 것 같다? 응후후─, 트드메%UNICODE(0x2764)%」
-				DATAFORM 「응도―, 느슨해진 얼굴 해 버려. 사랑스럽기 때문에……%UNICODE(0x2764)%」
+				DATAFORM 「응읍…… 참고 있는거야?　가버려도 괜찮아ー」
+				DATAFORM 「츄우…… 정말, 난폭하다니까%UNICODE(0x2764)%」
+				DATAFORM 「응읏, 푸핫…… 갈 것 같아?　응후후－, 라스트 스퍼트%UNICODE(0x2764)%」
+				DATAFORM 「아 정말ー, 그렇게 풀린 표정을 하고선, 귀엽다니까……%UNICODE(0x2764)%」
 			ENDDATA
 		ELSE
 			PRINTDATAW
-				DATAFORM 「날름…… 기분이 좋아? 후후─, 전신으로 기분 좋게 해 준다……♪」
-				DATAFORM 「%CALLNAME:MASTER%의 맛…… 진해져 왔어? 읏…… 후우……%UNICODE(0x2764)%」
-				DATAFORM 「츄…… 읏…… 응후후─, 교대로 고문?」
-				DATAFORM 「후후, 코코가 약한 것, 알고 있기 때문에…… 날름…… 츄……%UNICODE(0x2764)%」
+				DATAFORM 「할짝……　기분 좋아?　후후ー, 온몸으로 기분 좋게 해 줄게……♪」
+				DATAFORM 「%CALLNAME:MASTER%의 맛…… 진해진 것 같은데?　응읍…… 후우……%UNICODE(0x2764)%」
+				DATAFORM 「츄우…… 응읏…… 　응후후ー, 번갈아 가면서 괴롭혀지는 건 어때?」
+				DATAFORM 「후후, 여기가 약한 건 알고 있으니까…… 할짝…… 츄우……%UNICODE(0x2764)%」
 			ENDDATA
 		ENDIF
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		IF NOWEX:MASTER:사정
-			PRINTFORMW 「츄…… 도, 망나니씨인 것이니까%UNICODE(0x2764)%」
+			PRINTFORMW 「츄우…… 정말, 난폭하다니까%UNICODE(0x2764)%」
 		ELSE
-			PRINTFORMW 「츄…… 읏…… 핫……」
+			PRINTFORMW 「츄우…… 응읏…… 하앗……」
 		ENDIF
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================
-;13, 교호 삽입
+;13,交互挿入
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_13
 CALL TRAIN_MESSAGE
 CALL M_KOJO_MESSAGE_SCOM_K33_13_1
-;반환값과 TARGET를 보존, TARGET를 2인째에 일시적으로 교대해 2인째 말을 호출한 후, TARGET도 제도해 보존한 반환값으로 RETURN 한다
-;2인째는 필요없는 경우는 여기서 처리
-;2인째
-LOCAL = MASTER_POSE(6, 1, 1)
+;戻り値とTARGETを保存、TARGETを二人目に一時的に交代して二人目口上を呼び出した後、TARGETをもどして保存した戻り値でRETURNする
+;二人目はいらない場合はここで処理
+;二人目
+LOCAL = MASTER_POSE(6,1,1)
 LOCAL:1 = RESULT
 LOCAL:2 = TARGET
 TARGET = LOCAL
@@ -783,7 +783,7 @@ RETURN LOCAL:1
 
 @M_KOJO_MESSAGE_SCOM_K33_13_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -791,14 +791,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -807,23 +807,23 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 @M_KOJO_MESSAGE_SCOM_K33_13_2
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -831,14 +831,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(3)
@@ -847,11 +847,11 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
@@ -859,7 +859,7 @@ IF LOCAL
 ENDIF
 RETURN 1
 ;==================================================
-;14, S장 결장 고문
+;14,Ｓ状結腸責め
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_14
 CALL TRAIN_MESSAGE
@@ -867,7 +867,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_14_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_14_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -875,14 +875,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(4)
@@ -891,21 +891,21 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 ;==================================================
-;15, 질리고문
+;15,膣裏責め
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_15
 CALL TRAIN_MESSAGE
@@ -913,7 +913,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_15_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_15_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -921,14 +921,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(4)
@@ -937,22 +937,22 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
 
 ;==================================================
-;17, 유두 동시 들이마셔
+;17,乳首同時吸い
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K33_17
 CALL TRAIN_MESSAGE
@@ -960,7 +960,7 @@ CALL M_KOJO_MESSAGE_SCOM_K33_17_1
 RETURN 1
 @M_KOJO_MESSAGE_SCOM_K33_17_1
 ;-------------------------------------------------
-;기입 체크(=0, 비표시, 1, 표시)
+;기입체크（=0, 비표시、1, 표시）
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
@@ -968,14 +968,14 @@ IF LOCAL
 	;소분기
 	;-------------------------------------------------
 	;처음
-	;기입 체크
+	;기입체크
 	LOCAL:1 = 0
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(TFLAG:50 + 500)
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
-	;기본 세트
+	;기본세트
 	;시간중
 	IF FLAG:70
 		CALL K33_TATARI_COUNTER(2)
@@ -984,16 +984,16 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		PRINTFORMW 
 		RETURN 1
-	;굴복 3
+	;굴복3
 	ELSEIF MARK:괘씸각인 == 3
 		PRINTFORMW 
 		RETURN 1
-	;그 이외
+	;그 외
 	ELSE
 		PRINTFORMW 
 		RETURN 1
 	ENDIF
 ENDIF
-;미기입
+;未記入
 ;CALLFORM M_KOJO_MESSAGE_COM_K33_{SELECTCOM}_1
 RETURN 1
