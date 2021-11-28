@@ -2,7 +2,7 @@
 ;奉仕系コマンド
 ;※※※※※※※※※※※※※※※※※※※※※※※※※
 ;==================================================
-;80,手淫
+;80,수음
 ;==================================================
 @M_KOJO_MESSAGE_COM_K134_80
 CALL TRAIN_MESSAGE
@@ -23,7 +23,7 @@ IF LOCAL
 	LOCAL:1 = 1
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
-		PRINTFORMW 「美宵がいっぱい気持ちよくしてあげますからねぇ%UNICODE(0x2665) *1%」
+		PRINTFORMW 「미요이가 잔뜩 기분 좋게 해드릴테니까요%UNICODE(0x2665) *1%」
 		RETURN 1
 	ENDIF
 	;基本セット
@@ -34,29 +34,29 @@ IF LOCAL
 	;出す直前
 	ELSEIF BASE:PLAYER:2 > 8000
 		IF RAND:3 == 0
-			PRINTFORMW 「おちんちんさん気持ちよくなっていいですよぉ%UNICODE(0x2665) *1%」
+			PRINTFORMW 「자지씨 기분 좋아지셔도 된다구요%UNICODE(0x2665) *1%」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「えっちなお酒いっぱい出してくださいねぇ%UNICODE(0x2665) *1%」
+			PRINTFORMW 「야한 술 잔뜩 싸주세요%UNICODE(0x2665) *1%」
 		ELSE
-			PRINTFORMW 「もう手で射精しちゃいそうなんですか？我慢できない悪いおちんちんですねぇ%UNICODE(0x2665) *1%」
+			PRINTFORMW 「손으로 사정해버릴 것 같다구요? 참을성없는 나쁜 자지씨네요%UNICODE(0x2665) *1%」
 		ENDIF
-	;技巧4以上
-	ELSEIF ABL:技巧 > 3
+	;기교4以上
+	ELSEIF ABL:기교 > 3
 		IF RAND:3 == 0
-			PRINTFORMW 「意外と私、手でするのが上手かもしれません%UNICODE(0x2665) *1%」
+			PRINTFORMW 「의외로 저、손으로 하는 거 잘할지도 몰라요%UNICODE(0x2665) *1%」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「んっしょ%UNICODE(0x2665) *1%えいっ%UNICODE(0x2665) *1%こういう風にされるのが好きなんですかぁ？」
+			PRINTFORMW 「읏샤%UNICODE(0x2665) *1% 에잇%UNICODE(0x2665) *1% 이런식으로 하는 걸 좋아하시는 거에요?」
 		ELSE
-			PRINTFORMW 「我慢しなくてもいいんですよ%UNICODE(0x2665) *1%思いっきりびゅっびゅしてくださいね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「참지 않으셔도 되요%UNICODE(0x2665) *1% 마음껏 싸주세요%UNICODE(0x2665) *1%」
 		ENDIF
 	;それ以外
 	ELSE
 		IF RAND:3 == 0
-			PRINTFORMW 「こんな感じでシコシコすればいいのでしょうか？」
+			PRINTFORMW 「이런 느낌으로 흔들면 되는 걸까요?」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「いつもはお一人でシコシコしているんです？では今日は美宵がシコシコサービスしてあげますね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「언제나 혼자 흔드는 거에요? 그럼 오늘은 미요이가 흔들흔들 서비스 해드릴게요%UNICODE(0x2665) *1%」
 		ELSE
-			PRINTFORMW 「今手で綺麗に気持ちよくしてあげますねぇ%UNICODE(0x2665) *1%」
+			PRINTFORMW 「지금 손으로 깔끔하고 기분 좋게 해드릴게요%UNICODE(0x2665) *1%」
 		ENDIF
 	ENDIF
 ENDIF
@@ -97,29 +97,29 @@ IF LOCAL
 		;精液中毒4以上
 		IF ABL:精液中毒 > 4
 			IF RAND:3 == 0
-				PRINTFORMW 「ん？んんん～%UNICODE(0x2665) *1%」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 「ん?んんん～%UNICODE(0x2665) *1%」
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 				PRINTFORMW （もう少しで美味しいぷりぷりザーメンいっぱい出てきそうね……%UNICODE(0x2665) *1%）
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「ん%UNICODE(0x2665) *1%んちゅっ%UNICODE(0x2665) *1%」
-				PRINTFORMW 「我慢できないぷりぷりのおちんぽ汁、美宵の口の中にいっぱい射精してください%UNICODE(0x2665) *1%」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 「我慢できないぷりぷりのおちんぽ汁、미요이の口の中にいっぱい射精してください%UNICODE(0x2665) *1%」
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 			ELSE
 				PRINTFORMW 「んんっ%UNICODE(0x2665) *1%おちんちんどんどん固くなってきましたね%UNICODE(0x2665) *1%」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 				PRINTFORMW （濃厚なおちんちん汁早く飲みたいなぁ%UNICODE(0x2665) *1%）
 			ENDIF
 		ELSE
 			IF RAND:3 == 0
 				PRINTFORMW 「んん」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 				PRINTFORMW 「もう射精しちゃうぐらいカチカチのおちんちんになってきましたね%UNICODE(0x2665) *1%」
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「んん%UNICODE(0x2665) *1%んむっ%UNICODE(0x2665) *1%」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 			ELSE
 				PRINTFORMW 「んんっ%UNICODE(0x2665) *1%もうでちゃいそうなんですかぁ%UNICODE(0x2665) *1%」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 			ENDIF
 		ENDIF
 	;舌3以上
@@ -137,9 +137,9 @@ IF LOCAL
 		ELSE
 			IF RAND:3 == 0
 				PRINTFORMW 「ん～%UNICODE(0x2665) *1%」
-				PRINTFORMW 「美宵のお口は気持ちいいですかぁ%UNICODE(0x2665) *1%もっと気持ちよくしてあげますからねぇ%UNICODE(0x2665) *1%」
+				PRINTFORMW 「미요이のお口は気持ちいいですかぁ%UNICODE(0x2665) *1%もっと気持ちよくしてあげますからねぇ%UNICODE(0x2665) *1%」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「んん%UNICODE(0x2665) *1%美宵に任せてくださいね%UNICODE(0x2665) *1%」
+				PRINTFORMW 「んん%UNICODE(0x2665) *1%미요이に任せてくださいね%UNICODE(0x2665) *1%」
 			ELSE
 				PRINTFORMW 「んんっ%UNICODE(0x2665) *1%おちんちんさんいっぱい気持ちよくしてあげますからねぇ%UNICODE(0x2665) *1%」
 			ENDIF
@@ -153,7 +153,7 @@ IF LOCAL
 			PRINTFORMW 「れろっ%UNICODE(0x2665) *1%んん%UNICODE(0x2665) *1%」
 		ELSE
 			PRINTFORMW 「んん……%UNICODE(0x2665) *1%」
-			PRINTFORMW 美宵はどこかぎこちなく陰茎を口に含んだ。
+			PRINTFORMW 미요이はどこかぎこちなく陰茎を口に含んだ。
 		ENDIF
 	ENDIF
 ENDIF
@@ -202,11 +202,11 @@ IF LOCAL
 	;胸3以上
 	ELSEIF ABL:胸 > 2
 		IF RAND:3 == 0
-			PRINTFORMW 「美宵のおっぱいで気持ちよくしてあげますからねぇ%UNICODE(0x2665) *1%」
+			PRINTFORMW 「미요이のおっぱいで気持ちよくしてあげますからねぇ%UNICODE(0x2665) *1%」
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「ん%UNICODE(0x2665) *1%こうやっておっぱいで擦るとえっちな臭いがしてきますねぇ%UNICODE(0x2665) *1%」
 		ELSE
-			PRINTFORMW 「おっぱいでするの気持ちいいですか？いっぱい射精してくださいね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「おっぱいでするの気持ちいいですか?いっぱい射精してくださいね%UNICODE(0x2665) *1%」
 		ENDIF
 	;それ以外
 	ELSE
@@ -296,7 +296,7 @@ IF LOCAL
 			PRINTFORMW 「全身綺麗にしてあげますからねぇ%UNICODE(0x2665) *1%」
 		ELSE
 			PRINTFORMW 「んしょっ%UNICODE(0x2665) *1%動いたら駄目ですよぉ%UNICODE(0x2665) *1%」
-			PRINTFORMW 「全身で美宵を感じさせてあげますねぇ%UNICODE(0x2665) *1%」
+			PRINTFORMW 「全身で미요이を感じさせてあげますねぇ%UNICODE(0x2665) *1%」
 		ENDIF
 ENDIF
 RETURN 1
@@ -366,7 +366,7 @@ IF LOCAL
 	;-------------------------------------------------
 	IF LOCAL:1 && FIRSTTIME(SELECTCOM)
 		PRINTFORMW 「ん%UNICODE(0x2665) *1%んん%UNICODE(0x2665) *1%」
-		PRINTFORMW 美宵は勢いよく陰茎にむしゃぶりついている。
+		PRINTFORMW 미요이は勢いよく陰茎にむしゃぶりついている。
 		RETURN 1
 	ENDIF
 	;基本セット
@@ -379,41 +379,41 @@ IF LOCAL
 		;精液中毒4以上
 		IF ABL:精液中毒 > 4
 			IF RAND:3 == 0
-				PRINTFORMW 「ん？んんん～%UNICODE(0x2665) *1%」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 「ん?んんん～%UNICODE(0x2665) *1%」
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 				PRINTFORMW （もう少しで美味しいぷりぷりザーメンいっぱい出てきそうね……%UNICODE(0x2665) *1%）
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「ん%UNICODE(0x2665) *1%んちゅっ%UNICODE(0x2665) *1%」
 				PRINTFORMW （早くおちんぽ汁飲ませて……%UNICODE(0x2665) *1%）
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 			ELSE
 				PRINTFORMW 「んんっ%UNICODE(0x2665) *1%んん%UNICODE(0x2665) *1%」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 				PRINTFORMW （濃厚なおちんちん汁早く飲みたいなぁ%UNICODE(0x2665) *1%）
 			ENDIF
 		ELSE
 			IF RAND:3 == 0
 				PRINTFORMW 「んん～」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「んん～%UNICODE(0x2665) *1%んむっ%UNICODE(0x2665) *1%」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 			ELSE
 				PRINTFORMW 「んんっ～%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%%UNICODE(0x2665) *1%」
-				PRINTFORMW 美宵は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
+				PRINTFORMW 미요이は%CALLNAME:MASTER%の射精を感じ取ると舌使いで巧みにそれを促している。
 			ENDIF
 		ENDIF
 	;それ以外
 	ELSE
 		IF RAND:3 == 0
 			PRINTFORMW 「ん%UNICODE(0x2665) *1%んん～%UNICODE(0x2665) *1%」
-			PRINTFORMW 美宵は勢いよく陰茎にむしゃぶりついている。
+			PRINTFORMW 미요이は勢いよく陰茎にむしゃぶりついている。
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「んっ%UNICODE(0x2665) *1%んん%UNICODE(0x2665) *1%」
-			PRINTFORMW 美宵は勢いよく陰茎にむしゃぶりついている。
+			PRINTFORMW 미요이は勢いよく陰茎にむしゃぶりついている。
 		ELSE
 			PRINTFORMW 「んん%UNICODE(0x2665) *1%」
-			PRINTFORMW 美宵は勢いよく陰茎にむしゃぶりついている。
+			PRINTFORMW 미요이は勢いよく陰茎にむしゃぶりついている。
 		ENDIF
 	ENDIF
 ENDIF
