@@ -231,29 +231,29 @@ IF LOCAL
 		ELSEIF RAND:3 == 0
 			PRINTFORMW 「떫어……」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「으으읏…… 이상한 목소리가 나와버렸네요.」
+			PRINTFORMW 「우욱, 으으…… 이상한 목소리가 나와버렸네요.」
 		ELSE
-			PRINTFORMW 「……독특한 맛이네요.……」
+			PRINTFORMW 「……독특한 맛이네요……」
 		ENDIF
 	ELSE
 		IF RAND:5 == 0
-			PRINTFORMW 「結構なお点前です!」
+			PRINTFORMW 「괜찮은 다도 예절이네요!」
 		ELSEIF RAND:4 == 0
-			PRINTFORMW 「頂きますね!」
+			PRINTFORMW 「잘 먹겠습니다!」
 		ELSEIF RAND:3 == 0
-			PRINTFORMW 「%CALLNAME:MASTER%씨のお茶, とっても美味しいです!」
+			PRINTFORMW 「%CALLNAME:MASTER%씨의 차, 너무 맛있어요!」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「%CALLNAME:MASTER%씨も鯢呑亭でアルバイトしてみませんか?」
-			PRINTFORMW 「このお茶の腕前ならきっとみんな喜びますよ!」
+			PRINTFORMW 「%CALLNAME:MASTER%씨도 예탄정에서 일해보시지 않으시겠어요?」
+			PRINTFORMW 「이런 차 솜씨라면 다들 좋아하실 거에요!」
 		ELSE
-			PRINTFORMW 「ん, いただきます%UNICODE(0x2665) *1%」
+			PRINTFORMW 「음, 잘 먹겠습니다%UNICODE(0x2665) *1%」
 		ENDIF
 	ENDIF
 
 ENDIF
 RETURN 1
 ;==================================================
-;302,スキンシップ
+;302,스킨십
 ;TFLAG:193(1=大成功 0=成功 -1=失敗)
 ;==================================================
 @M_KOJO_SUCCESS_COM_K134_302
@@ -274,64 +274,64 @@ LOCAL = 1
 IF LOCAL
 	IF CFLAG:318 == 1
 		IF RAND:3 == 0
-			PRINTFORMW 「触らないで!」
-			PRINTFORMW 미요이はスキンシップに対して睨みつけている.
+			PRINTFORMW 「만지지 마!」
+			PRINTFORMW 미요이는 스킨십에 대해 노려봤다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「気持ち悪い……」
-			PRINTFORMW 미요이は%CALLNAME:MASTER%の行為にドン引きしている.
+			PRINTFORMW 「기분 나빠……」
+			PRINTFORMW 미요이는 %CALLNAME:MASTER%의 행동에 차갑게 대했다.
 		ELSE
-			PRINTFORMW 「止めて!」
-			PRINTFORMW 미요이は怒った表情で抗議してくる.
+			PRINTFORMW 「멈춰!」
+			PRINTFORMW 미요이는 화난 표정으로 항의했다.
 		ENDIF
 	ELSEIF TALENT:연인
 		IF RAND:3 == 0
-			PRINTFORMW 「んん, 変な気持ちになってきちゃいますね, これ%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이は顔を赤らめながら%CALLNAME:MASTER%に抱き着いてきた.
+			PRINTFORMW 「으음, 기분 묘하네요, 이거%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 얼굴을 붉히면서%마스터를% 끌어안았다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「んん……大好きですよ……%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이は顔を赤らめながら%CALLNAME:MASTER%とスキンシップを取っている.
+			PRINTFORMW 「으응…… 사랑해요……%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 얼굴을 붉히면서%CALLNAME:MASTER%와 스킨십을 하고 있다.
 		ELSE
-			PRINTFORMW （연인らしくなれたかなぁ……%UNICODE(0x2665) *1%）
-			PRINTFORMW 미요이は顔をとろんとさせながら%CALLNAME:MASTER%とスキンシップを取っている.
+			PRINTFORMW （연인다워졌을까나아……%UNICODE(0x2665) *1%）
+			PRINTFORMW 미요이는 얼굴을 붉히며%CALLNAME:MASTER%와 스킨십을 하고 있다.
 		ENDIF
 	ELSEIF TALENT:연모
 		IF RAND:3 == 0
-			PRINTFORMW 「なんだか温かいですね, %CALLNAME:MASTER%씨とこういうことするの」
+			PRINTFORMW 「왠지 따뜻하네요, %CALLNAME:MASTER%씨랑 이런 거 하는 거.」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「んー好きになっちゃうかもしれませんね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「음~ 좋아하게 되어 버릴지도 모르겠네요%UNICODE(0x2665) *1%」
 		ELSE
-			PRINTFORMW 「こうやってるとお客씨に変な目で見られちゃいそう%UNICODE(0x2665) *1%」
+			PRINTFORMW 「이러다 손님들한테 이상한 시선을 받을 것 같아요%UNICODE(0x2665) *1%」
 		ENDIF
 	ELSEIF TALENT:사모
 		IF RAND:3 == 0
-			PRINTFORMW 「んっ%UNICODE(0x2665) *1%」
+			PRINTFORMW 「으읏%UNICODE(0x2665) *1%」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「激しいスキンシップですね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「격한 스킨십이네요%UNICODE(0x2665) *1%」
 		ELSE
-			PRINTFORMW 「んん……ポカポカしてきますね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「음…… 따끈따끈하네요%UNICODE(0x2665) *1%」
 		ENDIF
 	ELSEIF CFLAG:2 >= 500
 		IF RAND:3 == 0
-			PRINTFORMW 「なんでしょうか?」
+			PRINTFORMW 「뭐에요?」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「んーどうかしましたか?」
+			PRINTFORMW 「음~ 무슨 일 있나요?」
 		ELSE
-			PRINTFORMW 「ちょっと, くすぐったいですよ」
+			PRINTFORMW 「조금, 간지러워요.」
 		ENDIF
 	ELSE
 		IF RAND:3 == 0
-			PRINTFORMW 「……なんでしょうか?」
+			PRINTFORMW 「……뭐에요?」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「……あまりお触りは……」
+			PRINTFORMW 「……별로 느낌은……」
 		ELSE
-			PRINTFORMW 「別料金ですよ?」
+			PRINTFORMW 「별도 요금 부과된다구요?」
 		ENDIF
 	ENDIF
 
 ENDIF
 RETURN 1
 ;==================================================
-;303,謝る
+;303,사과한다
 ;TFLAG:193(2=菓子折成功 1=大成功 0=成功 -1=失敗 -2=菓子折失敗)
 ;==================================================
 @M_KOJO_SUCCESS_COM_K134_303
@@ -353,27 +353,27 @@ IF LOCAL
 	SELECTCASE TFLAG:193 
 	CASE 0,1,2
 		IF TALENT:연모
-			PRINTFORMW 「……いいでけど」
-			PRINTFORMW 미요이は呆れたように%CALLNAME:MASTER%の謝罪の言葉を受け入れた.
-			PRINTFORMW 「あまり私を怒らせないでくださいね?」
-			PRINTFORMW 「……私を忘れてほしくありませんから」
+			PRINTFORMW 「……됐어요.」
+			PRINTFORMW 미요이는 어이없다는 듯 %CALLNAME:MASTER%의 사과를 받아들였다.
+			PRINTFORMW 「저 너무 화나게 하지 마세요?」
+			PRINTFORMW 「……저를 잊지도 마시구요.」
 		ELSE
-			PRINTFORMW %CALLNAME:MASTER%が미요이に対して非礼を詫びると
-			PRINTFORMW 「わかりました, 次は許しませんからね?」
-			PRINTFORMW 미요이は微妙な表情で許すことに決めたようだ.
+			PRINTFORMW %마스터가% 미요이에게 잘못을 사과하자
+			PRINTFORMW 「알겠어요, 다음번엔 용서 안할거에요?」
+			PRINTFORMW 미요이는 묘한 표정으로 용서 하기로 결정한 것 같다.
 		ENDIF
 	CASEELSE
 		IF TALENT:연모
-			PRINTFORMW 「……許さないですよ」
+			PRINTFORMW 「……용서 못해요.」
 		ELSE
-			PRINTFORMW 「……知りません, あっちいってください」
+			PRINTFORMW 「……몰라요, 저리 가요.」
 		ENDIF
 	ENDSELECT
 
 ENDIF
 RETURN 1
 ;==================================================
-;304,仕事を手伝う
+;304,일을 돕는다
 ;TFLAG:193(1=大成功 0=成功 -1=失敗)
 ;CFLAG:350(仕事内容(JOB_仕事内容.ERB参照のこと
 ;TCVAR:手伝えない(=2 手伝っても早くは終わらない, 時間停止中不可 永琳の診察等)
@@ -399,18 +399,18 @@ IF LOCAL
 	;通常
 	ELSE
 		IF RAND:3 == 0
-			PRINTFORMW 「お皿お下げしてきてもらえるかしら?」
+			PRINTFORMW 「그릇 좀 치워줄래요?」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「注文取ってきてくれるかしら?」
+			PRINTFORMW 「주문 좀 받아줄래요?」
 		ELSE
-			PRINTFORMW 「お冷お出ししてもらえる?」
+			PRINTFORMW 「냉수 좀 가져다 줄래요?」
 		ENDIF
 	ENDIF
 
 ENDIF
 RETURN 1
 ;==================================================
-;305,膝枕してもらう
+;305,무릎 베개 받는다
 ;TFLAG:193(-5=MASTERがTARGETよりも巨体の場合(TALENT:MASTER:体型 > TALENT:体型 + 2) 1=大成功 0=成功 -1=失敗)(-5以外は地の文分岐無し)
 ;ABL:親密(6以上=顔をのぞき込みながら頭を撫でてくれる 3以上=ただ頭を撫でてくれる 2以下=縮こまっている)
 ;==================================================
@@ -432,69 +432,69 @@ LOCAL = 1
 IF LOCAL
 	IF CFLAG:318 == 1
 		PRINTFORMW 「……」
-		PRINTFORMW 미요이は無言で膝を貸している.
+		PRINTFORMW 미요이는 말없이 무릎을 꿇고 있다.
 	ELSEIF TALENT:연인
 		IF RAND:3 == 0
-			PRINTFORMW 「ふふふん♪私の膝は気持ちいいですか?」
-			PRINTFORMW 미요이は膝の上の%CALLNAME:MASTER%の頭を撫でている.
+			PRINTFORMW 「흐흥♪ 제 무릎 편안하세요?」
+			PRINTFORMW 미요이는 무릎 위의 %CALLNAME:MASTER%의 머리를 쓰다듬고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「いいですよ, はいどうぞ♪」
-			PRINTFORMW 미요이は正座を正すと膝の上に%CALLNAME:MASTER%を迎え入れた.
-			PRINTFORMW 「よしよし, いい子ですね%UNICODE(0x2665) *1%」
-			PRINTFORMW そう言いつつ미요이は%CALLNAME:MASTER%の頭を優しく撫でている.
+			PRINTFORMW 「좋아요, 자, 여기요♪」
+			PRINTFORMW 미요이는 자세를 바로잡고 무릎 위에 %마스터를% 받아주었다.
+			PRINTFORMW 「오구오구, 착한 아이네요%UNICODE(0x2665) *1%」
+			PRINTFORMW 그렇게 말하면서 미요이는 %CALLNAME:MASTER%의 머리를 부드럽게 쓰다듬고 있다.
 		ELSE
-			PRINTFORMW 「いいですよ~」
-			PRINTFORMW 미요이はそう言いながら膝の上に%CALLNAME:MASTER%を受け入れた.
-			PRINTFORMW 「いつも頑張ってますからね, ご褒美です%UNICODE(0x2665) *1%」
+			PRINTFORMW 「좋아요~」
+			PRINTFORMW 미요이는 그러면서 무릎 위에 %마스터를% 받아주었다.
+			PRINTFORMW 「항상 열심히 하고 계시니까, 보상이에요%UNICODE(0x2665) *1%」
 		ENDIF
 	ELSEIF TALENT:연모
 		IF RAND:3 == 0
-			PRINTFORMW 「ん, どうぞ」
-			PRINTFORMW 「……少し恥ずかしいですね」
-			PRINTFORMW 미요이は%CALLNAME:MASTER%の温もりを膝で感じている.
+			PRINTFORMW 「응, 여기요.」
+			PRINTFORMW 「……조금 부끄럽네요.」
+			PRINTFORMW 미요이는 %CALLNAME:MASTER%의 온기를 무릎으로 느끼고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「……特別料金ですよ?」
-			PRINTFORMW 미요이は顔を赤らめながら%CALLNAME:MASTER%を膝の上に迎え入れた.
+			PRINTFORMW 「……특별요금인데요?」
+			PRINTFORMW 미요이는 얼굴을 붉히면서 %마스터를% 무릎 위로 받아주었다.
 		ELSE
-			PRINTFORMW 「あんまり動かないでくださいね」
-			PRINTFORMW 미요이は顔を真っ赤にしながら%CALLNAME:MASTER%の頭を膝の上に乗せた.
+			PRINTFORMW 「너무 움직이지 마요.」
+			PRINTFORMW 미요이는 얼굴을 붉히면서 %CALLNAME:MASTER%의 머리를 무릎 위에 얹었다.
 		ENDIF
 	ELSEIF TALENT:사모
 		IF RAND:3 == 0
-			PRINTFORMW 「……高くつきますよ?」
+			PRINTFORMW 「……비쌀 걸요?」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「……これでいいのかしら……?」
-			PRINTFORMW 미요이は%CALLNAME:MASTER%頭を膝の上で優しく撫でている.
+			PRINTFORMW 「……이게 맞나……?」
+			PRINTFORMW 미요이는 %CALLNAME:MASTER%의 머리를 무릎 위에서 부드럽게 쓰다듬고 있다.
 		ELSE
-			PRINTFORMW 「よしよしすればいいのかな?」
-			PRINTFORMW 「あまりしたことないんですよね, こういうこと」
+			PRINTFORMW 「오구오구 같은 거 해야 되나?」
+			PRINTFORMW 「별로 안 해봐서요, 이런 거.」
 		ENDIF
 	ELSEIF CFLAG:2 >= 500
 		IF RAND:3 == 0
-			PRINTFORMW 「こういうお店ではないんだけど……」
-			PRINTFORMW 미요이は膝枕をするとおずおずと%CALLNAME:MASTER%の頭を撫でてきた.
+			PRINTFORMW 「저희 퇴폐업소 아닌데……」
+			PRINTFORMW 미요이는 무릎 베게를 해주며 %CALLNAME:MASTER%의 머리를 쓰다듬었다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「くすぐったいですよ, もう」
-			PRINTFORMW 미요이は膝の上の%CALLNAME:MASTER%の頭を撫でている.
+			PRINTFORMW 「간지러워요, 이제」
+			PRINTFORMW 미요이는 무릎 위에 %CALLNAME:MASTER%의 머리를 쓰다듬고 있다.
 		ELSE
-			PRINTFORMW 「鼻息荒いですよ」
+			PRINTFORMW 「콧바람 거칠어요.」
 		ENDIF
 	ELSE
 		IF RAND:3 == 0
-			PRINTFORMW 「膝枕……こうかしら?」
-			PRINTFORMW 미요이は膝枕をするとおずおずと%CALLNAME:MASTER%の頭を撫でてきた.
+			PRINTFORMW 「무릎베개…… 이런 느낌이려나?」
+			PRINTFORMW 미요이는 무릎 베개를 해주며 %CALLNAME:MASTER%의 머리를 쓰다듬었다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「お金貰いますよ?」
-			PRINTFORMW 미요이はそう言いながらも膝の上の%CALLNAME:MASTER%の頭を撫でている.
+			PRINTFORMW 「돈 받을 거에요?」
+			PRINTFORMW 미요이는 그렇게 말하며 무릎 위에 %CALLNAME:MASTER%의 머리를 쓰다듬고 있다.
 		ELSE
-			PRINTFORMW 「……需要があるのかしらね?」
-			PRINTFORMW 미요이は%CALLNAME:MASTER%をそう言いながら撫でている.
+			PRINTFORMW 「……수요가 있으려나?」
+			PRINTFORMW 미요이는 %CALLNAME:MASTER%에게 그렇게 말하며 쓰다듬고 있다.
 		ENDIF
 	ENDIF
 ENDIF
 RETURN 1
 ;==================================================
-;306,お腹を撫でる
+;306,배를 쓰다듬는다
 ;TFLAG:193(1=ABL:親密6以上かつ妊娠時 0=成功 -1=ABL:親密5以下)
 ;==================================================
 @M_KOJO_MESSAGE_COM_K134_306
@@ -508,74 +508,74 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF FLAG:時間停止
-		PRINTFORMW 凍てついた時の中で미요이のお腹を撫でた.
-		PRINTFORMW %CALLNAME:MASTER%はむっちりとしたお腹の感触を楽しんだ.
+	IF FLAG:시간정지
+		PRINTFORMW 얼어붙은 시간 속에서 미요이의 배를 어루만졌다.
+		PRINTFORMW %마스터는% 통통한 배의 감촉을 즐겼다.
 	ELSEIF CFLAG:318 == 1
-		PRINTFORMW 「気持ち悪いです……」
-		PRINTFORMW 미요이は手を払いながら睨みつけてきた.
+		PRINTFORMW 「기분 나빠요……」
+		PRINTFORMW 미요이는 손을 내저으며 노려보았다.
 	ELSEIF TFLAG:193 == 1
 		IF RAND:3 == 0
-			PRINTFORMW 「ふふ……いっぱい撫でてあげてくださいね%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이は嬉しそうにお腹を撫でられている.
+			PRINTFORMW 「후후…… 많이 쓰다듬어주세요%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 기쁜듯이 배를 쓰다듬어지고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「えへへ……幸せ一杯ですね%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이は愛おしそうにお腹を撫でられている.
+			PRINTFORMW 「에헤헤…… 행복잔뜩이네요%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 사랑스러운 듯이 배를 쓰다듬어지고 있다.
 		ELSE
-			PRINTFORMW 「一緒に育てましょうね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「함께 키워가요%UNICODE(0x2665) *1%」
 		ENDIF
 	ELSEIF TALENT:연인
 		IF RAND:3 == 0
-			PRINTFORMW 「んん……なんだか眠くなってきちゃいましたぁ%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이はお腹を%CALLNAME:MASTER%に蹂躙されている.
+			PRINTFORMW 「으음…… 왠지 졸려져버렸어요%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 배를 %CALLNAME:MASTER%에게 유린당하고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「お腹の調子が良くなっちゃいますね%UNICODE(0x2665) *1%」
-			PRINTFORMW クスクスと笑いながら미요이はお腹を撫でられている.
+			PRINTFORMW 「속이 편해져버렸어요%UNICODE(0x2665) *1%」
+			PRINTFORMW 쿡쿡 웃으며 미요이는 배를 쓰다듬어지고 있다.
 		ELSE
-			PRINTFORMW 「むむむ……太ってなんかないですよ?」
-			PRINTFORMW 미요이はそう言いながらお腹を摩られている.
+			PRINTFORMW 「므므므으…… 뚱뚱하지 않다구요?」
+			PRINTFORMW 미요이는 그렇게 말하며 배를 쓰다듬어지고 있다.
 		ENDIF
 	ELSEIF TALENT:연모
 		IF RAND:3 == 0
-			PRINTFORMW 「お腹撫でられるとちょっと恥ずかしいですね%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이は不思議そうにお腹を撫でられている.
+			PRINTFORMW 「배를 쓰다듬는 건 좀 부끄럽네요%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 신기하다는 듯 배를 쓰다듬어지고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「んん……」
-			PRINTFORMW 「……미요이のお腹は食べられませんよ?」
-			PRINTFORMW 미요이は顔を真っ赤にしながら抗議している.
+			PRINTFORMW 「으음……」
+			PRINTFORMW 「……미요이의 배는 먹을 수 없다구요?」
+			PRINTFORMW 미요이는 얼굴을 붉히며 항의하고 있다.
 		ELSE
-			PRINTFORMW 「少しだけなら撫でてもいいですよ%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이はそう言いながら顔を赤らめている.
+			PRINTFORMW 「조금이라면 쓰다듬으셔도 돼요%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 그러면서 얼굴을 붉히고 있다.
 		ENDIF
 	ELSEIF TALENT:사모
 		IF RAND:3 == 0
-			PRINTFORMW 「みんなにもこんなことしてるんですか?」
-			PRINTFORMW 미요이は少し顔を赤らめながらお腹を撫でられている.
+			PRINTFORMW 「아무한테나 이러는 거에요?」
+			PRINTFORMW 미요이는 조금 얼굴을 붉히면서 배를 어루만져지고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「あ, あんまり触らないで……」
-			PRINTFORMW 미요이は抗議しながらお腹を撫でられている.
+			PRINTFORMW 「아, 너무 만지지 마……」
+			PRINTFORMW 미요이는 항의를 하며 배를 어루만져지고 있다.
 		ELSE
-			PRINTFORMW 「私のお腹は売り物じゃないですよ?」
-			PRINTFORMW 미요이は冗談交じりにそう呟いた.
+			PRINTFORMW 「제 배는 메뉴에 없는걸요?」
+			PRINTFORMW 미요이는 농담조로 그렇게 중얼거렸다.
 		ENDIF
 	ELSEIF CFLAG:2 >= 500
 		IF RAND:3 == 0
-			PRINTFORMW 「あんまり人のお腹を撫でないでください」
+			PRINTFORMW 「너무 사람 배를 쓰다듬지 말아요.」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「変な気分になってきちゃいますね」
+			PRINTFORMW 「기분이 이상하네요.」
 		ELSE
-			PRINTFORMW 「何をするんですか, もう……」
+			PRINTFORMW 「뭐하시는 거에요, 정말……」
 		ENDIF
 	ELSE
 		IF RAND:3 == 0
-			PRINTFORMW 「セクハラです!」
-			PRINTFORMW 미요이はお腹を撫でられて抗議している.
+			PRINTFORMW 「성희롱이에요!」
+			PRINTFORMW 미요이는 배를 쓰다듬어지며 항의하고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「あんまりこういうのは好きじゃありません……」
-			PRINTFORMW 미요이は少し恥ずかしそうにお腹を撫でられている.
+			PRINTFORMW 「별로 이런 거 안 좋아해요……」
+			PRINTFORMW 미요이는 조금 부끄러운 듯이 배를 쓰다듬고 있다.
 		ELSE
-			PRINTFORMW 「……くすぐったいんですけど」
-			PRINTFORMW 미요이はそう言いながらもどこか嬉しそうにしている.
+			PRINTFORMW 「……간지러운데요.」
+			PRINTFORMW 미요이는 그렇게 말하면서도 어딘가 기뻐보인다.
 		ENDIF
 	ENDIF
 ENDIF
@@ -604,72 +604,72 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF FLAG:時間停止
-		PRINTFORMW 凍てついた時の中で미요이の頬をつまんだ.
-		PRINTFORMW %CALLNAME:MASTER%はぷにぷにとした彼女の頬の感触を楽しんだ.
+	IF FLAG:시간정지
+		PRINTFORMW 얼어붙은 시간 속에서 미요이의 볼을 집었다.
+		PRINTFORMW %마스터는% 탱글탱글한 그녀의 뺨에서 느껴지는 감촉을 느꼈다.
 	ELSEIF CFLAG:318 == 1
 		PRINTFORMW 「……」
-		PRINTFORMW 미요이は無言で怒気を発しているしている.
+		PRINTFORMW 미요이는 말없이 화를 내고 있다.
 	ELSEIF TALENT:연인
 		IF RAND:3 == 0
-			PRINTFORMW 「そんなにつまんだらお餅みたいになっちゃいますよ~%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이は抗議しながらもどこか嬉しそうに頬を蹂躙されている.
+			PRINTFORMW 「그렇게 잡으면 찹쌀떡처럼 되요~%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 항의하면서도 기쁜 뜻이 장난을 받아들이고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「いはいでふぅ……」
-			PRINTFORMW 미요이は少し笑いながら抗議している.
+			PRINTFORMW 「너므 마니 하은거 가타혀어……」
+			PRINTFORMW 미요이는 조금 웃으면서 항의하고 있다.
 		ELSE
-			PRINTFORMW 「む……私のほっぺたはそんなに魅力的ですか?」
+			PRINTFORMW 「므으…… 제 볼 그렇게 매력적이에요?」
 		ENDIF
 	ELSEIF TALENT:연모
 		IF RAND:3 == 0
-			PRINTFORMW 「んんっどうかしましたか?」
-			PRINTFORMW 미요이は頬をつままれたまま何事かと尋ねてきた.
+			PRINTFORMW 「으응? 무슨 일이에요?」
+			PRINTFORMW 미요이는 볼을 잡힌 채 무슨 일이냐고 물었다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「むむっ何ですか?」
-			PRINTFORMW 미요이は頬をつままれたままどことなく嬉しそうに返事をした.
+			PRINTFORMW 「므믓, 뭐에요?」
+			PRINTFORMW 미요이는 볼을 잡힌 채 왠지 기쁜 듯이 대답했다.
 		ELSE
-			PRINTFORMW 「……少し痛いですよ, 構いませんけど」
-			PRINTFORMW 미요이は少し困惑しながら顔を赤くしている.
+			PRINTFORMW 「……조금 아파요, 상관은 없지만.」
+			PRINTFORMW 미요이는 약간 당황한 듯 얼굴을 붉혔다.
 		ENDIF
 	ELSEIF TALENT:사모
 		IF RAND:3 == 0
-			PRINTFORMW 「看板娘のほっぺたは高いんですからね?」
+			PRINTFORMW 「간판아가씨의 볼은 비싸다구요?」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「何でしょうか?」
-			PRINTFORMW 미요이は頬をつままれたまま訝しんでいる.
+			PRINTFORMW 「뭐에요?」
+			PRINTFORMW 미요이는 볼을 잡힌 채 의심하고 있다.
 		ELSE
-			PRINTFORMW 「ちょっと~悪戯が過ぎますよ」
-			PRINTFORMW 미요이は頬をつままれたまま困惑している.
+			PRINTFORMW 「조그으음~ 장난이 지나쳐요.」
+			PRINTFORMW 미요이는 볼을 잡힌 채 곤혹스러워하고 있다.
 		ENDIF
 	ELSEIF CFLAG:2 >= 500
 		IF RAND:3 == 0
-			PRINTFORMW 「ちょっと!痛いです!」
-			PRINTFORMW 미요이は頬をつままれたまま少し怒っている.
+			PRINTFORMW 「아! 아파요!」
+			PRINTFORMW 미요이는 볼을 잡힌 채 약간 화를 내고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「最近の流行なのかな……あんまり好きじゃ無いですけど」
-			PRINTFORMW 미요이は頬をつままれたままつまむのを止めるように言っている.
+			PRINTFORMW 「요즘 유행인가… 전 별로인 것 같은데요.」
+			PRINTFORMW 미요이는 볼을 잡힌 채 별로라고 말하고 있다.
 		ELSE
-			PRINTFORMW 「ん?どうかしたんですか?」
-			PRINTFORMW 미요이は頬をつままれたまま%CALLNAME:MASTER%の顔をじっと見つめている.
+			PRINTFORMW 「응? 무슨 일이에요?」
+			PRINTFORMW 미요이는 볼을 잡힌 채 %CALLNAME:MASTER%의 얼굴을 바라보고 있다.
 		ENDIF
 	ELSE
 		IF RAND:3 == 0
-			PRINTFORMW 「何ですか?」
-			PRINTFORMW 미요이は頬をつままれたまま少し困惑している.
+			PRINTFORMW 「무슨 일이에요?」
+			PRINTFORMW 미요이는 약간 당황해하고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「痛いですよ」
-			PRINTFORMW 미요이は頬をつままれたままつまむのを止めるように言っている.
+			PRINTFORMW 「아파요.」
+			PRINTFORMW 미요이는 볼을 잡고 하지말라고 하고 있다.
 		ELSE
-			PRINTFORMW 「もーっ!伸びちゃいますよ!」
-			PRINTFORMW 미요이は頬をつままれたまま抗議している.
+			PRINTFORMW 「정말! 늘어난다구요!」
+			PRINTFORMW 미요이는 볼을 당겨진 채 항의하고 있다.
 		ENDIF
 	ENDIF
 
 ENDIF
 RETURN 1
 ;==================================================
-;308,頬をつつく
-;添い寝中or睡眠中限定
+;308,뺨을 찌른다
+;添い寝中or수면中限定
 ;TFLAG:193(1=大成功 0=成功 -1=失敗)
 ;==================================================
 @M_KOJO_SUCCESS_COM_K134_308
@@ -688,31 +688,31 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF FLAG:時間停止
-		PRINTFORMW 凍てついた時の中で미요이の頬をつついた.
-		PRINTFORMW %CALLNAME:MASTER%はぷにぷにとした彼女の頬の感触を楽しんだ.
-	ELSEIF CFLAG:TARGET:睡眠
-		PRINTFORMW 「……んぅ……んん……」
-		PRINTFORMW 미요이はぐっすりと寝ている
-		PRINTFORMW その頬は柔らかく弾力がある.
+	IF FLAG:시간정지
+		PRINTFORMW 얼어붙은 시간 속에서 미요이의 뺨을 쿡쿡 찔렀다.
+		PRINTFORMW %마스터는% 말랑말랑한 그녀의 뺨에서 느껴지는 감촉을 즐겼다.
+	ELSEIF CFLAG:TARGET:수면
+		PRINTFORMW 「……으응…… 으음……」
+		PRINTFORMW 미요이는 잘 자고 있다.
+		PRINTFORMW 그 뺨은 부드럽고 탄력이 있었다.
 	ELSEIF CFLAG:318 == 1
 		PRINTFORMW 「……」
-		PRINTFORMW 미요이は無言で激怒している.
+		PRINTFORMW 미요이는 화내고 있다.
 	ELSE
 		IF RAND:3 == 0
-			PRINTFORMW 「ん……何ですかぁ?」
-			PRINTFORMW 미요이は嬉しそうに頬をつつかれている.
+			PRINTFORMW 「음…… 뭐죠오?」
+			PRINTFORMW 미요이는 기쁜 얼굴로 뺨을 찔리고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「何ですかぁ?」
+			PRINTFORMW 「뭐에요오?」
 		ELSE
-			PRINTFORMW 「少し痛いですよ?」
+			PRINTFORMW 「조금 아픈데요?」
 		ENDIF
 	ENDIF
 
 ENDIF
 RETURN 1
 ;==================================================
-;309,頭を撫でる
+;309,머리를 쓰다듬는다
 ;TFLAG:193(1=大成功 0=成功 -1=失敗)
 ;ABL:親密(6以上=通常成功時分岐
 ;==================================================
@@ -732,75 +732,75 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF FLAG:時間停止
-		PRINTFORMW 凍てついた時の中で미요이の頭を撫でてみた.
-		PRINTFORMW %CALLNAME:MASTER%は癖の付いた桃色の髪の毛の触り心地に驚嘆した.
-	ELSEIF CFLAG:TARGET:睡眠
-		PRINTFORMW 「……ん……」
-		PRINTFORMW 미요이はぐっすりと寝ている
+	IF FLAG:시간정지
+		PRINTFORMW 얼어붙은 시간 속에서 미요이의 머리를 쓰다듬어보았다.
+		PRINTFORMW %마스터는% 컬이 들어간 분홍 머리카락의 촉감에 감탄했다.
+	ELSEIF CFLAG:TARGET:수면
+		PRINTFORMW 「……응……」
+		PRINTFORMW 미요이는 잘 자고 있다
 	ELSEIF CFLAG:318 == 1
-		PRINTFORMW 「やめて!」
-		PRINTFORMW 미요이は激しく抵抗している.
+		PRINTFORMW 「그만!」
+		PRINTFORMW 미요이는 격렬하게 저항하고 있다.
 	ELSEIF TALENT:연인
 		IF RAND:3 == 0
-			PRINTFORMW 「えへへ, 何だかいいことある気がしますね♪」
-			PRINTFORMW 미요이は頭をなでられると顔を赤らめながら喜んでいる.
+			PRINTFORMW 「에헤헤, 뭔가 좋은 일이 있어보이시네요♪」
+			PRINTFORMW 미요이는 머리를 쓰다듬어지며 얼굴을 붉히고 기뻐하고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「もっと미요이の頭を撫でていいんですよ?」
-			PRINTFORMW 미요이は幸せそうに頭を撫でられている.
+			PRINTFORMW 「좀 더 미요이의 머리 쓰다듬어도 된다구요?」
+			PRINTFORMW 미요이는 행복한 듯 머리를 쓰다듬어지고 있다.
 		ELSE
-			PRINTFORMW 「ん~気持ちいいですね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「음~ 기분 좋네요%UNICODE(0x2665) *1%」
 		ENDIF
 	ELSEIF TALENT:연모
 		IF RAND:3 == 0
-			PRINTFORMW 「こうして頭を撫でられていると嬉しいですね%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이は顔を赤らめながら喜んでいる.
+			PRINTFORMW 「이렇게 머리 쓰다듬어지는 거 좋아요%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 얼굴을 붉히면서 기뻐하고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「えへへへへ, 何だか気持ちよくなってきましたぁ%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이は撫でられながら顔を赤らめている.
+			PRINTFORMW 「에헤헤헤헤, 왠지 기분 좋아졌어요오%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 쓰다듬어지며 얼굴을 붉히고 있다.
 		ELSE
-			PRINTFORMW 「ん♪撫でられるのも気持ちいいですね%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이は顔を赤らめながら撫でられている.
+			PRINTFORMW 「응♪ 쓰다듬어지는 것도 기분 좋네요%UNICODE(0x2665) *1%」
+			PRINTFORMW 미요이는 얼굴을 붉히면서 어루만져지고 있다.
 		ENDIF
 	ELSEIF TALENT:사모
 		IF RAND:3 == 0
-			PRINTFORMW 「わわわ, いきなり撫でないでくださいよぉ……」
-			PRINTFORMW 미요이は困惑しながらも頭を撫でられている.
+			PRINTFORMW 「우와아앗, 갑자기 쓰다듬지 마요오……」
+			PRINTFORMW 미요이는 당황하면서도 머리를 쓰다듬어지고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「何ですか?まあ悪くは無いかもしれませんが」
-			PRINTFORMW 미요이は頭を撫でられつつこちらを見つめている.
+			PRINTFORMW 「뭐에요? 뭐어, 나쁘진 않을지도 모르지만요.」
+			PRINTFORMW 미요이는 머리를 쓰다듬어지며 이쪽을 바라보고 있다.
 		ELSE
-			PRINTFORMW 「何だか落ち着きますね, これ」
-			PRINTFORMW 미요이は頭を撫でられると複雑そうに顔を赤らめている.
+			PRINTFORMW 「왠지 안정이 되네요, 이거.」
+			PRINTFORMW 미요이는 머리를 쓰다듬어지면서 얼굴을 붉히고 있다.
 		ENDIF
 	ELSEIF CFLAG:2 >= 500
 		IF RAND:3 == 0
-			PRINTFORMW 「何か褒められるようなことしましたっけ?」
-			PRINTFORMW 미요이は頭を撫でられて困惑している.
+			PRINTFORMW 「뭔가 저 칭찬받을 만한 일이라도 했나요?」
+			PRINTFORMW 미요이는 머리를 쓰다듬어져 당황하고 있다.
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「癖っ毛だからせっとが崩れるのは……」
+			PRINTFORMW 「컬 넣은 머린데 세팅이 흐트러진 건 좀……」
 		ELSE
-			PRINTFORMW 「あんまり触らないでください」
+			PRINTFORMW 「너무 만지지 말아요.」
 		ENDIF
 	ELSE
 		IF RAND:3 == 0
-			PRINTFORMW 「お触りは駄目ですよ~」
+			PRINTFORMW 「만지면 안 돼요~」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「ちょっとやめてください」
-			PRINTFORMW 미요이は頭を撫でられるとそう返してきた.
+			PRINTFORMW 「잠깐만요.」
+			PRINTFORMW 미요이는 머리를 쓰다듬어지며 그렇게 받아쳤다.
 		ELSE
-			PRINTFORMW 「あんまり知らない人に頭を撫でられるのは……」
+			PRINTFORMW 「별로 모르는 사람이 머리를 쓰다듬는 건……」
 		ENDIF
 	ENDIF
 ENDIF
 RETURN 1
 ;==================================================
-;331,お茶を淹れる（薬入り）
+;331,차를 끓인다（약물）
 ;TFLAG:193(1=大成功 0=成功 -1=失敗)
 ;==================================================
 @M_KOJO_SUCCESS_COM_K134_331
 ;成否判定
-;TFLAG:192(-2=強制失敗(注, 非コマンド終了）, -1＝強制失敗, 0=COM依存, 1=強制成功or大成功(注, 睡眠薬アイスティーは眠気を感じていると飲まない)
+;TFLAG:192(-2=強制失敗(注, 非コマンド終了）, -1＝強制失敗, 0=COM依存, 1=強制成功or大成功(注, 수면薬アイスティーは眠気を感じていると飲まない)
 TFLAG:192 =0
 
 @M_KOJO_MESSAGE_COM_K134_331
@@ -817,31 +817,31 @@ IF LOCAL
 	SELECTCASE TFLAG:193 
 	CASE 0,1
 		IF RAND:5 == 0
-			PRINTFORMW 「っ……いいお手前……」
+			PRINTFORMW 「읏…… 좋은 솜씨……」
 		ELSEIF RAND:4 == 0
-			PRINTFORMW 「頂きます!」
-			PRINTFORMW 「……変な味……」
+			PRINTFORMW 「잘 먹겠습니다!」
+			PRINTFORMW 「……맛이 이상해……」
 		ELSEIF RAND:3 == 0
-			PRINTFORMW 「なんだか……変なの」
+			PRINTFORMW 「어쩐지…… 이상한데.」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「……変な気分……」
+			PRINTFORMW 「……기분이 이상해……」
 		ELSE
-			PRINTFORMW 「……ぴりってしました……」
+			PRINTFORMW 「……뭔가 찌릿했어요……」
 		ENDIF
 	CASEELSE
 		IF TALENT:연모
-			PRINTFORMW 「……何だか怪しいですね」
-			PRINTFORMW 미요이はじっとこちらを睨みつけている.
+			PRINTFORMW 「……왠지 수상하네요」
+			PRINTFORMW 미요이는 가만히 이쪽을 노려보고 있다.
 		ELSE
-			PRINTFORMW 「……遠慮しておきますね」
-			PRINTFORMW 思いっきり怪しまれてしまった.
+			PRINTFORMW 「……사양할게요.」
+			PRINTFORMW 실컷 의심받고 말았다.
 		ENDIF
 	ENDSELECT
 
 ENDIF
 RETURN 1
 ;==================================================
-;332,お酒をふるまう
+;332,술을 대접한다
 ;TFLAG:193(0=下戸飲み成功 -1=下戸飲み失敗 -2=下戸飲み大失敗 -5=下戸飲みあきらめ)
 ;TFLAG:194(51=どぶろく 52=清酒 53=鬼殺し)
 ;ALCOHOL_TASTE(TFLAG:194)(15以上=気に入る 9以下=口に合わない)
@@ -864,36 +864,36 @@ LOCAL = 1
 IF LOCAL
 	IF ALCOHOL_TASTE(TFLAG:194) >= 15
 		IF RAND:3 == 0
-			PRINTFORMW 「このお酒……とっても美味しいわ!」
+			PRINTFORMW 「이 술…… 진짜 맛있어!」
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「!!!」
-			PRINTFORMW 「どこで手に入れたんですか!?こんなにおいしいお酒!」
+			PRINTFORMW 「어디서 구하셨죠!? 이렇게 맛있는 술을!」
 		ELSE
-			PRINTFORMW 「うわぁ……すっごくおいしい%UNICODE(0x2665) *1%」
+			PRINTFORMW 「우와아…… 엄청 맛있어어%UNICODE(0x2665) *1%」
 		ENDIF
 	ELSEIF ALCOHOL_TASTE(TFLAG:194) <= 9
 		IF RAND:3 == 0
-			PRINTFORMW 「口に合わないわ……」
+			PRINTFORMW 「입에 안 맞네……」
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「!」
-			PRINTFORMW 「あまり, 美味しくはありませんね……」
+			PRINTFORMW 「그닥, 맛있지는 않네요……」
 		ELSE
 			PRINTFORMW 「……」
-			PRINTFORMW 미요이は微妙な表情をしている.
+			PRINTFORMW 미요이는 미묘한 표정을 짓고 있다.
 		ENDIF
 	ELSE
 		IF RAND:3 == 0
-			PRINTFORMW 「美味しいお酒ですね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「맛있는 술이네요%UNICODE(0x2665) *1%」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「一緒に呑むと美味しいですね♪」
+			PRINTFORMW 「같이 마시면 맛있겠네요♪」
 		ELSE
-			PRINTFORMW 「これ, うちの店でも出そうかしら?」
+			PRINTFORMW 「이거, 우리 가게에서도 팔아볼까?」
 		ENDIF
 	ENDIF
 ENDIF
 RETURN 1
 ;==================================================
-;333,愚痴を聞く
+;333,푸념을 듣는다
 ;TFLAG:193(6=大成功(酔い) 5=成功(酔い) 4=失敗(酔い) 3=大成功 2=成功 1=失敗)
 ;==================================================
 @M_KOJO_SUCCESS_COM_K134_333
@@ -914,64 +914,64 @@ LOCAL = 1
 IF LOCAL
 	SELECTCASE TFLAG:193
 		CASE 6
-		;大成功（酔い）
+		;대성공（酔い）
 			IF RAND:3 == 0
-				PRINTFORMW 「……こんな愚痴に付き合ってくれてありがとうね%UNICODE(0x2665) *1%」
+				PRINTFORMW 「……이런 푸념 들어줘서 고마워어%UNICODE(0x2665) *1%」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「んん, ごめんなさい, こんな愚痴に付き合わせて」
+				PRINTFORMW 「으응, 미안해요, 이런 푸념 늘어놓아서.」
 			ELSE
-				PRINTFORMW 「んん……酔い過ぎたかも……미요이だけに」
+				PRINTFORMW 「으응…… 너무 취했나봐요…… 미요이만」
 			ENDIF
 		CASE 5
 		;成功（酔い）
 			IF RAND:3 == 0
-				PRINTFORMW 「……ありがと, 聞いてくれて」
+				PRINTFORMW 「……고마워, 들어줘서.」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「……ふぅ……スッキリした……」
+				PRINTFORMW 「……후우…… 개운해졌어……」
 			ELSE
-				PRINTFORMW 「んん……そういうことなの……」
+				PRINTFORMW 「으응…… 그런 거야……」
 			ENDIF
 		CASE 4
 		;失敗（酔い）
 			IF RAND:3 == 0
-				PRINTFORMW 「%CALLNAME:MASTER%씨の馬鹿ぁ!」
+				PRINTFORMW 「%CALLNAME:MASTER%씨 바보오!」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「人の話聞く気ないでしょ!」
+				PRINTFORMW 「사람 말 들을 생각이 없잖아!」
 			ELSE
-				PRINTFORMW 「もう!人が悩んでるのに!」
+				PRINTFORMW 「정말! 누구는 진지하게 고민하고 있는데!」
 			ENDIF
 		CASE 3
 		;大成功
 			IF RAND:3 == 0
-				PRINTFORMW 「愚痴に付き合わせてごめんね%UNICODE(0x2665) *1%」
+				PRINTFORMW 「푸념 늘어놓아서 미안해%UNICODE(0x2665) *1%」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「……あんまりこういうのは良くないんですけどね」
+				PRINTFORMW 「……이러는 거 별로 좋지 않지만.」
 			ELSE
-				PRINTFORMW 「%CALLNAME:MASTER%씨だけですね, 私の愚痴に付き合ってくれるのは」
+				PRINTFORMW 「%CALLNAME:MASTER%씨 뿐이네요, 제 푸념 들어주는 사람은.」
 			ENDIF
 		CASE 2
 		;成功
 			IF RAND:3 == 0
-				PRINTFORMW 「愚痴に付き合ってもらってありがとうございます」
+				PRINTFORMW 「푸념 들어주셔서 고마워요.」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「愚痴を聞いてくれてありがとうね%UNICODE(0x2665) *1%」
+				PRINTFORMW 「푸념 들어줘서 고마워요%UNICODE(0x2665) *1%」
 			ELSE
-				PRINTFORMW 「んん……あんまり愚痴は良くなかったかなぁ」
+				PRINTFORMW 「으응…… 너무 투덜거리기만 했나아.」
 			ENDIF
 		CASE 1
 		;失敗
 			IF RAND:3 == 0
-				PRINTFORMW 「もー!私の話ちゃんと聞いてます!?」
+				PRINTFORMW 「정마알! 제 말 잘 듣고 있어요!?」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「もう!もっとちゃんと聞いて!」
+				PRINTFORMW 「정말! 좀 더 집중해서 들어달라구요!」
 			ELSE
-				PRINTFORMW 「ふんっ!%CALLNAME:MASTER%씨も駄目ですね!」
+				PRINTFORMW 「흥! %CALLNAME:MASTER%씨도 안되겠네요!」
 			ENDIF
 	ENDSELECT
 ENDIF
 RETURN 1
 ;==================================================
-;334,杯を交わす
+;334,술잔을 주고받는다
 ;TFLAG:193(1=大成功 0=成功 -1=失敗)
 ;CFLAG:妊娠自覚状態(1=食事)
 ;TALENT:酒耐性(-2=食事)
@@ -995,10 +995,10 @@ IF LOCAL
 	SELECTCASE TFLAG:193
 		CASE 1
 		;大成功
-			PRINTFORMW 「かんぱーい%UNICODE(0x2665) *1%」
+			PRINTFORMW 「건배%UNICODE(0x2665) *1%」
 		CASE 0
 		;成功
-			PRINTFORMW 「はい, 乾杯♪」
+			PRINTFORMW 「네, 건배♪」
 		CASE -1
 		;失敗
 	ENDSELECT
@@ -1035,7 +1035,7 @@ IF LOCAL
 ENDIF
 RETURN 1
 ;==================================================
-;336,膝枕する
+;336,무릎을 베다
 ;ABL:親密(4以下=居心地悪げ 9以下=恥ずかしげ それ以上=幸せそう
 ;TIME_PROGRESS(TFLAG:膝枕した)(44以下=失敗
 ;==================================================
@@ -1058,78 +1058,78 @@ IF LOCAL
 	IF TFLAG:193 > 0
 	;寝ちゃった
 		IF CFLAG:318 == 1
-			PRINTFORMW 「もう……こんなので……」
-			PRINTFORMW 미요이は不機嫌なまま寝てしまった.
+			PRINTFORMW 「이젠…… 이런 걸로……」
+			PRINTFORMW 미요이는 기분 나빠하는 채로 잠들었다.
 		ELSE
 			IF RAND:3 == 0
-				PRINTFORMW 「ん……段々眠く……」
+				PRINTFORMW 「응…… 점점 졸려……」
 			ELSEIF RAND:2 == 0
-				PRINTFORMW 「んんっ……おやすみなさい……」
+				PRINTFORMW 「우응…… 안녕히 주무세요……」
 			ELSE
-				PRINTFORMW 「このまま……寝ちゃいそう……」
+				PRINTFORMW 「이대로…… 잠들 것 같아……」
 			ENDIF
 		ENDIF
 	ELSE
 	;それ以外
-		IF CFLAG:TARGET:睡眠
-			PRINTFORMW 「……ぐう……ぐう……んん……」
-			PRINTFORMW 미요이は%CALLNAME:MASTER%の膝の上でぐっすりと寝ている.
+		IF CFLAG:TARGET:수면
+			PRINTFORMW 「……쿠우…… 쿠우…… 으응……」
+			PRINTFORMW 미요이는 %CALLNAME:MASTER%의 무릎 위에서 푹 자고 있다.
 		ELSEIF CFLAG:318 == 1
 			PRINTFORMW 「……何でこんなことに……」
-			PRINTFORMW 미요이は嫌悪感を露わにしている.
+			PRINTFORMW 미요이는 嫌悪感を露わにしている.
 		ELSEIF TALENT:연인
 			IF RAND:3 == 0
 				PRINTFORMW 「えへへ%UNICODE(0x2665) *1%ぐっすり寝ちゃいそうですね%UNICODE(0x2665) *1%」
-				PRINTFORMW 미요이は膝の上で頭をなでられると喜んでいる.
+				PRINTFORMW 미요이는 膝の上で頭をなでられると喜んでいる.
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「こうやってると私の居場所ってここなんだなって思いますね♪」
-				PRINTFORMW 미요이は幸せそうに膝の上で頭を撫でられている.
+				PRINTFORMW 미요이는 幸せそうに膝の上で頭を撫でられている.
 			ELSE
 				PRINTFORMW 「もう少しこのままでもいいですか?」
-				PRINTFORMW 미요이は顔を赤らめながら顔を向けてきた.
+				PRINTFORMW 미요이는 顔を赤らめながら顔を向けてきた.
 			ENDIF
 		ELSEIF TALENT:연모
 			IF RAND:3 == 0
 				PRINTFORMW 「……少し恥ずかしいですけど……好きかもしれません」
-				PRINTFORMW 미요이は膝の上で頭を撫でられると少し恥ずかしそうにはにかんでいる.
+				PRINTFORMW 미요이는 膝の上で頭を撫でられると少し恥ずかしそうにはにかんでいる.
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「こういうことをするのもされるのも好きですね%UNICODE(0x2665) *1%」
-				PRINTFORMW 미요이は膝の上で撫でられながら顔を赤らめている.
+				PRINTFORMW 미요이는 膝の上で撫でられながら顔を赤らめている.
 			ELSE
 				PRINTFORMW 「しばらくこのままでも構いませんか?」
-				PRINTFORMW 미요이は顔を赤らめながら撫でられている.
+				PRINTFORMW 미요이는 顔を赤らめながら撫でられている.
 			ENDIF
 		ELSEIF TALENT:사모
 			IF RAND:3 == 0
 				PRINTFORMW 「こういう枕を作ったら売れるかもしれませんね」
-				PRINTFORMW 미요이は%CALLNAME:MASTER%の膝枕を褒めている.
+				PRINTFORMW 미요이는 %CALLNAME:MASTER%の膝枕を褒めている.
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「悪くない寝心地ですね」
 			ELSE
 				PRINTFORMW 「うう……寝ちゃいそう……」
-				PRINTFORMW 미요이は複雑そうに膝枕されている.
+				PRINTFORMW 미요이는 複雑そうに膝枕されている.
 			ENDIF
 		ELSEIF CFLAG:2 >= 500
 			IF RAND:3 == 0
 				PRINTFORMW 「お店でこういうことをしたら繁盛するかなぁ」
-				PRINTFORMW 미요이は膝枕をされながら困惑している.
+				PRINTFORMW 미요이는 膝枕をされながら困惑している.
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「少し疲れたので遠慮しませんよ?」
-				PRINTFORMW 미요이は膝枕をされながらそう返してきた.
+				PRINTFORMW 미요이는 膝枕をされながらそう返してきた.
 			ELSE
 				PRINTFORMW 「少し恥ずかしいですね……」
-				PRINTFORMW 미요이は膝枕をされながら複雑そうに顔を赤らめている.
+				PRINTFORMW 미요이는 膝枕をされながら複雑そうに顔を赤らめている.
 			ENDIF
 		ELSE
 			IF RAND:3 == 0
 				PRINTFORMW （膝枕なんてされたことないわ……）
-				PRINTFORMW 미요이は困惑しながらも膝枕をされている.
+				PRINTFORMW 미요이는 困惑しながらも膝枕をされている.
 			ELSEIF RAND:2 == 0
 				PRINTFORMW 「……中々寝心地悪いですね」
-				PRINTFORMW 미요이は複雑そうにそう返してきた.
+				PRINTFORMW 미요이는 複雑そうにそう返してきた.
 			ELSE
 				PRINTFORMW 「では遠慮なく……」
-				PRINTFORMW 미요이はそう言いながら%CALLNAME:MASTER%の膝に頭を乗せた.
+				PRINTFORMW 미요이는 そう言いながら%CALLNAME:MASTER%の膝に頭を乗せた.
 			ENDIF
 		ENDIF
 	ENDIF
@@ -1153,7 +1153,7 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF FLAG:時間停止
+	IF FLAG:시간정지
 		PRINTFORML 
 	ELSEIF TFLAG:194
 		SELECTCASE TFLAG:194
@@ -1280,12 +1280,12 @@ IF LOCAL
 		PRINTFORMW 「……えー!どうしましょう!?」
 		PRINTFORMW 「こ, 告白なんてされたことないし……嬉しいけど……」
 		PRINTFORMW 「……미요이の事, 一生覚えていてくれますか?」
-		PRINTFORMW そう言って미요이は%CALLNAME:MASTER%にゆっくりと抱きついてきた.
+		PRINTFORMW そう言って미요이는 %CALLNAME:MASTER%にゆっくりと抱きついてきた.
 		PRINTFORMW 「私は今日この日の事, 絶対に忘れません」
 		PRINTFORMW 「だから……幸せになりましょうね%UNICODE(0x2665) *1%」
 	ELSE
 		PRINTFORML 「……どうかしたんですか?」
-		PRINTFORML %CALLNAME:MASTER%の挙動不審な態度に미요이は少し困惑している.
+		PRINTFORML %CALLNAME:MASTER%の挙動不審な態度に미요이는 少し困惑している.
 	ENDIF
 
 ENDIF
@@ -1326,14 +1326,14 @@ LOCAL = 1
 IF LOCAL
 	IF CFLAG:TARGET:衰弱 || CFLAG:TARGET:お招き
 		PRINTFORMW 「ん……くぅ……すぴぃ……」
-		PRINTFORMW 미요이はこちらに気づかずにに寝息を立てている.
-	ELSEIF CFLAG:TARGET:睡眠
+		PRINTFORMW 미요이는 こちらに気づかずにに寝息を立てている.
+	ELSEIF CFLAG:TARGET:수면
 		PRINTFORMW 「んん……ん……%UNICODE(0x2665) *1%」
-		PRINTFORMW 미요이はどこか嬉しそうに寝息を立てている.
+		PRINTFORMW 미요이는 どこか嬉しそうに寝息を立てている.
 	ELSEIF TALENT:연인
 		IF RAND:3 == 0
 			PRINTFORMW 「一緒に寝ましょうね, %CALLNAME:MASTER%씨%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이はそう言いながら妖艶に布団の中に招き入れた.
+			PRINTFORMW 미요이는 そう言いながら妖艶に布団の中に招き入れた.
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「えへへ, エッチなお店みたいですね%UNICODE(0x2665) *1%」
 		ELSE
@@ -1505,9 +1505,9 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF CFLAG:TARGET:睡眠
+	IF CFLAG:TARGET:수면
 		PRINTFORMW 「すぴぃ……すやぁ……」
-		PRINTFORMW %CALLNAME:MASTER%はすやすやと眠っている미요이にお休みと呟いて眠ることにした.
+		PRINTFORMW %마스터는% すやすやと眠っている미요이にお休みと呟いて眠ることにした.
 	ELSEIF TALENT:연인
 		PRINTFORMW 「お休み, %CALLNAME:MASTER%씨%UNICODE(0x2665) *1%」
 	ELSEIF TALENT:연모
@@ -1522,7 +1522,7 @@ ENDIF
 RETURN 1
 ;==================================================
 ;403,休憩
-;CFLAG:TARGET:睡眠(1=TARGETが寝てる隣で休憩
+;CFLAG:TARGET:수면(1=TARGETが寝てる隣で休憩
 ;==================================================
 @M_KOJO_MESSAGE_COM_K134_403
 CALL TRAIN_MESSAGE
@@ -1535,9 +1535,9 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF CFLAG:TARGET:睡眠
+	IF CFLAG:TARGET:수면
 		PRINTFORMW 「ん……ぐぅ……」
-		PRINTFORMW %CALLNAME:MASTER%は身じろぎしながら眠っている미요이の隣で休憩している.
+		PRINTFORMW %마스터는% 身じろぎしながら眠っている미요이の隣で休憩している.
 	ELSEIF TALENT:연인
 		PRINTFORMW 「ゆったりするのもいいですねぇ」
 	ELSEIF TALENT:연모
@@ -1613,7 +1613,7 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF FLAG:時間停止
+	IF FLAG:시간정지
 		RETURN 0
 	ELSEIF RAND:3 == 0
 		PRINTFORMW 「わぁ!お掃除得意なんですね!」
@@ -1666,11 +1666,11 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF FLAG:時間停止
+	IF FLAG:시간정지
 	ELSEIF CFLAG:313 == 1
 	ELSEIF CFLAG:318 == 1
 		PRINTFORMW 「……仕方ないですね」
-		PRINTFORMW 미요이はそう言って怒りながらも勉強を見ている.
+		PRINTFORMW 미요이는 そう言って怒りながらも勉強を見ている.
 	ELSE
 		IF RAND:3 == 0
 			PRINTFORMW 「お料理ぐらいしか教えられないと思うけど……」
@@ -1699,7 +1699,7 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF FLAG:時間停止
+	IF FLAG:시간정지
 	ELSEIF CFLAG:313 == 1
 	ELSEIF CFLAG:318 == 1
 	ELSEIF TALENT:연인
@@ -1775,7 +1775,7 @@ IF LOCAL
 			PRINTFORMW 「う……ま……何でも無いです……」
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「んん……ぇ……」
-			PRINTFORMW 미요이は微妙な味に困惑している.
+			PRINTFORMW 미요이는 微妙な味に困惑している.
 		ELSE
 			PRINTFORMW 「何作ったつもりなんですか……」
 		ENDIF
@@ -1852,7 +1852,7 @@ RETURN RESULT
 LOCAL = 1
 ;-------------------------------------------------
 IF LOCAL
-	IF FLAG:時間停止
+	IF FLAG:시간정지
 	ELSEIF CFLAG:313 == 1
 	ELSEIF CFLAG:318 == 1
 	ELSEIF TALENT:연인
@@ -1941,20 +1941,20 @@ IF LOCAL
 	ELSEIF TALENT:연모
 		IF RAND:3 == 0
 			PRINTFORMW 「……私を待ってるんじゃないんだ」
-			PRINTFORMW 미요이は少し残念そうにそうごちた.
+			PRINTFORMW 미요이는 少し残念そうにそうごちた.
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「一緒に待ってあげますよ%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이はそう言いながら%CALLNAME:MASTER%に寄り添っている.
+			PRINTFORMW 미요이는 そう言いながら%CALLNAME:MASTER%に寄り添っている.
 		ELSE
 			PRINTFORMW 「%CALLNAME:MASTER%씨に待ってもらえるなんていいなぁ」
-			PRINTFORMW 미요이はそう言いながら隣に待機している.
+			PRINTFORMW 미요이는 そう言いながら隣に待機している.
 		ENDIF
 	ELSEIF TALENT:연모
 		IF RAND:3 == 0
 			PRINTFORMW 「一緒に待ってあげましょうか?」
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「誰を待ってるんですか?」
-			PRINTFORMW 미요이はそう言って隣に陣取っている.
+			PRINTFORMW 미요이는 そう言って隣に陣取っている.
 		ELSE
 			PRINTFORMW 「このままのんびりしちゃいましょうか%UNICODE(0x2665) *1%」
 		ENDIF
@@ -2100,11 +2100,11 @@ LOCAL = 1
 IF LOCAL
 	IF CFLAG:318 == 1
 		PRINTFORMW 「気持ち悪い……」
-		PRINTFORMW 미요이は嫌悪感を露わにしている.
+		PRINTFORMW 미요이는 嫌悪感を露わにしている.
 	ELSEIF TALENT:연인
 		IF RAND:3 == 0
 			PRINTFORMW 「えへへ, 手を繋いでもいいですかぁ%UNICODE(0x2665) *1%」
-			PRINTFORMW 미요이はそう言いながら手を取ってきた.
+			PRINTFORMW 미요이는 そう言いながら手を取ってきた.
 		ELSEIF RAND:2 == 0
 			PRINTFORMW 「手を繋ぐんですか?いいですよ%UNICODE(0x2665) *1%」
 		ELSE
@@ -2281,18 +2281,18 @@ LOCAL = 1
 IF LOCAL
 	IF ABL:料理技能 < 4
 		PRINTFORMW 「%CALLNAME:MASTER%씨, お弁当作ってきたんですけど……」
-		PRINTFORMW 미요이はそう言いながら弁当を取り出した.
+		PRINTFORMW 미요이는 そう言いながら弁当を取り出した.
 		PRINTFORMW 「ど, どうですか!?」
-		PRINTFORMW 미요이は箸で煌びやかなおかずをつまみ%CALLNAME:MASTER%の口元に寄せてきた.
+		PRINTFORMW 미요이는 箸で煌びやかなおかずをつまみ%CALLNAME:MASTER%の口元に寄せてきた.
 		PRINTFORMW 「料理だけは自信あるんですよ, %CALLNAME:MASTER%씨の口に合えばいいのですが……」
-		PRINTFORMW 미요이はそう言いながら%CALLNAME:MASTER%の口に美味しいおかずを運んでいる.
+		PRINTFORMW 미요이는 そう言いながら%CALLNAME:MASTER%の口に美味しいおかずを運んでいる.
 	ELSEIF ABL:料理技能 < 2
 		PRINTFORMW 「お弁当, 作ってきたんですが……」
-		PRINTFORMW 미요이はおかずを一つ摘んで%CALLNAME:MASTER%の口の前に持ってきた.
+		PRINTFORMW 미요이는 おかずを一つ摘んで%CALLNAME:MASTER%の口の前に持ってきた.
 		PRINTFORMW 「えへへ, 料理は得意なんですよ♪」
 	ELSE
 		PRINTFORMW 「お弁当, 作ってきたんですけど」
-		PRINTFORMW 미요이はそう言いながら弁当を取り出し箸を渡してくる.
+		PRINTFORMW 미요이는 そう言いながら弁当を取り出し箸を渡してくる.
 		PRINTFORMW 「あまりお弁当は作ったことなくて……どうですか?」
 	ENDIF
 
@@ -2499,7 +2499,7 @@ ENDIF
 RETURN 1
 ;==================================================
 ;61,抱きまくら
-;(TARGET睡眠時間or衰弱)添い寝中, 前ターン抱きつく後就寝コマンド
+;(TARGET수면時間or衰弱)添い寝中, 前ターン抱きつく後就寝コマンド
 ;分岐無し
 ;==================================================
 @M_KOJO_MESSAGE_SCOM_K134_61
