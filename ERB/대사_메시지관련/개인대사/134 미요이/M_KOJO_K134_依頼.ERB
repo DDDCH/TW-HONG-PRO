@@ -130,7 +130,7 @@ CASE "依頼実行直後"
 ;【達成時・TARGET：忘れずに［依頼主］に報告しよう】
 	IF ROLE == "CLIENT"
 	;（共通）CLIENT：依頼実行の対象と依頼主（口上主）が同一の場合（主に特訓系ですが一緒に捜索等をした場合も含まれます）
-		SELECTCASE CFLAG:CLIENT_ID:依頼状況
+		SELECTCASE CFLAG:CLIENT_ID:의뢰상황
 		CASE 2
 		;実行後未解決
 			
@@ -143,7 +143,7 @@ CASE "依頼実行直後"
 		ENDSELECT
 	ELSEIF ROLE == "TARGET"
 	;（共通）TARGET：口上主が依頼実行の対象である場合（主に配達系ですが捜索等をした際、TARGETにしていた場合も含まれます）
-		SELECTCASE CFLAG:CLIENT_ID:依頼状況
+		SELECTCASE CFLAG:CLIENT_ID:의뢰상황
 		CASE 2
 		;実行後未解決
 			
@@ -540,7 +540,7 @@ CASE "依頼実行直前"
 CASE "依頼実行直後"
 	;【▲上の口上から続き】
 	;【◆口上】
-	SELECTCASE CFLAG:CLIENT_ID:依頼状況
+	SELECTCASE CFLAG:CLIENT_ID:의뢰상황
 	CASE 2
 	;［しらべもの］をした時
 		IF ROLE == "CLIENT"
@@ -932,7 +932,7 @@ CASE "依頼実行直前"
 	;【▼そのまま下の口上へ】
 CASE "依頼実行直後"
 ;○この依頼では討伐される側の口上です
-	IF CFLAG:CLIENT_ID:依頼状況 == 2
+	IF CFLAG:CLIENT_ID:의뢰상황 == 2
 		IF CANNOT_DANMAKU() == 0
 			;負け犬
 			;【▲上の口上から続き】
@@ -946,7 +946,7 @@ CASE "依頼実行直後"
 			;【◆口上】
 			RETURN 0
 		ENDIF
-	ELSEIF CFLAG:CLIENT_ID:依頼状況 == 3
+	ELSEIF CFLAG:CLIENT_ID:의뢰상황 == 3
 	;勝利
 	;【▲上の口上から続き】
 	;【W ［彼女］を懲らしめた！】
