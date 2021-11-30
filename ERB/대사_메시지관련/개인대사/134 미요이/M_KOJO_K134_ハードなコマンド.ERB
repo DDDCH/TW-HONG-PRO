@@ -271,7 +271,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;146,浣腸器＋プラグ
+;146,관장器＋プラグ
 ;==================================================
 @M_KOJO_MESSAGE_COM_K134_146
 CALL TRAIN_MESSAGE
@@ -296,8 +296,8 @@ IF LOCAL
 		RETURN 1
 	ENDIF
 	;基本セット
-	;浣腸液注入
-	IF TEQUIP:浣腸
+	;관장液注入
+	IF TEQUIP:관장
 		;연모
 		IF TALENT:연모
 			PRINTFORMW 
@@ -346,7 +346,7 @@ IF LOCAL
 	ENDIF
 	;基本セット
 	;装着
-	IF TEQUIP:拡張バルーン
+	IF TEQUIP:확장벌룬
 		;연모
 		IF TALENT:연모
 			PRINTFORMW 
@@ -395,7 +395,7 @@ IF LOCAL
 	ENDIF
 	;基本セット
 	;装着
-	IF TEQUIP:アナル電極
+	IF TEQUIP:애널전극
 		;연모
 		IF TALENT:연모
 			PRINTFORMW 
@@ -418,7 +418,7 @@ ENDIF
 RETURN 1
 
 ;==================================================
-;150,胸の谷間を犯す
+;150,가슴の谷間を犯す
 ;==================================================
 @M_KOJO_MESSAGE_COM_K134_150
 CALL TRAIN_MESSAGE
@@ -456,8 +456,8 @@ IF LOCAL
 		ELSE
 			PRINTFORMW 「정말! 너무 난폭해요오%UNICODE(0x2665) *1%」
 		ENDIF
-	;胸3以上
-	ELSEIF ABL:胸 > 2
+	;가슴3以上
+	ELSEIF ABL:가슴 > 2
 		IF RAND:3 == 0
 			PRINTFORMW 「미요이의 가슴으로 기분 좋아져주세요오%UNICODE(0x2665) *1%」
 		ELSEIF RAND:2 == 0
@@ -468,11 +468,11 @@ IF LOCAL
 	;それ以外
 	ELSE
 		IF RAND:3 == 0
-			PRINTFORMW 「으응%UNICODE(0x2665) *1%気持ちいいですかぁ%UNICODE(0x2665) *1%」
+			PRINTFORMW 「으응%UNICODE(0x2665) *1% 기분 좋으신가요오%UNICODE(0x2665) *1%」
 		ELSEIF RAND:2 == 0
-			PRINTFORMW 「いっぱいおっぱい犯してくださいね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「잔뜩 가슴 범해주세요%UNICODE(0x2665) *1%」
 		ELSE
-			PRINTFORMW 「あんまり乱暴にしないでくださいね%UNICODE(0x2665) *1%」
+			PRINTFORMW 「너무 난폭하게 하지 마세요오%UNICODE(0x2665) *1%」
 		ENDIF
 	ENDIF
 ENDIF

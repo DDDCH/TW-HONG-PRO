@@ -509,7 +509,7 @@ CASE "依頼破棄時"
 	
 	RETURN 0
 CASE "依頼実行直前"
-	IF IS_LIBRARY(CFLAG:MASTER:現在位置) && TARGET == CLIENT_ID
+	IF IS_LIBRARY(CFLAG:MASTER:현재위치) && TARGET == CLIENT_ID
 	;［しらべもの］と［教えてあげる］が重なっている場合
 	;【◆口上】
 	;【L ［あなた］は［彼女］の疑問に答えるために［現在地］を訪れた】
@@ -520,7 +520,7 @@ CASE "依頼実行直前"
 	;【教えてあげる＞［教えてあげる］へジャンプ】
 		
 		RETURN 0
-	ELSEIF IS_LIBRARY(CFLAG:MASTER:現在位置)
+	ELSEIF IS_LIBRARY(CFLAG:MASTER:현재위치)
 	;［しらべもの］をした時、依頼主ではない口上主がTARGETの場合
 	;【◆口上】
 	;【［あなた］は［現在地］で調べ物をした】

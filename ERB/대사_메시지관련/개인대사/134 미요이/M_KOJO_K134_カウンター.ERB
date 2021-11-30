@@ -232,7 +232,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;胸を揉ませる
+;가슴を揉ませる
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K134_33
 CALL EVENT_COUNTER_MESSAGE
@@ -262,7 +262,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;後ろから胸もみもみ
+;後ろから가슴もみもみ
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K134_36
 CALL EVENT_COUNTER_MESSAGE
@@ -414,8 +414,8 @@ RETURN RESULT
 				PRINTFORMW 미요이는 %CALLNAME:MASTER%의 사정을 예감하고 혀놀림으로 능숙하게 그것을 유도하고 있다.
 			ENDIF
 		ENDIF
-	;혀기술3以上
-	ELSEIF ABL:혀기술 > 2
+	;혀3以上
+	ELSEIF ABL:혀 > 2
 		;精液中毒4以上
 		IF ABL:정액중독 > 4
 			IF RAND:3 == 0
@@ -448,7 +448,6 @@ RETURN RESULT
 			PRINTFORMW 미요이는 어딘가 어색하게 음경을 입에 머금었다.
 		ENDIF
 	ENDIF
-ENDIF
 RETURN 1
 
 ;==================================================
@@ -486,8 +485,8 @@ RETURN RESULT
 			PRINTFORMW 「정말! 그렇게 가슴 속에서 날뛰면 안된다구요오%UNICODE(0x2665) *1%」
 			PRINTFORMW 「지금 퓻퓻 시켜 드릴테니까요%UNICODE(0x2665) *1%」
 		ENDIF
-	;胸3以上
-	ELSEIF ABL:가슴기술 > 2
+	;가슴3以上
+	ELSEIF ABL:가슴 > 2
 		IF RAND:3 == 0
 			PRINTFORMW 「미요이의 가슴의로 기분 좋게 해드릴테니까요오%UNICODE(0x2665) *1%」
 		ELSEIF RAND:2 == 0
@@ -555,7 +554,7 @@ RETURN RESULT
 RETURN 1
 
 ;==================================================
-;胸愛撫
+;가슴愛撫
 ;==================================================
 @M_KOJO_MESSAGE_COUNTER_K134_58
 CALL EVENT_COUNTER_MESSAGE
